@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://c73dj2f3ipx1" path="res://Data/Armors/swordman_helmet.tres" id="6_q0kv5"]
 [ext_resource type="Script" uid="uid://dgt024sg2dygh" path="res://Scripts/Entity/player_controller.gd" id="7_q0kv5"]
 [ext_resource type="Script" uid="uid://il7cacyusvvr" path="res://Scripts/Entity/player_health.gd" id="8_1h042"]
+[ext_resource type="Script" uid="uid://bhom8k7ua87t5" path="res://Scripts/UI/player_grid_ui.gd" id="11_sj3gg"]
 [ext_resource type="Script" uid="uid://bxv0q5cl01wwu" path="res://Scripts/UI/player_life_bar.gd" id="12_jy6v0"]
 [ext_resource type="Script" uid="uid://cxlrj42seind1" path="res://Scripts/UI/loot_box_ui.gd" id="14_r66ao"]
 [ext_resource type="Script" uid="uid://dc1fsfq7a5idj" path="res://Scripts/UI/loot_box_cell_ui.gd" id="16_x02nk"]
@@ -67,7 +68,7 @@ grow_vertical = 2
 texture = ExtResource("1_2wjsh")
 expand_mode = 1
 
-[node name="Player-Grid" type="GridContainer" parent="Control" unique_id=141145057]
+[node name="Player-Grid" type="GridContainer" parent="Control" unique_id=141145057 node_paths=PackedStringArray("cell_grid")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -81,6 +82,8 @@ offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 0
 columns = 3
+script = ExtResource("11_sj3gg")
+cell_grid = [NodePath("Inventory-Cell"), NodePath("Inventory-Cell2"), NodePath("Inventory-Cell3"), NodePath("Inventory-Cell4"), NodePath("Inventory-Cell5"), NodePath("Inventory-Cell6"), NodePath("Inventory-Cell7"), NodePath("Inventory-Cell8"), NodePath("Inventory-Cell9")]
 
 [node name="Inventory-Cell" parent="Control/Player-Grid" unique_id=978211420 instance=ExtResource("2_2wjsh")]
 layout_mode = 2
@@ -212,7 +215,7 @@ step = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="Loot-Box" type="HBoxContainer" parent="Control" unique_id=1836384301 node_paths=PackedStringArray("loot_manager", "loot_box_cell_ui")]
+[node name="Loot-Box" type="HBoxContainer" parent="Control" unique_id=1836384301 node_paths=PackedStringArray("loot_manager", "player_grid_ui", "context_cursor", "loot_box_cell_ui")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -229,6 +232,8 @@ theme_override_constants/separation = 30
 alignment = 1
 script = ExtResource("14_r66ao")
 loot_manager = NodePath("../../Loot Manager")
+player_grid_ui = NodePath("../Player-Grid")
+context_cursor = NodePath("../Context-Cursor")
 loot_box_cell_ui = [NodePath("Item-1"), NodePath("Item-2"), NodePath("Item-3")]
 
 [node name="Item-1" type="TextureRect" parent="Control/Loot-Box" unique_id=357245531 node_paths=PackedStringArray("assigned_item_icon")]
@@ -303,4 +308,5 @@ offset_left = 751.0
 offset_top = 339.0
 offset_right = 831.0
 offset_bottom = 419.0
+mouse_filter = 2
 expand_mode = 1
