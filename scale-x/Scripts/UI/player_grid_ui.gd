@@ -18,6 +18,7 @@ func _exit_tree() -> void:
 func request_drop_item(item:ItemData) ->bool:
 	if _hovered_cell == null: return false
 	_hovered_cell.assign_item(item)
+	EventBus.on_add_item.emit(_hovered_cell.grid_index, item)
 	return true
 	
 	

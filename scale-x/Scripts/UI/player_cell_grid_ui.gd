@@ -1,6 +1,6 @@
 class_name PlayerCellGridUi extends Control
 
-
+@export var grid_index:int
 @export var assigned_item:ItemData
 @export var item_icon:TextureRect
 
