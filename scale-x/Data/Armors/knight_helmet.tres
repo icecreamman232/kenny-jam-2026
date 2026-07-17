@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b0v478u5jup2w"]
+
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="1_l47fo"]
+[ext_resource type="Texture2D" uid="uid://b2arbeuomhaxe" path="res://Arts/Atlas_Texture/Item/head_3.tres" id="1_v3qfo"]
+
+[resource]
+script = ExtResource("1_l47fo")
+item_name = "Knight Helmet"
+item_icon = ExtResource("1_v3qfo")
+armor = 3
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c73dj2f3ipx1"]
+
+[ext_resource type="Texture2D" uid="uid://y33c6t23p738" path="res://Arts/Atlas_Texture/Item/head_1.tres" id="1_wgtlx"]
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="2_wtygq"]
+
+[resource]
+script = ExtResource("2_wtygq")
+item_name = "Swordman Top"
+item_icon = ExtResource("1_wgtlx")
+dodge = 1
+armor = 1
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

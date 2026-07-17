@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dvc74ipo3ra26"]
+
+[ext_resource type="Texture2D" uid="uid://d3rrpmdyi4sdc" path="res://Arts/Atlas_Texture/Item/sword_2.tres" id="1_xbm01"]
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="2_w6giq"]
+
+[resource]
+script = ExtResource("2_w6giq")
+category = 5
+item_name = "Iron Sword"
+item_icon = ExtResource("1_xbm01")
+attack = 3
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

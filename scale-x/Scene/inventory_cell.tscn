@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dl8ksbk0ia7bs"]
+
+[ext_resource type="Texture2D" uid="uid://dbebpejknoryy" path="res://Arts/Atlas_Texture/inventory_cell_bg.tres" id="1_24ndr"]
+
+[node name="Inventory-Cell" type="TextureRect" unique_id=978211420]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("1_24ndr")
+expand_mode = 1
