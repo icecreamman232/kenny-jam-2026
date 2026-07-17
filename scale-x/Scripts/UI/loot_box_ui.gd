@@ -29,10 +29,11 @@ func _input(event:InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			_dragging = event.pressed
 			if _dragging:
-				if _inspecting_cell!= null and _inspecting_cell.assigned_item != null:
+				if _inspecting_cell != null and _inspecting_cell.assigned_item != null:
 					context_cursor.texture = _inspecting_cell.assigned_item.item_icon
 					_drag_offset = _inspecting_cell.global_position - get_global_mouse_position()
 					context_cursor.global_position = _get_dragged_position()
+					_inspecting_cell.handle_drag(_dragging)
 					context_cursor.show()
 			else:
 				if _inspecting_cell != null and _inspecting_cell.assigned_item != null:
@@ -40,6 +41,11 @@ func _input(event:InputEvent) -> void:
 					if result:
 						context_cursor.hide()
 						_inspecting_cell.unassign_item()
+						_inspecting_cell.handle_drag(_dragging)
+						_inspecting_cell = null
+					else:
+						context_cursor.hide()
+						_inspecting_cell.handle_drag(_dragging)
 						_inspecting_cell = null
 					
 		get_viewport().set_input_as_handled()
