@@ -30,15 +30,17 @@ func _input(event:InputEvent) -> void:
 			_dragging = event.pressed
 			if _dragging:
 				if _inspecting_cell!= null and _inspecting_cell.assigned_item != null:
-					context_cursor.show()
 					context_cursor.texture = _inspecting_cell.assigned_item.item_icon
 					_drag_offset = _inspecting_cell.global_position - get_global_mouse_position()
+					context_cursor.global_position = _get_dragged_position()
+					context_cursor.show()
 			else:
-				var result := player_grid_ui.request_drop_item(_inspecting_cell.assigned_item)
-				if result:
-					context_cursor.hide()
-					_inspecting_cell.unassign_item()
-					_inspecting_cell = null
+				if _inspecting_cell != null and _inspecting_cell.assigned_item != null:
+					var result := player_grid_ui.request_drop_item(_inspecting_cell.assigned_item)
+					if result:
+						context_cursor.hide()
+						_inspecting_cell.unassign_item()
+						_inspecting_cell = null
 					
 		get_viewport().set_input_as_handled()
 	elif event is InputEventMouseMotion and _dragging:
