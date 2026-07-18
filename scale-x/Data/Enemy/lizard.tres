@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bnqiug3kne43n"]
+
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="1_v0n3h"]
+[ext_resource type="Script" uid="uid://2cb2oac0p74i" path="res://Scripts/Data/enemy_data.gd" id="2_sxcom"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0n3h"]
+atlas = ExtResource("1_v0n3h")
+region = Rect2(464, 128, 16, 16)
+
+[resource]
+script = ExtResource("2_sxcom")
+enemy_name = "Lizard"
+enemy_icon = SubResource("AtlasTexture_v0n3h")
+attack = 3
+speed = 1
+life = 3
+armor = 2
+metadata/_custom_type_script = "uid://2cb2oac0p74i"

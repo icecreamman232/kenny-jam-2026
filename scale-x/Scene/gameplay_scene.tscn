@@ -6,18 +6,27 @@
 [ext_resource type="Texture2D" uid="uid://dbebpejknoryy" path="res://Arts/Atlas_Texture/inventory_cell_bg.tres" id="1_tntwh"]
 [ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="2_1lj16"]
 [ext_resource type="PackedScene" uid="uid://dl8ksbk0ia7bs" path="res://Scene/inventory_cell.tscn" id="2_2wjsh"]
+[ext_resource type="Script" uid="uid://cjrt7efq762fb" path="res://Scripts/System/enemy_manager.gd" id="2_bm225"]
 [ext_resource type="Texture2D" uid="uid://5uti6nw6h8ic" path="res://Arts/Atlas_Texture/character_knight.tres" id="2_ydmtd"]
 [ext_resource type="Resource" uid="uid://dvc74ipo3ra26" path="res://Data/Weapons/black_cut_sword.tres" id="3_f16u0"]
+[ext_resource type="Script" uid="uid://2cb2oac0p74i" path="res://Scripts/Data/enemy_data.gd" id="3_jkpb7"]
 [ext_resource type="Texture2D" uid="uid://c0shql2myjuna" path="res://Arts/Atlas_Texture/enemy_character_1.tres" id="3_wjua8"]
 [ext_resource type="Resource" uid="uid://kd8ooanvjdqt" path="res://Data/Weapons/iron_sword.tres" id="4_5dnhx"]
+[ext_resource type="Resource" uid="uid://c3wlm2qhlfsw7" path="res://Data/Enemy/bat.tres" id="4_i5dkc"]
 [ext_resource type="Resource" uid="uid://b0v478u5jup2w" path="res://Data/Armors/knight_helmet.tres" id="5_5dnhx"]
+[ext_resource type="Resource" uid="uid://bji8nx82imruc" path="res://Data/Enemy/snake.tres" id="5_w7c21"]
+[ext_resource type="Resource" uid="uid://bnqiug3kne43n" path="res://Data/Enemy/lizard.tres" id="6_e412i"]
 [ext_resource type="Resource" uid="uid://c73dj2f3ipx1" path="res://Data/Armors/swordman_helmet.tres" id="6_q0kv5"]
 [ext_resource type="Script" uid="uid://dgt024sg2dygh" path="res://Scripts/Entity/player_controller.gd" id="7_q0kv5"]
 [ext_resource type="Script" uid="uid://il7cacyusvvr" path="res://Scripts/Entity/player_health.gd" id="8_1h042"]
+[ext_resource type="Script" uid="uid://b4dhy5wdoy0oj" path="res://Scripts/Entity/enemy_controller.gd" id="11_0fvd6"]
 [ext_resource type="Script" uid="uid://bhom8k7ua87t5" path="res://Scripts/UI/player_grid_ui.gd" id="11_sj3gg"]
 [ext_resource type="Script" uid="uid://bxv0q5cl01wwu" path="res://Scripts/UI/player_life_bar.gd" id="12_jy6v0"]
+[ext_resource type="Script" uid="uid://cbckcvgw6y8lx" path="res://Scripts/Entity/enemy_health.gd" id="12_sxlwj"]
 [ext_resource type="Script" uid="uid://cxlrj42seind1" path="res://Scripts/UI/loot_box_ui.gd" id="14_r66ao"]
 [ext_resource type="Script" uid="uid://dc1fsfq7a5idj" path="res://Scripts/UI/loot_box_cell_ui.gd" id="16_x02nk"]
+[ext_resource type="Script" uid="uid://csamhu1nqu42h" path="res://Scripts/UI/enemy_life_bar.gd" id="19_ss4hu"]
+[ext_resource type="Script" uid="uid://it4oy57mtu58" path="res://Scripts/UI/enemy_avatar.gd" id="22_i5dkc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -37,10 +46,16 @@ bg_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
 [node name="Gameplay_Scene" type="CanvasLayer" unique_id=1881809148]
 metadata/_edit_horizontal_guides_ = [101.0]
 
-[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("player_controller", "loot_box_ui")]
+[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("player_controller", "enemy_controller", "loot_box_ui", "enemy_manager")]
 script = ExtResource("1_mxoqm")
 player_controller = NodePath("../Player")
+enemy_controller = NodePath("../Enemy")
 loot_box_ui = NodePath("../Control/Loot-Box")
+enemy_manager = NodePath("../Enemy Manager")
+
+[node name="Enemy Manager" type="Node" parent="." unique_id=1630896653]
+script = ExtResource("2_bm225")
+enemy_data_list = Array[ExtResource("3_jkpb7")]([ExtResource("4_i5dkc"), ExtResource("5_w7c21"), ExtResource("6_e412i")])
 
 [node name="Loot Manager" type="Node" parent="." unique_id=165805778]
 script = ExtResource("1_hl3nj")
@@ -53,6 +68,14 @@ health = NodePath("Health")
 
 [node name="Health" type="Node" parent="Player" unique_id=1632397087]
 script = ExtResource("8_1h042")
+
+[node name="Enemy" type="Node" parent="." unique_id=2046618817 node_paths=PackedStringArray("avatar", "health")]
+script = ExtResource("11_0fvd6")
+avatar = NodePath("../Control/Enemy-Character-Avatar")
+health = NodePath("Health")
+
+[node name="Health" type="Node" parent="Enemy" unique_id=1429246978]
+script = ExtResource("12_sxlwj")
 
 [node name="Control" type="TextureRect" parent="." unique_id=1997924682]
 self_modulate = Color(0.2784314, 0.1764706, 0.23529412, 1)
@@ -168,11 +191,11 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ydmtd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_wjua8")
 max_value = 10.0
 step = 1.0
-value = 6.0
+value = 10.0
 show_percentage = false
 script = ExtResource("12_jy6v0")
 
-[node name="Enemy-Character-Avatar" type="Control" parent="Control" unique_id=1779103786]
+[node name="Enemy-Character-Avatar" type="Control" parent="Control" unique_id=1779103786 node_paths=PackedStringArray("enemy_icon")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -185,6 +208,8 @@ offset_right = 380.0
 offset_bottom = -189.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("22_i5dkc")
+enemy_icon = NodePath("Enemy-Portrait")
 
 [node name="Enemy-Portrait" type="TextureRect" parent="Control/Enemy-Character-Avatar" unique_id=1442310484]
 layout_mode = 1
@@ -220,8 +245,9 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ydmtd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_wjua8")
 max_value = 10.0
 step = 1.0
-value = 1.0
+value = 10.0
 show_percentage = false
+script = ExtResource("19_ss4hu")
 
 [node name="Label" type="Label" parent="Control" unique_id=1344023341]
 layout_mode = 1

@@ -6,6 +6,8 @@ class_name Health extends Node
 func initialize_health(life:int) ->void:
 	max_life = life
 	current_life = life
+	update_life_bar()
+
 	
 	
 func update_life_bar(): pass
