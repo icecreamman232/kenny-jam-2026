@@ -820,13 +820,14 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-Info" type="VBoxContainer" parent="Control" unique_id=2037926138 node_paths=PackedStringArray("atk_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
+[node name="Item-Info" type="VBoxContainer" parent="Control" unique_id=2037926138 node_paths=PackedStringArray("item_name", "atk_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
 layout_mode = 0
 offset_left = 238.0
 offset_top = 548.0
 offset_right = 338.0
 offset_bottom = 748.0
 script = ExtResource("36_8ryol")
+item_name = NodePath("../Item-Name")
 atk_label = NodePath("ATK-Label/Atk-Number")
 speed_label = NodePath("SPD-Label/Spd-Number")
 life_label = NodePath("LIFE-Label/Life-Number")
@@ -999,5 +1000,17 @@ offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item-Name" type="Label" parent="Control" unique_id=816860782]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 0
+offset_left = 222.0
+offset_top = 488.0
+offset_right = 422.0
+offset_bottom = 533.0
+theme_override_font_sizes/font_size = 32
+text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
