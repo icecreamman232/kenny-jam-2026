@@ -12,3 +12,4 @@ signal on_enemy_dead
 # Gameplay Events
 signal on_fight_started
 signal on_fight_end
+signal update_player_info(player_stat_controller: PlayerStatController)

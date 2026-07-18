@@ -17,6 +17,7 @@ func initialize():
 	EventBus.on_add_item.connect(_add_item)
 	health.initialize_health(life)
 	stat.initialize()
+	EventBus.update_player_info.emit(stat)
 	for idx in range(0, 9):
 		item_list.append(null)
 
@@ -42,6 +43,7 @@ func _add_item(index:int, item:ItemData):
 	health.update_life(
 		stat.get_base(StatController.StatType.LIFE)
 		+ stat.get_final(StatController.StatType.LIFE))
+	EventBus.update_player_info.emit(stat)
 
 
 func _reset_stats():
