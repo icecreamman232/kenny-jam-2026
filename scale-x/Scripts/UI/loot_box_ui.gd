@@ -2,6 +2,7 @@ class_name LootBoxUI extends Control
 
 @export var loot_manager:LootManager
 @export var player_grid_ui:PlayerGridUi
+@export var reroll_button:Button
 @export var context_cursor:TextureRect
 @export var loot_box_cell_ui:Array[LootBoxCellUi]
 
@@ -12,12 +13,14 @@ var _drag_offset:Vector2 = Vector2.ZERO
 const CELL_SIZE:float = 80
 
 func _ready():
+	reroll_button.pressed.connect(_on_reroll_button_pressed)
 	for cell in loot_box_cell_ui:
 		cell.mouse_entered.connect(_on_mouse_entered_cell.bind(cell))
 		cell.mouse_exited.connect(_on_mouse_exited_cell.bind(cell))
 
 
 func _exit_tree() ->void:
+	reroll_button.pressed.disconnect(_on_reroll_button_pressed)
 	for cell in loot_box_cell_ui:
 		cell.mouse_entered.disconnect(_on_mouse_entered_cell.bind(cell))
 		cell.mouse_exited.disconnect(_on_mouse_exited_cell.bind(cell))
@@ -65,6 +68,11 @@ func show_loot():
 func _get_dragged_position() -> Vector2:
 	return get_global_mouse_position() + _drag_offset
 		
+
+func _on_reroll_button_pressed():
+	show_loot()
+	await Helper.wait_for_frames(3)	
+
 		
 func _on_mouse_entered_cell(cell:LootBoxCellUi):
 	_inspecting_cell = cell
