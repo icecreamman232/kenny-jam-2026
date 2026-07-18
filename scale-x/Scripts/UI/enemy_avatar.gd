@@ -5,3 +5,25 @@ class_name EnemyAvatar extends Control
 func assign(enemy_data: EnemyData):
 	enemy_icon.texture = enemy_data.enemy_icon
 
+
+func attack_tween() ->Tween:
+	var tween:= create_tween()
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(enemy_icon, "position", enemy_icon.position + Vector2(-1, 0) * 80, 0.2)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(enemy_icon, "position", enemy_icon.position, 0.1)
+	return tween
+	
+	
+func disappear_icon_tween() ->Tween:
+	var tween:= create_tween()
+	var current_modulate:= enemy_icon.self_modulate
+	var target_modulate:= current_modulate
+	target_modulate.a = 0
+	tween.tween_property(enemy_icon, "self_modulate", target_modulate, 0.3)
+	return tween
+	
+	
+func show_icon():
+	enemy_icon.self_modulate.a = 1
+

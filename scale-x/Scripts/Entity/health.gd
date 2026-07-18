@@ -11,3 +11,16 @@ func initialize_health(life:int) ->void:
 	
 	
 func update_life_bar(): pass
+
+
+func take_damage(damage:int): 
+	current_life -= damage
+	if current_life < 0: current_life = 0
+	update_life_bar()
+	
+	if current_life <= 0:
+		kill()
+	
+		
+		
+func kill(): pass

@@ -24,7 +24,9 @@
 [ext_resource type="Script" uid="uid://bxv0q5cl01wwu" path="res://Scripts/UI/player_life_bar.gd" id="12_jy6v0"]
 [ext_resource type="Script" uid="uid://cbckcvgw6y8lx" path="res://Scripts/Entity/enemy_health.gd" id="12_sxlwj"]
 [ext_resource type="Script" uid="uid://cxlrj42seind1" path="res://Scripts/UI/loot_box_ui.gd" id="14_r66ao"]
+[ext_resource type="Script" uid="uid://bcue5hmq4r4c6" path="res://Scripts/Skill/player_stat_controller.gd" id="15_f3rod"]
 [ext_resource type="Script" uid="uid://dc1fsfq7a5idj" path="res://Scripts/UI/loot_box_cell_ui.gd" id="16_x02nk"]
+[ext_resource type="Script" uid="uid://b5d1unfklia7s" path="res://Scripts/Skill/enemy_stat_controller.gd" id="18_ecq28"]
 [ext_resource type="Script" uid="uid://csamhu1nqu42h" path="res://Scripts/UI/enemy_life_bar.gd" id="19_ss4hu"]
 [ext_resource type="Script" uid="uid://mpnq8domexet" path="res://Scripts/UI/player_avatar.gd" id="20_e412i"]
 [ext_resource type="Script" uid="uid://it4oy57mtu58" path="res://Scripts/UI/enemy_avatar.gd" id="22_i5dkc"]
@@ -99,20 +101,32 @@ script = ExtResource("1_hl3nj")
 weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("4_5dnhx")])
 armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5")])
 
-[node name="Player" type="Node" parent="." unique_id=1886213182 node_paths=PackedStringArray("health")]
+[node name="Player" type="Node" parent="." unique_id=1886213182 node_paths=PackedStringArray("stat", "avatar", "health")]
 script = ExtResource("7_q0kv5")
+stat = NodePath("Stat")
+avatar = NodePath("../Control/Player-Character-Avatar")
 health = NodePath("Health")
 
 [node name="Health" type="Node" parent="Player" unique_id=1632397087]
 script = ExtResource("8_1h042")
 
-[node name="Enemy" type="Node" parent="." unique_id=2046618817 node_paths=PackedStringArray("avatar", "health")]
+[node name="Stat" type="Node" parent="Player" unique_id=480502025 node_paths=PackedStringArray("player_controller")]
+script = ExtResource("15_f3rod")
+player_controller = NodePath("..")
+
+[node name="Enemy" type="Node" parent="." unique_id=2046618817 node_paths=PackedStringArray("stat", "avatar", "health")]
 script = ExtResource("11_0fvd6")
+stat = NodePath("Stat")
 avatar = NodePath("../Control/Enemy-Character-Avatar")
 health = NodePath("Health")
 
-[node name="Health" type="Node" parent="Enemy" unique_id=1429246978]
+[node name="Health" type="Node" parent="Enemy" unique_id=1429246978 node_paths=PackedStringArray("avatar")]
 script = ExtResource("12_sxlwj")
+avatar = NodePath("../../Control/Enemy-Character-Avatar")
+
+[node name="Stat" type="Node" parent="Enemy" unique_id=440824807 node_paths=PackedStringArray("enemy_controller")]
+script = ExtResource("18_ecq28")
+enemy_controller = NodePath("..")
 
 [node name="Control" type="TextureRect" parent="." unique_id=1997924682]
 self_modulate = Color(0.2784314, 0.1764706, 0.23529412, 1)
@@ -213,7 +227,7 @@ grow_vertical = 2
 texture = ExtResource("2_ydmtd")
 expand_mode = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/Player-Character-Avatar" unique_id=1116742511]
+[node name="ProgressBar" type="ProgressBar" parent="Control/Player-Character-Avatar" unique_id=1116742511 node_paths=PackedStringArray("life_label")]
 custom_minimum_size = Vector2(160, 30)
 layout_mode = 1
 anchors_preset = 7
@@ -234,6 +248,19 @@ step = 1.0
 value = 10.0
 show_percentage = false
 script = ExtResource("12_jy6v0")
+life_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="Control/Player-Character-Avatar/ProgressBar" unique_id=1582798049]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "3/3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Enemy-Character-Avatar" type="Control" parent="Control" unique_id=1779103786 node_paths=PackedStringArray("enemy_icon")]
 layout_mode = 1
@@ -267,7 +294,7 @@ grow_vertical = 2
 texture = ExtResource("3_wjua8")
 expand_mode = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/Enemy-Character-Avatar" unique_id=169835431]
+[node name="ProgressBar" type="ProgressBar" parent="Control/Enemy-Character-Avatar" unique_id=169835431 node_paths=PackedStringArray("life_label")]
 custom_minimum_size = Vector2(160, 30)
 layout_mode = 1
 anchors_preset = 7
@@ -288,6 +315,19 @@ step = 1.0
 value = 10.0
 show_percentage = false
 script = ExtResource("19_ss4hu")
+life_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="Control/Enemy-Character-Avatar/ProgressBar" unique_id=241315476]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "3/3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="Control" unique_id=1344023341]
 layout_mode = 1

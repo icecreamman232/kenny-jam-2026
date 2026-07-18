@@ -1,5 +1,7 @@
 class_name PlayerController extends EntityController
 
+@export var stat:PlayerStatController
+@export var avatar:PlayerAvatar
 @export_group("Stats")
 @export var attack:int
 @export var speed:int
@@ -13,7 +15,9 @@ class_name PlayerController extends EntityController
 
 func initialize():
 	EventBus.on_add_item.connect(_add_item)
-	health.initialize_health(10)
+	life = 3
+	health.initialize_health(3)
+	stat.initialize()
 	for idx in range(0, 9):
 		item_list.append(null)
 
@@ -22,9 +26,19 @@ func _exit_tree() -> void:
 	EventBus.on_add_item.disconnect(_add_item)
 
 
+func play_attack_tween():
+	var tween :Tween= avatar.attack_tween()
+	await tween.finished
+	
+	
+func deal_damage_to_enemy(enemy_controller: EnemyController):
+	enemy_controller.health.take_damage(attack)
+
+
 func _add_item(index:int, item:ItemData):
 	item_list[index] = item
-	_update_stats()
+	_update_stats(item_list[index])
+	health.update_life(life)
 
 
 func _reset_stats():
@@ -36,15 +50,11 @@ func _reset_stats():
 	armor = 0
 	
 	
-func _update_stats():
-	_reset_stats()
-	for idx in range(item_list.size()):
-		if item_list[idx] == null: continue
-		attack += item_list[idx].attack
-		speed += item_list[idx].speed
-		life += item_list[idx].life
-		mana += item_list[idx].mana
-		dodge += item_list[idx].dodge
-		armor += item_list[idx].armor
-		
+func _update_stats(item:ItemData):
+	attack += item.attack
+	speed += item.speed
+	life += item.life
+	mana += item.mana
+	dodge += item.dodge
+	armor += item.armor	
 		
