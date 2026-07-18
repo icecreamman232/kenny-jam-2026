@@ -35,6 +35,7 @@ func _input(event:InputEvent) -> void:
 					context_cursor.global_position = _get_dragged_position()
 					_inspecting_cell.handle_drag(_dragging)
 					context_cursor.show()
+					get_viewport().set_input_as_handled()
 			else:
 				if _inspecting_cell != null and _inspecting_cell.assigned_item != null:
 					var result := player_grid_ui.request_drop_item(_inspecting_cell.assigned_item)
@@ -47,8 +48,9 @@ func _input(event:InputEvent) -> void:
 						context_cursor.hide()
 						_inspecting_cell.handle_drag(_dragging)
 						_inspecting_cell = null
+					get_viewport().set_input_as_handled()	
 					
-		get_viewport().set_input_as_handled()
+		
 	elif event is InputEventMouseMotion and _dragging:
 		if _inspecting_cell != null:
 			context_cursor.global_position = _get_dragged_position()

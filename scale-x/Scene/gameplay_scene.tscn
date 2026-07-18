@@ -26,7 +26,9 @@
 [ext_resource type="Script" uid="uid://cxlrj42seind1" path="res://Scripts/UI/loot_box_ui.gd" id="14_r66ao"]
 [ext_resource type="Script" uid="uid://dc1fsfq7a5idj" path="res://Scripts/UI/loot_box_cell_ui.gd" id="16_x02nk"]
 [ext_resource type="Script" uid="uid://csamhu1nqu42h" path="res://Scripts/UI/enemy_life_bar.gd" id="19_ss4hu"]
+[ext_resource type="Script" uid="uid://mpnq8domexet" path="res://Scripts/UI/player_avatar.gd" id="20_e412i"]
 [ext_resource type="Script" uid="uid://it4oy57mtu58" path="res://Scripts/UI/enemy_avatar.gd" id="22_i5dkc"]
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="28_w7c21"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -42,6 +44,41 @@ expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjua8"]
 bg_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrlf"]
+atlas = ExtResource("28_w7c21")
+region = Rect2(624, 240, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1vivr"]
+texture = SubResource("AtlasTexture_8vrlf")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3rod"]
+atlas = ExtResource("28_w7c21")
+region = Rect2(624, 240, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e412i"]
+texture = SubResource("AtlasTexture_f3rod")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e412i"]
+atlas = ExtResource("28_w7c21")
+region = Rect2(624, 240, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w7c21"]
+texture = SubResource("AtlasTexture_e412i")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
 
 [node name="Gameplay_Scene" type="CanvasLayer" unique_id=1881809148]
 metadata/_edit_horizontal_guides_ = [101.0]
@@ -91,7 +128,7 @@ grow_vertical = 2
 texture = ExtResource("1_2wjsh")
 expand_mode = 1
 
-[node name="Player-Grid" type="GridContainer" parent="Control" unique_id=141145057 node_paths=PackedStringArray("cell_grid")]
+[node name="Player-Grid" type="GridContainer" parent="Control" unique_id=141145057 node_paths=PackedStringArray("fight_button", "cell_grid")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -99,13 +136,14 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -124.0
-offset_top = -285.0
+offset_top = -357.0
 offset_right = 124.0
-offset_bottom = -37.0
+offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 0
 columns = 3
 script = ExtResource("11_sj3gg")
+fight_button = NodePath("../Fight Button")
 cell_grid = [NodePath("Inventory-Cell"), NodePath("Inventory-Cell2"), NodePath("Inventory-Cell3"), NodePath("Inventory-Cell4"), NodePath("Inventory-Cell5"), NodePath("Inventory-Cell6"), NodePath("Inventory-Cell7"), NodePath("Inventory-Cell8"), NodePath("Inventory-Cell9")]
 
 [node name="Inventory-Cell" parent="Control/Player-Grid" unique_id=978211420 instance=ExtResource("2_2wjsh")]
@@ -143,7 +181,7 @@ grid_index = 7
 layout_mode = 2
 grid_index = 8
 
-[node name="Player-Character-Avatar" type="Control" parent="Control" unique_id=32988948]
+[node name="Player-Character-Avatar" type="Control" parent="Control" unique_id=32988948 node_paths=PackedStringArray("player_icon")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -156,6 +194,8 @@ offset_right = -220.0
 offset_bottom = -189.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("20_e412i")
+player_icon = NodePath("Player-Portrait")
 
 [node name="Player-Portrait" type="TextureRect" parent="Control/Player-Character-Avatar" unique_id=601168978]
 layout_mode = 1
@@ -257,9 +297,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -68.0
-offset_top = -58.0
+offset_top = -98.0
 offset_right = 68.0
-offset_bottom = -13.0
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
@@ -275,9 +315,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -7.0
+offset_top = -47.0
 offset_right = 150.0
-offset_bottom = 73.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -362,3 +402,26 @@ offset_right = 831.0
 offset_bottom = 419.0
 mouse_filter = 2
 expand_mode = 1
+
+[node name="Fight Button" type="Button" parent="Control" unique_id=1151408845]
+z_index = 10
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -74.0
+offset_right = 60.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_hover_color = Color(0.92535293, 0.9253527, 0.9253531, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_1vivr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e412i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w7c21")
+text = "Fight"
