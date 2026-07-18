@@ -33,7 +33,9 @@ func _on_fight_started():
 	await enemy_controller.deal_damage_to_player(player_controller)
 	await Helper.wait_for_frames(3)
 	EventBus.on_fight_end.emit()
-	
+	loot_box_ui.show_loot()	
+	await Helper.wait_for_frames(3)
+		
 	
 func _on_enemy_dead():
 	_create_enemy()

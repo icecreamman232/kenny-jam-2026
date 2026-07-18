@@ -15,8 +15,7 @@ class_name PlayerController extends EntityController
 
 func initialize():
 	EventBus.on_add_item.connect(_add_item)
-	life = 3
-	health.initialize_health(3)
+	health.initialize_health(life)
 	stat.initialize()
 	for idx in range(0, 9):
 		item_list.append(null)
@@ -32,13 +31,17 @@ func play_attack_tween():
 	
 	
 func deal_damage_to_enemy(enemy_controller: EnemyController):
-	enemy_controller.health.take_damage(attack)
+	enemy_controller.health.take_damage(
+		stat.get_base(StatController.StatType.ATTACK) 
+		+ stat.get_final(StatController.StatType.ATTACK))
 
 
 func _add_item(index:int, item:ItemData):
 	item_list[index] = item
-	_update_stats(item_list[index])
-	health.update_life(life)
+	_update_stats()
+	health.update_life(
+		stat.get_base(StatController.StatType.LIFE)
+		+ stat.get_final(StatController.StatType.LIFE))
 
 
 func _reset_stats():
@@ -50,11 +53,27 @@ func _reset_stats():
 	armor = 0
 	
 	
-func _update_stats(item:ItemData):
-	attack += item.attack
-	speed += item.speed
-	life += item.life
-	mana += item.mana
-	dodge += item.dodge
-	armor += item.armor	
+func _update_stats():
+	var new_attack := 0
+	var new_speed := 0
+	var new_life := 0
+	var new_mana := 0
+	var new_dodge := 0
+	var new_armor := 0
+	
+	for idx in range(item_list.size()):
+		var item:= item_list[idx]
+		if item == null: continue
+		new_attack += item.attack
+		new_speed += item.speed
+		new_life += item.life
+		new_mana += item.mana
+		new_dodge += item.dodge
+		new_armor += item.armor	
 		
+	stat.set_final(StatController.StatType.ATTACK, new_attack)
+	stat.set_final(StatController.StatType.SPEED, new_speed)
+	stat.set_final(StatController.StatType.LIFE, new_life)
+	stat.set_final(StatController.StatType.MANA, new_mana)
+	stat.set_final(StatController.StatType.DODGE, new_dodge)	
+	stat.set_final(StatController.StatType.ARMOR, new_armor)	

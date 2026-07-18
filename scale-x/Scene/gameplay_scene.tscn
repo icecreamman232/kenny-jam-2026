@@ -105,6 +105,9 @@ armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource
 script = ExtResource("7_q0kv5")
 stat = NodePath("Stat")
 avatar = NodePath("../Control/Player-Character-Avatar")
+attack = 1
+speed = 1
+life = 3
 health = NodePath("Health")
 
 [node name="Health" type="Node" parent="Player" unique_id=1632397087]
