@@ -8,6 +8,7 @@ class_name GameplayManager extends Node
 func _ready():
 	EventBus.on_fight_started.connect(_on_fight_started)
 	EventBus.on_enemy_dead.connect(_on_enemy_dead)
+	await Helper.wait_for_frames(5)
 	await initialize()
 
 func _exit_tree() -> void:
@@ -34,7 +35,9 @@ func _on_fight_started():
 	await Helper.wait_for_frames(3)
 	EventBus.on_fight_end.emit()
 	loot_box_ui.show_loot()	
-	await Helper.wait_for_frames(3)
+	await Helper.wait_for_seconds(1)
+	if player_controller.health.current_life > 0:
+		player_controller.health.recover_full_life()
 		
 	
 func _on_enemy_dead():

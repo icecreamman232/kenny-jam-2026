@@ -15,8 +15,8 @@ class_name PlayerController extends EntityController
 
 func initialize():
 	EventBus.on_add_item.connect(_add_item)
-	health.initialize_health(life)
 	stat.initialize()
+	health.initialize_health(self)
 	EventBus.update_player_info.emit(stat)
 	for idx in range(0, 9):
 		item_list.append(null)

@@ -8,7 +8,7 @@ class_name EnemyController extends EntityController
 func initialize(data: EnemyData):
 	enemy_data = data
 	stat.initialize()
-	health.initialize_health(data.life)
+	health.initialize_health(self)
 	avatar.assign(data)
 	avatar.show_icon()
 
