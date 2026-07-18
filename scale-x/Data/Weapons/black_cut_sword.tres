@@ -8,5 +8,5 @@ script = ExtResource("2_w6giq")
 category = 5
 item_name = "Iron Sword"
 item_icon = ExtResource("1_xbm01")
-attack = 3
+stats = Array[int]([0])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

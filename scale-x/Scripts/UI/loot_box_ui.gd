@@ -76,7 +76,11 @@ func _on_reroll_button_pressed():
 		
 func _on_mouse_entered_cell(cell:LootBoxCellUi):
 	_inspecting_cell = cell
+	_inspecting_cell.self_modulate = Color(0.957, 0.706, 0.106)
+	EventBus.on_hover_on_item.emit(_inspecting_cell.assigned_item)
 	
 	
 func _on_mouse_exited_cell(cell:LootBoxCellUi) -> void:
 	if _inspecting_cell != cell: return
+	_inspecting_cell.self_modulate = Color.WHITE
+	EventBus.on_hover_on_item.emit(null)

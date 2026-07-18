@@ -39,10 +39,8 @@ func deal_damage_to_enemy(enemy_controller: EnemyController):
 
 func _add_item(index:int, item:ItemData):
 	item_list[index] = item
-	_update_stats()
-	health.update_life(
-		stat.get_base(StatController.StatType.LIFE)
-		+ stat.get_final(StatController.StatType.LIFE))
+	_add_stat_from_item(item)
+	health.update_life(stat.get_final(StatController.StatType.LIFE))
 	EventBus.update_player_info.emit(stat)
 
 
@@ -55,24 +53,21 @@ func _reset_stats():
 	armor = 0
 	
 	
-func _update_stats():
-	var new_attack := 0
-	var new_speed := 0
-	var new_life := 0
-	var new_mana := 0
-	var new_dodge := 0
-	var new_armor := 0
+func _add_stat_from_item(item:ItemData):
+	var new_attack := stat.get_final(StatController.StatType.ATTACK)
+	var new_speed := stat.get_final(StatController.StatType.SPEED)
+	var new_life := stat.get_final(StatController.StatType.LIFE)
+	var new_mana := stat.get_final(StatController.StatType.MANA)
+	var new_dodge := stat.get_final(StatController.StatType.DODGE)
+	var new_armor := stat.get_final(StatController.StatType.ARMOR)
 	
-	for idx in range(item_list.size()):
-		var item:= item_list[idx]
-		if item == null: continue
-		new_attack += item.attack
-		new_speed += item.speed
-		new_life += item.life
-		new_mana += item.mana
-		new_dodge += item.dodge
-		new_armor += item.armor	
-		
+	new_attack += item.attack
+	new_speed += item.speed
+	new_life += item.life
+	new_mana += item.mana
+	new_dodge += item.dodge
+	new_armor += item.armor
+	
 	stat.set_final(StatController.StatType.ATTACK, new_attack)
 	stat.set_final(StatController.StatType.SPEED, new_speed)
 	stat.set_final(StatController.StatType.LIFE, new_life)

@@ -7,7 +7,5 @@
 script = ExtResource("2_wtygq")
 item_name = "Swordman Top"
 item_icon = ExtResource("1_wgtlx")
-life = 2
-dodge = 1
-armor = 1
+stats = Array[int]([2, 5, 4])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

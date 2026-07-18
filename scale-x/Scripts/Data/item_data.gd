@@ -16,6 +16,7 @@ enum ItemCategory
 @export var item_name:String
 @export var item_icon:Texture2D
 @export_group("Stats")
+@export var stats:Array[StatController.StatType]
 @export var attack:int
 @export var speed:int
 @export var life:int

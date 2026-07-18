@@ -41,8 +41,13 @@ func _on_fight_end():
 	
 func _on_mouse_entered_cell(cell:PlayerCellGridUi):
 	_hovered_cell = cell
+	_hovered_cell.self_modulate = Color(0.957, 0.706, 0.106)
+	EventBus.on_hover_on_item.emit(_hovered_cell.assigned_item)
 
 	
 func _on_mouse_exited_cell(cell:PlayerCellGridUi) -> void:
 	if _hovered_cell != cell: return
-	_hovered_cell = null		
+	_hovered_cell.self_modulate = Color.WHITE
+	_hovered_cell = null
+	EventBus.on_hover_on_item.emit(null)	
+		

@@ -11,6 +11,7 @@ func initialize(data: EnemyData):
 	health.initialize_health(self)
 	avatar.assign(data)
 	avatar.show_icon()
+	EventBus.update_enemy_info.emit(stat)
 
 
 func play_attack_tween():

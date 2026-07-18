@@ -1,4 +1,4 @@
-class_name PlayerInfoUi extends Control
+class_name EnemyInfoUi extends Control
 
 @export var atk_label:Label
 @export var speed_label:Label
@@ -9,18 +9,17 @@ class_name PlayerInfoUi extends Control
 
 
 func _ready():
-	EventBus.update_player_info.connect(_update_player_stat)
+	EventBus.update_enemy_info.connect(_update_enemy_stat)
 	
 	
 func _exit_tree() -> void:
-	EventBus.update_player_info.disconnect(_update_player_stat)
+	EventBus.update_enemy_info.disconnect(_update_enemy_stat)
 
 
-func _update_player_stat(stat:PlayerStatController):
+func _update_enemy_stat(stat:EnemyStatController):
 	atk_label.text = str(stat.get_final(StatController.StatType.ATTACK))
 	speed_label.text = str(stat.get_final(StatController.StatType.SPEED))
 	life_label.text = str(stat.get_final(StatController.StatType.LIFE))
 	mana_label.text = str(stat.get_final(StatController.StatType.MANA))
 	dodge_label.text = str(stat.get_final(StatController.StatType.DODGE))
 	armor_label.text = str(stat.get_final(StatController.StatType.ARMOR))
-
