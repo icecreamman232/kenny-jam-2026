@@ -10,6 +10,7 @@ func _ready():
 	EventBus.on_fight_started.connect(_on_fight_started)
 	EventBus.on_player_dead.connect(_on_player_dead)
 	await Helper.wait_for_frames(5)
+	enemy_controller.assign_gameplay_manager(self)
 	await initialize()
 
 func _exit_tree() -> void:

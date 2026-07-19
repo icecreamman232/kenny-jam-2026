@@ -49,17 +49,17 @@ func get_items(round_number:int) -> Array[ItemData]:
 
 func _apply_random_stat_to_item(item:ItemData, round_number:int):
 	var rand_rarity:Array
-	if round_number <= 2:
+	if round_number <= Constant.EARLY_GAME_1_ROUND_NUMBER:
 		rand_rarity = get_random_rarities(3, EARLY_GAME_1_RARITY_WEIGHTS)
-	elif round_number <= 5:
+	elif round_number <= Constant.EARLY_GAME_2_ROUND_NUMBER:
 		rand_rarity = get_random_rarities(3, EARLY_GAME_2_RARITY_WEIGHTS)
-	elif round_number <= 8:
+	elif round_number <= Constant.MID_GAME_1_ROUND_NUMBER:
 		rand_rarity = get_random_rarities(3, MID_GAME_1_RARITY_WEIGHTS)
-	elif round_number <= 11:
+	elif round_number <= Constant.MID_GAME_2_ROUND_NUMBER:
 		rand_rarity = get_random_rarities(3, MID_GAME_2_RARITY_WEIGHTS)
-	elif round_number <= 15:
+	elif round_number <= Constant.LATE_GAME_ROUND_NUMBER:
 		rand_rarity = get_random_rarities(3, LATE_GAME_1_RARITY_WEIGHTS)
-	elif round_number > 15:
+	elif round_number > Constant.LATE_GAME_ROUND_NUMBER:
 		rand_rarity = get_random_rarities(3, LATE_GAME_2_RARITY_WEIGHTS)
 	
 	var chosen_rarity:ItemData.ItemRarity = rand_rarity.pick_random()

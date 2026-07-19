@@ -13,6 +13,7 @@ signal on_enemy_dead
 
 
 # Gameplay Events
+signal on_coin_change(amount:int)
 signal on_hover_on_item(item:ItemData)
 signal on_fight_started
 signal on_fight_end

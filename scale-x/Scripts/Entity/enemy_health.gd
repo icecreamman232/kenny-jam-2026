@@ -9,6 +9,7 @@ func update_life_bar():
 	
 func kill():
 	super.kill()
+	(_controller as EnemyController).on_before_dead()
 	var disappear_tween := avatar.disappear_icon_tween()
 	await disappear_tween.finished
 	EventBus.on_enemy_dead.emit()

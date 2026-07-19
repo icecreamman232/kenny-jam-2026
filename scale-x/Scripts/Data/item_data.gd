@@ -36,3 +36,18 @@ enum ItemRarity
 @export var armor:int
 
 
+static func get_price_for_item(item:ItemData) -> int:
+	match item.rarity:
+		ItemRarity.COMMON:
+			return 1
+		ItemRarity.UNCOMMON:
+			return 2
+		ItemRarity.RARE:
+			return 4
+		ItemRarity.LEGENDARY:
+			return 6
+		ItemRarity.EPIC:
+			return 12
+		_: return 0
+
+

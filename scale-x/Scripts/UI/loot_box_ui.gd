@@ -1,7 +1,10 @@
 class_name LootBoxUI extends Control
 
+@export var coin_hud:CoinHud
 @export var loot_manager:LootManager
+@export var gameplay_manager:GameplayManager
 @export var player_grid_ui:PlayerGridUi
+@export var reroll_price_label:RichTextLabel
 @export var reroll_button:Button
 @export var context_cursor:TextureRect
 @export var loot_box_cell_ui:Array[LootBoxCellUi]
@@ -42,7 +45,7 @@ func _input(event:InputEvent) -> void:
 					get_viewport().set_input_as_handled()
 			else:
 				if _inspecting_cell != null and _inspecting_cell.assigned_item != null:
-					var result := player_grid_ui.request_drop_item(_inspecting_cell.assigned_item)
+					var result := player_grid_ui.request_drop_item(_inspecting_cell.assigned_item, coin_hud)
 					if result:
 						context_cursor.hide()
 						_inspecting_cell.unassign_item()
@@ -73,8 +76,27 @@ func _get_dragged_position() -> Vector2:
 	return get_global_mouse_position() + _drag_offset
 		
 
-func _on_reroll_button_pressed():
+func _on_reroll_button_pressed() -> void:
+	var reroll_price:int = 0
+	var round_number:= gameplay_manager.round_number
+	if round_number <= Constant.EARLY_GAME_1_ROUND_NUMBER:
+		reroll_price = 1
+	elif round_number <= Constant.EARLY_GAME_2_ROUND_NUMBER:
+		reroll_price = 1
+	elif round_number <= Constant.MID_GAME_1_ROUND_NUMBER:
+		reroll_price = 3
+	elif round_number <= Constant.MID_GAME_2_ROUND_NUMBER:
+		reroll_price = 4
+	elif round_number <= Constant.LATE_GAME_ROUND_NUMBER:
+		reroll_price = 5
+	elif round_number > Constant.LATE_GAME_ROUND_NUMBER:
+		reroll_price = 6	
+	
+	if coin_hud.current_coin < reroll_price: return
+		
 	show_loot()
+	reroll_price_label.text = "[img=24]uid://de3k1fl4j5llo[/img] " + str(reroll_price).pad_decimals(0)	
+	EventBus.on_coin_change.emit(-reroll_price)
 	await Helper.wait_for_frames(3)	
 
 		

@@ -92,8 +92,13 @@ func request_move_item(from_index:int, to_index:int) -> bool:
 	return true
 
 
-func request_drop_item(item:ItemData) ->bool:
+func request_drop_item(item:ItemData, coin_hud: CoinHud) ->bool:
 	if _hovered_cell == null: return false
+	
+	var price_for_item := ItemData.get_price_for_item(item)
+	if coin_hud.current_coin < price_for_item: return false
+	
+	EventBus.on_coin_change.emit(-price_for_item)
 	_hovered_cell.assign_item(item)
 	EventBus.on_add_item.emit(_hovered_cell.grid_index, item)
 	return true

@@ -37,6 +37,7 @@
 [ext_resource type="Script" uid="uid://cqpi71e81coce" path="res://Scripts/UI/player_info_ui.gd" id="34_ajygt"]
 [ext_resource type="Script" uid="uid://idwkt7aitam2" path="res://Scripts/UI/enemy_info_ui.gd" id="35_6gil7"]
 [ext_resource type="Script" uid="uid://crrlof3330gqw" path="res://Scripts/UI/item_info_ui.gd" id="36_8ryol"]
+[ext_resource type="Script" uid="uid://be138vgmprcoc" path="res://Scripts/UI/coin_hud.gd" id="38_lra8k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -98,6 +99,8 @@ health = NodePath("Health")
 [node name="Health" type="Node" parent="Enemy" unique_id=1429246978 node_paths=PackedStringArray("avatar")]
 script = ExtResource("12_sxlwj")
 avatar = NodePath("../../Control/Enemy-Character-Avatar")
+current_life = null
+max_life = null
 
 [node name="Stat" type="Node" parent="Enemy" unique_id=440824807 node_paths=PackedStringArray("enemy_controller")]
 script = ExtResource("18_ecq28")
@@ -339,7 +342,29 @@ theme_override_styles/pressed = ExtResource("32_ajygt")
 theme_override_styles/hover = ExtResource("33_6gil7")
 text = "Reroll"
 
-[node name="Loot-Box" type="HBoxContainer" parent="Control" unique_id=1836384301 node_paths=PackedStringArray("loot_manager", "player_grid_ui", "reroll_button", "context_cursor", "loot_box_cell_ui")]
+[node name="Reroll-Price" type="RichTextLabel" parent="Control/Reroll-Button" unique_id=893164011]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -1.0
+offset_right = 60.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img] 1"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Loot-Box" type="HBoxContainer" parent="Control" unique_id=1836384301 node_paths=PackedStringArray("coin_hud", "loot_manager", "gameplay_manager", "player_grid_ui", "reroll_price_label", "reroll_button", "context_cursor", "loot_box_cell_ui")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -355,18 +380,22 @@ grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 script = ExtResource("14_r66ao")
+coin_hud = NodePath("../Coin-Hud")
 loot_manager = NodePath("../../Loot Manager")
+gameplay_manager = NodePath("../../Gameplay Manager")
 player_grid_ui = NodePath("../Player-Grid")
+reroll_price_label = NodePath("../Reroll-Button/Reroll-Price")
 reroll_button = NodePath("../Reroll-Button")
 context_cursor = NodePath("../Context-Cursor")
 loot_box_cell_ui = [NodePath("Item-1"), NodePath("Item-2"), NodePath("Item-3")]
 
-[node name="Item-1" type="TextureRect" parent="Control/Loot-Box" unique_id=357245531 node_paths=PackedStringArray("assigned_item_icon")]
+[node name="Item-1" type="TextureRect" parent="Control/Loot-Box" unique_id=357245531 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("1_tntwh")
 expand_mode = 1
 script = ExtResource("16_x02nk")
+price_label = NodePath("Price")
 assigned_item_icon = NodePath("Item-Icon")
 
 [node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box/Item-1" unique_id=423497894]
@@ -383,12 +412,35 @@ grow_vertical = 2
 expand_mode = 1
 script = ExtResource("16_x02nk")
 
-[node name="Item-2" type="TextureRect" parent="Control/Loot-Box" unique_id=1020227082 node_paths=PackedStringArray("assigned_item_icon")]
+[node name="Price" type="RichTextLabel" parent="Control/Loot-Box/Item-1" unique_id=1631952658]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img] 99"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item-2" type="TextureRect" parent="Control/Loot-Box" unique_id=1020227082 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("1_tntwh")
 expand_mode = 1
 script = ExtResource("16_x02nk")
+price_label = NodePath("Price")
 assigned_item_icon = NodePath("Item-Icon")
 
 [node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box/Item-2" unique_id=1084575622]
@@ -405,12 +457,35 @@ grow_vertical = 2
 expand_mode = 1
 script = ExtResource("16_x02nk")
 
-[node name="Item-3" type="TextureRect" parent="Control/Loot-Box" unique_id=948356292 node_paths=PackedStringArray("assigned_item_icon")]
+[node name="Price" type="RichTextLabel" parent="Control/Loot-Box/Item-2" unique_id=619441396]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img] 99"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item-3" type="TextureRect" parent="Control/Loot-Box" unique_id=948356292 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("1_tntwh")
 expand_mode = 1
 script = ExtResource("16_x02nk")
+price_label = NodePath("Price")
 assigned_item_icon = NodePath("Item-Icon")
 
 [node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box/Item-3" unique_id=133395179]
@@ -426,6 +501,28 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 script = ExtResource("16_x02nk")
+
+[node name="Price" type="RichTextLabel" parent="Control/Loot-Box/Item-3" unique_id=298935118]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img] 99"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Context-Cursor" type="TextureRect" parent="Control" unique_id=326617409]
 layout_mode = 0
@@ -1104,3 +1201,19 @@ theme_override_font_sizes/font_size = 32
 text = "Item Name"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Coin-Hud" type="RichTextLabel" parent="Control" unique_id=205655620]
+custom_minimum_size = Vector2(100, 0)
+clip_contents = false
+layout_mode = 0
+offset_left = 528.0
+offset_top = 424.0
+offset_right = 628.0
+offset_bottom = 464.0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img] 9999"
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("38_lra8k")
