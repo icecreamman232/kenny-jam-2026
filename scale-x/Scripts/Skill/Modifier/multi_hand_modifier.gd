@@ -17,7 +17,8 @@ func apply(cell:PlayerCellGridUi):
 				player_grid.cell_grid[idx].assigned_item.attack += 1
 				(IngameDataManager.text_manager as TextManager).show_text("+1 Atk", player_grid.cell_grid[idx].global_position)
 				print("Apply MultiHandModifier to cell ", idx)
-				EventBus.on_recalculate_player_stat.emit()
+				EventBus.on_recalculate_player_stat.emit()	
+				await player_grid.cell_grid[idx].play_bounce_tween()
 				
 				
 func remove():
@@ -31,5 +32,5 @@ func remove():
 				player_grid.cell_grid[idx].assigned_item.attack -= 1
 				(IngameDataManager.text_manager as TextManager).show_text("-1 Atk", player_grid.cell_grid[idx].global_position)
 				print("Remove MultiHandModifier to cell ", idx)
-				EventBus.on_recalculate_player_stat.emit()	
+				
 			

@@ -31,3 +31,12 @@ func unassign_item() -> void:
 func handle_drag(is_dragging:bool = false):
 	item_icon.visible = !is_dragging
 	
+
+func play_bounce_tween():
+	var tween:Tween = create_tween()
+	tween.set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(self,"scale", Vector2.ONE * 1.2, 0.2)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(self,"scale", Vector2.ONE, 0.1)
+	await tween.finished
+	
