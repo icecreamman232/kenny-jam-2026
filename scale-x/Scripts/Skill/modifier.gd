@@ -3,6 +3,7 @@ class_name Modifier extends RefCounted
 enum ModifierId
 {
 	MultiHand,
+	LeftSwing,
 }
 
 
