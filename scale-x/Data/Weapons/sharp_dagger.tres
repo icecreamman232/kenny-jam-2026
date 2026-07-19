@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c61nhb1rdfvbp"]
+
+[ext_resource type="Texture2D" uid="uid://c4hs1mi3l0e51" path="res://Arts/Atlas_Texture/Item/dagger_1.tres" id="1_wl41l"]
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="2_ttcqa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2s0o"]
+atlas = ExtResource("1_wl41l")
+
+[resource]
+script = ExtResource("2_ttcqa")
+category = 6
+item_name = "Wood Protector"
+item_icon = SubResource("AtlasTexture_t2s0o")
+stats = Array[int]([0, 2])
+modifier_pool = Array[int]([0])
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

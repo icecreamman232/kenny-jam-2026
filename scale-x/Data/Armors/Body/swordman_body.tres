@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://svwll10tuypg"]
+
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="1_0bcty"]
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="2_byuvu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjr3u"]
+atlas = ExtResource("1_0bcty")
+region = Rect2(512, 16, 16, 16)
+
+[resource]
+script = ExtResource("2_byuvu")
+category = 1
+item_name = "Swordman Top"
+item_icon = SubResource("AtlasTexture_wjr3u")
+stats = Array[int]([3, 1])
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

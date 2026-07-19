@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://owcfqfywlou4"]
+
+[ext_resource type="Texture2D" uid="uid://qabkcc7vohy" path="res://Arts/Atlas_Texture/Item/dagger_2.tres" id="1_qyjcr"]
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="2_2dma8"]
+
+[resource]
+script = ExtResource("2_2dma8")
+category = 6
+item_name = "Tiny Dagger"
+item_icon = ExtResource("1_qyjcr")
+stats = Array[int]([0, 1])
+modifier_pool = Array[int]([0])
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

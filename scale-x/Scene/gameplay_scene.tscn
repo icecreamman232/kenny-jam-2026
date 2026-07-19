@@ -13,26 +13,36 @@
 [ext_resource type="Texture2D" uid="uid://c0shql2myjuna" path="res://Arts/Atlas_Texture/enemy_character_1.tres" id="3_wjua8"]
 [ext_resource type="Resource" uid="uid://kd8ooanvjdqt" path="res://Data/Weapons/iron_sword.tres" id="4_5dnhx"]
 [ext_resource type="Resource" uid="uid://c3wlm2qhlfsw7" path="res://Data/Enemy/bat.tres" id="4_i5dkc"]
-[ext_resource type="Resource" uid="uid://b0v478u5jup2w" path="res://Data/Armors/knight_helmet.tres" id="5_5dnhx"]
+[ext_resource type="Resource" uid="uid://b0v478u5jup2w" path="res://Data/Armors/Head/knight_helmet.tres" id="5_5dnhx"]
 [ext_resource type="Resource" uid="uid://bji8nx82imruc" path="res://Data/Enemy/snake.tres" id="5_w7c21"]
 [ext_resource type="Resource" uid="uid://bnqiug3kne43n" path="res://Data/Enemy/lizard.tres" id="6_e412i"]
-[ext_resource type="Resource" uid="uid://c73dj2f3ipx1" path="res://Data/Armors/swordman_helmet.tres" id="6_q0kv5"]
+[ext_resource type="Resource" uid="uid://c73dj2f3ipx1" path="res://Data/Armors/Head/swordman_helmet.tres" id="6_q0kv5"]
 [ext_resource type="Script" uid="uid://dgt024sg2dygh" path="res://Scripts/Entity/player_controller.gd" id="7_q0kv5"]
 [ext_resource type="Script" uid="uid://il7cacyusvvr" path="res://Scripts/Entity/player_health.gd" id="8_1h042"]
+[ext_resource type="Resource" uid="uid://bxk3hi8qptvrf" path="res://Data/Weapons/iron_shield.tres" id="10_mxdem"]
 [ext_resource type="Script" uid="uid://b4dhy5wdoy0oj" path="res://Scripts/Entity/enemy_controller.gd" id="11_0fvd6"]
 [ext_resource type="Script" uid="uid://bhom8k7ua87t5" path="res://Scripts/UI/player_grid_ui.gd" id="11_sj3gg"]
 [ext_resource type="Script" uid="uid://bxv0q5cl01wwu" path="res://Scripts/UI/player_life_bar.gd" id="12_jy6v0"]
 [ext_resource type="Script" uid="uid://cbckcvgw6y8lx" path="res://Scripts/Entity/enemy_health.gd" id="12_sxlwj"]
-[ext_resource type="Resource" uid="uid://b31ajbixxgev" path="res://Data/Armors/knight_plate.tres" id="13_yekpa"]
+[ext_resource type="Resource" uid="uid://c61nhb1rdfvbp" path="res://Data/Weapons/sharp_dagger.tres" id="12_wdjjk"]
+[ext_resource type="Resource" uid="uid://owcfqfywlou4" path="res://Data/Weapons/tiny_dagger.tres" id="13_51hvm"]
+[ext_resource type="Resource" uid="uid://b31ajbixxgev" path="res://Data/Armors/Body/knight_plate.tres" id="13_yekpa"]
+[ext_resource type="Resource" uid="uid://mfsg2xrrop8" path="res://Data/Weapons/wood_protector.tres" id="14_5d0mh"]
 [ext_resource type="Script" uid="uid://citfppd67vl36" path="res://Scripts/System/text_manager.gd" id="14_p01s1"]
 [ext_resource type="Script" uid="uid://cxlrj42seind1" path="res://Scripts/UI/loot_box_ui.gd" id="14_r66ao"]
 [ext_resource type="Script" uid="uid://bcue5hmq4r4c6" path="res://Scripts/Skill/player_stat_controller.gd" id="15_f3rod"]
 [ext_resource type="Script" uid="uid://dc1fsfq7a5idj" path="res://Scripts/UI/loot_box_cell_ui.gd" id="16_x02nk"]
 [ext_resource type="Script" uid="uid://3xm0uigc8waj" path="res://Scripts/Skill/modifier_controller.gd" id="17_yeb8m"]
+[ext_resource type="Resource" uid="uid://thivyfnips1i" path="res://Data/Armors/Body/robe.tres" id="18_51hvm"]
 [ext_resource type="Script" uid="uid://b5d1unfklia7s" path="res://Scripts/Skill/enemy_stat_controller.gd" id="18_ecq28"]
+[ext_resource type="Resource" uid="uid://svwll10tuypg" path="res://Data/Armors/Body/swordman_body.tres" id="19_5d0mh"]
 [ext_resource type="Script" uid="uid://csamhu1nqu42h" path="res://Scripts/UI/enemy_life_bar.gd" id="19_ss4hu"]
+[ext_resource type="Resource" uid="uid://dx04wf4qafnxv" path="res://Data/Armors/Legs/iron_steps.tres" id="20_5c5ih"]
 [ext_resource type="Script" uid="uid://mpnq8domexet" path="res://Scripts/UI/player_avatar.gd" id="20_e412i"]
+[ext_resource type="Resource" uid="uid://dicphv21x4e6p" path="res://Data/Armors/Legs/leather_boots.tres" id="21_3k04w"]
 [ext_resource type="Script" uid="uid://it4oy57mtu58" path="res://Scripts/UI/enemy_avatar.gd" id="22_i5dkc"]
+[ext_resource type="Resource" uid="uid://c48fa8etqo8go" path="res://Data/Armors/Head/hood.tres" id="22_s8a72"]
+[ext_resource type="Resource" uid="uid://0eu680x2v5fm" path="res://Data/Armors/Head/wizard_hat.tres" id="23_4vhag"]
 [ext_resource type="StyleBox" uid="uid://bllog2rtg84o3" path="res://Arts/Button_Style/button_normal_style.tres" id="31_l5t21"]
 [ext_resource type="StyleBox" uid="uid://wlf0x1gxya3r" path="res://Arts/Button_Style/button_pressed_style.tres" id="32_ajygt"]
 [ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="33_6gil7"]
@@ -89,8 +99,8 @@ enemy_data_list = Array[ExtResource("3_jkpb7")]([ExtResource("4_i5dkc"), ExtReso
 
 [node name="Loot Manager" type="Node" parent="." unique_id=165805778]
 script = ExtResource("1_hl3nj")
-weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("4_5dnhx")])
-armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5"), ExtResource("13_yekpa")])
+weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("10_mxdem"), ExtResource("4_5dnhx"), ExtResource("12_wdjjk"), ExtResource("13_51hvm"), ExtResource("14_5d0mh")])
+armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5"), ExtResource("13_yekpa"), ExtResource("18_51hvm"), ExtResource("19_5d0mh"), ExtResource("20_5c5ih"), ExtResource("21_3k04w"), ExtResource("22_s8a72"), ExtResource("23_4vhag")])
 
 [node name="Text Manager" type="Node" parent="." unique_id=543369598 node_paths=PackedStringArray("text_parent")]
 script = ExtResource("14_p01s1")

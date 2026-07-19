@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://0eu680x2v5fm"]
+
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="1_46ckr"]
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="2_oosvx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txwoc"]
+atlas = ExtResource("1_46ckr")
+region = Rect2(784, 48, 16, 16)
+
+[resource]
+script = ExtResource("2_oosvx")
+item_name = "Wizard Hat"
+item_icon = SubResource("AtlasTexture_txwoc")
+stats = Array[int]([3, 5])
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

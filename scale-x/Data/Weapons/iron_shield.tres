@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bxk3hi8qptvrf"]
+
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="1_xf83s"]
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="2_drwwq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf83s"]
+atlas = ExtResource("1_xf83s")
+region = Rect2(640, 64, 16, 16)
+
+[resource]
+script = ExtResource("2_drwwq")
+category = 7
+item_name = "Iron Shield"
+item_icon = SubResource("AtlasTexture_xf83s")
+stats = Array[int]([0, 6])
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

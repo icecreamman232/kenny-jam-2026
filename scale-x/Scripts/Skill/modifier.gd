@@ -22,3 +22,9 @@ func trigger(): await Helper.wait_for_frames(1)
 
 
 func remove(): pass
+
+
+func get_modifier_name() ->String: return ""
+
+
+func get_modifier_description() ->String: return ""

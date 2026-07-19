@@ -8,7 +8,8 @@ enum ItemCategory
 	BOW,
 	CROSSBOW,
 	SWORD,
-	DAGGER
+	DAGGER,
+	SHIELD,
 }
 
 enum ItemRarity
@@ -22,7 +23,7 @@ enum ItemRarity
 
 @export_group("Basic Settings")
 @export var category:ItemCategory
-@export var rarity:ItemRarity = ItemRarity.COMMON
+var rarity:ItemRarity = ItemRarity.COMMON
 @export var item_name:String
 @export var item_icon:Texture2D
 @export_group("Stats")

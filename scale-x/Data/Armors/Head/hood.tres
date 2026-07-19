@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c48fa8etqo8go"]
+
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="1_gkijv"]
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="2_txwoc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2s0o"]
+atlas = ExtResource("1_gkijv")
+region = Rect2(752, 32, 16, 16)
+
+[resource]
+script = ExtResource("2_txwoc")
+item_name = "Shinobi Mask"
+item_icon = SubResource("AtlasTexture_t2s0o")
+stats = Array[int]([2, 5])
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

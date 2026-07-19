@@ -6,6 +6,12 @@ func _init():
 	_mod_id = ModifierId.MultiHand
 
 
+func get_modifier_name() ->String: return "MultiHand"
+
+func get_modifier_description() -> String:
+	return "+1 attack to adjacent weapon"
+
+
 func apply(cell:PlayerCellGridUi):
 	super.apply(cell)
 	var self_index:int = _owner_cell.grid_index
