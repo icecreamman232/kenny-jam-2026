@@ -9,6 +9,7 @@ class_name GameplayManager extends Node
 func _ready():
 	EventBus.on_fight_started.connect(_on_fight_started)
 	EventBus.on_player_dead.connect(_on_player_dead)
+	EventBus.on_enemy_dead.connect(_on_enemy_dead)
 	await Helper.wait_for_frames(5)
 	enemy_controller.assign_gameplay_manager(self)
 	await initialize()
@@ -16,6 +17,7 @@ func _ready():
 func _exit_tree() -> void:
 	EventBus.on_fight_started.disconnect(_on_fight_started)
 	EventBus.on_player_dead.disconnect(_on_player_dead)
+	EventBus.on_enemy_dead.disconnect(_on_enemy_dead)
 	
 func initialize():
 	player_controller.initialize()
@@ -30,7 +32,7 @@ func _create_enemy():
 
 func _on_player_dead():
 	print("Player dead!!!")
-	EventBus.on_coin_change.emit(Constant.STARTING_COINS)
+	print("====================================================================")
 	round_number = 1
 	player_controller.reset_player()
 	Helper.wait_for_frames(3)
@@ -38,6 +40,16 @@ func _on_player_dead():
 	loot_box_ui.show_loot()
 	await Helper.wait_for_frames(3)
 	_create_enemy()
+	
+	
+func _on_enemy_dead():
+	print("Enemy is dead, next round")
+	round_number += 1
+	loot_box_ui.set_round_number(round_number)
+	player_controller.health.recover_full_life()
+	await Helper.wait_for_frames(3)
+	_create_enemy()
+	await Helper.wait_for_frames(3)		
 	
 		
 	
@@ -53,6 +65,7 @@ func _on_fight_started() -> void:
 	for attempt in number_attack:
 		await player_controller.play_attack_tween()
 		await player_controller.deal_damage_to_enemy(enemy_controller)
+		print("Player attacked enemy")
 	
 	if enemy_controller.health.current_life > 0:	
 		var enemy_spd:int  = enemy_controller.stat.get_final(StatController.StatType.SPEED)
@@ -61,20 +74,11 @@ func _on_fight_started() -> void:
 		for attemp in enemy_number_atk:
 			await enemy_controller.play_attack_tween()
 			await enemy_controller.deal_damage_to_player(player_controller)
+			print("Enemy attacked player")
 		
 	await Helper.wait_for_frames(3)
 	EventBus.on_fight_end.emit()
 	
-	if player_controller.health.current_life < 0: return
-	
-	if player_controller.health.current_life > 0 and enemy_controller.health.current_life <= 0:
-		round_number += 1
-		loot_box_ui.set_round_number(round_number)
-		player_controller.health.recover_full_life()
-		await Helper.wait_for_frames(3)
-		_create_enemy()
-		await Helper.wait_for_frames(3)
-		
 	loot_box_ui.show_loot()
 	await Helper.wait_for_seconds(1)	
 		

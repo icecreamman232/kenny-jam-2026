@@ -4,11 +4,18 @@ var current_coin:int = 0
 
 func _ready():
 	EventBus.on_coin_change.connect(_update_coin)
+	EventBus.on_player_dead.connect(_reset_coin)
 	_update_coin(Constant.STARTING_COINS)
 	
 	
 func _exit_tree() -> void:
+	EventBus.on_player_dead.connect(_reset_coin)
 	EventBus.on_coin_change.disconnect(_update_coin)
+
+
+func _reset_coin():
+	current_coin += Constant.STARTING_COINS
+	text = "[img=24]uid://de3k1fl4j5llo[/img]" + str(current_coin).pad_decimals(0)		
 	
 	
 func _update_coin(coin:int):

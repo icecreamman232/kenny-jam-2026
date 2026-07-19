@@ -25,5 +25,5 @@ func disappear_icon_tween() ->Tween:
 	
 	
 func show_icon():
-	enemy_icon.self_modulate.a = 1
+	enemy_icon.self_modulate = Color.WHITE
 
