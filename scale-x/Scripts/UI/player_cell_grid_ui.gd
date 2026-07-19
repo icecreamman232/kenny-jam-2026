@@ -24,7 +24,7 @@ func unassign_item() -> void:
 	
 	
 	assigned_item = null
-	item_icon.self_modulate = Color.WHITE
+	item_icon.self_modulate = Color(1.0, 0.914, 0.769)
 	item_icon.texture = null
 	
 

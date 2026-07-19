@@ -134,7 +134,7 @@ func _on_mouse_entered_cell(cell:PlayerCellGridUi):
 	
 func _on_mouse_exited_cell(cell:PlayerCellGridUi) -> void:
 	if _hovered_cell != cell: return
-	_hovered_cell.self_modulate = Color.WHITE
+	_hovered_cell.self_modulate = Color(1.0, 0.914, 0.769)
 	_hovered_cell = null
 	EventBus.on_hover_on_item.emit(null)	
 		

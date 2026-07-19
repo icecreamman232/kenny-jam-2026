@@ -108,5 +108,5 @@ func _on_mouse_entered_cell(cell:LootBoxCellUi):
 	
 func _on_mouse_exited_cell(cell:LootBoxCellUi) -> void:
 	if _inspecting_cell != cell: return
-	_inspecting_cell.self_modulate = Color.WHITE
+	_inspecting_cell.self_modulate = Color(1.0, 0.914, 0.769)
 	EventBus.on_hover_on_item.emit(null)

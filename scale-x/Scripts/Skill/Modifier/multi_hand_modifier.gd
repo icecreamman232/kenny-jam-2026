@@ -15,6 +15,7 @@ func apply(cell:PlayerCellGridUi):
 		if player_grid.cell_grid[idx].assigned_item != null:
 			if ItemData.is_weapon(player_grid.cell_grid[idx].assigned_item):
 				player_grid.cell_grid[idx].assigned_item.attack += 1
+				(IngameDataManager.text_manager as TextManager).show_text("+1 Atk", player_grid.cell_grid[idx].global_position)
 				print("Apply MultiHandModifier to cell ", idx)
 				EventBus.on_recalculate_player_stat.emit()
 				
@@ -28,6 +29,7 @@ func remove():
 		if player_grid.cell_grid[idx].assigned_item != null:
 			if ItemData.is_weapon(player_grid.cell_grid[idx].assigned_item):
 				player_grid.cell_grid[idx].assigned_item.attack -= 1
+				(IngameDataManager.text_manager as TextManager).show_text("-1 Atk", player_grid.cell_grid[idx].global_position)
 				print("Remove MultiHandModifier to cell ", idx)
 				EventBus.on_recalculate_player_stat.emit()	
 			

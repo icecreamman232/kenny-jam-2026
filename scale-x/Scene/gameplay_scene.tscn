@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://bxv0q5cl01wwu" path="res://Scripts/UI/player_life_bar.gd" id="12_jy6v0"]
 [ext_resource type="Script" uid="uid://cbckcvgw6y8lx" path="res://Scripts/Entity/enemy_health.gd" id="12_sxlwj"]
 [ext_resource type="Resource" uid="uid://b31ajbixxgev" path="res://Data/Armors/knight_plate.tres" id="13_yekpa"]
+[ext_resource type="Script" uid="uid://citfppd67vl36" path="res://Scripts/System/text_manager.gd" id="14_p01s1"]
 [ext_resource type="Script" uid="uid://cxlrj42seind1" path="res://Scripts/UI/loot_box_ui.gd" id="14_r66ao"]
 [ext_resource type="Script" uid="uid://bcue5hmq4r4c6" path="res://Scripts/Skill/player_stat_controller.gd" id="15_f3rod"]
 [ext_resource type="Script" uid="uid://dc1fsfq7a5idj" path="res://Scripts/UI/loot_box_cell_ui.gd" id="16_x02nk"]
@@ -39,6 +40,7 @@
 [ext_resource type="Script" uid="uid://idwkt7aitam2" path="res://Scripts/UI/enemy_info_ui.gd" id="35_6gil7"]
 [ext_resource type="Script" uid="uid://crrlof3330gqw" path="res://Scripts/UI/item_info_ui.gd" id="36_8ryol"]
 [ext_resource type="Script" uid="uid://be138vgmprcoc" path="res://Scripts/UI/coin_hud.gd" id="38_lra8k"]
+[ext_resource type="PackedScene" uid="uid://d24ws1qci7x0w" path="res://Scene/buble_text.tscn" id="41_weo37"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -73,6 +75,11 @@ enemy_data_list = Array[ExtResource("3_jkpb7")]([ExtResource("4_i5dkc"), ExtReso
 script = ExtResource("1_hl3nj")
 weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("4_5dnhx")])
 armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5"), ExtResource("13_yekpa")])
+
+[node name="Text Manager" type="Node" parent="." unique_id=543369598 node_paths=PackedStringArray("text_parent")]
+script = ExtResource("14_p01s1")
+text_parent = NodePath("../Control")
+bubble_text = ExtResource("41_weo37")
 
 [node name="Player" type="Node" parent="." unique_id=1886213182 node_paths=PackedStringArray("stat", "avatar", "health")]
 script = ExtResource("7_q0kv5")
@@ -111,7 +118,7 @@ script = ExtResource("18_ecq28")
 enemy_controller = NodePath("..")
 
 [node name="Control" type="TextureRect" parent="." unique_id=1997924682]
-self_modulate = Color(0.2784314, 0.1764706, 0.23529412, 1)
+self_modulate = Color(0.2661908, 0.17087042, 0.22799861, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -144,6 +151,7 @@ fight_button = NodePath("../Fight Button")
 cell_grid = [NodePath("Inventory-Cell"), NodePath("Inventory-Cell2"), NodePath("Inventory-Cell3"), NodePath("Inventory-Cell4"), NodePath("Inventory-Cell5"), NodePath("Inventory-Cell6"), NodePath("Inventory-Cell7"), NodePath("Inventory-Cell8"), NodePath("Inventory-Cell9")]
 
 [node name="Inventory-Cell" parent="Control/Player-Grid" unique_id=978211420 instance=ExtResource("2_2wjsh")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
 layout_mode = 2
 
 [node name="Inventory-Cell2" parent="Control/Player-Grid" unique_id=1844619789 instance=ExtResource("2_2wjsh")]
@@ -394,6 +402,7 @@ context_cursor = NodePath("../Context-Cursor")
 loot_box_cell_ui = [NodePath("Item-1"), NodePath("Item-2"), NodePath("Item-3")]
 
 [node name="Item-1" type="TextureRect" parent="Control/Loot-Box" unique_id=357245531 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("1_tntwh")
@@ -414,7 +423,6 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
-script = ExtResource("16_x02nk")
 
 [node name="Price" type="RichTextLabel" parent="Control/Loot-Box/Item-1" unique_id=1631952658]
 custom_minimum_size = Vector2(100, 40)
@@ -439,6 +447,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Item-2" type="TextureRect" parent="Control/Loot-Box" unique_id=1020227082 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("1_tntwh")
@@ -459,7 +468,6 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
-script = ExtResource("16_x02nk")
 
 [node name="Price" type="RichTextLabel" parent="Control/Loot-Box/Item-2" unique_id=619441396]
 custom_minimum_size = Vector2(100, 40)
@@ -484,6 +492,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Item-3" type="TextureRect" parent="Control/Loot-Box" unique_id=948356292 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("1_tntwh")
@@ -504,7 +513,6 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
-script = ExtResource("16_x02nk")
 
 [node name="Price" type="RichTextLabel" parent="Control/Loot-Box/Item-3" unique_id=298935118]
 custom_minimum_size = Vector2(100, 40)
