@@ -105,7 +105,6 @@ func _on_reroll_button_pressed() -> void:
 
 		
 func _on_mouse_entered_cell(cell:LootBoxCellUi) -> void:
-	if not InputManager.is_enabled: return
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)	
 	_inspecting_cell = cell
 	_inspecting_cell.self_modulate = Color(0.957, 0.706, 0.106)
@@ -113,7 +112,8 @@ func _on_mouse_entered_cell(cell:LootBoxCellUi) -> void:
 	
 	
 func _on_mouse_exited_cell(cell:LootBoxCellUi) -> void:
-	if not InputManager.is_enabled: return
 	if _inspecting_cell != cell: return
+	if _dragging: return
 	_inspecting_cell.self_modulate = Color(1.0, 0.914, 0.769)
 	EventBus.on_hover_on_item.emit(null)
+	_inspecting_cell = null

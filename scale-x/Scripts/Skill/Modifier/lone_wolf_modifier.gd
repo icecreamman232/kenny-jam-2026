@@ -14,13 +14,16 @@ func get_modifier_description() -> String:
 	
 
 func _on_add_item_to_cell(grid_index:int, item:ItemData) -> void:
-	if grid_index == _owner_cell.grid_index: return
+	if _owner_cell == null or _owner_cell.grid_index == grid_index or _owner_cell.assigned_item ==  null : return
+	var remove_armor:int = 0
 	var self_index:int = _owner_cell.grid_index
 	var ajacent_cells_index:Array[int] = Helper.get_adjacent_cell_index(self_index)
 	for idx in ajacent_cells_index:
 		if grid_index != idx:continue
-		_bonus_armor -= 1
-		(IngameDataManager.text_manager as TextManager).show_text("-" + str(_bonus_armor) + " Armor", _owner_cell.global_position)
+		remove_armor -= 1
+		(IngameDataManager.text_manager as TextManager).show_text("-" + str(remove_armor) + " Armor", _owner_cell.global_position)
+		_bonus_armor -= remove_armor
+		_owner_cell.assigned_item.armor -= remove_armor
 		AudioManager.play_sfx(SfxContainer.SfxID.NEGATIVE_MODIFIER)
 		EventBus.on_recalculate_player_stat.emit()	
 		await _owner_cell.play_bounce_tween()		
@@ -29,12 +32,15 @@ func _on_add_item_to_cell(grid_index:int, item:ItemData) -> void:
 	
 func _on_remove_item_from_cell(grid_index:int, item:ItemData) -> void:
 	if _owner_cell == null or _owner_cell.grid_index == grid_index or _owner_cell.assigned_item ==  null : return
+	var add_armor:int = 0
 	var self_index:int = _owner_cell.grid_index
 	var ajacent_cells_index:Array[int] = Helper.get_adjacent_cell_index(self_index)
 	for idx in ajacent_cells_index:
 		if grid_index != idx:continue
-		_bonus_armor += 1
-		(IngameDataManager.text_manager as TextManager).show_text("+" + str(_bonus_armor) + " Armor", _owner_cell.global_position)
+		add_armor += 1
+		(IngameDataManager.text_manager as TextManager).show_text("+" + str(add_armor) + " Armor", _owner_cell.global_position)
+		_bonus_armor += add_armor
+		_owner_cell.assigned_item.armor += add_armor
 		AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
 		EventBus.on_recalculate_player_stat.emit()		
 		break

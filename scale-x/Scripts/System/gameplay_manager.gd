@@ -74,8 +74,11 @@ func _on_fight_started() -> void:
 
 	var player_speed:int = player_controller.stat.get_final(StatController.StatType.SPEED)
 	player_speed = roundi(player_speed / 3.0)
+	if player_speed < 1: player_speed = 1
 	var number_attack := randi_range(1, player_speed)
 	for attempt in number_attack:
+		var rand_value:= randi_range(0, 1)
+		AudioManager.play_sfx(SfxContainer.SfxID.SWORD_HIT_1 if rand_value == 0 else SfxContainer.SfxID.SWORD_HIT_2)
 		await player_controller.play_attack_tween()
 		await player_controller.deal_damage_to_enemy(enemy_controller)
 		print("Player attacked enemy")
@@ -83,6 +86,7 @@ func _on_fight_started() -> void:
 	if enemy_controller.health.current_life > 0:	
 		var enemy_spd:int  = enemy_controller.stat.get_final(StatController.StatType.SPEED)
 		enemy_spd = roundi(enemy_spd / 3.0)
+		if enemy_spd < 1: enemy_spd = 1
 		var enemy_number_atk:= randi_range(1, enemy_spd)
 		for attemp in enemy_number_atk:
 			await enemy_controller.play_attack_tween()

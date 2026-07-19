@@ -38,6 +38,7 @@ func _exit_tree() -> void:
 
 func play_attack_tween():
 	var tween :Tween= avatar.attack_tween()
+	print("Player attack tween")
 	await tween.finished
 	
 	

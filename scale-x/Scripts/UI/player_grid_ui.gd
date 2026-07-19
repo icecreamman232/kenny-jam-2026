@@ -117,11 +117,13 @@ func _on_fight_button_pressed() -> void:
 	if _is_fighting: return
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	EventBus.on_fight_started.emit()
+	fight_button.disabled = true
 	_is_fighting = true
 	
 	
 func _on_fight_end():
 	_is_fighting = false
+	fight_button.disabled = false
 
 
 func _on_player_dead():
@@ -131,7 +133,6 @@ func _on_player_dead():
 	
 	
 func _on_mouse_entered_cell(cell:PlayerCellGridUi) -> void: 
-	if not InputManager.is_enabled: return
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	_hovered_cell = cell
 	_hovered_cell.self_modulate = Color(0.957, 0.706, 0.106)
@@ -139,7 +140,6 @@ func _on_mouse_entered_cell(cell:PlayerCellGridUi) -> void:
 
 	
 func _on_mouse_exited_cell(cell:PlayerCellGridUi) -> void:
-	if not InputManager.is_enabled: return
 	if _hovered_cell != cell: return
 	_hovered_cell.self_modulate = Color(1.0, 0.914, 0.769)
 	_hovered_cell = null
