@@ -1349,5 +1349,3 @@ scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
 script = ExtResource("38_lra8k")
-
-[node name="SFX_Container" type="Node" parent="." unique_id=599727790]

@@ -37,6 +37,7 @@ func _input(event:InputEvent) -> void:
 			_dragging = event.pressed
 			if _dragging:
 				if _inspecting_cell != null and _inspecting_cell.assigned_item != null:
+					AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 					context_cursor.texture = _inspecting_cell.assigned_item.item_icon
 					context_cursor.modulate = _inspecting_cell.assigned_item_icon.self_modulate
 					_drag_offset = _inspecting_cell.global_position - get_global_mouse_position()
@@ -78,6 +79,8 @@ func _get_dragged_position() -> Vector2:
 		
 
 func _on_reroll_button_pressed() -> void:
+	if not InputManager.is_enabled: return
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	var reroll_price:int = 0
 	var round_number:= gameplay_manager.round_number
 	if round_number <= Constant.EARLY_GAME_1_ROUND_NUMBER:
@@ -103,6 +106,7 @@ func _on_reroll_button_pressed() -> void:
 		
 func _on_mouse_entered_cell(cell:LootBoxCellUi) -> void:
 	if not InputManager.is_enabled: return
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)	
 	_inspecting_cell = cell
 	_inspecting_cell.self_modulate = Color(0.957, 0.706, 0.106)
 	EventBus.on_hover_on_item.emit(_inspecting_cell.assigned_item)

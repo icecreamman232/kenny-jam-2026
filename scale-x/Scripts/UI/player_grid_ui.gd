@@ -38,6 +38,7 @@ func _input(event:InputEvent) -> void:
 			if _dragging:
 				if _dragging_slot_index == -1:
 					if _hovered_cell != null and _hovered_cell.assigned_item != null:
+						AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 						_dragging_slot_index = _hovered_cell.grid_index
 						context_cursor.texture = _hovered_cell.assigned_item.item_icon
 						context_cursor.modulate = _hovered_cell.item_icon.self_modulate
@@ -114,6 +115,7 @@ func request_drop_item(item:ItemData, coin_hud: CoinHud) ->bool:
 func _on_fight_button_pressed() -> void:
 	if not InputManager.is_enabled: return
 	if _is_fighting: return
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	EventBus.on_fight_started.emit()
 	_is_fighting = true
 	
@@ -130,6 +132,7 @@ func _on_player_dead():
 	
 func _on_mouse_entered_cell(cell:PlayerCellGridUi) -> void: 
 	if not InputManager.is_enabled: return
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	_hovered_cell = cell
 	_hovered_cell.self_modulate = Color(0.957, 0.706, 0.106)
 	EventBus.on_hover_on_item.emit(_hovered_cell.assigned_item)

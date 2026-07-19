@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dbrjvpj34mged"]
+
+[ext_resource type="Script" uid="uid://cipw5yohawy3t" path="res://Scripts/Audio/sfx_container.gd" id="1_sjg4v"]
+[ext_resource type="Script" uid="uid://dw4jddi1wvtf" path="res://Scripts/Audio/audio_data.gd" id="2_ti2cd"]
+[ext_resource type="Resource" uid="uid://cliwbws14yjb3" path="res://Data/Audio/SFX/ui_click_sfx.tres" id="3_o2oji"]
+
+[node name="SFX_Container" type="Node" unique_id=260151010]
+script = ExtResource("1_sjg4v")
+sfx_list = Dictionary[int, ExtResource("2_ti2cd")]({
+0: ExtResource("3_o2oji")
+})
