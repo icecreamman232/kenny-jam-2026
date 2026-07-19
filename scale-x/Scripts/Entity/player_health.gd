@@ -11,3 +11,9 @@ func update_life(life:int):
 func update_life_bar():
 	super.update_life_bar()
 	EventBus.on_player_update_life.emit(current_life, max_life)
+	
+	
+func kill():
+	super.kill()
+	(_controller as PlayerController).on_before_dead()
+	EventBus.on_player_dead.emit()

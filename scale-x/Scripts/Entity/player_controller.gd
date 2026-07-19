@@ -24,6 +24,14 @@ func initialize():
 		item_list.append(null)
 
 
+func reset_player():
+	stat.initialize()
+	health.initialize_health(self)
+	EventBus.update_player_info.emit(stat)
+	for idx in range(0, 9):
+		item_list.append(null)		
+
+
 func _exit_tree() -> void:
 	EventBus.on_add_item.disconnect(_add_item)
 
@@ -46,6 +54,10 @@ func deal_damage_to_enemy(enemy_controller: EnemyController) -> void:
 	enemy_controller.health.take_damage(stat.get_final(StatController.StatType.ATTACK))
 
 
+func on_before_dead():
+	pass
+
+
 func _add_item(index:int, item:ItemData):
 	item_list[index] = item
 	_add_stat_from_item(item)
@@ -59,16 +71,6 @@ func _remove_item(index:int):
 	_remove_stat_from_item(to_be_removed_item)
 	health.update_life(stat.get_final(StatController.StatType.LIFE))
 	EventBus.update_player_info.emit(stat)	
-
-
-func _reset_stats():
-	attack = 0
-	accuracy = 0
-	speed = 0
-	life = 0
-	mana = 0
-	dodge = 0
-	armor = 0
 	
 	
 func _add_stat_from_item(item:ItemData):

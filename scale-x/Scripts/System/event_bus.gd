@@ -16,4 +16,5 @@ signal on_enemy_dead
 signal on_hover_on_item(item:ItemData)
 signal on_fight_started
 signal on_fight_end
+signal on_player_dead
 signal update_player_info(player_stat_controller: PlayerStatController)

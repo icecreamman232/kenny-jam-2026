@@ -12,6 +12,7 @@ var _drag_offset:Vector2 = Vector2.ZERO
 
 func _ready():
 	EventBus.on_fight_end.connect(_on_fight_end)
+	EventBus.on_player_dead.connect(_on_player_dead)
 	fight_button.pressed.connect(_on_fight_button_pressed)
 	for cell in cell_grid:
 		cell.mouse_entered.connect(_on_mouse_entered_cell.bind(cell))
@@ -20,6 +21,7 @@ func _ready():
 		
 func _exit_tree() -> void:
 	EventBus.on_fight_end.disconnect(_on_fight_end)
+	EventBus.on_player_dead.disconnect(_on_player_dead)
 	fight_button.pressed.disconnect(_on_fight_button_pressed)
 	for cell in cell_grid:
 		cell.mouse_entered.disconnect(_on_mouse_entered_cell.bind(cell))
@@ -105,6 +107,12 @@ func _on_fight_button_pressed() -> void:
 	
 func _on_fight_end():
 	_is_fighting = false
+
+
+func _on_player_dead():
+	for cell in cell_grid:
+		cell.handle_drag(false)
+		cell.unassign_item()
 	
 	
 func _on_mouse_entered_cell(cell:PlayerCellGridUi):
