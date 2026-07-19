@@ -978,7 +978,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-Info" type="VBoxContainer" parent="Control" unique_id=2037926138 node_paths=PackedStringArray("item_name", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
+[node name="Item-Info" type="VBoxContainer" parent="Control" unique_id=2037926138 node_paths=PackedStringArray("item_name", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label", "price_label")]
 layout_mode = 0
 offset_left = 238.0
 offset_top = 548.0
@@ -993,6 +993,7 @@ life_label = NodePath("LIFE-Label/Life-Number")
 mana_label = NodePath("MANA-Label/Mana-Number")
 dodge_label = NodePath("DODGE-Label/Dodge-Number")
 armor_label = NodePath("Armor-Label/Armor-Number")
+price_label = NodePath("Price-Label/Price-Number")
 
 [node name="ATK-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=1551320300]
 custom_minimum_size = Vector2(80, 30)
@@ -1173,6 +1174,34 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Armor-Number" type="Label" parent="Control/Item-Info/Armor-Label" unique_id=696655582]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=660069481]
+custom_minimum_size = Vector2(100, 30)
+clip_contents = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img] PRICE"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price-Number" type="Label" parent="Control/Item-Info/Price-Label" unique_id=573133218]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6

@@ -8,6 +8,7 @@ class_name ItemInfoUi extends Control
 @export var mana_label:Label
 @export var dodge_label:Label
 @export var armor_label:Label
+@export var price_label:Label
 
 func _ready():
 	item_name.hide()
@@ -31,6 +32,7 @@ func _update_item_stat(item_data:ItemData) -> void:
 	mana_label.text = str(item_data.mana)
 	dodge_label.text = str(item_data.dodge)
 	armor_label.text = str(item_data.armor)
+	price_label.text = str(ItemData.get_price_for_item(item_data))
 	item_name.text = item_data.item_name
 	item_name.show()
 	show()

@@ -74,6 +74,11 @@ func _handle_left_click(event:InputEventMouseButton) -> void:
 
 func _handle_right_click(event:InputEventMouseButton) -> void:
 	if _hovered_cell != null and _hovered_cell.assigned_item != null:
+		var item_to_be_removed := _hovered_cell.assigned_item
+		var price_for_item := ItemData.get_price_for_item(item_to_be_removed)
+		var sell_price := price_for_item * 0.5
+		if sell_price <= 1: sell_price = 1
+		EventBus.on_coin_change.emit(sell_price)
 		EventBus.on_remove_item.emit(_hovered_cell.grid_index)
 		await Helper.wait_for_frames(1)
 		_hovered_cell.unassign_item()
