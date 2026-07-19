@@ -41,6 +41,9 @@ func _on_player_dead():
 	InputManager.set_enabled(false)
 	print("Player dead!!!")
 	print("====================================================================")
+
+	
+func restart_game():
 	round_number = 1
 	player_controller.reset_player()
 	Helper.wait_for_frames(3)
@@ -50,8 +53,8 @@ func _on_player_dead():
 	await Helper.wait_for_frames(3)
 	_create_enemy()
 	await Helper.wait_for_frames(3)
-	InputManager.set_enabled(true)
-	
+	InputManager.set_enabled(true)	
+
 	
 func _on_enemy_dead():
 	round_number += 1

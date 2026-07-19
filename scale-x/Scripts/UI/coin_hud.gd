@@ -14,7 +14,7 @@ func _exit_tree() -> void:
 
 
 func _reset_coin():
-	current_coin += Constant.STARTING_COINS
+	current_coin = Constant.STARTING_COINS
 	text = "[img=24]uid://de3k1fl4j5llo[/img]" + str(current_coin).pad_decimals(0)		
 	
 	

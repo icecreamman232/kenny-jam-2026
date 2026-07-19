@@ -52,6 +52,7 @@
 [ext_resource type="Shader" uid="uid://depag5wqx0nrh" path="res://Arts/outline_2d.gdshader" id="36_t2s0o"]
 [ext_resource type="Script" uid="uid://be138vgmprcoc" path="res://Scripts/UI/coin_hud.gd" id="38_lra8k"]
 [ext_resource type="PackedScene" uid="uid://d24ws1qci7x0w" path="res://Scene/buble_text.tscn" id="41_weo37"]
+[ext_resource type="Script" uid="uid://kwiamlij7gjw" path="res://Scripts/UI/game_over_screen.gd" id="53_4vhag"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -96,7 +97,6 @@ border_width_bottom = 3
 border_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
 
 [node name="Gameplay_Scene" type="CanvasLayer" unique_id=1881809148]
-metadata/_edit_horizontal_guides_ = [101.0]
 
 [node name="Input Manager" type="Node" parent="." unique_id=1212464894]
 
@@ -163,10 +163,6 @@ self_modulate = Color(0.2661908, 0.17087042, 0.22799861, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -28.0
-offset_top = 4.0
-offset_right = -28.0
-offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_2wjsh")
@@ -400,7 +396,7 @@ offset_left = 997.0
 offset_top = 415.0
 offset_right = 1077.0
 offset_bottom = 475.0
-theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
 theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
 theme_override_font_sizes/font_size = 24
@@ -1349,3 +1345,88 @@ scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
 script = ExtResource("38_lra8k")
+
+[node name="Death-Screen" type="TextureRect" parent="." unique_id=1307319705 node_paths=PackedStringArray("gameplay_manager", "restart_button", "quit_button")]
+self_modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.8901961)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2wjsh")
+expand_mode = 1
+script = ExtResource("53_4vhag")
+gameplay_manager = NodePath("../Gameplay Manager")
+restart_button = NodePath("TextureRect/HBoxContainer/Restart-Button")
+quit_button = NodePath("TextureRect/HBoxContainer/Menu-Button")
+
+[node name="TextureRect" type="NinePatchRect" parent="Death-Screen" unique_id=1030837287]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -56.5
+offset_right = 150.0
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tntwh")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Label" type="Label" parent="Death-Screen/TextureRect" unique_id=1762034606]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_top = -64.0
+offset_right = 138.0
+offset_bottom = 3.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Death-Screen/TextureRect" unique_id=1658359996]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -20.0
+offset_right = 97.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="Restart-Button" type="Button" parent="Death-Screen/TextureRect/HBoxContainer" unique_id=128428458]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_styles/normal = ExtResource("31_l5t21")
+theme_override_styles/pressed = ExtResource("32_ajygt")
+theme_override_styles/hover = ExtResource("33_6gil7")
+text = "Restart"
+
+[node name="Menu-Button" type="Button" parent="Death-Screen/TextureRect/HBoxContainer" unique_id=1240474905]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_styles/normal = ExtResource("31_l5t21")
+theme_override_styles/pressed = ExtResource("32_ajygt")
+theme_override_styles/hover = ExtResource("33_6gil7")
+text = "Menu"
