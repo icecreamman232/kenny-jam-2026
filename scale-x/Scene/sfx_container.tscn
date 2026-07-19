@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://dbrjvpj34mged"]
 
 [ext_resource type="Script" uid="uid://cipw5yohawy3t" path="res://Scripts/Audio/sfx_container.gd" id="1_sjg4v"]
-[ext_resource type="Script" uid="uid://dw4jddi1wvtf" path="res://Scripts/Audio/audio_data.gd" id="2_ti2cd"]
-[ext_resource type="Resource" uid="uid://cliwbws14yjb3" path="res://Data/Audio/SFX/ui_click_sfx.tres" id="3_o2oji"]
+[ext_resource type="AudioStream" uid="uid://doesvnf1apolc" path="res://Data/Audio/ui-click.mp3" id="2_y4h2x"]
+[ext_resource type="AudioStream" uid="uid://bn7101y1lirqu" path="res://Data/Audio/positive-mod.mp3" id="3_ti2cd"]
+[ext_resource type="AudioStream" uid="uid://e6kul64k1xfh" path="res://Data/Audio/negative-mod-sfx.mp3" id="4_o2oji"]
 
 [node name="SFX_Container" type="Node" unique_id=260151010]
 script = ExtResource("1_sjg4v")
-sfx_list = Dictionary[int, ExtResource("2_ti2cd")]({
-0: ExtResource("3_o2oji")
+sfx_list = Dictionary[int, AudioStream]({
+0: ExtResource("2_y4h2x"),
+1: ExtResource("3_ti2cd"),
+2: ExtResource("4_o2oji")
 })

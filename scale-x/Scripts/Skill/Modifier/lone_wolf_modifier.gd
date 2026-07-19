@@ -21,6 +21,7 @@ func _on_add_item_to_cell(grid_index:int, item:ItemData) -> void:
 		if grid_index != idx:continue
 		_bonus_armor -= 1
 		(IngameDataManager.text_manager as TextManager).show_text("-" + str(_bonus_armor) + " Armor", _owner_cell.global_position)
+		AudioManager.play_sfx(SfxContainer.SfxID.NEGATIVE_MODIFIER)
 		EventBus.on_recalculate_player_stat.emit()	
 		await _owner_cell.play_bounce_tween()		
 		break
@@ -34,6 +35,7 @@ func _on_remove_item_from_cell(grid_index:int, item:ItemData) -> void:
 		if grid_index != idx:continue
 		_bonus_armor += 1
 		(IngameDataManager.text_manager as TextManager).show_text("+" + str(_bonus_armor) + " Armor", _owner_cell.global_position)
+		AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
 		EventBus.on_recalculate_player_stat.emit()		
 		break
 
@@ -47,6 +49,7 @@ func apply(cell:PlayerCellGridUi):
 		if player_grid.cell_grid[idx].assigned_item == null:
 			_bonus_armor += 1
 	(IngameDataManager.text_manager as TextManager).show_text("+" + str(_bonus_armor) + " Armor", _owner_cell.global_position)
+	AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
 	_owner_cell.assigned_item.armor += _bonus_armor
 	EventBus.on_recalculate_player_stat.emit()	
 	await _owner_cell.play_bounce_tween()	
@@ -56,6 +59,7 @@ func remove():
 	super.remove()
 	_owner_cell.assigned_item.armor -= _bonus_armor
 	(IngameDataManager.text_manager as TextManager).show_text("-" + str(_bonus_armor) + " Armor", _owner_cell.global_position)
+	AudioManager.play_sfx(SfxContainer.SfxID.NEGATIVE_MODIFIER)
 	EventBus.on_recalculate_player_stat.emit()	
 	EventBus.on_add_item_to_cell.disconnect(_on_add_item_to_cell)
 	EventBus.on_remove_item_from_cell.disconnect(_on_remove_item_from_cell)		

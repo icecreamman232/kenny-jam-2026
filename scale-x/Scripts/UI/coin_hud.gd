@@ -9,7 +9,7 @@ func _ready():
 	
 	
 func _exit_tree() -> void:
-	EventBus.on_player_dead.connect(_reset_coin)
+	EventBus.on_player_dead.disconnect(_reset_coin)
 	EventBus.on_coin_change.disconnect(_update_coin)
 
 

@@ -7,6 +7,6 @@ enum SfxID
 	NEGATIVE_MODIFIER,
 }
 
-@export var sfx_list:Dictionary[SfxID, AudioData] = {}
+@export var sfx_list:Dictionary[SfxID, AudioStream] = {}
 
 

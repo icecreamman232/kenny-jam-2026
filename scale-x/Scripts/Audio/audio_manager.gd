@@ -18,8 +18,8 @@ func _ready():
 		
 		
 func play_sfx(sfx_id:SfxContainer.SfxID) -> void:
-	var audio_data:AudioData = sfx_container.sfx_list.get(sfx_id, null)
-	if audio_data == null: return
-	sfx_player.stream = audio_data.audio
+	var stream:AudioStream = sfx_container.sfx_list.get(sfx_id, null)
+	if stream == null: return
+	sfx_player.stream = stream
 	sfx_player.play()
 	

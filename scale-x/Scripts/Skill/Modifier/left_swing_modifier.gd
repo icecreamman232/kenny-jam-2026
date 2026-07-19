@@ -17,6 +17,7 @@ func apply(cell:PlayerCellGridUi):
 		if ItemData.is_weapon(player_grid.cell_grid[left_index].assigned_item):
 			player_grid.cell_grid[left_index].assigned_item.attack += 1
 			(IngameDataManager.text_manager as TextManager).show_text("+1 Atk", player_grid.cell_grid[left_index].global_position)
+			AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
 			EventBus.on_recalculate_player_stat.emit()	
 			await player_grid.cell_grid[left_index].play_bounce_tween()		
 			
@@ -30,5 +31,6 @@ func remove():
 		if ItemData.is_weapon(player_grid.cell_grid[left_index].assigned_item):
 			player_grid.cell_grid[left_index].assigned_item.attack -= 1
 			(IngameDataManager.text_manager as TextManager).show_text("-1 Atk", player_grid.cell_grid[left_index].global_position)
+			AudioManager.play_sfx(SfxContainer.SfxID.NEGATIVE_MODIFIER)
 			EventBus.on_recalculate_player_stat.emit()	
 
