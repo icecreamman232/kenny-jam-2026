@@ -2,6 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dbebpejknoryy" path="res://Arts/Atlas_Texture/inventory_cell_bg.tres" id="1_24ndr"]
 [ext_resource type="Script" uid="uid://c8wdqluawxj7u" path="res://Scripts/UI/player_cell_grid_ui.gd" id="2_kfrcj"]
+[ext_resource type="Shader" uid="uid://depag5wqx0nrh" path="res://Arts/outline_2d.gdshader" id="3_ibwac"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2s0o"]
+shader = ExtResource("3_ibwac")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0
 
 [node name="Inventory-Cell" type="TextureRect" unique_id=978211420 node_paths=PackedStringArray("item_icon")]
 self_modulate = Color(0.99932355, 0.9151727, 0.7666986, 1)
@@ -15,6 +21,7 @@ script = ExtResource("2_kfrcj")
 item_icon = NodePath("Item-Icon")
 
 [node name="Item-Icon" type="TextureRect" parent="." unique_id=738241286]
+material = SubResource("ShaderMaterial_t2s0o")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -39,6 +39,7 @@
 [ext_resource type="Script" uid="uid://cqpi71e81coce" path="res://Scripts/UI/player_info_ui.gd" id="34_ajygt"]
 [ext_resource type="Script" uid="uid://idwkt7aitam2" path="res://Scripts/UI/enemy_info_ui.gd" id="35_6gil7"]
 [ext_resource type="Script" uid="uid://crrlof3330gqw" path="res://Scripts/UI/item_info_ui.gd" id="36_8ryol"]
+[ext_resource type="Shader" uid="uid://depag5wqx0nrh" path="res://Arts/outline_2d.gdshader" id="36_t2s0o"]
 [ext_resource type="Script" uid="uid://be138vgmprcoc" path="res://Scripts/UI/coin_hud.gd" id="38_lra8k"]
 [ext_resource type="PackedScene" uid="uid://d24ws1qci7x0w" path="res://Scene/buble_text.tscn" id="41_weo37"]
 
@@ -56,6 +57,21 @@ expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjua8"]
 bg_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2s0o"]
+shader = ExtResource("36_t2s0o")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ueyxm"]
+shader = ExtResource("36_t2s0o")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hy2kh"]
+shader = ExtResource("36_t2s0o")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0
 
 [node name="Gameplay_Scene" type="CanvasLayer" unique_id=1881809148]
 metadata/_edit_horizontal_guides_ = [101.0]
@@ -412,6 +428,7 @@ price_label = NodePath("Price")
 assigned_item_icon = NodePath("Item-Icon")
 
 [node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box/Item-1" unique_id=423497894]
+material = SubResource("ShaderMaterial_t2s0o")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -457,6 +474,7 @@ price_label = NodePath("Price")
 assigned_item_icon = NodePath("Item-Icon")
 
 [node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box/Item-2" unique_id=1084575622]
+material = SubResource("ShaderMaterial_ueyxm")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -502,6 +520,7 @@ price_label = NodePath("Price")
 assigned_item_icon = NodePath("Item-Icon")
 
 [node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box/Item-3" unique_id=133395179]
+material = SubResource("ShaderMaterial_hy2kh")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

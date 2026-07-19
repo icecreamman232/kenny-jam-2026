@@ -4,11 +4,22 @@ class_name PlayerCellGridUi extends Control
 @export var assigned_item:ItemData
 @export var item_icon:TextureRect
 
+func _ready():
+	var shader_material := item_icon.material.duplicate() as ShaderMaterial
+	item_icon.material = shader_material
+	
+
+
 func assign_item(item:ItemData) -> void:
 	if item == null: return
 	assigned_item = item
 	item_icon.texture = item.item_icon
-	item_icon.self_modulate = Helper.get_color_by_rarity(item.rarity)
+	
+	if item.rarity != ItemData.ItemRarity.COMMON:
+		var rarity_color = Helper.get_color_by_rarity(item.rarity)
+		(item_icon.material as ShaderMaterial).set_shader_parameter("outline_color", rarity_color)
+		(item_icon.material as ShaderMaterial).set_shader_parameter("outline_thickness", 1)
+	
 	var mod_controller:ModifierController = IngameDataManager.modifier_controller
 	for mod in item.modifier_list:
 		mod.apply(self)
@@ -22,7 +33,7 @@ func unassign_item() -> void:
 		mod_controller.remove_modifier(mod.id)
 		mod.remove()
 	
-	
+	(item_icon.material as ShaderMaterial).set_shader_parameter("outline_thickness", 0)
 	assigned_item = null
 	item_icon.self_modulate = Color(1.0, 0.914, 0.769)
 	item_icon.texture = null
