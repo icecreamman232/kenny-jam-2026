@@ -89,9 +89,9 @@ func _on_fight_started() -> void:
 		for attemp in enemy_number_atk:
 			await enemy_controller.play_attack_tween()
 			await enemy_controller.deal_damage_to_player(player_controller)
-			print("Enemy attacked player")
+			EventBus.on_enemy_attack.emit()
 		
-	await Helper.wait_for_frames(3)
+	await Helper.wait_for_frames(1)
 	EventBus.on_fight_end.emit()
 	
 	loot_box_ui.show_loot()

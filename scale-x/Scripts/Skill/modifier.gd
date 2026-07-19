@@ -6,6 +6,7 @@ enum ModifierId
 	LeftSwing,
 	RightSwing,
 	LoneWolf,
+	ContinuesAttack,
 }
 
 

@@ -1,7 +1,5 @@
 class_name MultiHandModifier extends Modifier
 
-# Increase adjacent weapon cell attack by 1
-
 func _init():
 	_mod_id = ModifierId.MultiHand
 

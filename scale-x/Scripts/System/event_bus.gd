@@ -10,6 +10,7 @@ signal on_recalculate_player_stat
 # Enemy Events
 signal update_enemy_info(enemy_stat_controller: EnemyStatController)
 signal on_enemy_update_life(current_life:int, max_life:int)
+signal on_enemy_attack
 signal on_enemy_dead
 
 
