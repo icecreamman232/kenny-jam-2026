@@ -1,10 +1,14 @@
 class_name PlayerGridUi extends Control
 
+@export var context_cursor:TextureRect
 @export var fight_button:Button
 @export var cell_grid:Array[PlayerCellGridUi]
 var _hovered_cell:PlayerCellGridUi
 
 var _is_fighting:bool = false
+var _dragging_slot_index:int = -1
+var _dragging:bool = false
+var _drag_offset:Vector2 = Vector2.ZERO
 
 func _ready():
 	EventBus.on_fight_end.connect(_on_fight_end)
@@ -26,14 +30,44 @@ func _input(event:InputEvent) -> void:
 	if not visible: return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			_handle_left_click(event)
+			_dragging = event.pressed
+			if _dragging:
+				if _dragging_slot_index == -1:
+					if _hovered_cell != null and _hovered_cell.assigned_item != null:
+						_dragging_slot_index = _hovered_cell.grid_index
+						context_cursor.texture = _hovered_cell.assigned_item.item_icon
+						context_cursor.modulate = _hovered_cell.item_icon.self_modulate
+						_drag_offset = _hovered_cell.global_position - get_global_mouse_position()
+						_hovered_cell.handle_drag(_dragging)
+						context_cursor.show()
+						get_viewport().set_input_as_handled()
+			else:
+				if _hovered_cell != null:
+					var _inspecting_cell := cell_grid[_dragging_slot_index]
+					var result := request_move_item(_inspecting_cell.grid_index, _hovered_cell.grid_index)
+					if result:
+						context_cursor.hide()
+						_inspecting_cell.handle_drag(_dragging)
+					else:
+						context_cursor.hide()
+						_inspecting_cell.handle_drag(_dragging)
+					_dragging_slot_index = -1	
+					get_viewport().set_input_as_handled()	
+					
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			_handle_right_click(event)
+	elif event is InputEventMouseMotion and _dragging:
+		if _dragging_slot_index != -1:
+			context_cursor.global_position = _get_dragged_position()		
 
 
+func _get_dragged_position() -> Vector2:
+	return get_global_mouse_position() + _drag_offset
 
 func _handle_left_click(event:InputEventMouseButton) -> void:
-	pass
+	if _hovered_cell != null and _hovered_cell.assigned_item != null:
+		context_cursor.texture = _hovered_cell.assigned_item.item_icon
+		_hovered_cell.handle_drag()
 
 
 func _handle_right_click(event:InputEventMouseButton) -> void:
@@ -42,6 +76,18 @@ func _handle_right_click(event:InputEventMouseButton) -> void:
 		await Helper.wait_for_frames(1)
 		_hovered_cell.unassign_item()
 		
+
+func request_move_item(from_index:int, to_index:int) -> bool:
+	var item_from := cell_grid[from_index].assigned_item
+	var item_to := cell_grid[to_index].assigned_item
+	cell_grid[from_index].unassign_item()
+	cell_grid[to_index].unassign_item()
+	# If hovering slot has item, we swap this item with dragging item
+	if item_to != null:
+		cell_grid[from_index].assign_item(item_to)
+	cell_grid[to_index].assign_item(item_from)
+	EventBus.on_move_item.emit(from_index, to_index)
+	return true
 
 
 func request_drop_item(item:ItemData) ->bool:

@@ -117,7 +117,7 @@ grow_vertical = 2
 texture = ExtResource("1_2wjsh")
 expand_mode = 1
 
-[node name="Player-Grid" type="GridContainer" parent="Control" unique_id=141145057 node_paths=PackedStringArray("fight_button", "cell_grid")]
+[node name="Player-Grid" type="GridContainer" parent="Control" unique_id=141145057 node_paths=PackedStringArray("context_cursor", "fight_button", "cell_grid")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -132,6 +132,7 @@ grow_horizontal = 2
 grow_vertical = 0
 columns = 3
 script = ExtResource("11_sj3gg")
+context_cursor = NodePath("../Context-Cursor")
 fight_button = NodePath("../Fight Button")
 cell_grid = [NodePath("Inventory-Cell"), NodePath("Inventory-Cell2"), NodePath("Inventory-Cell3"), NodePath("Inventory-Cell4"), NodePath("Inventory-Cell5"), NodePath("Inventory-Cell6"), NodePath("Inventory-Cell7"), NodePath("Inventory-Cell8"), NodePath("Inventory-Cell9")]
 

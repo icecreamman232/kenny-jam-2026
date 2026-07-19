@@ -17,3 +17,7 @@ func unassign_item() -> void:
 	item_icon.self_modulate = Color.WHITE
 	item_icon.texture = null
 	
+
+func handle_drag(is_dragging:bool = false):
+	item_icon.visible = !is_dragging
+	
