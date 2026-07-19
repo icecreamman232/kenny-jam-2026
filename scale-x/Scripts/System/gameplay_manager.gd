@@ -54,7 +54,6 @@ func _on_player_dead():
 	
 	
 func _on_enemy_dead():
-	print("Enemy is dead, next round")
 	round_number += 1
 	loot_box_ui.set_round_number(round_number)
 	round_label.text = "Round " + str(round_number)
@@ -81,7 +80,6 @@ func _on_fight_started() -> void:
 		AudioManager.play_sfx(SfxContainer.SfxID.SWORD_HIT_1 if rand_value == 0 else SfxContainer.SfxID.SWORD_HIT_2)
 		await player_controller.play_attack_tween()
 		await player_controller.deal_damage_to_enemy(enemy_controller)
-		print("Player attacked enemy")
 	
 	if enemy_controller.health.current_life > 0:	
 		var enemy_spd:int  = enemy_controller.stat.get_final(StatController.StatType.SPEED)
@@ -97,7 +95,7 @@ func _on_fight_started() -> void:
 	EventBus.on_fight_end.emit()
 	
 	loot_box_ui.show_loot()
-	await Helper.wait_for_seconds(1)
+	await Helper.wait_for_frames(1)
 	InputManager.set_enabled(true)	
 		
 

@@ -20,7 +20,7 @@ func _on_add_item_to_cell(grid_index:int, item:ItemData) -> void:
 	var ajacent_cells_index:Array[int] = Helper.get_adjacent_cell_index(self_index)
 	for idx in ajacent_cells_index:
 		if grid_index != idx:continue
-		remove_armor -= 1
+		remove_armor += 1
 		(IngameDataManager.text_manager as TextManager).show_text("-" + str(remove_armor) + " Armor", _owner_cell.global_position)
 		_bonus_armor -= remove_armor
 		_owner_cell.assigned_item.armor -= remove_armor
