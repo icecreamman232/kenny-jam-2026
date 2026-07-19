@@ -16,6 +16,7 @@ class_name PlayerController extends EntityController
 
 func initialize():
 	EventBus.on_add_item.connect(_add_item)
+	EventBus.on_remove_item.connect(_remove_item)
 	stat.initialize()
 	health.initialize_health(self)
 	EventBus.update_player_info.emit(stat)
@@ -52,6 +53,14 @@ func _add_item(index:int, item:ItemData):
 	EventBus.update_player_info.emit(stat)
 
 
+func _remove_item(index:int):
+	var to_be_removed_item := item_list[index]
+	item_list[index] = null
+	_remove_stat_from_item(to_be_removed_item)
+	health.update_life(stat.get_final(StatController.StatType.LIFE))
+	EventBus.update_player_info.emit(stat)	
+
+
 func _reset_stats():
 	attack = 0
 	accuracy = 0
@@ -86,3 +95,29 @@ func _add_stat_from_item(item:ItemData):
 	stat.set_final(StatController.StatType.MANA, new_mana)
 	stat.set_final(StatController.StatType.DODGE, new_dodge)	
 	stat.set_final(StatController.StatType.ARMOR, new_armor)	
+	
+	
+func _remove_stat_from_item(item:ItemData):
+	var new_attack := stat.get_final(StatController.StatType.ATTACK)
+	var new_accuracy := stat.get_final(StatController.StatType.ACCURACY)
+	var new_speed := stat.get_final(StatController.StatType.SPEED)
+	var new_life := stat.get_final(StatController.StatType.LIFE)
+	var new_mana := stat.get_final(StatController.StatType.MANA)
+	var new_dodge := stat.get_final(StatController.StatType.DODGE)
+	var new_armor := stat.get_final(StatController.StatType.ARMOR)	
+	
+	new_attack -= item.attack
+	new_accuracy -= item.accuracy
+	new_speed -= item.speed
+	new_life -= item.life
+	new_mana -= item.mana
+	new_dodge -= item.dodge
+	new_armor -= item.armor
+	
+	stat.set_final(StatController.StatType.ATTACK, new_attack)
+	stat.set_final(StatController.StatType.ACCURACY, new_attack)
+	stat.set_final(StatController.StatType.SPEED, new_speed)
+	stat.set_final(StatController.StatType.LIFE, new_life)
+	stat.set_final(StatController.StatType.MANA, new_mana)
+	stat.set_final(StatController.StatType.DODGE, new_dodge)	
+	stat.set_final(StatController.StatType.ARMOR, new_armor)		

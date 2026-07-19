@@ -22,6 +22,28 @@ func _exit_tree() -> void:
 		cell.mouse_exited.disconnect(_on_mouse_exited_cell.bind(cell))
 
 
+func _input(event:InputEvent) -> void:
+	if not visible: return
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			_handle_left_click(event)
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			_handle_right_click(event)
+
+
+
+func _handle_left_click(event:InputEventMouseButton) -> void:
+	pass
+
+
+func _handle_right_click(event:InputEventMouseButton) -> void:
+	if _hovered_cell != null and _hovered_cell.assigned_item != null:
+		EventBus.on_remove_item.emit(_hovered_cell.grid_index)
+		await Helper.wait_for_frames(1)
+		_hovered_cell.unassign_item()
+		
+
+
 func request_drop_item(item:ItemData) ->bool:
 	if _hovered_cell == null: return false
 	_hovered_cell.assign_item(item)
