@@ -29,6 +29,8 @@ func _create_enemy():
 	enemy_controller.initialize(enemy)	
 
 func _on_player_dead():
+	print("Player dead!!!")
+	EventBus.on_coin_change.emit(Constant.STARTING_COINS)
 	round_number = 1
 	player_controller.reset_player()
 	Helper.wait_for_frames(3)
@@ -39,7 +41,12 @@ func _on_player_dead():
 	
 		
 	
-func _on_fight_started():
+func _on_fight_started() -> void:
+	# Trigger all modifiers before starting fight
+	var mod_controller:ModifierController = IngameDataManager.modifier_controller
+	await mod_controller.trigger_modifiers()
+
+
 	var player_speed:int = player_controller.stat.get_final(StatController.StatType.SPEED)
 	player_speed = roundi(player_speed / 3.0)
 	var number_attack := randi_range(1, player_speed)
@@ -57,6 +64,9 @@ func _on_fight_started():
 		
 	await Helper.wait_for_frames(3)
 	EventBus.on_fight_end.emit()
+	
+	if player_controller.health.current_life < 0: return
+	
 	if player_controller.health.current_life > 0 and enemy_controller.health.current_life <= 0:
 		round_number += 1
 		loot_box_ui.set_round_number(round_number)

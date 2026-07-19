@@ -27,13 +27,16 @@ enum ItemRarity
 @export var item_icon:Texture2D
 @export_group("Stats")
 @export var stats:Array[StatController.StatType]
-@export var attack:int
-@export var accuracy:int
-@export var speed:int
-@export var life:int
-@export var mana:int
-@export var dodge:int
-@export var armor:int
+var attack:int
+var accuracy:int
+var speed:int
+var life:int
+var mana:int
+var dodge:int
+var armor:int
+@export_group("Modifier Pool")
+@export var modifier_pool:Array[Modifier.ModifierId]
+var modifier_list:Array[Modifier]
 
 
 static func get_price_for_item(item:ItemData) -> int:
@@ -50,4 +53,12 @@ static func get_price_for_item(item:ItemData) -> int:
 			return 12
 		_: return 0
 
+
+static func is_weapon(item:ItemData) -> bool:
+	if item.category == ItemCategory.BOW \
+	or item.category == ItemCategory.CROSSBOW \
+	or item.category == ItemCategory.SWORD \
+	or item.category == ItemCategory.DAGGER:
+		return true
+	return false
 

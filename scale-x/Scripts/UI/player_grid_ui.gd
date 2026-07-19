@@ -11,6 +11,7 @@ var _dragging:bool = false
 var _drag_offset:Vector2 = Vector2.ZERO
 
 func _ready():
+	IngameDataManager.player_grid = self
 	EventBus.on_fight_end.connect(_on_fight_end)
 	EventBus.on_player_dead.connect(_on_player_dead)
 	fight_button.pressed.connect(_on_fight_button_pressed)

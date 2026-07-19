@@ -41,7 +41,7 @@ func get_items(round_number:int) -> Array[ItemData]:
 		var random_item:ItemData = _all_item.pick_random()
 		random_item = random_item.duplicate()
 		_apply_random_stat_to_item(random_item, round_number)
-		print("Item: ATK ", random_item.attack, " SPD ", random_item.speed, " LIFE ", random_item.life, " MANA ", random_item.mana, " DODGE ", random_item.dodge, " ARMOR ", random_item.armor)
+		#print("Item: ATK ", random_item.attack, " SPD ", random_item.speed, " LIFE ", random_item.life, " MANA ", random_item.mana, " DODGE ", random_item.dodge, " ARMOR ", random_item.armor)
 		result.append(random_item)
 	
 	return result
@@ -82,6 +82,15 @@ func _apply_random_stat_to_item(item:ItemData, round_number:int):
 				item.dodge = _get_random_dodge(stat_value)
 			StatController.StatType.ARMOR:
 				item.armor = _get_random_armor(stat_value)
+				
+	# Add modifier if item is not common
+	#if item.rarity == ItemData.ItemRarity.COMMON: return
+	if item.modifier_pool.size() == 0: return
+	var rand_ix := randi_range(0, item.modifier_pool.size() - 1)
+	var rand_mod_id:Modifier.ModifierId = item.modifier_pool[rand_ix]
+	var modifier:Modifier = ModifierFactory.create_modifier(rand_mod_id)
+	if modifier != null:
+		item.modifier_list.append(modifier)			
 
 
 ## weights order must match Rarity enum: [common, uncommon, rare, epic, legendary]

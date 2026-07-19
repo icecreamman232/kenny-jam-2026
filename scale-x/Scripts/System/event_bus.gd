@@ -5,6 +5,7 @@ signal on_player_update_life(current_life:int, max_life:int)
 signal on_add_item(index:int, item:ItemData)
 signal on_remove_item(index:int)
 signal on_move_item(from_index:int, to_index:int)
+signal on_recalculate_player_stat
 
 # Enemy Events
 signal update_enemy_info(enemy_stat_controller: EnemyStatController)

@@ -9,10 +9,20 @@ func assign_item(item:ItemData) -> void:
 	assigned_item = item
 	item_icon.texture = item.item_icon
 	item_icon.self_modulate = Helper.get_color_by_rarity(item.rarity)
+	var mod_controller:ModifierController = IngameDataManager.modifier_controller
+	for mod in item.modifier_list:
+		mod.apply(self)
+		mod_controller.add_modifier(mod)
 	
 
 func unassign_item() -> void:
 	if assigned_item == null: return
+	var mod_controller:ModifierController = IngameDataManager.modifier_controller
+	for mod in assigned_item.modifier_list:
+		mod_controller.remove_modifier(mod.id)
+		mod.remove()
+	
+	
 	assigned_item = null
 	item_icon.self_modulate = Color.WHITE
 	item_icon.texture = null

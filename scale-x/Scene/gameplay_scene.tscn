@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://cxlrj42seind1" path="res://Scripts/UI/loot_box_ui.gd" id="14_r66ao"]
 [ext_resource type="Script" uid="uid://bcue5hmq4r4c6" path="res://Scripts/Skill/player_stat_controller.gd" id="15_f3rod"]
 [ext_resource type="Script" uid="uid://dc1fsfq7a5idj" path="res://Scripts/UI/loot_box_cell_ui.gd" id="16_x02nk"]
+[ext_resource type="Script" uid="uid://3xm0uigc8waj" path="res://Scripts/Skill/modifier_controller.gd" id="17_yeb8m"]
 [ext_resource type="Script" uid="uid://b5d1unfklia7s" path="res://Scripts/Skill/enemy_stat_controller.gd" id="18_ecq28"]
 [ext_resource type="Script" uid="uid://csamhu1nqu42h" path="res://Scripts/UI/enemy_life_bar.gd" id="19_ss4hu"]
 [ext_resource type="Script" uid="uid://mpnq8domexet" path="res://Scripts/UI/player_avatar.gd" id="20_e412i"]
@@ -89,6 +90,9 @@ script = ExtResource("8_1h042")
 [node name="Stat" type="Node" parent="Player" unique_id=480502025 node_paths=PackedStringArray("player_controller")]
 script = ExtResource("15_f3rod")
 player_controller = NodePath("..")
+
+[node name="Modifier" type="Node" parent="Player" unique_id=136682804]
+script = ExtResource("17_yeb8m")
 
 [node name="Enemy" type="Node" parent="." unique_id=2046618817 node_paths=PackedStringArray("stat", "avatar", "health")]
 script = ExtResource("11_0fvd6")
