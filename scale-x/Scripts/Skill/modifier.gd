@@ -28,3 +28,7 @@ func get_modifier_name() ->String: return ""
 
 
 func get_modifier_description() ->String: return ""
+
+
+func get_whole_mod_desc() ->String:
+	return "[font_size=18][color=yellow]" + get_modifier_name() +"[/color][/font_size][br]" + get_modifier_description()

@@ -83,6 +83,18 @@ shader = ExtResource("36_t2s0o")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/outline_thickness = 0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vhag"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.71749604, 0.531935, 0.38039216)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+
 [node name="Gameplay_Scene" type="CanvasLayer" unique_id=1881809148]
 metadata/_edit_horizontal_guides_ = [101.0]
 
@@ -1019,14 +1031,32 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-Info" type="VBoxContainer" parent="Control" unique_id=2037926138 node_paths=PackedStringArray("item_name", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label", "price_label")]
+[node name="Item-Name" type="Label" parent="Control" unique_id=816860782]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 0
-offset_left = 238.0
-offset_top = 548.0
-offset_right = 338.0
-offset_bottom = 748.0
+offset_left = 274.0
+offset_top = 486.0
+offset_right = 474.0
+offset_bottom = 531.0
+theme_override_font_sizes/font_size = 32
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=493400997]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 554.0
+offset_right = 621.0
+offset_bottom = 822.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Item-Info" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=2037926138 node_paths=PackedStringArray("item_name", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label", "price_label", "mod_parent", "mod_1_desc", "mod_2_desc")]
+layout_mode = 2
+alignment = 1
 script = ExtResource("36_8ryol")
-item_name = NodePath("../Item-Name")
+item_name = NodePath("../../Item-Name")
 atk_label = NodePath("ATK-Label/Atk-Number")
 acc_label = NodePath("ACC-Label/Acc-Number")
 speed_label = NodePath("SPD-Label/Spd-Number")
@@ -1035,8 +1065,11 @@ mana_label = NodePath("MANA-Label/Mana-Number")
 dodge_label = NodePath("DODGE-Label/Dodge-Number")
 armor_label = NodePath("Armor-Label/Armor-Number")
 price_label = NodePath("Price-Label/Price-Number")
+mod_parent = NodePath("../Item-Mod")
+mod_1_desc = NodePath("../Item-Mod/Mod-Desc-1")
+mod_2_desc = NodePath("../Item-Mod/Mod-Desc-2")
 
-[node name="ATK-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=1551320300]
+[node name="ATK-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1551320300]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1046,7 +1079,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Atk-Number" type="Label" parent="Control/Item-Info/ATK-Label" unique_id=1296769562]
+[node name="Atk-Number" type="Label" parent="Control/HBoxContainer/Item-Info/ATK-Label" unique_id=1296769562]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1064,7 +1097,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ACC-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=1530778581]
+[node name="ACC-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1530778581]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1074,7 +1107,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Acc-Number" type="Label" parent="Control/Item-Info/ACC-Label" unique_id=1694028653]
+[node name="Acc-Number" type="Label" parent="Control/HBoxContainer/Item-Info/ACC-Label" unique_id=1694028653]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1092,7 +1125,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SPD-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=1467437634]
+[node name="SPD-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1467437634]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1102,7 +1135,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spd-Number" type="Label" parent="Control/Item-Info/SPD-Label" unique_id=895378916]
+[node name="Spd-Number" type="Label" parent="Control/HBoxContainer/Item-Info/SPD-Label" unique_id=895378916]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1120,7 +1153,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LIFE-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=311833770]
+[node name="LIFE-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=311833770]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1130,7 +1163,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Life-Number" type="Label" parent="Control/Item-Info/LIFE-Label" unique_id=1049827832]
+[node name="Life-Number" type="Label" parent="Control/HBoxContainer/Item-Info/LIFE-Label" unique_id=1049827832]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1148,7 +1181,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MANA-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=1855496214]
+[node name="MANA-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1855496214]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1158,7 +1191,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Mana-Number" type="Label" parent="Control/Item-Info/MANA-Label" unique_id=468536233]
+[node name="Mana-Number" type="Label" parent="Control/HBoxContainer/Item-Info/MANA-Label" unique_id=468536233]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1176,7 +1209,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DODGE-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=1490422198]
+[node name="DODGE-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1490422198]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1186,7 +1219,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dodge-Number" type="Label" parent="Control/Item-Info/DODGE-Label" unique_id=1075957596]
+[node name="Dodge-Number" type="Label" parent="Control/HBoxContainer/Item-Info/DODGE-Label" unique_id=1075957596]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1204,7 +1237,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Armor-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=1337323628]
+[node name="Armor-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1337323628]
 custom_minimum_size = Vector2(100, 30)
 clip_contents = false
 layout_mode = 2
@@ -1214,7 +1247,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Armor-Number" type="Label" parent="Control/Item-Info/Armor-Label" unique_id=696655582]
+[node name="Armor-Number" type="Label" parent="Control/HBoxContainer/Item-Info/Armor-Label" unique_id=696655582]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1232,7 +1265,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Price-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=660069481]
+[node name="Price-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=660069481]
 custom_minimum_size = Vector2(100, 30)
 clip_contents = false
 layout_mode = 2
@@ -1242,7 +1275,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Price-Number" type="Label" parent="Control/Item-Info/Price-Label" unique_id=573133218]
+[node name="Price-Number" type="Label" parent="Control/HBoxContainer/Item-Info/Price-Label" unique_id=573133218]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1260,17 +1293,29 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-Name" type="Label" parent="Control" unique_id=816860782]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 0
-offset_left = 222.0
-offset_top = 488.0
-offset_right = 422.0
-offset_bottom = 533.0
-theme_override_font_sizes/font_size = 32
-text = "Item Name"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Item-Mod" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=1349806714]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 5)
+theme_override_constants/separation = 30
+
+[node name="Mod-Desc-1" type="RichTextLabel" parent="Control/HBoxContainer/Item-Mod" unique_id=767667079]
+custom_minimum_size = Vector2(250, 90)
+clip_contents = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4vhag")
+bbcode_enabled = true
+text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]This is the very long description for item mod"
+scroll_active = false
+
+[node name="Mod-Desc-2" type="RichTextLabel" parent="Control/HBoxContainer/Item-Mod" unique_id=866653460]
+custom_minimum_size = Vector2(250, 90)
+clip_contents = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4vhag")
+bbcode_enabled = true
+text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]This is the very long description for item mod"
+scroll_active = false
 
 [node name="Coin-Hud" type="RichTextLabel" parent="Control" unique_id=205655620]
 custom_minimum_size = Vector2(100, 0)
