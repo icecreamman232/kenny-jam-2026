@@ -62,9 +62,11 @@ func _apply_random_stat_to_item(item:ItemData, round_number:int):
 	elif round_number > 15:
 		rand_rarity = get_random_rarities(3, LATE_GAME_2_RARITY_WEIGHTS)
 	
+	var chosen_rarity:ItemData.ItemRarity = rand_rarity.pick_random()
+	item.rarity = chosen_rarity
 
 	for idx in range(item.stats.size()):
-		var stat_value := _get_random_stat_value(rand_rarity[0])
+		var stat_value := _get_random_stat_value(chosen_rarity)
 		match item.stats[idx]:
 			StatController.StatType.ATTACK:
 				item.attack = _get_random_attack(stat_value)
@@ -80,8 +82,6 @@ func _apply_random_stat_to_item(item:ItemData, round_number:int):
 				item.dodge = _get_random_dodge(stat_value)
 			StatController.StatType.ARMOR:
 				item.armor = _get_random_armor(stat_value)
-
-
 
 
 ## weights order must match Rarity enum: [common, uncommon, rare, epic, legendary]

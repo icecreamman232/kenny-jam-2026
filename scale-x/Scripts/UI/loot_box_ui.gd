@@ -34,6 +34,7 @@ func _input(event:InputEvent) -> void:
 			if _dragging:
 				if _inspecting_cell != null and _inspecting_cell.assigned_item != null:
 					context_cursor.texture = _inspecting_cell.assigned_item.item_icon
+					context_cursor.modulate = _inspecting_cell.assigned_item_icon.self_modulate
 					_drag_offset = _inspecting_cell.global_position - get_global_mouse_position()
 					context_cursor.global_position = _get_dragged_position()
 					_inspecting_cell.handle_drag(_dragging)
