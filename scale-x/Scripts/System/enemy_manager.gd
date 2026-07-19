@@ -11,16 +11,26 @@ func get_enemy(round_number:int) -> EnemyData:
 	
 	
 func _scale_up_enemy_stat(source:EnemyData, round_number:int):
-	var rand_scale_value := randi_range(round_number - 2, round_number)
+	var min_scale_value := round_number - 2
+	if min_scale_value < 0:
+		min_scale_value = 1
+	var max_scale_value := round_number - 1
+	if max_scale_value < 0 or max_scale_value < min_scale_value:
+		max_scale_value = min_scale_value
+		
+	
+	var rand_scale_value := randi_range(min_scale_value, max_scale_value)
 	if source.attack != 0:
-		source.attack += rand_scale_value
+		source.attack += roundi(rand_scale_value * LootManager.ATK_FACTOR)
+	if source.accuracy != 0:
+		source.accuracy += roundi(rand_scale_value * LootManager.ACC_FACTOR)		
 	if source.speed != 0:
-		source.speed += rand_scale_value
+		source.speed += roundi(rand_scale_value * LootManager.SPD_FACTOR)
 	if source.life != 0:
-		source.life += rand_scale_value
+		source.life += roundi(rand_scale_value * LootManager.LIFE_FACTOR)
 	if source.mana != 0:
-		source.mana += rand_scale_value						
+		source.mana += roundi(rand_scale_value * LootManager.MANA_FACTOR)						
 	if source.dodge != 0:
-		source.dodge += rand_scale_value		
+		source.dodge += roundi(rand_scale_value * LootManager.DODGE_FACTOR)		
 	if source.armor != 0:
-		source.armor += rand_scale_value				
+		source.armor += roundi(rand_scale_value * LootManager.ARMOR_FACTOR)				

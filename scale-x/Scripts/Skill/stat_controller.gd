@@ -3,6 +3,7 @@ class_name StatController extends Node
 enum StatType
 {
 	ATTACK,
+	ACCURACY,
 	SPEED,
 	LIFE,
 	MANA,
@@ -23,5 +24,3 @@ func get_final(stat:StatType) -> int: return final_stats[stat]
 func set_base(stat:StatType, value:int): base_stats[stat] = value
 
 func set_final(stat:StatType, value:int): final_stats[stat] = value
-
-

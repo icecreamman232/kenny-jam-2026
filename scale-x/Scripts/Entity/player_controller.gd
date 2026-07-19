@@ -4,6 +4,7 @@ class_name PlayerController extends EntityController
 @export var avatar:PlayerAvatar
 @export_group("Stats")
 @export var attack:int
+@export var accuracy:int
 @export var speed:int
 @export var life:int
 @export var mana:int
@@ -31,10 +32,17 @@ func play_attack_tween():
 	await tween.finished
 	
 	
-func deal_damage_to_enemy(enemy_controller: EnemyController):
-	enemy_controller.health.take_damage(
-		stat.get_base(StatController.StatType.ATTACK) 
-		+ stat.get_final(StatController.StatType.ATTACK))
+func deal_damage_to_enemy(enemy_controller: EnemyController) -> void:
+	var player_acc := stat.get_final(StatController.StatType.ACCURACY)
+	var rolled_acc := randi_range(0, player_acc)
+	
+	var enemy_dodge:= enemy_controller.stat.get_final(StatController.StatType.DODGE)
+	var rolled_enemy_dodge:= randi_range(0, enemy_dodge)
+	if rolled_enemy_dodge > rolled_acc:
+		await Helper.wait_for_frames(1)
+		# Attack missed 
+		return
+	enemy_controller.health.take_damage(stat.get_final(StatController.StatType.ATTACK))
 
 
 func _add_item(index:int, item:ItemData):
@@ -46,6 +54,7 @@ func _add_item(index:int, item:ItemData):
 
 func _reset_stats():
 	attack = 0
+	accuracy = 0
 	speed = 0
 	life = 0
 	mana = 0
@@ -55,6 +64,7 @@ func _reset_stats():
 	
 func _add_stat_from_item(item:ItemData):
 	var new_attack := stat.get_final(StatController.StatType.ATTACK)
+	var new_accuracy := stat.get_final(StatController.StatType.ACCURACY)
 	var new_speed := stat.get_final(StatController.StatType.SPEED)
 	var new_life := stat.get_final(StatController.StatType.LIFE)
 	var new_mana := stat.get_final(StatController.StatType.MANA)
@@ -62,6 +72,7 @@ func _add_stat_from_item(item:ItemData):
 	var new_armor := stat.get_final(StatController.StatType.ARMOR)
 	
 	new_attack += item.attack
+	new_accuracy += item.accuracy
 	new_speed += item.speed
 	new_life += item.life
 	new_mana += item.mana
@@ -69,6 +80,7 @@ func _add_stat_from_item(item:ItemData):
 	new_armor += item.armor
 	
 	stat.set_final(StatController.StatType.ATTACK, new_attack)
+	stat.set_final(StatController.StatType.ACCURACY, new_attack)
 	stat.set_final(StatController.StatType.SPEED, new_speed)
 	stat.set_final(StatController.StatType.LIFE, new_life)
 	stat.set_final(StatController.StatType.MANA, new_mana)

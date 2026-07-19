@@ -10,6 +10,7 @@ func handle_drag(is_dragging:bool):
 func assign_item(item:ItemData):
 	assigned_item = item
 	assigned_item_icon.texture = item.item_icon
+	assigned_item_icon.self_modulate = Helper.get_color_by_rarity(item.rarity)	
 	
 	
 func unassign_item():

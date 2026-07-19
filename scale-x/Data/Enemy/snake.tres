@@ -12,6 +12,7 @@ script = ExtResource("2_3a4hq")
 enemy_name = "Snake"
 enemy_icon = SubResource("AtlasTexture_eoorc")
 attack = 1
+accuracy = 1
 speed = 3
 life = 2
 dodge = 2

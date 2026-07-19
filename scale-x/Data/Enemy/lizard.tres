@@ -12,6 +12,7 @@ script = ExtResource("2_sxcom")
 enemy_name = "Lizard"
 enemy_icon = SubResource("AtlasTexture_v0n3h")
 attack = 3
+accuracy = 2
 speed = 1
 life = 3
 armor = 2

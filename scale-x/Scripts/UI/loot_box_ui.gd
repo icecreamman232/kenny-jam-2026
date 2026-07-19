@@ -6,7 +6,7 @@ class_name LootBoxUI extends Control
 @export var context_cursor:TextureRect
 @export var loot_box_cell_ui:Array[LootBoxCellUi]
 
-
+var _last_round_number:int = 0
 var _inspecting_cell:LootBoxCellUi
 var _dragging:bool = false
 var _drag_offset:Vector2 = Vector2.ZERO
@@ -58,9 +58,12 @@ func _input(event:InputEvent) -> void:
 		if _inspecting_cell != null:
 			context_cursor.global_position = _get_dragged_position()
 
+func set_round_number(round_number:int):
+	_last_round_number = round_number
+
 
 func show_loot():
-	var loot_items:= loot_manager.get_items()
+	var loot_items:= loot_manager.get_items(_last_round_number)
 	for idx in range(loot_items.size()):
 		loot_box_cell_ui[idx].assign_item(loot_items[idx])
 

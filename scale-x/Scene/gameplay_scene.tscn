@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://bhom8k7ua87t5" path="res://Scripts/UI/player_grid_ui.gd" id="11_sj3gg"]
 [ext_resource type="Script" uid="uid://bxv0q5cl01wwu" path="res://Scripts/UI/player_life_bar.gd" id="12_jy6v0"]
 [ext_resource type="Script" uid="uid://cbckcvgw6y8lx" path="res://Scripts/Entity/enemy_health.gd" id="12_sxlwj"]
+[ext_resource type="Resource" uid="uid://b31ajbixxgev" path="res://Data/Armors/knight_plate.tres" id="13_yekpa"]
 [ext_resource type="Script" uid="uid://cxlrj42seind1" path="res://Scripts/UI/loot_box_ui.gd" id="14_r66ao"]
 [ext_resource type="Script" uid="uid://bcue5hmq4r4c6" path="res://Scripts/Skill/player_stat_controller.gd" id="15_f3rod"]
 [ext_resource type="Script" uid="uid://dc1fsfq7a5idj" path="res://Scripts/UI/loot_box_cell_ui.gd" id="16_x02nk"]
@@ -69,13 +70,14 @@ enemy_data_list = Array[ExtResource("3_jkpb7")]([ExtResource("4_i5dkc"), ExtReso
 [node name="Loot Manager" type="Node" parent="." unique_id=165805778]
 script = ExtResource("1_hl3nj")
 weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("4_5dnhx")])
-armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5")])
+armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5"), ExtResource("13_yekpa")])
 
 [node name="Player" type="Node" parent="." unique_id=1886213182 node_paths=PackedStringArray("stat", "avatar", "health")]
 script = ExtResource("7_q0kv5")
 stat = NodePath("Stat")
 avatar = NodePath("../Control/Player-Character-Avatar")
 attack = 1
+accuracy = 1
 speed = 1
 life = 3
 health = NodePath("Health")
@@ -456,7 +458,7 @@ theme_override_styles/pressed = ExtResource("32_ajygt")
 theme_override_styles/hover = ExtResource("33_6gil7")
 text = "Fight"
 
-[node name="Player-Info" type="VBoxContainer" parent="Control" unique_id=700043178 node_paths=PackedStringArray("atk_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
+[node name="Player-Info" type="VBoxContainer" parent="Control" unique_id=700043178 node_paths=PackedStringArray("atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
 layout_mode = 0
 offset_left = 238.0
 offset_top = 122.0
@@ -464,6 +466,7 @@ offset_right = 338.0
 offset_bottom = 322.0
 script = ExtResource("34_ajygt")
 atk_label = NodePath("ATK-Label/Atk-Number")
+acc_label = NodePath("ACC-Label/Acc-Number")
 speed_label = NodePath("SPD-Label/Spd-Number")
 life_label = NodePath("LIFE-Label/Life-Number")
 mana_label = NodePath("MANA-Label/Mana-Number")
@@ -481,6 +484,34 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Atk-Number" type="Label" parent="Control/Player-Info/ATK-Label" unique_id=1484736127]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ACC-Label" type="RichTextLabel" parent="Control/Player-Info" unique_id=675045881]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=24]uid://bo6l5im10b5j4[/img] ACC"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Acc-Number" type="Label" parent="Control/Player-Info/ACC-Label" unique_id=1842073463]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -638,7 +669,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Enemy-Info" type="VBoxContainer" parent="Control" unique_id=234193769 node_paths=PackedStringArray("atk_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
+[node name="Enemy-Info" type="VBoxContainer" parent="Control" unique_id=234193769 node_paths=PackedStringArray("atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
 layout_mode = 0
 offset_left = 1221.0
 offset_top = 122.0
@@ -646,6 +677,7 @@ offset_right = 1321.0
 offset_bottom = 322.0
 script = ExtResource("35_6gil7")
 atk_label = NodePath("ATK-Label/Atk-Number")
+acc_label = NodePath("ACC-Label/Acc-Number")
 speed_label = NodePath("SPD-Label/Spd-Number")
 life_label = NodePath("LIFE-Label/Life-Number")
 mana_label = NodePath("MANA-Label/Mana-Number")
@@ -663,6 +695,34 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Atk-Number" type="Label" parent="Control/Enemy-Info/ATK-Label" unique_id=351000560]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ACC-Label" type="RichTextLabel" parent="Control/Enemy-Info" unique_id=419407342]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=24]uid://bo6l5im10b5j4[/img]ATK"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Acc-Number" type="Label" parent="Control/Enemy-Info/ACC-Label" unique_id=1633755879]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -820,7 +880,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-Info" type="VBoxContainer" parent="Control" unique_id=2037926138 node_paths=PackedStringArray("item_name", "atk_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
+[node name="Item-Info" type="VBoxContainer" parent="Control" unique_id=2037926138 node_paths=PackedStringArray("item_name", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
 layout_mode = 0
 offset_left = 238.0
 offset_top = 548.0
@@ -829,6 +889,7 @@ offset_bottom = 748.0
 script = ExtResource("36_8ryol")
 item_name = NodePath("../Item-Name")
 atk_label = NodePath("ATK-Label/Atk-Number")
+acc_label = NodePath("ACC-Label/Acc-Number")
 speed_label = NodePath("SPD-Label/Spd-Number")
 life_label = NodePath("LIFE-Label/Life-Number")
 mana_label = NodePath("MANA-Label/Mana-Number")
@@ -846,6 +907,34 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Atk-Number" type="Label" parent="Control/Item-Info/ATK-Label" unique_id=1296769562]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ACC-Label" type="RichTextLabel" parent="Control/Item-Info" unique_id=1530778581]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=24]uid://bo6l5im10b5j4[/img]ATK"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Acc-Number" type="Label" parent="Control/Item-Info/ACC-Label" unique_id=1694028653]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6

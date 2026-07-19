@@ -4,6 +4,7 @@ class_name EnemyStatController extends StatController
 
 func initialize():
 	base_stats[StatType.ATTACK] = enemy_controller.enemy_data.attack
+	base_stats[StatType.ACCURACY] = enemy_controller.enemy_data.accuracy
 	base_stats[StatType.SPEED] = enemy_controller.enemy_data.speed
 	base_stats[StatType.LIFE] = enemy_controller.enemy_data.life
 	base_stats[StatType.MANA] = enemy_controller.enemy_data.mana
@@ -11,6 +12,7 @@ func initialize():
 	base_stats[StatType.ARMOR] = enemy_controller.enemy_data.armor
 	
 	final_stats[StatType.ATTACK] = base_stats[StatType.ATTACK]
+	final_stats[StatType.ACCURACY] = base_stats[StatType.ACCURACY]
 	final_stats[StatType.SPEED] = base_stats[StatType.SPEED]
 	final_stats[StatType.LIFE] = base_stats[StatType.LIFE]
 	final_stats[StatType.MANA] = base_stats[StatType.MANA]

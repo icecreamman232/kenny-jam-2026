@@ -4,6 +4,7 @@ class_name EnemyData extends Resource
 @export var enemy_icon:Texture2D
 @export_group("Stats")
 @export var attack:int
+@export var accuracy:int
 @export var speed:int
 @export var life:int
 @export var mana:int

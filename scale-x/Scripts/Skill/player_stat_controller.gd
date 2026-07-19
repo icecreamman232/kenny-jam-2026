@@ -4,6 +4,7 @@ class_name PlayerStatController extends StatController
 
 func initialize():
 	base_stats[StatType.ATTACK] = player_controller.attack
+	base_stats[StatType.ACCURACY] = player_controller.accuracy
 	base_stats[StatType.SPEED] = player_controller.speed
 	base_stats[StatType.LIFE] = player_controller.life
 	base_stats[StatType.MANA] = player_controller.mana
@@ -11,6 +12,7 @@ func initialize():
 	base_stats[StatType.ARMOR] = player_controller.armor
 	
 	final_stats[StatType.ATTACK] = base_stats[StatType.ATTACK]
+	final_stats[StatType.ACCURACY] = base_stats[StatType.ACCURACY]
 	final_stats[StatType.SPEED] = base_stats[StatType.SPEED]
 	final_stats[StatType.LIFE] = base_stats[StatType.LIFE]
 	final_stats[StatType.MANA] = base_stats[StatType.MANA]

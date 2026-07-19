@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Constant="*uid://butuy3npujtqr"
 EventBus="*uid://bo7hexb6jkpln"
 Helper="*uid://odhxqwo81xjj"
 
