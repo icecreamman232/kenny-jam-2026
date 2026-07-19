@@ -30,6 +30,7 @@ func _exit_tree() ->void:
 
 
 func _input(event:InputEvent) -> void:
+	if not InputManager.is_enabled: return	
 	if not visible: return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -100,13 +101,15 @@ func _on_reroll_button_pressed() -> void:
 	await Helper.wait_for_frames(3)	
 
 		
-func _on_mouse_entered_cell(cell:LootBoxCellUi):
+func _on_mouse_entered_cell(cell:LootBoxCellUi) -> void:
+	if not InputManager.is_enabled: return
 	_inspecting_cell = cell
 	_inspecting_cell.self_modulate = Color(0.957, 0.706, 0.106)
 	EventBus.on_hover_on_item.emit(_inspecting_cell.assigned_item)
 	
 	
 func _on_mouse_exited_cell(cell:LootBoxCellUi) -> void:
+	if not InputManager.is_enabled: return
 	if _inspecting_cell != cell: return
 	_inspecting_cell.self_modulate = Color(1.0, 0.914, 0.769)
 	EventBus.on_hover_on_item.emit(null)

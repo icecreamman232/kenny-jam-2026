@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+InputManager="*uid://cubirnb1wfa30"
 Constant="*uid://butuy3npujtqr"
 EventBus="*uid://bo7hexb6jkpln"
 Helper="*uid://odhxqwo81xjj"

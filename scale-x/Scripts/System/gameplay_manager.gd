@@ -1,29 +1,36 @@
 class_name GameplayManager extends Node
 
 @export var round_number:int = 1
+@export var round_label:RichTextLabel
 @export var player_controller:PlayerController
 @export var enemy_controller:EnemyController
 @export var loot_box_ui:LootBoxUI
 @export var enemy_manager:EnemyManager
 
 func _ready():
+	InputManager.set_enabled(false)
 	EventBus.on_fight_started.connect(_on_fight_started)
 	EventBus.on_player_dead.connect(_on_player_dead)
 	EventBus.on_enemy_dead.connect(_on_enemy_dead)
 	await Helper.wait_for_frames(5)
 	enemy_controller.assign_gameplay_manager(self)
 	await initialize()
+	await Helper.wait_for_frames(3)
+	InputManager.set_enabled(true)
+
 
 func _exit_tree() -> void:
 	EventBus.on_fight_started.disconnect(_on_fight_started)
 	EventBus.on_player_dead.disconnect(_on_player_dead)
 	EventBus.on_enemy_dead.disconnect(_on_enemy_dead)
 	
+	
 func initialize():
 	player_controller.initialize()
 	_create_enemy()
 	await Helper.wait_for_frames(3)
 	loot_box_ui.set_round_number(round_number)
+	round_label.text = "Round " + str(round_number)
 	loot_box_ui.show_loot()	
 
 func _create_enemy():
@@ -31,21 +38,26 @@ func _create_enemy():
 	enemy_controller.initialize(enemy)	
 
 func _on_player_dead():
+	InputManager.set_enabled(false)
 	print("Player dead!!!")
 	print("====================================================================")
 	round_number = 1
 	player_controller.reset_player()
 	Helper.wait_for_frames(3)
 	loot_box_ui.set_round_number(round_number)
+	round_label.text = "Round " + str(round_number)
 	loot_box_ui.show_loot()
 	await Helper.wait_for_frames(3)
 	_create_enemy()
+	await Helper.wait_for_frames(3)
+	InputManager.set_enabled(true)
 	
 	
 func _on_enemy_dead():
 	print("Enemy is dead, next round")
 	round_number += 1
 	loot_box_ui.set_round_number(round_number)
+	round_label.text = "Round " + str(round_number)
 	player_controller.health.recover_full_life()
 	await Helper.wait_for_frames(3)
 	_create_enemy()
@@ -54,6 +66,7 @@ func _on_enemy_dead():
 		
 	
 func _on_fight_started() -> void:
+	InputManager.set_enabled(false)
 	# Trigger all modifiers before starting fight
 	var mod_controller:ModifierController = IngameDataManager.modifier_controller
 	await mod_controller.trigger_modifiers()
@@ -80,7 +93,8 @@ func _on_fight_started() -> void:
 	EventBus.on_fight_end.emit()
 	
 	loot_box_ui.show_loot()
-	await Helper.wait_for_seconds(1)	
+	await Helper.wait_for_seconds(1)
+	InputManager.set_enabled(true)	
 		
 
 

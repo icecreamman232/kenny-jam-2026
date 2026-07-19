@@ -10,6 +10,7 @@ func get_modifier_description() -> String:
 func apply(cell:PlayerCellGridUi):
 	super.apply(cell)
 	var self_index:int = _owner_cell.grid_index
+	if self_index == 0 or self_index == 3 or self_index == 6: return
 	var left_index:int = self_index - 1
 	var player_grid:PlayerGridUi = IngameDataManager.player_grid
 	if player_grid.cell_grid[left_index].assigned_item != null:

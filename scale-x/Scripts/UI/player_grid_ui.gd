@@ -30,6 +30,7 @@ func _exit_tree() -> void:
 
 
 func _input(event:InputEvent) -> void:
+	if not InputManager.is_enabled: return
 	if not visible: return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -111,6 +112,7 @@ func request_drop_item(item:ItemData, coin_hud: CoinHud) ->bool:
 
 
 func _on_fight_button_pressed() -> void:
+	if not InputManager.is_enabled: return
 	if _is_fighting: return
 	EventBus.on_fight_started.emit()
 	_is_fighting = true
@@ -126,13 +128,15 @@ func _on_player_dead():
 		cell.unassign_item()
 	
 	
-func _on_mouse_entered_cell(cell:PlayerCellGridUi):
+func _on_mouse_entered_cell(cell:PlayerCellGridUi) -> void: 
+	if not InputManager.is_enabled: return
 	_hovered_cell = cell
 	_hovered_cell.self_modulate = Color(0.957, 0.706, 0.106)
 	EventBus.on_hover_on_item.emit(_hovered_cell.assigned_item)
 
 	
 func _on_mouse_exited_cell(cell:PlayerCellGridUi) -> void:
+	if not InputManager.is_enabled: return
 	if _hovered_cell != cell: return
 	_hovered_cell.self_modulate = Color(1.0, 0.914, 0.769)
 	_hovered_cell = null

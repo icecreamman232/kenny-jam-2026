@@ -4,6 +4,8 @@ enum ModifierId
 {
 	MultiHand,
 	LeftSwing,
+	RightSwing,
+	LoneWolf,
 }
 
 

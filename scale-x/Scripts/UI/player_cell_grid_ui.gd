@@ -24,7 +24,9 @@ func assign_item(item:ItemData) -> void:
 	for mod in item.modifier_list:
 		mod.apply(self)
 		mod_controller.add_modifier(mod)
-	
+		
+	EventBus.on_add_item_to_cell.emit(grid_index, item)
+
 
 func unassign_item() -> void:
 	if assigned_item == null: return
@@ -34,6 +36,9 @@ func unassign_item() -> void:
 		mod.remove()
 	
 	(item_icon.material as ShaderMaterial).set_shader_parameter("outline_thickness", 0)
+	
+	EventBus.on_remove_item_from_cell.emit(grid_index, assigned_item)
+	
 	assigned_item = null
 	item_icon.self_modulate = Color(1.0, 0.914, 0.769)
 	item_icon.texture = null
