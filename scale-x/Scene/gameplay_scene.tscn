@@ -1347,6 +1347,7 @@ vertical_alignment = 1
 script = ExtResource("38_lra8k")
 
 [node name="Death-Screen" type="TextureRect" parent="." unique_id=1307319705 node_paths=PackedStringArray("gameplay_manager", "restart_button", "quit_button")]
+visible = false
 self_modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.8901961)
 anchors_preset = 15
 anchor_right = 1.0

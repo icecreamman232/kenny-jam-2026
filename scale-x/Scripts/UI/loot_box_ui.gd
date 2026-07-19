@@ -52,10 +52,12 @@ func _input(event:InputEvent) -> void:
 						context_cursor.hide()
 						_inspecting_cell.unassign_item()
 						_inspecting_cell.handle_drag(_dragging)
+						_inspecting_cell.self_modulate = Color(1.0, 0.914, 0.769)
 						_inspecting_cell = null
 					else:
 						context_cursor.hide()
 						_inspecting_cell.handle_drag(_dragging)
+						_inspecting_cell.self_modulate = Color(1.0, 0.914, 0.769)
 						_inspecting_cell = null
 					get_viewport().set_input_as_handled()	
 					

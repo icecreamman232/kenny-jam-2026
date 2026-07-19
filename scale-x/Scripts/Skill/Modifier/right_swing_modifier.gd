@@ -31,6 +31,6 @@ func remove() -> void:
 	if player_grid.cell_grid[right_index].assigned_item != null:
 		if ItemData.is_weapon(player_grid.cell_grid[right_index].assigned_item):
 			player_grid.cell_grid[right_index].assigned_item.attack -= 1
-			(IngameDataManager.text_manager as TextManager).show_text("-1 Atk", player_grid.cell_grid[right_index].global_position)
+			(IngameDataManager.text_manager as TextManager).show_text("-1 Atk", player_grid.cell_grid[right_index].global_position, Color.RED)
 			AudioManager.play_sfx(SfxContainer.SfxID.NEGATIVE_MODIFIER)
 			EventBus.on_recalculate_player_stat.emit()	

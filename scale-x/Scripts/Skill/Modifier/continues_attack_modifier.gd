@@ -39,4 +39,3 @@ func _on_enemy_attack() -> void:
 	var chance:float = randf_range(0, 100)
 	if chance >= 30: return
 	_owner_cell.unassign_item()
-		
