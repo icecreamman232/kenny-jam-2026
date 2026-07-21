@@ -23,6 +23,7 @@ func recover_full_life():
 func take_damage(damage:int): 
 	var armor := (_controller.stat as StatController).get_final(StatController.StatType.ARMOR)
 	var final_damage := damage - armor
+	if final_damage < 0: final_damage = 0
 	current_life -= final_damage
 	if current_life < 0: current_life = 0
 	update_life_bar()

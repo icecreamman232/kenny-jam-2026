@@ -154,8 +154,6 @@ health = NodePath("Health")
 [node name="Health" type="Node" parent="Enemy" unique_id=1429246978 node_paths=PackedStringArray("avatar")]
 script = ExtResource("12_sxlwj")
 avatar = NodePath("../../Control/Enemy-Character-Avatar")
-current_life = null
-max_life = null
 
 [node name="Stat" type="Node" parent="Enemy" unique_id=440824807 node_paths=PackedStringArray("enemy_controller")]
 script = ExtResource("18_ecq28")

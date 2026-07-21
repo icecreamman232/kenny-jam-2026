@@ -9,7 +9,7 @@ func _init():
 func get_modifier_name() ->String: return "Continues Attack"
 
 func get_modifier_description() -> String:
-	return "+1 attack after each round. Have 10% chance to be destroyed on getting attacked"
+	return "+1 attack after each round. Have 65% chance to be destroyed on getting attacked"
 
 
 func apply(cell:PlayerCellGridUi):
@@ -37,5 +37,5 @@ func _on_fight_end():
 	
 func _on_enemy_attack() -> void:
 	var chance:float = randf_range(0, 100)
-	if chance >= 30: return
+	if chance >= 65: return
 	_owner_cell.unassign_item()
