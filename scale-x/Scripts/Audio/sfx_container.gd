@@ -7,6 +7,8 @@ enum SfxID
 	NEGATIVE_MODIFIER,
 	SWORD_HIT_1,
 	SWORD_HIT_2,
+	MONSTER_ATK_1,
+	MONSTER_ATK_2,
 }
 
 @export var sfx_list:Dictionary[SfxID, AudioStream] = {}

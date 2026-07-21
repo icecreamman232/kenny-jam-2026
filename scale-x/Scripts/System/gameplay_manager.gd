@@ -96,9 +96,12 @@ func _on_fight_started() -> void:
 		if enemy_spd < 1: enemy_spd = 1
 		var enemy_number_atk:= randi_range(1, enemy_spd)
 		for attemp in enemy_number_atk:
+			var rand_value:= randi_range(0, 1)
+			AudioManager.play_sfx(SfxContainer.SfxID.MONSTER_ATK_1 if rand_value == 0 else SfxContainer.SfxID.MONSTER_ATK_2)
+			anim_on_player.play(SLASH_ANIM_NAME)		
 			await enemy_controller.play_attack_tween()
 			await enemy_controller.deal_damage_to_player(player_controller)
-			anim_on_player.play(SLASH_ANIM_NAME)
+			
 			EventBus.on_enemy_attack.emit()
 		
 	await Helper.wait_for_frames(1)
