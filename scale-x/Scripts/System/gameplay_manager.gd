@@ -6,6 +6,11 @@ class_name GameplayManager extends Node
 @export var enemy_controller:EnemyController
 @export var loot_box_ui:LootBoxUI
 @export var enemy_manager:EnemyManager
+@export_group("Animations")
+@export var anim_on_player:AnimatedSprite2D
+@export var anim_on_enemy:AnimatedSprite2D
+
+const SLASH_ANIM_NAME:String = "slash"
 
 func _ready():
 	InputManager.set_enabled(false)
@@ -81,6 +86,7 @@ func _on_fight_started() -> void:
 	for attempt in number_attack:
 		var rand_value:= randi_range(0, 1)
 		AudioManager.play_sfx(SfxContainer.SfxID.SWORD_HIT_1 if rand_value == 0 else SfxContainer.SfxID.SWORD_HIT_2)
+		anim_on_enemy.play(SLASH_ANIM_NAME)
 		await player_controller.play_attack_tween()
 		await player_controller.deal_damage_to_enemy(enemy_controller)
 	
@@ -92,6 +98,7 @@ func _on_fight_started() -> void:
 		for attemp in enemy_number_atk:
 			await enemy_controller.play_attack_tween()
 			await enemy_controller.deal_damage_to_player(player_controller)
+			anim_on_player.play(SLASH_ANIM_NAME)
 			EventBus.on_enemy_attack.emit()
 		
 	await Helper.wait_for_frames(1)

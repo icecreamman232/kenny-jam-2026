@@ -53,6 +53,7 @@
 [ext_resource type="Script" uid="uid://be138vgmprcoc" path="res://Scripts/UI/coin_hud.gd" id="38_lra8k"]
 [ext_resource type="PackedScene" uid="uid://d24ws1qci7x0w" path="res://Scene/buble_text.tscn" id="41_weo37"]
 [ext_resource type="Script" uid="uid://kwiamlij7gjw" path="res://Scripts/UI/game_over_screen.gd" id="53_4vhag"]
+[ext_resource type="SpriteFrames" uid="uid://cxmd5lntfegws" path="res://Arts/Animations/slash-effect-anim-frames.tres" id="54_oshq5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -100,13 +101,15 @@ border_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
 
 [node name="Input Manager" type="Node" parent="." unique_id=1212464894]
 
-[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "loot_box_ui", "enemy_manager")]
+[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "loot_box_ui", "enemy_manager", "anim_on_player", "anim_on_enemy")]
 script = ExtResource("1_mxoqm")
 round_label = NodePath("../Control/Round-Label")
 player_controller = NodePath("../Player")
 enemy_controller = NodePath("../Enemy")
 loot_box_ui = NodePath("../Control/Loot-Box")
 enemy_manager = NodePath("../Enemy Manager")
+anim_on_player = NodePath("../Slash-Animation-On-Player")
+anim_on_enemy = NodePath("../Slash-Animation-On-Enemy")
 
 [node name="Enemy Manager" type="Node" parent="." unique_id=1630896653]
 script = ExtResource("2_bm225")
@@ -1431,3 +1434,20 @@ theme_override_styles/normal = ExtResource("31_l5t21")
 theme_override_styles/pressed = ExtResource("32_ajygt")
 theme_override_styles/hover = ExtResource("33_6gil7")
 text = "Menu"
+
+[node name="Slash-Animation-On-Enemy" type="AnimatedSprite2D" parent="." unique_id=1703249185]
+position = Vector2(1103, 189)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("54_oshq5")
+animation = &"slash"
+frame = 4
+frame_progress = 1.0
+
+[node name="Slash-Animation-On-Player" type="AnimatedSprite2D" parent="." unique_id=900842074]
+position = Vector2(502, 191)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("54_oshq5")
+animation = &"slash"
+frame = 4
+frame_progress = 1.0
+flip_h = true
