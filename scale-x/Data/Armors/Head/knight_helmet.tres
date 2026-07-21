@@ -8,4 +8,5 @@ script = ExtResource("1_l47fo")
 item_name = "Knight Helmet"
 item_icon = ExtResource("1_v3qfo")
 stats = Array[int]([3, 6])
+modifier_pool = Array[int]([3, 6])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

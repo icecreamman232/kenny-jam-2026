@@ -13,5 +13,5 @@ category = 1
 item_name = "Swordman Top"
 item_icon = SubResource("AtlasTexture_wjr3u")
 stats = Array[int]([3, 1])
-modifier_pool = Array[int]([3])
+modifier_pool = Array[int]([3, 6])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

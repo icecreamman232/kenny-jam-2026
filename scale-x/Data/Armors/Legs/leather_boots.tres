@@ -13,4 +13,5 @@ category = 2
 item_name = "Leather Boots"
 item_icon = SubResource("AtlasTexture_el5fe")
 stats = Array[int]([2, 5])
+modifier_pool = Array[int]([3, 6])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

@@ -8,6 +8,7 @@ enum ModifierId
 	LoneWolf,
 	ContinuesAttack,
 	SpearHead,
+	Eater,
 }
 
 

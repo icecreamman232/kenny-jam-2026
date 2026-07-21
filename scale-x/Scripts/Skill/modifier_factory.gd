@@ -8,6 +8,8 @@ func create_modifier(modifier_id:Modifier.ModifierId) ->Modifier:
 		Modifier.ModifierId.LoneWolf: return LoneWolfModifier.new()
 		Modifier.ModifierId.ContinuesAttack: return ContinuesAttackModifier.new()
 		Modifier.ModifierId.SpearHead: return SpearHeadModifier.new()
+		Modifier.ModifierId.Eater: return EaterModifier.new()
+		
 		
 		_: return null
 	

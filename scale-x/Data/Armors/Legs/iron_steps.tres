@@ -13,4 +13,5 @@ category = 2
 item_name = "Iron Steps"
 item_icon = SubResource("AtlasTexture_wkn75")
 stats = Array[int]([3, 6])
+modifier_pool = Array[int]([3, 6])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

@@ -62,4 +62,5 @@ static func is_weapon(item:ItemData) -> bool:
 	or item.category == ItemCategory.DAGGER:
 		return true
 	return false
+	
 
