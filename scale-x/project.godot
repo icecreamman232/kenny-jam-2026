@@ -24,6 +24,7 @@ Helper="*uid://odhxqwo81xjj"
 IngameDataManager="*uid://dqjqxi7y0g6c1"
 ModifierFactory="*uid://c8gniyrl76mum"
 AudioManager="*uid://cokovhdvowhpf"
+EnemySkillFactory="*uid://bsmod63m5ruvu"
 
 [debug]
 

@@ -1,7 +1,7 @@
 extends Node
 
 const STARTING_COINS:int = 3
-const BASE_COIN_REWARD:int = 2
+const BASE_COIN_REWARD:int = 1
 
 const COMMON_ITEM_COLOR:Color = Color.WHITE
 const UNCOMMON_ITEM_COLOR:Color = Color(0.0, 0.435, 0.024)

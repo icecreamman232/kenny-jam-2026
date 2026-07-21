@@ -145,11 +145,12 @@ player_controller = NodePath("..")
 [node name="Modifier" type="Node" parent="Player" unique_id=136682804]
 script = ExtResource("17_yeb8m")
 
-[node name="Enemy" type="Node" parent="." unique_id=2046618817 node_paths=PackedStringArray("stat", "avatar", "health")]
+[node name="Enemy" type="Node" parent="." unique_id=2046618817 node_paths=PackedStringArray("stat", "avatar", "health", "enemy_pivot")]
 script = ExtResource("11_0fvd6")
 stat = NodePath("Stat")
 avatar = NodePath("../Control/Enemy-Character-Avatar")
 health = NodePath("Health")
+enemy_pivot = NodePath("../Control/Enemy-Pivot")
 
 [node name="Health" type="Node" parent="Enemy" unique_id=1429246978 node_paths=PackedStringArray("avatar")]
 script = ExtResource("12_sxlwj")
@@ -168,6 +169,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_2wjsh")
 expand_mode = 1
+
+[node name="Enemy-Pivot" type="Control" parent="Control" unique_id=320673975]
+anchors_preset = 0
+offset_left = 1095.0
+offset_top = 180.0
+offset_right = 1135.0
+offset_bottom = 220.0
 
 [node name="Round-Label" type="RichTextLabel" parent="Control" unique_id=1679552122]
 custom_minimum_size = Vector2(0, 100)
@@ -882,7 +890,7 @@ custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
 bbcode_enabled = true
-text = "[img=24]uid://bo6l5im10b5j4[/img]ATK"
+text = "[img=24]uid://bo6l5im10b5j4[/img]ACC"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1116,7 +1124,7 @@ custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
 bbcode_enabled = true
-text = "[img=24]uid://bo6l5im10b5j4[/img]ATK"
+text = "[img=24]uid://bo6l5im10b5j4[/img]ACC"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

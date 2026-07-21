@@ -126,7 +126,7 @@ func _on_fight_started() -> void:
 		
 	await Helper.wait_for_frames(1)
 	EventBus.on_fight_end.emit()
-	
+	await enemy_controller.trigger_skills()
 	loot_box_ui.show_loot()
 	await Helper.wait_for_frames(1)
 	InputManager.set_enabled(true)	

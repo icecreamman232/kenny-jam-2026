@@ -10,3 +10,5 @@ class_name EnemyData extends Resource
 @export var mana:int
 @export var dodge:int
 @export var armor:int
+@export_group("Skill Pool")
+@export var skill_pool:Array[String]

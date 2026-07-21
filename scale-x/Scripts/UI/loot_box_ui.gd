@@ -88,15 +88,15 @@ func _on_reroll_button_pressed() -> void:
 	if round_number <= Constant.EARLY_GAME_1_ROUND_NUMBER:
 		reroll_price = 1
 	elif round_number <= Constant.EARLY_GAME_2_ROUND_NUMBER:
-		reroll_price = 1
+		reroll_price = 2
 	elif round_number <= Constant.MID_GAME_1_ROUND_NUMBER:
 		reroll_price = 3
 	elif round_number <= Constant.MID_GAME_2_ROUND_NUMBER:
-		reroll_price = 4
-	elif round_number <= Constant.LATE_GAME_ROUND_NUMBER:
 		reroll_price = 5
+	elif round_number <= Constant.LATE_GAME_ROUND_NUMBER:
+		reroll_price = 8
 	elif round_number > Constant.LATE_GAME_ROUND_NUMBER:
-		reroll_price = 6	
+		reroll_price = 10	
 	
 	if coin_hud.current_coin < reroll_price: return
 		
