@@ -20,6 +20,7 @@ signal on_hover_on_item(item:ItemData)
 signal on_fight_started
 signal on_fight_end
 signal on_player_dead
+signal on_boss_appear
 signal update_player_info(player_stat_controller: PlayerStatController)
 signal on_add_item_to_cell(index:int, item:ItemData)
 signal on_remove_item_from_cell(index:int, item:ItemData)
