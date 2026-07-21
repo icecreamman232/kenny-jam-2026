@@ -9,6 +9,7 @@ enum SfxID
 	SWORD_HIT_2,
 	MONSTER_ATK_1,
 	MONSTER_ATK_2,
+	GAME_OVER,
 }
 
 @export var sfx_list:Dictionary[SfxID, AudioStream] = {}

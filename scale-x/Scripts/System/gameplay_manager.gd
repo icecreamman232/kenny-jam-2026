@@ -44,6 +44,7 @@ func _create_enemy():
 
 func _on_player_dead():
 	InputManager.set_enabled(false)
+	AudioManager.play_sfx(SfxContainer.SfxID.GAME_OVER)
 	print("Player dead!!!")
 	print("====================================================================")
 
