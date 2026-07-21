@@ -1319,7 +1319,8 @@ clip_contents = false
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4vhag")
 bbcode_enabled = true
-text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]This is the very long description for item mod"
+text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 attack after each round. Have 65% chance to be destroyed on getting attacked"
+fit_content = true
 scroll_active = false
 
 [node name="Mod-Desc-2" type="RichTextLabel" parent="Control/HBoxContainer/Item-Mod" unique_id=866653460]
@@ -1329,6 +1330,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_4vhag")
 bbcode_enabled = true
 text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]This is the very long description for item mod"
+fit_content = true
 scroll_active = false
 
 [node name="Coin-Hud" type="RichTextLabel" parent="Control" unique_id=205655620]

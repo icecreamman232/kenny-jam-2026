@@ -9,5 +9,5 @@ category = 6
 item_name = "Tiny Dagger"
 item_icon = ExtResource("1_qyjcr")
 stats = Array[int]([0, 1])
-modifier_pool = Array[int]([0, 1, 4])
+modifier_pool = Array[int]([0, 1, 2, 4, 5])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

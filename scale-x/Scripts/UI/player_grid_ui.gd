@@ -85,9 +85,12 @@ func _handle_right_click(event:InputEventMouseButton) -> void:
 		EventBus.on_remove_item.emit(_hovered_cell.grid_index)
 		await Helper.wait_for_frames(1)
 		_hovered_cell.unassign_item()
+		_hovered_cell.set_block(false)
 		
 
 func request_move_item(from_index:int, to_index:int) -> bool:
+	# Blocked cell cant be moved or swap
+	if cell_grid[from_index].is_blocked or cell_grid[to_index].is_blocked: return false
 	var item_from := cell_grid[from_index].assigned_item
 	var item_to := cell_grid[to_index].assigned_item
 	cell_grid[from_index].unassign_item()
@@ -102,7 +105,7 @@ func request_move_item(from_index:int, to_index:int) -> bool:
 
 func request_drop_item(item:ItemData, coin_hud: CoinHud) ->bool:
 	if _hovered_cell == null: return false
-	
+	if _hovered_cell.is_blocked: return false
 	var price_for_item := ItemData.get_price_for_item(item)
 	if coin_hud.current_coin < price_for_item: return false
 	
@@ -134,14 +137,17 @@ func _on_player_dead():
 	
 func _on_mouse_entered_cell(cell:PlayerCellGridUi) -> void: 
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
+	
 	_hovered_cell = cell
-	_hovered_cell.self_modulate = Color(0.957, 0.706, 0.106)
+	if not _hovered_cell.is_blocked:	
+		_hovered_cell.self_modulate = Color(0.957, 0.706, 0.106)
 	EventBus.on_hover_on_item.emit(_hovered_cell.assigned_item)
 
 	
 func _on_mouse_exited_cell(cell:PlayerCellGridUi) -> void:
 	if _hovered_cell != cell: return
-	_hovered_cell.self_modulate = Color(1.0, 0.914, 0.769)
+	if not _hovered_cell.is_blocked:	
+		_hovered_cell.self_modulate = Color(1.0, 0.914, 0.769)
 	_hovered_cell = null
 	EventBus.on_hover_on_item.emit(null)	
 		

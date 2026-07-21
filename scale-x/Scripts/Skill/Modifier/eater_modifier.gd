@@ -1,0 +1,1 @@
+class_name EaterModifier extends Modifier

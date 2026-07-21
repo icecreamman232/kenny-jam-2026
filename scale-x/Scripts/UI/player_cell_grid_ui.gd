@@ -4,14 +4,27 @@ class_name PlayerCellGridUi extends Control
 @export var assigned_item:ItemData
 @export var item_icon:TextureRect
 
+var is_blocked:bool = false
+
 func _ready():
 	var shader_material := item_icon.material.duplicate() as ShaderMaterial
 	item_icon.material = shader_material
 	
 
+func set_block(blocked:bool):
+	is_blocked = blocked
+	if blocked:
+		self.self_modulate = Color(0.412, 0.412, 0.412)
+		item_icon.self_modulate = Color(0.412, 0.412, 0.412)
+	else:
+		self.self_modulate = Color.WHITE
+		item_icon.self_modulate = Color.WHITE
+
 
 func assign_item(item:ItemData) -> void:
+	if is_blocked: return
 	if item == null: return
+	
 	assigned_item = item
 	item_icon.texture = item.item_icon
 	
@@ -40,11 +53,11 @@ func unassign_item() -> void:
 	EventBus.on_remove_item_from_cell.emit(grid_index, assigned_item)
 	
 	assigned_item = null
-	item_icon.self_modulate = Color(1.0, 0.914, 0.769)
+	item_icon.self_modulate = Color(0.412, 0.412, 0.412) if is_blocked else Color(1.0, 0.914, 0.769)
 	item_icon.texture = null
 	
 
-func handle_drag(is_dragging:bool = false):
+func handle_drag(is_dragging:bool = false) -> void:
 	item_icon.visible = !is_dragging
 	
 

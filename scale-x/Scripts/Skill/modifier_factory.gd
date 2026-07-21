@@ -7,5 +7,7 @@ func create_modifier(modifier_id:Modifier.ModifierId) ->Modifier:
 		Modifier.ModifierId.RightSwing: return RightSwingModifier.new()
 		Modifier.ModifierId.LoneWolf: return LoneWolfModifier.new()
 		Modifier.ModifierId.ContinuesAttack: return ContinuesAttackModifier.new()
+		Modifier.ModifierId.SpearHead: return SpearHeadModifier.new()
+		
 		_: return null
 	

@@ -7,6 +7,7 @@ enum ModifierId
 	RightSwing,
 	LoneWolf,
 	ContinuesAttack,
+	SpearHead,
 }
 
 
@@ -22,7 +23,10 @@ func apply(cell:PlayerCellGridUi):
 	id = "cell_" + str(cell.grid_index) + "_" + Helper.print_enum(Modifier.ModifierId, _mod_id)
 
 # Suppose to call before player attack or called by other events
-func trigger(): await Helper.wait_for_frames(1)
+func trigger() -> void:
+	# Blocked cell wont be triggered
+	if _owner_cell != null and _owner_cell.is_blocked: return 
+	await Helper.wait_for_frames(1)
 
 
 func remove(): pass
