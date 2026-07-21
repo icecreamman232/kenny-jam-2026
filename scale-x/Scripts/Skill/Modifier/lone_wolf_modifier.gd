@@ -4,8 +4,6 @@ var _bonus_armor:int = 0
 
 func _init():
 	_mod_id = ModifierId.LoneWolf
-	EventBus.on_add_item_to_cell.connect(_on_add_item_to_cell)
-	EventBus.on_remove_item_from_cell.connect(_on_remove_item_from_cell)
 
 func get_modifier_name() ->String: return "Lone Wolf"
 
@@ -14,7 +12,7 @@ func get_modifier_description() -> String:
 	
 
 func _on_add_item_to_cell(grid_index:int, item:ItemData) -> void:
-	if _owner_cell == null or _owner_cell.grid_index == grid_index or _owner_cell.assigned_item ==  null : return
+	if _owner_cell == null or _owner_cell.grid_index == grid_index or _owner_cell.assigned_item ==  null or _owner_cell.assigned_item == item: return
 	var remove_armor:int = 0
 	var self_index:int = _owner_cell.grid_index
 	var ajacent_cells_index:Array[int] = Helper.get_adjacent_cell_index(self_index)
@@ -31,7 +29,7 @@ func _on_add_item_to_cell(grid_index:int, item:ItemData) -> void:
 	
 	
 func _on_remove_item_from_cell(grid_index:int, item:ItemData) -> void:
-	if _owner_cell == null or _owner_cell.grid_index == grid_index or _owner_cell.assigned_item ==  null : return
+	if _owner_cell == null or _owner_cell.grid_index == grid_index or _owner_cell.assigned_item ==  null or _owner_cell.assigned_item == item: return
 	var add_armor:int = 0
 	var self_index:int = _owner_cell.grid_index
 	var ajacent_cells_index:Array[int] = Helper.get_adjacent_cell_index(self_index)
@@ -48,6 +46,8 @@ func _on_remove_item_from_cell(grid_index:int, item:ItemData) -> void:
 	
 func apply(cell:PlayerCellGridUi):
 	super.apply(cell)
+	EventBus.on_add_item_to_cell.connect(_on_add_item_to_cell)
+	EventBus.on_remove_item_from_cell.connect(_on_remove_item_from_cell)	
 	var self_index:int = _owner_cell.grid_index
 	var ajacent_cells_index:Array[int] = Helper.get_adjacent_cell_index(self_index)
 	var player_grid:PlayerGridUi = IngameDataManager.player_grid
@@ -69,3 +69,4 @@ func remove():
 	EventBus.on_recalculate_player_stat.emit()	
 	EventBus.on_add_item_to_cell.disconnect(_on_add_item_to_cell)
 	EventBus.on_remove_item_from_cell.disconnect(_on_remove_item_from_cell)		
+	_bonus_armor = 0

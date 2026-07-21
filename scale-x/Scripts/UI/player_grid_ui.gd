@@ -89,6 +89,7 @@ func _handle_right_click(event:InputEventMouseButton) -> void:
 		
 
 func request_move_item(from_index:int, to_index:int) -> bool:
+	if from_index == to_index: return false
 	# Blocked cell cant be moved or swap
 	if cell_grid[from_index].is_blocked or cell_grid[to_index].is_blocked: return false
 	var item_from := cell_grid[from_index].assigned_item

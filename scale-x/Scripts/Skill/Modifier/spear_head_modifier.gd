@@ -1,5 +1,7 @@
 class_name SpearHeadModifier extends Modifier
 
+var _block_cell:PlayerCellGridUi
+
 func _init():
 	_mod_id = ModifierId.SpearHead
 
@@ -14,10 +16,10 @@ func apply(cell:PlayerCellGridUi):
 	var right_index:int = -1
 	var left_index:int = -1
 	var self_index:int = _owner_cell.grid_index
-	if self_index != 0 and self_index != 3 or self_index != 6:
-		left_index = self_index - 1
-	if self_index != 2 and self_index != 5 or self_index != 8:
-		right_index = self_index + 1
+	left_index = self_index - 1
+	if left_index < 0: left_index = -1
+	right_index = self_index + 1
+	if right_index > 8: right_index = -1
 	var player_grid:PlayerGridUi = IngameDataManager.player_grid
 	if left_index!= -1 and  player_grid.cell_grid[left_index].assigned_item != null:
 		player_grid.cell_grid[left_index].assigned_item.attack += 3
@@ -27,9 +29,19 @@ func apply(cell:PlayerCellGridUi):
 		await player_grid.cell_grid[left_index].play_bounce_tween()
 		
 	if right_index != -1 :
+		_block_cell = player_grid.cell_grid[right_index]
 		player_grid.cell_grid[right_index].set_block(true)
-		(IngameDataManager.text_manager as TextManager).show_text("Blocked", player_grid.cell_grid[left_index].global_position, Color(0.111, 0.111, 0.111))
+		(IngameDataManager.text_manager as TextManager).show_text("Blocked", player_grid.cell_grid[right_index].global_position, Color(0.111, 0.111, 0.111))
 		AudioManager.play_sfx(SfxContainer.SfxID.NEGATIVE_MODIFIER)
 		EventBus.on_recalculate_player_stat.emit()	
-		await player_grid.cell_grid[right_index].play_bounce_tween()		
+		await player_grid.cell_grid[right_index].play_bounce_tween()	
+		
+		
+func remove():
+	AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
+	(IngameDataManager.text_manager as TextManager).show_text("Unblock", _block_cell.global_position)
+	_block_cell.set_block(false)	
+	await _block_cell.play_bounce_tween()	
+	_block_cell = null
+			
 	
