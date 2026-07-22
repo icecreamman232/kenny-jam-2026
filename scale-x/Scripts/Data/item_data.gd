@@ -39,6 +39,9 @@ var armor:int
 @export var modifier_pool:Array[Modifier.ModifierId]
 var modifier_list:Array[Modifier]
 
+var max_durability:int = 3
+var durability:int = 3
+
 
 static func get_price_for_item(item:ItemData) -> int:
 	match item.rarity:

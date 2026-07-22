@@ -25,9 +25,6 @@ func assign_gameplay_manager(gameplay_manager:GameplayManager):
 
 func initialize(data: EnemyData):
 	enemy_data = data
-	for skill in skill_list:
-		skill.remove()
-	skill_list.clear()
 	stat.initialize()
 	
 	if enemy_data.skill_pool.size() > 0:
@@ -56,6 +53,7 @@ func play_attack_tween():
 func on_before_dead():
 	for skill in skill_list:
 		skill.remove()
+	skill_list.clear()	
 	EventBus.on_coin_change.emit(_calculate_coin_drop())	
 	
 	

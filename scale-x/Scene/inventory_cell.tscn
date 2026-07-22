@@ -4,12 +4,18 @@
 [ext_resource type="Script" uid="uid://c8wdqluawxj7u" path="res://Scripts/UI/player_cell_grid_ui.gd" id="2_kfrcj"]
 [ext_resource type="Shader" uid="uid://depag5wqx0nrh" path="res://Arts/outline_2d.gdshader" id="3_ibwac"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibwac"]
+bg_color = Color(0.3469074, 0.28115433, 0.1773372, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyuvr"]
+bg_color = Color(0.2901961, 0.87058824, 0.5019608, 0.3529412)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t2s0o"]
 shader = ExtResource("3_ibwac")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/outline_thickness = 0
 
-[node name="Inventory-Cell" type="TextureRect" unique_id=978211420 node_paths=PackedStringArray("item_icon")]
+[node name="Inventory-Cell" type="TextureRect" unique_id=978211420 node_paths=PackedStringArray("item_icon", "progress_bar")]
 self_modulate = Color(0.99932355, 0.9151727, 0.7666986, 1)
 custom_minimum_size = Vector2(80, 80)
 offset_right = 64.0
@@ -19,6 +25,26 @@ texture = ExtResource("1_24ndr")
 expand_mode = 1
 script = ExtResource("2_kfrcj")
 item_icon = NodePath("Item-Icon")
+progress_bar = NodePath("ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=843717420]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
 
 [node name="Item-Icon" type="TextureRect" parent="." unique_id=738241286]
 material = SubResource("ShaderMaterial_t2s0o")

@@ -3,6 +3,11 @@ class_name PlayerCellGridUi extends Control
 @export var grid_index:int
 @export var assigned_item:ItemData
 @export var item_icon:TextureRect
+@export var progress_bar:ProgressBar
+
+const FULL_DURABILITY_COLOR:Color = Color("4ade805a")
+const HALF_DURABILITY_COLOR:Color = Color("fbbf245a")
+const FEW_DURABILITY_COLOR:Color = Color("e6482e5a")
 
 var is_blocked:bool = false
 
@@ -10,6 +15,8 @@ func _ready():
 	EventBus.on_apply_item.connect(_on_apply_item)
 	var shader_material := item_icon.material.duplicate() as ShaderMaterial
 	item_icon.material = shader_material
+	progress_bar.value = 0
+	
 	
 func _exit_tree() -> void:
 	EventBus.on_apply_item.disconnect(_on_apply_item)	
@@ -47,9 +54,22 @@ func assign_item(item:ItemData) -> void:
 		mod.apply(self)
 		mod_controller.add_modifier(mod)
 		await Helper.wait_for_seconds(0.05)
+	
+	progress_bar.max_value = assigned_item.max_durability
+	progress_bar.value = assigned_item.durability
+	_set_color_for_current_durability()
 		
 	EventBus.on_add_item_to_cell.emit(grid_index, item)
 
+
+func update_item_durability() -> void:
+	if assigned_item == null: return
+	assigned_item.durability -= 1
+	progress_bar.value = assigned_item.durability
+	_set_color_for_current_durability()	
+	if assigned_item.durability <= 0:
+		unassign_item()
+	
 
 func unassign_item() -> void:
 	if assigned_item == null: return
@@ -61,6 +81,9 @@ func unassign_item() -> void:
 	(item_icon.material as ShaderMaterial).set_shader_parameter("outline_thickness", 0)
 	
 	EventBus.on_remove_item_from_cell.emit(grid_index, assigned_item)
+	
+	progress_bar.value = 0
+	_set_color_for_current_durability()
 	
 	assigned_item = null
 	item_icon.self_modulate = Color(0.412, 0.412, 0.412) if is_blocked else Color(1.0, 0.914, 0.769)
@@ -78,4 +101,14 @@ func play_bounce_tween():
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(self,"scale", Vector2.ONE, 0.1)
 	await tween.finished
+	
+	
+func _set_color_for_current_durability() -> Color:
+	if assigned_item.durability <= assigned_item.max_durability * 0.25:
+		progress_bar.add_theme_color_override("fill", FEW_DURABILITY_COLOR)
+	elif assigned_item.durability <= assigned_item.max_durability * 0.5:
+		progress_bar.add_theme_color_override("fill", HALF_DURABILITY_COLOR)
+	elif assigned_item.durability > assigned_item.max_durability * 0.5:
+		progress_bar.add_theme_color_override("fill", FULL_DURABILITY_COLOR)
+	return Color.WHITE
 	

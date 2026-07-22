@@ -129,6 +129,9 @@ func _on_fight_button_pressed() -> void:
 func _on_fight_end():
 	_is_fighting = false
 	fight_button.disabled = false
+	for cell in cell_grid:
+		cell.update_item_durability()
+		await Helper.wait_for_seconds(0.1)
 
 
 func _on_player_dead():

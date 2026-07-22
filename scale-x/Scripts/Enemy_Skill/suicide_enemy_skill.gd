@@ -16,7 +16,7 @@ func remove() -> void:
 			
 	var random_cell:PlayerCellGridUi = available_cell.pick_random()
 	(IngameDataManager.text_manager as TextManager).show_text("Destroyed", random_cell.global_position, Color.DARK_GRAY)	
-	AudioManager.play_sfx(SfxContainer.SfxID.NEGATIVE_MODIFIER)		
+	AudioManager.play_sfx(SfxContainer.SfxID.NEGATIVE_MODIFIER)	
 	random_cell.unassign_item()
 	
 	
