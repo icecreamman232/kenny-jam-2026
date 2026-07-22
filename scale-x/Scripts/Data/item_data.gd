@@ -66,4 +66,3 @@ static func is_weapon(item:ItemData) -> bool:
 		return true
 	return false
 	
-

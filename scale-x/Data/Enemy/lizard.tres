@@ -16,5 +16,5 @@ accuracy = 2
 speed = 1
 life = 3
 armor = 2
-skill_pool = Array[String](["sacrifice"])
+skill_pool = Array[String](["sacrifice", "thief"])
 metadata/_custom_type_script = "uid://2cb2oac0p74i"

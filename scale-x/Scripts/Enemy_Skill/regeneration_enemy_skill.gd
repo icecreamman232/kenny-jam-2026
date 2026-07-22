@@ -1,6 +1,5 @@
 class_name RegenerationEnemySkill extends EnemySkill
 
-
 func get_skill_name() ->String: return "Regeneration"
 
 func get_skill_description() ->String: return "Recover 1 life every round"

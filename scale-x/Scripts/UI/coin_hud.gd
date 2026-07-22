@@ -20,4 +20,5 @@ func _reset_coin():
 	
 func _update_coin(coin:int):
 	current_coin += coin
+	if current_coin < 0: current_coin = 0
 	text = "[img=24]uid://de3k1fl4j5llo[/img]" + str(current_coin).pad_decimals(0)

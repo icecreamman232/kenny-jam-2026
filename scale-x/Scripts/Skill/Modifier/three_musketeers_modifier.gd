@@ -24,7 +24,7 @@ func apply(cell:PlayerCellGridUi):
 		left_index = self_index - 1
 	if left_index != -1:
 		var left_cell:PlayerCellGridUi = player_grid.cell_grid[left_index]
-		if ItemData.is_weapon(left_cell.assigned_item):
+		if left_cell.assigned_item != null and ItemData.is_weapon(left_cell.assigned_item):
 			_owner_cell.assigned_item.attack += left_cell.assigned_item.attack
 			_owner_cell.assigned_item.speed += left_cell.assigned_item.speed
 			_owner_cell.assigned_item.accuracy += left_cell.assigned_item.accuracy
@@ -40,7 +40,7 @@ func apply(cell:PlayerCellGridUi):
 		
 	if right_index != -1:
 		var right_cell:PlayerCellGridUi = player_grid.cell_grid[right_index]
-		if ItemData.is_weapon(right_cell.assigned_item):
+		if right_cell.assigned_item != null and ItemData.is_weapon(right_cell.assigned_item):
 			_owner_cell.assigned_item.attack += right_cell.assigned_item.attack
 			_owner_cell.assigned_item.speed += right_cell.assigned_item.speed
 			_owner_cell.assigned_item.accuracy += right_cell.assigned_item.accuracy
