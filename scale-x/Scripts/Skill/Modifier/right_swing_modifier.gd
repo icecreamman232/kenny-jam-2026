@@ -25,8 +25,8 @@ func apply(cell:PlayerCellGridUi) -> void:
 func remove() -> void:
 	super.remove()	
 	var self_index:int = _owner_cell.grid_index
+	if self_index == 2 or self_index == 5 or self_index == 8: return
 	var right_index:int = self_index + 1
-	if self_index % 3 == 0: return
 	var player_grid:PlayerGridUi = IngameDataManager.player_grid
 	if player_grid.cell_grid[right_index].assigned_item != null:
 		if ItemData.is_weapon(player_grid.cell_grid[right_index].assigned_item):

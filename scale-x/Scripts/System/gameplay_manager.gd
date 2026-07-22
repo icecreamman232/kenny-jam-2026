@@ -119,13 +119,14 @@ func _on_fight_started() -> void:
 			anim_on_player.play(SLASH_ANIM_NAME)		
 			await enemy_controller.play_attack_tween()
 			await enemy_controller.deal_damage_to_player(player_controller)
-			
 			EventBus.on_enemy_attack.emit()
+				
 		
 	await Helper.wait_for_frames(1)
 	EventBus.on_fight_end.emit()
-	await enemy_controller.trigger_skills()
-	loot_box_ui.show_loot()
+	if player_controller.health.current_life > 0:
+		await enemy_controller.trigger_skills()
+		loot_box_ui.show_loot()
 	await Helper.wait_for_frames(1)
 	InputManager.set_enabled(true)	
 		

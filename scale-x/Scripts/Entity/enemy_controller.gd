@@ -25,6 +25,9 @@ func assign_gameplay_manager(gameplay_manager:GameplayManager):
 
 func initialize(data: EnemyData):
 	enemy_data = data
+	for skill in skill_list:
+		skill.remove()
+	skill_list.clear()
 	stat.initialize()
 	
 	if enemy_data.skill_pool.size() > 0:

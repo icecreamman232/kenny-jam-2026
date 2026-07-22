@@ -6,7 +6,7 @@ var sfx_container:SfxContainer
 func _ready():
 	sfx_player = AudioStreamPlayer2D.new()
 	sfx_player.autoplay = false
-	sfx_player.max_polyphony = 10
+	sfx_player.max_polyphony = 20
 	add_child(sfx_player)
 	await Helper.wait_for_frames(1)
 

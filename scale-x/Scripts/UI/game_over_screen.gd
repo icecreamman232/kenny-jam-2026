@@ -23,8 +23,8 @@ func _exit_tree() -> void:
 	
 	
 func _on_player_dead():
-	AudioManager.play_sfx(SfxContainer.SfxID.GAME_OVER)
 	await Helper.wait_for_seconds(0.5)
+	AudioManager.play_sfx(SfxContainer.SfxID.GAME_OVER)
 	show()
 	_is_showing = true
 
