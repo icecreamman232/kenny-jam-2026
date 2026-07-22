@@ -39,7 +39,9 @@ func apply(cell:PlayerCellGridUi):
 		await player_grid.cell_grid[right_index].play_bounce_tween()	
 		
 		
-func remove():
+func remove() -> void:
+	super.remove()
+	if _block_cell == null: return
 	AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
 	(IngameDataManager.text_manager as TextManager).show_text("Unblock", _block_cell.global_position)
 	_block_cell.set_block(false)	

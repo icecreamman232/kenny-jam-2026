@@ -10,6 +10,7 @@ enum ModifierId
 	SpearHead,
 	Eater,
 	DeathIsNotTheEnd,
+	SharpenTool,
 }
 
 

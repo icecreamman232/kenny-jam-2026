@@ -3,7 +3,6 @@ class_name DeathIsNotTheEndModifier extends Modifier
 func _init():
 	_mod_id = ModifierId.DeathIsNotTheEnd
 
-
 func get_modifier_name() ->String: return "Death is not the end"
 
 func get_modifier_description() -> String:
