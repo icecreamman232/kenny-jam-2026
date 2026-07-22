@@ -30,7 +30,7 @@ func initialize(data: EnemyData):
 	if enemy_data.skill_pool.size() > 0:
 		var rand_skil_id:String = enemy_data.skill_pool.pick_random()
 		var skill:EnemySkill= EnemySkillFactory.create_skill(rand_skil_id, self)
-		if skill != null:
+		if skill != null and _can_apply_skill(skill):
 			skill_list.append(skill)
 			skill.apply()
 	
@@ -38,6 +38,14 @@ func initialize(data: EnemyData):
 	avatar.assign(data)
 	avatar.show_icon()
 	EventBus.update_enemy_info.emit(stat)
+
+
+func _can_apply_skill(skill:EnemySkill) -> bool:
+	# Prevent player being stolen coin in early game
+	if _gameplay_manager.round_number <= 3 and skill is ThiefEnemySkill: return false
+	
+	return true 
+
 
 func trigger_skills():
 	for skill in skill_list:
