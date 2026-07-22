@@ -47,7 +47,7 @@ func _input(event:InputEvent) -> void:
 					get_viewport().set_input_as_handled()
 			else:
 				if _inspecting_cell != null and _inspecting_cell.assigned_item != null:
-					var result := player_grid_ui.request_drop_item(_inspecting_cell.assigned_item, coin_hud)
+					var result = await player_grid_ui.request_drop_item(_inspecting_cell.assigned_item, coin_hud)
 					if result:
 						context_cursor.hide()
 						_inspecting_cell.unassign_item()
@@ -107,6 +107,7 @@ func _on_reroll_button_pressed() -> void:
 
 		
 func _on_mouse_entered_cell(cell:LootBoxCellUi) -> void:
+	if not InputManager.is_enabled: return
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)	
 	_inspecting_cell = cell
 	_inspecting_cell.self_modulate = Color(0.957, 0.706, 0.106)

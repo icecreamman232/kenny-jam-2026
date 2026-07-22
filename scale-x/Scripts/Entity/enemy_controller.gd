@@ -42,7 +42,7 @@ func initialize(data: EnemyData):
 func trigger_skills():
 	for skill in skill_list:
 		skill.trigger()
-		await Helper.wait_for_frames(1)
+		await Helper.wait_for_seconds(0.2)
 
 
 func play_attack_tween():

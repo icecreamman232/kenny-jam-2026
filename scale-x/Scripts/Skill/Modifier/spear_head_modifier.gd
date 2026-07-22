@@ -27,6 +27,8 @@ func apply(cell:PlayerCellGridUi):
 		AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
 		EventBus.on_recalculate_player_stat.emit()	
 		await player_grid.cell_grid[left_index].play_bounce_tween()
+	
+	await Helper.wait_for_seconds(0.1)
 		
 	if right_index != -1 :
 		_block_cell = player_grid.cell_grid[right_index]

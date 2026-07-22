@@ -55,9 +55,9 @@ func _pick_item_for_early_game()->Array[ItemData]:
 	var rand_weight:Array = EARLY_ITEM_TYPE_WEIGHT.pick_random()
 	for weight in rand_weight:
 		if weight == "weapon":
-			result.append(weapon_items.pick_random())
+			result.append(weapon_items.pick_random().duplicate())
 		elif weight == "armor":
-			result.append(armor_items.pick_random())
+			result.append(armor_items.pick_random().duplicate())
 	return result
 	
 
@@ -101,11 +101,11 @@ func _apply_random_stat_to_item(item:ItemData, round_number:int):
 	# Add modifier if item is not common
 	#if item.rarity == ItemData.ItemRarity.COMMON: return
 	if item.modifier_pool.size() == 0: return
+	item.modifier_list.clear()
 	var rand_ix := randi_range(0, item.modifier_pool.size() - 1)
 	var rand_mod_id:Modifier.ModifierId = item.modifier_pool[rand_ix]
 	var modifier:Modifier = ModifierFactory.create_modifier(rand_mod_id)
 	if modifier != null:
-		print("Add mod ", modifier.get_modifier_name(), " to item ", item.item_name)
 		item.modifier_list.append(modifier)			
 
 

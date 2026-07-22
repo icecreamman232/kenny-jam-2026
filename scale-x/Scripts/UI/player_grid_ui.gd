@@ -47,7 +47,7 @@ func _input(event:InputEvent) -> void:
 						context_cursor.show()
 						get_viewport().set_input_as_handled()
 			else:
-				if _hovered_cell != null:
+				if _hovered_cell != null and _dragging_slot_index != -1:
 					var _inspecting_cell := cell_grid[_dragging_slot_index]
 					var result := request_move_item(_inspecting_cell.grid_index, _hovered_cell.grid_index)
 					if result:
@@ -110,9 +110,11 @@ func request_drop_item(item:ItemData, coin_hud: CoinHud) ->bool:
 	var price_for_item := ItemData.get_price_for_item(item)
 	if coin_hud.current_coin < price_for_item: return false
 	
+	var target_cell:PlayerCellGridUi = _hovered_cell
 	EventBus.on_coin_change.emit(-price_for_item)
-	_hovered_cell.assign_item(item)
-	EventBus.on_add_item.emit(_hovered_cell.grid_index, item)
+	await target_cell.assign_item(item)
+	EventBus.on_add_item.emit(target_cell.grid_index, item)
+	print("Drop item at ", target_cell.grid_index)
 	return true
 
 

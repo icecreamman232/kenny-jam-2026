@@ -37,6 +37,7 @@ func assign_item(item:ItemData) -> void:
 	for mod in item.modifier_list:
 		mod.apply(self)
 		mod_controller.add_modifier(mod)
+		await Helper.wait_for_seconds(0.05)
 		
 	EventBus.on_add_item_to_cell.emit(grid_index, item)
 

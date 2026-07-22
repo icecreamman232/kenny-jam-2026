@@ -7,7 +7,7 @@ func create_skill(enemy_skill_id:String, enemy_controller:EnemyController) ->Ene
 			return RegenerationEnemySkill.new(enemy_controller)
 #		EnemySkill.EnemySkillID.EMPOWER:
 #			pass
-#		EnemySkill.EnemySkillID.SACRIFICE:
-#			pass	
+		EnemySkill.EnemySkillID.SACRIFICE:
+			return SacrificeEnemySkill.new(enemy_controller)	
 		_: return null
 	

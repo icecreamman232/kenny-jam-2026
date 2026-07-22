@@ -14,6 +14,13 @@ func initialize_health(controller:EntityController) ->void:
 func update_life_bar(): pass
 
 
+func spent_life(life:int) -> void:
+	if current_life <= life: return
+	current_life -= life
+	(_controller.stat as StatController).set_final(StatController.StatType.LIFE, current_life)
+	update_life_bar()
+
+
 func recover_life(life:int):
 	current_life += life
 	if current_life > max_life: current_life = max_life
