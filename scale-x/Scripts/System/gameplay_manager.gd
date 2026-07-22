@@ -22,6 +22,7 @@ func _ready():
 	await Helper.wait_for_frames(5)
 	enemy_controller.assign_gameplay_manager(self)
 	await initialize()
+	AudioManager.play_music()
 	await Helper.wait_for_frames(3)
 	InputManager.set_enabled(true)
 
@@ -52,6 +53,7 @@ func _create_enemy():
 
 func _on_player_dead():
 	InputManager.set_enabled(false)
+	AudioManager.stop_music()
 	print("Player dead!!!")
 	print("====================================================================")
 
@@ -65,7 +67,8 @@ func restart_game():
 	await Helper.wait_for_frames(3)
 	_create_enemy()
 	await Helper.wait_for_frames(3)
-	InputManager.set_enabled(true)	
+	InputManager.set_enabled(true)
+	AudioManager.play_music()	
 
 	
 func _on_enemy_dead():

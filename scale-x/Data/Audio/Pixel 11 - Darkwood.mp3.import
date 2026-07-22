@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dvrkukvc7xua1"
+path="res://.godot/imported/Pixel 11 - Darkwood.mp3-054d4cf169251118cf334a3189916457.mp3str"
+
+[deps]
+
+source_file="res://Data/Audio/Pixel 11 - Darkwood.mp3"
+dest_files=["res://.godot/imported/Pixel 11 - Darkwood.mp3-054d4cf169251118cf334a3189916457.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
