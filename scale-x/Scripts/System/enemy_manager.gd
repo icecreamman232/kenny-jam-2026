@@ -12,10 +12,10 @@ func get_enemy(round_number:int) -> EnemyData:
 	
 	
 func _scale_up_enemy_stat(source:EnemyData, round_number:int):
-	var min_scale_value := round_number + 2
+	var min_scale_value := round_number + 1
 	if min_scale_value < 0:
 		min_scale_value = 1
-	var max_scale_value := round_number + 4
+	var max_scale_value := round_number + 3
 	if max_scale_value < 0 or max_scale_value < min_scale_value:
 		max_scale_value = min_scale_value
 		

@@ -103,12 +103,21 @@ func play_bounce_tween():
 	await tween.finished
 	
 	
-func _set_color_for_current_durability() -> Color:
-	if assigned_item.durability <= assigned_item.max_durability * 0.25:
-		progress_bar.add_theme_color_override("fill", FEW_DURABILITY_COLOR)
-	elif assigned_item.durability <= assigned_item.max_durability * 0.5:
-		progress_bar.add_theme_color_override("fill", HALF_DURABILITY_COLOR)
-	elif assigned_item.durability > assigned_item.max_durability * 0.5:
-		progress_bar.add_theme_color_override("fill", FULL_DURABILITY_COLOR)
-	return Color.WHITE
+func _set_color_for_current_durability() -> void:
+	var few_threshold := ceili(assigned_item.max_durability * 0.25)
+	var half_threshold := ceili(assigned_item.max_durability * 0.5)
+	
+	var target_color: Color
+	if assigned_item.durability <= few_threshold:
+		target_color = FEW_DURABILITY_COLOR
+	elif assigned_item.durability <= half_threshold:
+		target_color = HALF_DURABILITY_COLOR
+	else:
+		target_color = FULL_DURABILITY_COLOR
+	
+	var fill_style := progress_bar.get_theme_stylebox("fill") as StyleBoxFlat
+	if fill_style:
+		fill_style = fill_style.duplicate()
+		fill_style.bg_color = target_color
+		progress_bar.add_theme_stylebox_override("fill", fill_style)
 	
