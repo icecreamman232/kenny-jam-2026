@@ -52,15 +52,13 @@ func _create_enemy():
 
 func _on_player_dead():
 	InputManager.set_enabled(false)
-	AudioManager.play_sfx(SfxContainer.SfxID.GAME_OVER)
 	print("Player dead!!!")
 	print("====================================================================")
 
 	
 func restart_game():
-	round_number = 1
 	player_controller.reset_player()
-	Helper.wait_for_frames(3)
+	round_number = 1
 	loot_box_ui.set_round_number(round_number)
 	round_label.text = "Round " + str(round_number)
 	loot_box_ui.show_loot()

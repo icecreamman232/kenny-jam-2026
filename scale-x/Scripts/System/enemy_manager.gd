@@ -1,5 +1,13 @@
 class_name EnemyManager extends Node
 
+const ATK_FACTOR:float = 1.25
+const ACC_FACTOR:float = 1.25
+const SPD_FACTOR:float = 0.5
+const LIFE_FACTOR:float = 1.25
+const MANA_FACTOR:float = 0.5
+const DODGE_FACTOR:float = 0.25
+const ARMOR_FACTOR:float = 0.8
+
 @export var enemy_data_list:Array[EnemyData]
 
 func get_enemy(round_number:int) -> EnemyData:
@@ -21,16 +29,16 @@ func _scale_up_enemy_stat(source:EnemyData, round_number:int):
 	
 	var rand_scale_value := randi_range(min_scale_value, max_scale_value)
 	if source.attack != 0:
-		source.attack += roundi(rand_scale_value * LootManager.ATK_FACTOR)
+		source.attack += roundi(rand_scale_value * ATK_FACTOR)
 	if source.accuracy != 0:
-		source.accuracy += roundi(rand_scale_value * LootManager.ACC_FACTOR)		
+		source.accuracy += roundi(rand_scale_value * ACC_FACTOR)		
 	if source.speed != 0:
-		source.speed += roundi(rand_scale_value * LootManager.SPD_FACTOR)
+		source.speed += roundi(rand_scale_value * SPD_FACTOR)
 	if source.life != 0:
-		source.life += roundi(rand_scale_value * LootManager.LIFE_FACTOR)
+		source.life += roundi(rand_scale_value * LIFE_FACTOR)
 	if source.mana != 0:
-		source.mana += roundi(rand_scale_value * LootManager.MANA_FACTOR)						
+		source.mana += roundi(rand_scale_value * MANA_FACTOR)						
 	if source.dodge != 0:
-		source.dodge += roundi(rand_scale_value * LootManager.DODGE_FACTOR)		
+		source.dodge += roundi(rand_scale_value * DODGE_FACTOR)		
 	if source.armor != 0:
-		source.armor += roundi(rand_scale_value * LootManager.ARMOR_FACTOR)				
+		source.armor += roundi(rand_scale_value * ARMOR_FACTOR)				

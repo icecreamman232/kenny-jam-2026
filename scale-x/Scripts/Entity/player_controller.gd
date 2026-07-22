@@ -2,6 +2,7 @@ class_name PlayerController extends EntityController
 
 @export var stat:PlayerStatController
 @export var avatar:PlayerAvatar
+@export var player_pivot:Control
 @export_group("Stats")
 @export var attack:int
 @export var accuracy:int
@@ -45,12 +46,15 @@ func deal_damage_to_enemy(enemy_controller: EnemyController) -> void:
 	var player_acc := stat.get_final(StatController.StatType.ACCURACY)
 	var rolled_acc := randi_range(0, player_acc)
 	
-	var enemy_dodge:= enemy_controller.stat.get_final(StatController.StatType.DODGE)
-	var rolled_enemy_dodge:= randi_range(0, enemy_dodge)
-	if rolled_enemy_dodge > rolled_acc:
-		await Helper.wait_for_frames(1)
-		# Attack missed 
-		return
+
+	var is_guarantee_hit:bool = randf_range(0, 100) <= 10
+	if not is_guarantee_hit:	
+		var enemy_dodge:= enemy_controller.stat.get_final(StatController.StatType.DODGE)
+		var rolled_enemy_dodge:= randi_range(0, enemy_dodge)
+		if rolled_enemy_dodge > rolled_acc:
+			(IngameDataManager.text_manager as TextManager).show_text("Miss", player_pivot.global_position, Color(0.5294118, 0.5294118, 0.5294118))
+			await Helper.wait_for_frames(1)
+			return
 	enemy_controller.health.take_damage(stat.get_final(StatController.StatType.ATTACK))
 
 
