@@ -11,6 +11,7 @@ enum ModifierId
 	Eater,
 	DeathIsNotTheEnd,
 	SharpenTool,
+	ThreeMusketeers,
 }
 
 

@@ -28,7 +28,7 @@ func apply(cell:PlayerCellGridUi) -> void:
 	cell.assigned_item.accuracy += item.accuracy
 	cell.assigned_item.speed += item.speed
 	cell.assigned_item.life += item.life
-	cell.assigned_item.mana += item.mana
+	#cell.assigned_item.mana += item.mana
 	cell.assigned_item.dodge += item.dodge
 	cell.assigned_item.armor += item.armor
 
