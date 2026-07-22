@@ -47,7 +47,7 @@ func _input(event:InputEvent) -> void:
 					get_viewport().set_input_as_handled()
 			else:
 				if _inspecting_cell != null and _inspecting_cell.assigned_item != null:
-					var result = await player_grid_ui.request_drop_item(_inspecting_cell.assigned_item, coin_hud)
+					var result := player_grid_ui.request_drop_item(_inspecting_cell.assigned_item, coin_hud)
 					if result:
 						context_cursor.hide()
 						_inspecting_cell.unassign_item()

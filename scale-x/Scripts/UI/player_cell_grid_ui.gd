@@ -7,9 +7,18 @@ class_name PlayerCellGridUi extends Control
 var is_blocked:bool = false
 
 func _ready():
+	EventBus.on_apply_item.connect(_on_apply_item)
 	var shader_material := item_icon.material.duplicate() as ShaderMaterial
 	item_icon.material = shader_material
 	
+func _exit_tree() -> void:
+	EventBus.on_apply_item.disconnect(_on_apply_item)	
+
+
+func _on_apply_item(index:int, item:ItemData) -> void:
+	if self.grid_index != index: return
+	await assign_item(item)
+
 
 func set_block(blocked:bool):
 	is_blocked = blocked

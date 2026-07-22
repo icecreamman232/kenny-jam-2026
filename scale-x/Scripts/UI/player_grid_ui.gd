@@ -98,8 +98,8 @@ func request_move_item(from_index:int, to_index:int) -> bool:
 	cell_grid[to_index].unassign_item()
 	# If hovering slot has item, we swap this item with dragging item
 	if item_to != null:
-		cell_grid[from_index].assign_item(item_to)
-	cell_grid[to_index].assign_item(item_from)
+		EventBus.on_apply_item.emit(from_index, item_to)
+	EventBus.on_apply_item.emit(to_index, item_from)
 	EventBus.on_move_item.emit(from_index, to_index)
 	return true
 
@@ -112,9 +112,8 @@ func request_drop_item(item:ItemData, coin_hud: CoinHud) ->bool:
 	
 	var target_cell:PlayerCellGridUi = _hovered_cell
 	EventBus.on_coin_change.emit(-price_for_item)
-	await target_cell.assign_item(item)
+	EventBus.on_apply_item.emit(target_cell.grid_index, item)
 	EventBus.on_add_item.emit(target_cell.grid_index, item)
-	print("Drop item at ", target_cell.grid_index)
 	return true
 
 
