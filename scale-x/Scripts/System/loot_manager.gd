@@ -79,6 +79,21 @@ func _apply_random_stat_to_item(item:ItemData, round_number:int):
 	
 	var chosen_rarity:ItemData.ItemRarity = rand_rarity.pick_random()
 	item.rarity = chosen_rarity
+	
+	match item.rarity:
+		ItemData.ItemRarity.COMMON:
+			item.max_durability = 6
+		ItemData.ItemRarity.UNCOMMON:
+			item.max_durability = 6
+		ItemData.ItemRarity.RARE:
+			item.max_durability = 5
+		ItemData.ItemRarity.LEGENDARY:
+			item.max_durability = 4
+		ItemData.ItemRarity.EPIC:
+			item.max_durability = 3
+			
+	item.durability = item.max_durability
+	
 
 	for idx in range(item.stats.size()):
 		var stat_value := _get_random_stat_value(chosen_rarity)

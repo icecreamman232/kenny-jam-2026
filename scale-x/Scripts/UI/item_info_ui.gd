@@ -1,6 +1,7 @@
 class_name ItemInfoUi extends Control
 
 @export var item_name:Label
+@export var dur_label:Label
 @export var atk_label:Label
 @export var acc_label:Label
 @export var speed_label:Label
@@ -32,6 +33,7 @@ func _update_item_stat(item_data:ItemData) -> void:
 		item_name.hide()
 		hide() 
 		return
+	dur_label.text = str(item_data.durability)	
 	atk_label.text = str(item_data.attack)
 	acc_label.text = str(item_data.accuracy)
 	speed_label.text = str(item_data.speed)

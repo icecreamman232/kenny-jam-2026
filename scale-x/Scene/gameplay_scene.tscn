@@ -1120,11 +1120,12 @@ offset_bottom = 822.0
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Item-Info" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=2037926138 node_paths=PackedStringArray("item_name", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label", "price_label", "mod_parent", "mod_1_desc", "mod_2_desc")]
+[node name="Item-Info" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=2037926138 node_paths=PackedStringArray("item_name", "dur_label", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label", "price_label", "mod_parent", "mod_1_desc", "mod_2_desc")]
 layout_mode = 2
 alignment = 1
 script = ExtResource("36_8ryol")
 item_name = NodePath("../../Item-Name")
+dur_label = NodePath("DUR-Label/DUR-Number")
 atk_label = NodePath("ATK-Label/Atk-Number")
 acc_label = NodePath("ACC-Label/Acc-Number")
 speed_label = NodePath("SPD-Label/Spd-Number")
@@ -1136,6 +1137,34 @@ price_label = NodePath("Price-Label/Price-Number")
 mod_parent = NodePath("../Item-Mod")
 mod_1_desc = NodePath("../Item-Mod/Mod-Desc-1")
 mod_2_desc = NodePath("../Item-Mod/Mod-Desc-2")
+
+[node name="DUR-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=405420098]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[img=24]uid://d4c440hsn7ytr[/img]DUR"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DUR-Number" type="Label" parent="Control/HBoxContainer/Item-Info/DUR-Label" unique_id=1260665142]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ATK-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1551320300]
 custom_minimum_size = Vector2(80, 30)

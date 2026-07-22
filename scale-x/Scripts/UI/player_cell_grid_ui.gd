@@ -5,6 +5,7 @@ class_name PlayerCellGridUi extends Control
 @export var item_icon:TextureRect
 @export var progress_bar:ProgressBar
 
+var _fill_style:StyleBoxFlat
 const FULL_DURABILITY_COLOR:Color = Color("4ade805a")
 const HALF_DURABILITY_COLOR:Color = Color("fbbf245a")
 const FEW_DURABILITY_COLOR:Color = Color("e6482e5a")
@@ -16,6 +17,8 @@ func _ready():
 	var shader_material := item_icon.material.duplicate() as ShaderMaterial
 	item_icon.material = shader_material
 	progress_bar.value = 0
+	var fill_style := progress_bar.get_theme_stylebox("fill") as StyleBoxFlat
+	_fill_style = fill_style.duplicate()
 	
 	
 func _exit_tree() -> void:
@@ -115,9 +118,7 @@ func _set_color_for_current_durability() -> void:
 	else:
 		target_color = FULL_DURABILITY_COLOR
 	
-	var fill_style := progress_bar.get_theme_stylebox("fill") as StyleBoxFlat
-	if fill_style:
-		fill_style = fill_style.duplicate()
-		fill_style.bg_color = target_color
-		progress_bar.add_theme_stylebox_override("fill", fill_style)
+	if _fill_style:
+		_fill_style.bg_color = target_color
+		progress_bar.add_theme_stylebox_override("fill", _fill_style)
 	
