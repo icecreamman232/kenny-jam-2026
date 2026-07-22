@@ -40,7 +40,8 @@ func _on_remove_item_from_cell(grid_index:int, item:ItemData) -> void:
 		_bonus_armor += add_armor
 		_owner_cell.assigned_item.armor += add_armor
 		AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
-		EventBus.on_recalculate_player_stat.emit()		
+		EventBus.on_recalculate_player_stat.emit()
+		await _owner_cell.play_bounce_tween()			
 		break
 
 	

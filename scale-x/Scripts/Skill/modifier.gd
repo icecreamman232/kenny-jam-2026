@@ -9,6 +9,7 @@ enum ModifierId
 	ContinuesAttack,
 	SpearHead,
 	Eater,
+	DeathIsNotTheEnd,
 }
 
 
