@@ -117,8 +117,9 @@ enemy_manager = NodePath("../Enemy Manager")
 anim_on_player = NodePath("../Slash-Animation-On-Player")
 anim_on_enemy = NodePath("../Slash-Animation-On-Enemy")
 
-[node name="Enemy Manager" type="Node" parent="." unique_id=1630896653]
+[node name="Enemy Manager" type="Node" parent="." unique_id=1630896653 node_paths=PackedStringArray("player_controller")]
 script = ExtResource("2_bm225")
+player_controller = NodePath("../Player")
 enemy_data_list = Array[ExtResource("3_jkpb7")]([ExtResource("4_i5dkc"), ExtResource("5_w7c21"), ExtResource("6_e412i")])
 
 [node name="Loot Manager" type="Node" parent="." unique_id=165805778]

@@ -17,5 +17,5 @@ speed = 2
 life = 3
 mana = 1
 dodge = 1
-skill_pool = Array[String](["regeneration"])
+skill_pool = Array[String](["regeneration", "suicide"])
 metadata/_custom_type_script = "uid://2cb2oac0p74i"

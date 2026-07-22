@@ -1,6 +1,6 @@
 class_name EnemyManager extends Node
 
-
+@export var player_controller:PlayerController
 @export var enemy_data_list:Array[EnemyData]
 
 func get_enemy(round_number:int) -> EnemyData:
@@ -34,4 +34,15 @@ func _scale_up_enemy_stat(source:EnemyData, round_number:int):
 	if source.dodge != 0:
 		source.dodge += roundi(rand_scale_value * Constant.ENEMY_DODGE_FACTOR)		
 	if source.armor != 0:
-		source.armor += roundi(rand_scale_value * Constant.ENEMY_ARMOR_FACTOR)				
+		source.armor += roundi(rand_scale_value * Constant.ENEMY_ARMOR_FACTOR)
+	
+#	# Player have more atk than enemy, increase enemy life or armor to make it more challenge	
+#	if player_controller.stat.get_final(StatController.StatType.ATTACK) > source.attack:
+#		source.life =  roundi(source.life * 1.5)
+#	# Player have more armor than enemy, increase atk to make it more challenge	
+#	if player_controller.stat.get_final(StatController.StatType.ARMOR) > source.armor:
+#		source.attack = roundi(source.attack * 1.5)
+#		source.speed = roundi(source.speed * 1.2)
+		
+		
+							

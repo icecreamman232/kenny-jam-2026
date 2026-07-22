@@ -71,10 +71,10 @@ func _add_item(index:int, item:ItemData):
 
 func _remove_item(index:int):
 	var to_be_removed_item := item_list[index]
-	item_list[index] = null
 	_remove_stat_from_item(to_be_removed_item)
 	health.update_life(stat.get_final(StatController.StatType.LIFE))
 	EventBus.update_player_info.emit(stat)	
+	item_list[index] = null
 	
 	
 func _add_stat_from_item(item:ItemData):
@@ -103,7 +103,8 @@ func _add_stat_from_item(item:ItemData):
 	stat.set_final(StatController.StatType.ARMOR, new_armor)	
 	
 	
-func _remove_stat_from_item(item:ItemData):
+func _remove_stat_from_item(item:ItemData) -> void:
+	if item == null: return
 	var new_attack := stat.get_final(StatController.StatType.ATTACK)
 	var new_accuracy := stat.get_final(StatController.StatType.ACCURACY)
 	var new_speed := stat.get_final(StatController.StatType.SPEED)
