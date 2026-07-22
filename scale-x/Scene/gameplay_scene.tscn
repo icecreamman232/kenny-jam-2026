@@ -53,6 +53,7 @@
 [ext_resource type="Script" uid="uid://be138vgmprcoc" path="res://Scripts/UI/coin_hud.gd" id="38_lra8k"]
 [ext_resource type="PackedScene" uid="uid://d24ws1qci7x0w" path="res://Scene/buble_text.tscn" id="41_weo37"]
 [ext_resource type="Script" uid="uid://kwiamlij7gjw" path="res://Scripts/UI/game_over_screen.gd" id="53_4vhag"]
+[ext_resource type="Script" uid="uid://5g0nvl7x2a5p" path="res://Scripts/UI/enemy_skill_info.gd" id="53_p8an3"]
 [ext_resource type="SpriteFrames" uid="uid://cxmd5lntfegws" path="res://Arts/Animations/slash-effect-anim-frames.tres" id="54_oshq5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
@@ -69,6 +70,11 @@ expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjua8"]
 bg_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p8an3"]
+shader = ExtResource("36_t2s0o")
+shader_parameter/outline_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+shader_parameter/outline_thickness = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t2s0o"]
 shader = ExtResource("36_t2s0o")
@@ -146,12 +152,13 @@ player_controller = NodePath("..")
 [node name="Modifier" type="Node" parent="Player" unique_id=136682804]
 script = ExtResource("17_yeb8m")
 
-[node name="Enemy" type="Node" parent="." unique_id=2046618817 node_paths=PackedStringArray("stat", "avatar", "health", "enemy_pivot")]
+[node name="Enemy" type="Node" parent="." unique_id=2046618817 node_paths=PackedStringArray("stat", "avatar", "health", "enemy_pivot", "hover_area")]
 script = ExtResource("11_0fvd6")
 stat = NodePath("Stat")
 avatar = NodePath("../Control/Enemy-Character-Avatar")
 health = NodePath("Health")
 enemy_pivot = NodePath("../Control/Enemy-Pivot")
+hover_area = NodePath("../Control/Enemy-Pivot/Hover-Area")
 
 [node name="Health" type="Node" parent="Enemy" unique_id=1429246978 node_paths=PackedStringArray("avatar")]
 script = ExtResource("12_sxlwj")
@@ -168,6 +175,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_2wjsh")
 expand_mode = 1
 
@@ -177,6 +185,15 @@ offset_left = 1095.0
 offset_top = 180.0
 offset_right = 1135.0
 offset_bottom = 220.0
+mouse_filter = 2
+
+[node name="Hover-Area" type="Control" parent="Control/Enemy-Pivot" unique_id=560031243]
+anchors_preset = 0
+offset_left = -78.0
+offset_top = -62.0
+offset_right = 90.0
+offset_bottom = 68.0
+mouse_filter = 1
 
 [node name="Player-Pivot" type="Control" parent="Control" unique_id=1959605242]
 anchors_preset = 0
@@ -334,10 +351,12 @@ offset_right = 380.0
 offset_bottom = -189.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("22_i5dkc")
 enemy_icon = NodePath("Enemy-Portrait")
 
 [node name="Enemy-Portrait" type="TextureRect" parent="Control/Enemy-Character-Avatar" unique_id=1442310484]
+material = SubResource("ShaderMaterial_p8an3")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -350,6 +369,7 @@ offset_right = 80.0
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_wjua8")
 expand_mode = 1
 
@@ -367,6 +387,7 @@ offset_right = 80.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_ydmtd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_wjua8")
 max_value = 10.0
@@ -443,6 +464,22 @@ scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Coin-Hud" type="RichTextLabel" parent="Control" unique_id=205655620]
+custom_minimum_size = Vector2(100, 0)
+clip_contents = false
+layout_mode = 0
+offset_left = 528.0
+offset_top = 424.0
+offset_right = 628.0
+offset_bottom = 464.0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img] 9999"
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("38_lra8k")
 
 [node name="Loot-Box" type="HBoxContainer" parent="Control" unique_id=1836384301 node_paths=PackedStringArray("coin_hud", "loot_manager", "gameplay_manager", "player_grid_ui", "reroll_price_label", "reroll_button", "context_cursor", "loot_box_cell_ui")]
 layout_mode = 1
@@ -1349,21 +1386,39 @@ text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]This
 fit_content = true
 scroll_active = false
 
-[node name="Coin-Hud" type="RichTextLabel" parent="Control" unique_id=205655620]
-custom_minimum_size = Vector2(100, 0)
+[node name="Enemy-Skill" type="Control" parent="Control" unique_id=1219037104 node_paths=PackedStringArray("skill_desc")]
+anchors_preset = 0
+offset_left = 1267.0
+offset_top = 533.0
+offset_right = 1307.0
+offset_bottom = 573.0
+script = ExtResource("53_p8an3")
+skill_desc = NodePath("Mod-Desc-1")
+
+[node name="Label" type="Label" parent="Control/Enemy-Skill" unique_id=1253936589]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -52.0
+offset_right = 119.0
+offset_bottom = -7.0
+theme_override_font_sizes/font_size = 32
+text = "Enemy Skill"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mod-Desc-1" type="RichTextLabel" parent="Control/Enemy-Skill" unique_id=1396730309]
+custom_minimum_size = Vector2(250, 90)
 clip_contents = false
 layout_mode = 0
-offset_left = 528.0
-offset_top = 424.0
-offset_right = 628.0
-offset_bottom = 464.0
-theme_override_font_sizes/normal_font_size = 24
+offset_left = -93.0
+offset_top = 19.0
+offset_right = 157.0
+offset_bottom = 130.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4vhag")
 bbcode_enabled = true
-text = "[img=24]uid://de3k1fl4j5llo[/img] 9999"
+text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 attack after each round. Have 65% chance to be destroyed on getting attacked"
+fit_content = true
 scroll_active = false
-autowrap_mode = 0
-vertical_alignment = 1
-script = ExtResource("38_lra8k")
 
 [node name="Death-Screen" type="TextureRect" parent="." unique_id=1307319705 node_paths=PackedStringArray("gameplay_manager", "restart_button", "quit_button")]
 visible = false

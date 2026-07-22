@@ -1,9 +1,9 @@
 class_name RegenerationEnemySkill extends EnemySkill
 
 
-func get_modifier_name() ->String: return "Regeneration"
+func get_skill_name() ->String: return "Regeneration"
 
-func get_modifier_description() ->String: return "Recover 1 life every round"
+func get_skill_description() ->String: return "Recover 1 life every round"
 
 func trigger() -> void:
 	if _enemy_controller.health.current_life <=0 : return

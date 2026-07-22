@@ -17,6 +17,8 @@ signal on_enemy_dead
 # Gameplay Events
 signal on_coin_change(amount:int)
 signal on_hover_on_item(item:ItemData)
+signal on_hover_on_enemy(enemy_controller:EnemyController)
+signal on_mouse_exit_enemy()
 signal on_fight_started
 signal on_fight_end
 signal on_player_dead

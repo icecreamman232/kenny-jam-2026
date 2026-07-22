@@ -5,9 +5,19 @@ class_name EnemyController extends EntityController
 @export var avatar:EnemyAvatar
 @export var health:EnemyHealth
 @export var enemy_pivot:Control
+@export var hover_area:Control
 var skill_list:Array[EnemySkill]
 var _gameplay_manager:GameplayManager
 
+
+func _ready():
+	hover_area.mouse_entered.connect(_on_hover_enter)
+	hover_area.mouse_exited.connect(_on_hover_exit)
+	
+func _exit_tree() -> void:
+	hover_area.mouse_entered.disconnect(_on_hover_enter)
+	hover_area.mouse_exited.disconnect(_on_hover_exit)	
+	
 
 func assign_gameplay_manager(gameplay_manager:GameplayManager):
 	_gameplay_manager = gameplay_manager
@@ -73,3 +83,13 @@ func _calculate_coin_drop() ->int:
 	total_coin += round_bonus + kill_bonus
 	
 	return total_coin
+	
+	
+func _on_hover_enter():
+	EventBus.on_hover_on_enemy.emit(self)
+	avatar.show_highlight(true)
+	
+	
+func _on_hover_exit():
+	EventBus.on_mouse_exit_enemy.emit()
+	avatar.show_highlight(false)

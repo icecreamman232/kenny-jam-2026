@@ -2,6 +2,11 @@ class_name EnemyAvatar extends Control
 
 @export var enemy_icon:TextureRect
 
+
+func _ready():	
+	var shader_material := enemy_icon.material.duplicate() as ShaderMaterial
+	enemy_icon.material = shader_material
+
 func assign(enemy_data: EnemyData):
 	enemy_icon.texture = enemy_data.enemy_icon
 
@@ -26,4 +31,8 @@ func disappear_icon_tween() ->Tween:
 	
 func show_icon():
 	enemy_icon.self_modulate = Color.WHITE
-
+	
+	
+func show_highlight(is_show:bool):
+	(enemy_icon.material as ShaderMaterial).set_shader_parameter("outline_thickness", 1 if is_show else 0)
+		

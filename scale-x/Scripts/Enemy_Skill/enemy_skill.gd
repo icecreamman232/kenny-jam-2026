@@ -24,9 +24,12 @@ func _init(enemy_controller: EnemyController):
 	_enemy_controller = enemy_controller
 	
 	
-func get_modifier_name() ->String: return ""
+func get_skill_name() ->String: return ""
 
-func get_modifier_description() ->String: return ""	
+func get_skill_description() ->String: return ""	
+
+func get_whole_mod_desc() ->String:
+	return "[font_size=18][color=yellow]" + get_skill_name() +"[/color][/font_size][br]" + get_skill_description()
 
 
 

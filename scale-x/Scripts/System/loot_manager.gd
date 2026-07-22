@@ -12,14 +12,6 @@ const RARE_ITEM_RANGE_VALUE:Vector2i = Vector2i(6, 8)
 const LEGENDARY_ITEM_RANGE_VALUE:Vector2i = Vector2i(8, 10)
 const EPIC_ITEM_RANGE_VALUE:Vector2i = Vector2i(10, 12)
 
-const ATK_FACTOR:float = 1
-const ACC_FACTOR:float = 1
-const SPD_FACTOR:float = 0.5
-const LIFE_FACTOR:float = 0.8
-const MANA_FACTOR:float = 0.5
-const DODGE_FACTOR:float = 0.25
-const ARMOR_FACTOR:float = 0.25
-
 # Rarity order: [common, uncommon, rare, epic, legendary]
 const EARLY_GAME_1_RARITY_WEIGHTS:Array[float] = [1, 0 , 0 , 0 , 0]
 const EARLY_GAME_2_RARITY_WEIGHTS:Array[float] = [6, 3 , 0 , 0 , 0]
@@ -28,6 +20,11 @@ const MID_GAME_2_RARITY_WEIGHTS:Array[float] = [3, 6 , 2 , 0 , 0]
 const LATE_GAME_1_RARITY_WEIGHTS:Array[float] = [0, 1 , 6 , 2 , 0]
 const LATE_GAME_2_RARITY_WEIGHTS:Array[float] = [1, 1 , 10 , 3  , 3]
 
+const EARLY_ITEM_TYPE_WEIGHT:Array = [
+	["weapon", "weapon", "armor"],
+	["weapon", "armor", "armor"],
+	["weapon", "weapon", "weapon"]
+]
 
 
 func _ready() -> void:
@@ -37,14 +34,32 @@ func _ready() -> void:
 
 func get_items(round_number:int) -> Array[ItemData]:
 	var result:Array[ItemData]
-	for idx in MAX_ITEM_IN_LOOT_BOX:
-		var random_item:ItemData = _all_item.pick_random()
-		random_item = random_item.duplicate()
-		_apply_random_stat_to_item(random_item, round_number)
-		#print("Item: ATK ", random_item.attack, " SPD ", random_item.speed, " LIFE ", random_item.life, " MANA ", random_item.mana, " DODGE ", random_item.dodge, " ARMOR ", random_item.armor)
-		result.append(random_item)
+	
+	if round_number <= 3:
+		result = _pick_item_for_early_game()
+		for idx in range(result.size()):
+			_apply_random_stat_to_item(result[idx], round_number)
+	else:
+		for idx in MAX_ITEM_IN_LOOT_BOX:
+			var random_item:ItemData = _all_item.pick_random()
+			random_item = random_item.duplicate()
+			_apply_random_stat_to_item(random_item, round_number)
+			#print("Item: ATK ", random_item.attack, " SPD ", random_item.speed, " LIFE ", random_item.life, " MANA ", random_item.mana, " DODGE ", random_item.dodge, " ARMOR ", random_item.armor)
+			result.append(random_item)
 	
 	return result
+
+
+func _pick_item_for_early_game()->Array[ItemData]:
+	var result:Array[ItemData] = []
+	var rand_weight:Array = EARLY_ITEM_TYPE_WEIGHT.pick_random()
+	for weight in rand_weight:
+		if weight == "weapon":
+			result.append(weapon_items.pick_random())
+		elif weight == "armor":
+			result.append(armor_items.pick_random())
+	return result
+	
 
 
 func _apply_random_stat_to_item(item:ItemData, round_number:int):
@@ -90,6 +105,7 @@ func _apply_random_stat_to_item(item:ItemData, round_number:int):
 	var rand_mod_id:Modifier.ModifierId = item.modifier_pool[rand_ix]
 	var modifier:Modifier = ModifierFactory.create_modifier(rand_mod_id)
 	if modifier != null:
+		print("Add mod ", modifier.get_modifier_name(), " to item ", item.item_name)
 		item.modifier_list.append(modifier)			
 
 
@@ -126,8 +142,6 @@ func get_random_rarities(count: int, weights: Array[float]) -> Array[ItemData.It
 	return result
 
 
-
-
 func _get_random_stat_value(rarity:ItemData.ItemRarity) ->int:
 	match rarity:
 		ItemData.ItemRarity.COMMON:
@@ -145,27 +159,27 @@ func _get_random_stat_value(rarity:ItemData.ItemRarity) ->int:
 
 
 func _get_random_attack(stat_value:int) ->int:
-	return roundi(stat_value * ATK_FACTOR)
+	return roundi(stat_value * Constant.ITEM_ATK_FACTOR)
 	
 
 func _get_random_speed(stat_value:int) ->int:
-	return roundi(stat_value * SPD_FACTOR)
+	return roundi(stat_value * Constant.ITEM_SPD_FACTOR)
 	
 func _get_random_accuracy(stat_value:int) ->int:
-	return roundi(stat_value * ACC_FACTOR)	
+	return roundi(stat_value * Constant.ITEM_ACC_FACTOR)	
 	
 
 func _get_random_life(stat_value:int) ->int:
-	return roundi(stat_value * LIFE_FACTOR)
+	return roundi(stat_value * Constant.ITEM_LIFE_FACTOR)
 	
 
 func _get_random_mana(stat_value:int) ->int:
-	return roundi(stat_value * MANA_FACTOR)
+	return roundi(stat_value * Constant.ITEM_MANA_FACTOR)
 	
 	
 func _get_random_armor(stat_value:int) ->int:
-	return roundi(stat_value * ARMOR_FACTOR)
+	return roundi(stat_value * Constant.ITEM_ARMOR_FACTOR)
 	
 
 func _get_random_dodge(stat_value:int) ->int:
-	return roundi(stat_value * DODGE_FACTOR)
+	return roundi(stat_value * Constant.ITEM_DODGE_FACTOR)
