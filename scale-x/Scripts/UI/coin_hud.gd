@@ -5,7 +5,8 @@ var current_coin:int = 0
 func _ready():
 	EventBus.on_coin_change.connect(_update_coin)
 	EventBus.on_player_dead.connect(_reset_coin)
-	_update_coin(Constant.STARTING_COINS)
+	var bonus_coin := 3 if IngameDataManager.menu_reward_id == 0 else 0
+	_update_coin(Constant.STARTING_COINS + bonus_coin)
 	
 	
 func _exit_tree() -> void:

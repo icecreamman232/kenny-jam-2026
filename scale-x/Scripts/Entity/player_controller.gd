@@ -37,6 +37,20 @@ func _exit_tree() -> void:
 	EventBus.on_add_item.disconnect(_add_item)
 
 
+func add_damage(amount:int):
+	attack += amount
+	var current_attack := stat.get_final(StatController.StatType.ATTACK)
+	current_attack += amount
+	stat.set_final(StatController.StatType.ATTACK, current_attack)
+	EventBus.update_player_info.emit(stat)
+
+
+func add_max_health(amount:int) -> void:
+	life += amount
+	health.add_max_health(2)
+	EventBus.update_player_info.emit(stat)
+	
+
 func play_attack_tween():
 	var tween :Tween= avatar.attack_tween()
 	await tween.finished

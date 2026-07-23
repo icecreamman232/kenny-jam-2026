@@ -36,6 +36,10 @@ func _exit_tree() -> void:
 	
 func initialize():
 	player_controller.initialize()
+	if IngameDataManager.menu_reward_id != -1:
+		match IngameDataManager.menu_reward_id:
+			1: player_controller.add_max_health(2)
+			2: player_controller.add_damage(1)
 	_create_enemy()
 	await Helper.wait_for_frames(3)
 	loot_box_ui.set_round_number(round_number)

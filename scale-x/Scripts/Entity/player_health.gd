@@ -1,6 +1,13 @@
 class_name PlayerHealth extends Health
 
 
+func add_max_health(amount:int) -> void:
+	max_life += amount
+	current_life = max_life
+	(_controller.stat as StatController).set_final(StatController.StatType.LIFE, max_life)
+	update_life_bar()
+	
+
 func take_damage(damage:int) -> void: 
 	if (IngameDataManager.cheat_manager as CheatManager).is_immortal: return
 	super.take_damage(damage)
