@@ -2,6 +2,15 @@ class_name EnemyManager extends Node
 
 @export var player_controller:PlayerController
 @export var enemy_data_list:Array[EnemyData]
+@export var boss_list:Array[EnemyData]
+
+
+func get_boss(round_number:int) -> EnemyData:
+	var source_data = boss_list.pick_random()
+	source_data = source_data.duplicate()
+	_scale_up_enemy_stat(source_data,round_number)
+	return source_data
+
 
 func get_enemy(round_number:int) -> EnemyData:
 	var source_data = enemy_data_list.pick_random()

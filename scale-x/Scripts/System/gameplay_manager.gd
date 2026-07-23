@@ -43,13 +43,14 @@ func initialize():
 
 
 func _create_boss():
-	pass
-
+	var enemy:= enemy_manager.get_boss(round_number)
+	enemy_controller.initialize(enemy)	
 
 
 func _create_enemy():
 	var enemy:= enemy_manager.get_enemy(round_number)
 	enemy_controller.initialize(enemy)	
+
 
 func _on_player_dead():
 	InputManager.set_enabled(false)
