@@ -11,6 +11,8 @@ func create_skill(enemy_skill_id:String, enemy_controller:EnemyController) ->Ene
 			return SacrificeEnemySkill.new(enemy_controller)
 		EnemySkill.EnemySkillID.THIEF:
 			return ThiefEnemySkill.new(enemy_controller)
+		EnemySkill.EnemySkillID.CHICKEN_ATTACK:
+			return ChickenAttackEnemySkill.new(enemy_controller)
 			
 		_: return null
 	

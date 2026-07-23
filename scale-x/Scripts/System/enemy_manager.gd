@@ -9,6 +9,8 @@ func get_boss(round_number:int) -> EnemyData:
 	var source_data = boss_list.pick_random()
 	source_data = source_data.duplicate()
 	_scale_up_enemy_stat(source_data,round_number)
+	source_data.life = roundi(player_controller.stat.get_final(StatController.StatType.LIFE) * 1.5)
+	source_data.armor = roundi(player_controller.stat.get_final(StatController.StatType.ATTACK) * 0.8)
 	return source_data
 
 

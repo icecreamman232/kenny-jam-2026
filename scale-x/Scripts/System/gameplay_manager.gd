@@ -73,7 +73,12 @@ func restart_game():
 	AudioManager.play_music()	
 
 	
-func _on_enemy_dead():
+func _on_enemy_dead() -> void:
+	if enemy_controller.enemy_data.is_boss:
+		EventBus.on_victory.emit()
+		return
+
+
 	if round_number >= MAX_ROUND:
 		is_boss_fight = true
 		EventBus.on_boss_appear.emit()
@@ -111,6 +116,7 @@ func _on_fight_started() -> void:
 		anim_on_enemy.play(SLASH_ANIM_NAME)
 		await player_controller.play_attack_tween()
 		await player_controller.deal_damage_to_enemy(enemy_controller)
+	
 	
 	if enemy_controller.health.current_life > 0:	
 		var enemy_spd:int  = enemy_controller.stat.get_final(StatController.StatType.SPEED)

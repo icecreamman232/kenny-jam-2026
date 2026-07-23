@@ -57,6 +57,7 @@
 [ext_resource type="Script" uid="uid://kwiamlij7gjw" path="res://Scripts/UI/game_over_screen.gd" id="53_4vhag"]
 [ext_resource type="Script" uid="uid://5g0nvl7x2a5p" path="res://Scripts/UI/enemy_skill_info.gd" id="53_p8an3"]
 [ext_resource type="SpriteFrames" uid="uid://cxmd5lntfegws" path="res://Arts/Animations/slash-effect-anim-frames.tres" id="54_oshq5"]
+[ext_resource type="Script" uid="uid://ctcp7m7pnr4mi" path="res://Scripts/UI/victory_screen.gd" id="56_ier0f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -1456,7 +1457,7 @@ text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 a
 fit_content = true
 scroll_active = false
 
-[node name="Death-Screen" type="TextureRect" parent="." unique_id=1307319705 node_paths=PackedStringArray("gameplay_manager", "restart_button", "quit_button")]
+[node name="Death-Screen" type="TextureRect" parent="." unique_id=1307319705 node_paths=PackedStringArray("gameplay_manager", "best_score_label", "restart_button", "quit_button")]
 visible = false
 self_modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.94509804)
 anchors_preset = 15
@@ -1468,6 +1469,7 @@ texture = ExtResource("1_2wjsh")
 expand_mode = 1
 script = ExtResource("53_4vhag")
 gameplay_manager = NodePath("../Gameplay Manager")
+best_score_label = NodePath("TextureRect/Score")
 restart_button = NodePath("TextureRect/HBoxContainer/Restart-Button")
 quit_button = NodePath("TextureRect/HBoxContainer/Menu-Button")
 
@@ -1479,9 +1481,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -56.5
+offset_top = 43.0
 offset_right = 150.0
-offset_bottom = 56.5
+offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_tntwh")
@@ -1506,14 +1508,30 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -138.0
-offset_top = -64.0
-offset_right = 138.0
-offset_bottom = 3.0
+offset_left = -287.0
+offset_top = -200.5
+offset_right = 287.0
+offset_bottom = -63.5
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 100
 text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Death-Screen/TextureRect" unique_id=557616707]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = -64.5
+offset_right = 116.0
+offset_bottom = -19.5
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_font_sizes/font_size = 32
+text = "Best Round: 99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1544,6 +1562,102 @@ theme_override_styles/hover = ExtResource("33_6gil7")
 text = "Menu"
 
 [node name="Restart-Button" type="Button" parent="Death-Screen/TextureRect/HBoxContainer" unique_id=128428458]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_styles/normal = ExtResource("31_l5t21")
+theme_override_styles/pressed = ExtResource("32_ajygt")
+theme_override_styles/hover = ExtResource("33_6gil7")
+text = "Restart"
+
+[node name="Victory-Screen" type="TextureRect" parent="." unique_id=346425751 node_paths=PackedStringArray("restart_button", "quit_button")]
+visible = false
+self_modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.94509804)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2wjsh")
+expand_mode = 1
+script = ExtResource("56_ier0f")
+restart_button = NodePath("TextureRect/HBoxContainer/Restart-Button")
+quit_button = NodePath("TextureRect/HBoxContainer/Menu-Button")
+
+[node name="TextureRect" type="NinePatchRect" parent="Victory-Screen" unique_id=1599554831]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 4.0
+offset_right = 150.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tntwh")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="Victory-Screen/TextureRect" unique_id=592806104]
+self_modulate = Color(0.95686275, 0.7058824, 0.105882354, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2wjsh")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Victory-Screen/TextureRect" unique_id=1816165965]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -207.0
+offset_top = -185.0
+offset_right = 207.0
+offset_bottom = -48.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_font_sizes/font_size = 100
+text = "VICTORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Victory-Screen/TextureRect" unique_id=760904220]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -20.0
+offset_right = 97.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="Menu-Button" type="Button" parent="Victory-Screen/TextureRect/HBoxContainer" unique_id=2001416199]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_styles/normal = ExtResource("31_l5t21")
+theme_override_styles/pressed = ExtResource("32_ajygt")
+theme_override_styles/hover = ExtResource("33_6gil7")
+text = "Menu"
+
+[node name="Restart-Button" type="Button" parent="Victory-Screen/TextureRect/HBoxContainer" unique_id=1210668569]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)

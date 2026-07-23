@@ -13,7 +13,8 @@ func remove() -> void:
 	for cell_grid in player_grid.cell_grid:
 		if cell_grid != null and cell_grid.assigned_item != null and not cell_grid.is_blocked:
 			available_cell.append(cell_grid)
-			
+	
+	if available_cell.size() == 0: return		
 	var random_cell:PlayerCellGridUi = available_cell.pick_random()
 	(IngameDataManager.text_manager as TextManager).show_text("Destroyed", random_cell.global_position, Color.DARK_GRAY)	
 	AudioManager.play_sfx(SfxContainer.SfxID.NEGATIVE_MODIFIER)	

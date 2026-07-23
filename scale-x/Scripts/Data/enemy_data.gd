@@ -2,6 +2,7 @@ class_name EnemyData extends Resource
 
 @export var enemy_name:String
 @export var enemy_icon:Texture2D
+@export var is_boss:bool = false
 @export_group("Stats")
 @export var attack:int
 @export var accuracy:int
