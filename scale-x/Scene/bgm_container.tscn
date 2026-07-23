@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://mk7d8iikuc0c"]
 
 [ext_resource type="Script" uid="uid://bxcc74lklge6a" path="res://Scripts/Audio/bgm_container.gd" id="1_ubjoe"]
+[ext_resource type="AudioStream" uid="uid://1wsjx0c4lw6o" path="res://Data/Audio/menu-music.mp3" id="2_bf1q0"]
 [ext_resource type="AudioStream" uid="uid://dvrkukvc7xua1" path="res://Data/Audio/Pixel 11 - Darkwood.mp3" id="2_dfdcx"]
 
 [node name="BGM_Container" type="Node" unique_id=1038140831]
 script = ExtResource("1_ubjoe")
+menu_music = ExtResource("2_bf1q0")
 bgm_list = Array[AudioStream]([ExtResource("2_dfdcx")])
