@@ -31,7 +31,7 @@ func get_skill_name() ->String: return ""
 func get_skill_description() ->String: return ""	
 
 func get_whole_mod_desc() ->String:
-	return "[font_size=18][color=yellow]" + get_skill_name() +"[/color][/font_size][br]" + get_skill_description()
+	return "[font_size=32][color=yellow]" + get_skill_name() +"[/color][/font_size][br]" + get_skill_description()
 
 
 

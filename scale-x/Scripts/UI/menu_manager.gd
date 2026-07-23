@@ -11,8 +11,12 @@ var _current_life:int = 0
 var _is_recovering:bool = false
 var _block_input:bool = false
 
+func _set_window_size():
+	get_window().size = Vector2i(1366, 768)
+
 
 func _ready():
+	call_deferred("_set_window_size")
 	_current_life = MAX_TITLE_LIFE
 	title_button.pressed.connect(_on_hit_title_button)
 	var shader_material := title_label.material.duplicate() as ShaderMaterial

@@ -16,7 +16,6 @@ enum ModifierId
 
 
 
-
 var id:String
 var _mod_id:ModifierId
 var _owner_cell:PlayerCellGridUi
@@ -43,4 +42,4 @@ func get_modifier_description() ->String: return ""
 
 
 func get_whole_mod_desc() ->String:
-	return "[font_size=18][color=yellow]" + get_modifier_name() +"[/color][/font_size][br]" + get_modifier_description()
+	return "[font_size=32][color=yellow]" + get_modifier_name() +"[/color][/font_size][br]" + get_modifier_description()

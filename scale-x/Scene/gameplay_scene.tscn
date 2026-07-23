@@ -49,7 +49,9 @@
 [ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="33_6gil7"]
 [ext_resource type="PackedScene" uid="uid://brkcw0jilrxkm" path="res://Scene/cheat_manager.tscn" id="33_ovs3o"]
 [ext_resource type="Script" uid="uid://cqpi71e81coce" path="res://Scripts/UI/player_info_ui.gd" id="34_ajygt"]
+[ext_resource type="FontFile" uid="uid://cjnauydm3ntpv" path="res://Arts/m6x11plus.ttf" id="35_0b0bh"]
 [ext_resource type="Script" uid="uid://idwkt7aitam2" path="res://Scripts/UI/enemy_info_ui.gd" id="35_6gil7"]
+[ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="35_g8irb"]
 [ext_resource type="Script" uid="uid://crrlof3330gqw" path="res://Scripts/UI/item_info_ui.gd" id="36_8ryol"]
 [ext_resource type="Shader" uid="uid://depag5wqx0nrh" path="res://Arts/outline_2d.gdshader" id="36_t2s0o"]
 [ext_resource type="Script" uid="uid://be138vgmprcoc" path="res://Scripts/UI/coin_hud.gd" id="38_lra8k"]
@@ -65,7 +67,7 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
 expand_margin_left = 3.0
 expand_margin_top = 3.0
 expand_margin_right = 3.0
@@ -73,6 +75,7 @@ expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjua8"]
 bg_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+border_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p8an3"]
 shader = ExtResource("36_t2s0o")
@@ -115,7 +118,7 @@ script = ExtResource("1_mxoqm")
 round_label = NodePath("../Control/Round-Label")
 player_controller = NodePath("../Player")
 enemy_controller = NodePath("../Enemy")
-loot_box_ui = NodePath("../Control/Loot-Box")
+loot_box_ui = NodePath("../Control/Loot-Box-Group/Loot-Box")
 enemy_manager = NodePath("../Enemy Manager")
 anim_on_player = NodePath("../Slash-Animation-On-Player")
 anim_on_enemy = NodePath("../Slash-Animation-On-Enemy")
@@ -213,7 +216,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 48
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_0b0bh")
+theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "ROUND 99"
 scroll_active = false
@@ -338,7 +343,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "3/3"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -414,79 +420,7 @@ text = "3/3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Control" unique_id=1344023341]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -98.0
-offset_right = 68.0
-offset_bottom = -53.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Loot Box"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Reroll-Button" type="Button" parent="Control" unique_id=1255558771]
-custom_minimum_size = Vector2(80, 60)
-layout_mode = 0
-offset_left = 997.0
-offset_top = 415.0
-offset_right = 1077.0
-offset_bottom = 475.0
-theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
-theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
-theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("31_l5t21")
-theme_override_styles/pressed = ExtResource("32_ajygt")
-theme_override_styles/hover = ExtResource("33_6gil7")
-text = "Reroll"
-
-[node name="Reroll-Price" type="RichTextLabel" parent="Control/Reroll-Button" unique_id=893164011]
-custom_minimum_size = Vector2(120, 40)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -1.0
-offset_right = 60.0
-offset_bottom = 39.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "[img=24]uid://de3k1fl4j5llo[/img] 1"
-scroll_active = false
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Coin-Hud" type="RichTextLabel" parent="Control" unique_id=205655620]
-custom_minimum_size = Vector2(100, 0)
-clip_contents = false
-layout_mode = 0
-offset_left = 528.0
-offset_top = 424.0
-offset_right = 628.0
-offset_bottom = 464.0
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "[img=24]uid://de3k1fl4j5llo[/img] 9999"
-scroll_active = false
-autowrap_mode = 0
-vertical_alignment = 1
-script = ExtResource("38_lra8k")
-
-[node name="Loot-Box" type="HBoxContainer" parent="Control" unique_id=1836384301 node_paths=PackedStringArray("coin_hud", "loot_manager", "gameplay_manager", "player_grid_ui", "reroll_price_label", "reroll_button", "context_cursor", "loot_box_cell_ui")]
+[node name="Loot-Box-Group" type="Control" parent="Control" unique_id=1212399997]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -494,24 +428,32 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -47.0
+offset_top = -40.0
 offset_right = 150.0
-offset_bottom = 33.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Loot-Box" type="HBoxContainer" parent="Control/Loot-Box-Group" unique_id=1836384301 node_paths=PackedStringArray("coin_hud", "loot_manager", "gameplay_manager", "player_grid_ui", "reroll_price_label", "reroll_button", "context_cursor", "loot_box_cell_ui")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 alignment = 1
 script = ExtResource("14_r66ao")
 coin_hud = NodePath("../Coin-Hud")
-loot_manager = NodePath("../../Loot Manager")
-gameplay_manager = NodePath("../../Gameplay Manager")
-player_grid_ui = NodePath("../Player-Grid")
+loot_manager = NodePath("../../../Loot Manager")
+gameplay_manager = NodePath("../../../Gameplay Manager")
+player_grid_ui = NodePath("../../Player-Grid")
 reroll_price_label = NodePath("../Reroll-Button/Reroll-Price")
 reroll_button = NodePath("../Reroll-Button")
-context_cursor = NodePath("../Context-Cursor")
+context_cursor = NodePath("../../Context-Cursor")
 loot_box_cell_ui = [NodePath("Item-1"), NodePath("Item-2"), NodePath("Item-3")]
 
-[node name="Item-1" type="TextureRect" parent="Control/Loot-Box" unique_id=357245531 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
+[node name="Item-1" type="TextureRect" parent="Control/Loot-Box-Group/Loot-Box" unique_id=357245531 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
 self_modulate = Color(1, 0.9137255, 0.76862746, 1)
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -521,7 +463,7 @@ script = ExtResource("16_x02nk")
 price_label = NodePath("Price")
 assigned_item_icon = NodePath("Item-Icon")
 
-[node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box/Item-1" unique_id=423497894]
+[node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box-Group/Loot-Box/Item-1" unique_id=423497894]
 material = SubResource("ShaderMaterial_t2s0o")
 layout_mode = 1
 anchors_preset = 15
@@ -535,7 +477,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="Price" type="RichTextLabel" parent="Control/Loot-Box/Item-1" unique_id=1631952658]
+[node name="Price" type="RichTextLabel" parent="Control/Loot-Box-Group/Loot-Box/Item-1" unique_id=1631952658]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 1
 anchors_preset = 7
@@ -549,15 +491,17 @@ offset_right = 50.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[img=24]uid://de3k1fl4j5llo[/img] 99"
+text = "[img=24]uid://de3k1fl4j5llo[/img]99"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-2" type="TextureRect" parent="Control/Loot-Box" unique_id=1020227082 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
+[node name="Item-2" type="TextureRect" parent="Control/Loot-Box-Group/Loot-Box" unique_id=1020227082 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
 self_modulate = Color(1, 0.9137255, 0.76862746, 1)
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -567,7 +511,7 @@ script = ExtResource("16_x02nk")
 price_label = NodePath("Price")
 assigned_item_icon = NodePath("Item-Icon")
 
-[node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box/Item-2" unique_id=1084575622]
+[node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box-Group/Loot-Box/Item-2" unique_id=1084575622]
 material = SubResource("ShaderMaterial_ueyxm")
 layout_mode = 1
 anchors_preset = 15
@@ -581,7 +525,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="Price" type="RichTextLabel" parent="Control/Loot-Box/Item-2" unique_id=619441396]
+[node name="Price" type="RichTextLabel" parent="Control/Loot-Box-Group/Loot-Box/Item-2" unique_id=619441396]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 1
 anchors_preset = 7
@@ -595,15 +539,17 @@ offset_right = 50.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[img=24]uid://de3k1fl4j5llo[/img] 99"
+text = "[img=24]uid://de3k1fl4j5llo[/img]99"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-3" type="TextureRect" parent="Control/Loot-Box" unique_id=948356292 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
+[node name="Item-3" type="TextureRect" parent="Control/Loot-Box-Group/Loot-Box" unique_id=948356292 node_paths=PackedStringArray("price_label", "assigned_item_icon")]
 self_modulate = Color(1, 0.9137255, 0.76862746, 1)
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -613,7 +559,7 @@ script = ExtResource("16_x02nk")
 price_label = NodePath("Price")
 assigned_item_icon = NodePath("Item-Icon")
 
-[node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box/Item-3" unique_id=133395179]
+[node name="Item-Icon" type="TextureRect" parent="Control/Loot-Box-Group/Loot-Box/Item-3" unique_id=133395179]
 material = SubResource("ShaderMaterial_hy2kh")
 layout_mode = 1
 anchors_preset = 15
@@ -627,7 +573,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="Price" type="RichTextLabel" parent="Control/Loot-Box/Item-3" unique_id=298935118]
+[node name="Price" type="RichTextLabel" parent="Control/Loot-Box-Group/Loot-Box/Item-3" unique_id=298935118]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 1
 anchors_preset = 7
@@ -641,11 +587,100 @@ offset_right = 50.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/normal_font_size = 24
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[img=24]uid://de3k1fl4j5llo[/img] 99"
+text = "[img=24]uid://de3k1fl4j5llo[/img]99"
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coin-Hud" type="RichTextLabel" parent="Control/Loot-Box-Group" unique_id=205655620]
+custom_minimum_size = Vector2(100, 0)
+clip_contents = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=32 align=center,center]uid://de3k1fl4j5llo[/img] 9999"
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("38_lra8k")
+
+[node name="Reroll-Button" type="Button" parent="Control/Loot-Box-Group" unique_id=1255558771]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = -30.0
+offset_right = 109.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("31_l5t21")
+theme_override_styles/pressed = ExtResource("32_ajygt")
+theme_override_styles/hover = ExtResource("33_6gil7")
+text = "Reroll"
+
+[node name="Reroll-Price" type="RichTextLabel" parent="Control/Loot-Box-Group/Reroll-Button" unique_id=893164011]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -1.0
+offset_right = 60.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img]1"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Titlte-LootBox" type="Label" parent="Control/Loot-Box-Group" unique_id=1344023341]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = -66.0
+offset_right = 90.0
+offset_bottom = -18.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 60
+text = "Loot Box"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -675,13 +710,15 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
 theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
 theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("31_l5t21")
 theme_override_styles/pressed = ExtResource("32_ajygt")
 theme_override_styles/hover = ExtResource("33_6gil7")
 text = "Fight"
 
 [node name="Player-Info" type="VBoxContainer" parent="Control" unique_id=700043178 node_paths=PackedStringArray("atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label")]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 0
 offset_left = 238.0
 offset_top = 122.0
@@ -700,8 +737,11 @@ armor_label = NodePath("Armor-Label/Armor-Number")
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[img=24]uid://qabkcc7vohy[/img]ATK"
+text = "[img=24]uid://qabkcc7vohy[/img] ATK"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -720,6 +760,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -728,6 +771,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://bo6l5im10b5j4[/img] ACC"
 scroll_active = false
@@ -748,6 +794,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -756,6 +805,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://cydmfxnf4i274[/img] SPD"
 scroll_active = false
@@ -776,6 +828,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -784,6 +839,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://d0lb80imevmiw[/img] LIFE"
 scroll_active = false
@@ -804,6 +862,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -813,6 +874,9 @@ visible = false
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://bkbq5m6d2rs5x[/img] MANA"
 scroll_active = false
@@ -833,6 +897,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -841,6 +908,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://nk5dqh6aietu[/img] DODGE"
 scroll_active = false
@@ -861,6 +931,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -869,6 +942,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(100, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://dkdmy3xiqow1t[/img] ARMOR"
 scroll_active = false
@@ -889,6 +965,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -912,8 +991,11 @@ armor_label = NodePath("Armor-Label/Armor-Number")
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[img=24]uid://qabkcc7vohy[/img]ATK"
+text = "[img=24]uid://qabkcc7vohy[/img] ATK"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -932,6 +1014,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -940,8 +1025,11 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[img=24]uid://bo6l5im10b5j4[/img]ACC"
+text = "[img=24]uid://bo6l5im10b5j4[/img] ACC"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -960,6 +1048,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -968,6 +1059,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://cydmfxnf4i274[/img] SPD"
 scroll_active = false
@@ -988,6 +1082,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -996,6 +1093,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://d0lb80imevmiw[/img] LIFE"
 scroll_active = false
@@ -1016,6 +1116,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1025,6 +1128,9 @@ visible = false
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://bkbq5m6d2rs5x[/img] MANA"
 scroll_active = false
@@ -1045,6 +1151,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1053,6 +1162,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://nk5dqh6aietu[/img] DODGE"
 scroll_active = false
@@ -1073,6 +1185,9 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1081,6 +1196,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(100, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://dkdmy3xiqow1t[/img] ARMOR"
 scroll_active = false
@@ -1101,32 +1219,42 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-Name" type="Label" parent="Control" unique_id=816860782]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 0
-offset_left = 274.0
-offset_top = 486.0
-offset_right = 474.0
-offset_bottom = 531.0
-theme_override_font_sizes/font_size = 32
-text = "Item Name"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Control" type="Control" parent="Control" unique_id=1172466482]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 174.0
+offset_top = -357.0
+offset_right = 624.0
+offset_bottom = -89.0
+grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=493400997]
-layout_mode = 0
-offset_left = 171.0
-offset_top = 554.0
-offset_right = 621.0
-offset_bottom = 822.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Control" unique_id=493400997]
+custom_minimum_size = Vector2(450, 268)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -134.0
+offset_right = 225.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Item-Info" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=2037926138 node_paths=PackedStringArray("item_name", "dur_label", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label", "price_label", "mod_parent", "mod_1_desc", "mod_2_desc")]
+[node name="Item-Info" type="VBoxContainer" parent="Control/Control/HBoxContainer" unique_id=2037926138 node_paths=PackedStringArray("item_name", "dur_label", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label", "price_label", "mod_parent", "mod_1_desc", "mod_2_desc")]
 layout_mode = 2
 alignment = 1
 script = ExtResource("36_8ryol")
@@ -1144,17 +1272,20 @@ mod_parent = NodePath("../Item-Mod")
 mod_1_desc = NodePath("../Item-Mod/Mod-Desc-1")
 mod_2_desc = NodePath("../Item-Mod/Mod-Desc-2")
 
-[node name="DUR-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=405420098]
+[node name="DUR-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=405420098]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[img=24]uid://d4c440hsn7ytr[/img]DUR"
+text = "[img=24]uid://d4c440hsn7ytr[/img] DUR"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DUR-Number" type="Label" parent="Control/HBoxContainer/Item-Info/DUR-Label" unique_id=1260665142]
+[node name="DUR-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/DUR-Label" unique_id=1260665142]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1168,21 +1299,27 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ATK-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1551320300]
+[node name="ATK-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1551320300]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[img=24]uid://qabkcc7vohy[/img]ATK"
+text = "[img=24]uid://qabkcc7vohy[/img] ATK"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Atk-Number" type="Label" parent="Control/HBoxContainer/Item-Info/ATK-Label" unique_id=1296769562]
+[node name="Atk-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/ATK-Label" unique_id=1296769562]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1196,21 +1333,27 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ACC-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1530778581]
+[node name="ACC-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1530778581]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "[img=24]uid://bo6l5im10b5j4[/img]ACC"
+text = "[img=24]uid://bo6l5im10b5j4[/img] ACC"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Acc-Number" type="Label" parent="Control/HBoxContainer/Item-Info/ACC-Label" unique_id=1694028653]
+[node name="Acc-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/ACC-Label" unique_id=1694028653]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1224,21 +1367,27 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SPD-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1467437634]
+[node name="SPD-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1467437634]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://cydmfxnf4i274[/img] SPD"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spd-Number" type="Label" parent="Control/HBoxContainer/Item-Info/SPD-Label" unique_id=895378916]
+[node name="Spd-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/SPD-Label" unique_id=895378916]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1252,21 +1401,27 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LIFE-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=311833770]
+[node name="LIFE-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=311833770]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://d0lb80imevmiw[/img] LIFE"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Life-Number" type="Label" parent="Control/HBoxContainer/Item-Info/LIFE-Label" unique_id=1049827832]
+[node name="Life-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/LIFE-Label" unique_id=1049827832]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1280,22 +1435,28 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MANA-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1855496214]
+[node name="MANA-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1855496214]
 visible = false
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://bkbq5m6d2rs5x[/img] MANA"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Mana-Number" type="Label" parent="Control/HBoxContainer/Item-Info/MANA-Label" unique_id=468536233]
+[node name="Mana-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/MANA-Label" unique_id=468536233]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1313,17 +1474,20 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DODGE-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1490422198]
+[node name="DODGE-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1490422198]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://nk5dqh6aietu[/img] DODGE"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dodge-Number" type="Label" parent="Control/HBoxContainer/Item-Info/DODGE-Label" unique_id=1075957596]
+[node name="Dodge-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/DODGE-Label" unique_id=1075957596]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1337,21 +1501,27 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Armor-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=1337323628]
+[node name="Armor-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1337323628]
 custom_minimum_size = Vector2(100, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://dkdmy3xiqow1t[/img] ARMOR"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Armor-Number" type="Label" parent="Control/HBoxContainer/Item-Info/Armor-Label" unique_id=696655582]
+[node name="Armor-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/Armor-Label" unique_id=696655582]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1365,21 +1535,27 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Price-Label" type="RichTextLabel" parent="Control/HBoxContainer/Item-Info" unique_id=660069481]
+[node name="Price-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=660069481]
 custom_minimum_size = Vector2(100, 30)
 clip_contents = false
 layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[img=24]uid://de3k1fl4j5llo[/img] PRICE"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Price-Number" type="Label" parent="Control/HBoxContainer/Item-Info/Price-Label" unique_id=573133218]
+[node name="Price-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/Price-Label" unique_id=573133218]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1393,52 +1569,90 @@ offset_right = 44.0
 offset_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 32
 text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-Mod" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=1349806714]
+[node name="Item-Mod" type="VBoxContainer" parent="Control/Control/HBoxContainer" unique_id=1349806714]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 5)
 theme_override_constants/separation = 30
 
-[node name="Mod-Desc-1" type="RichTextLabel" parent="Control/HBoxContainer/Item-Mod" unique_id=767667079]
+[node name="Mod-Desc-1" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Mod" unique_id=767667079]
 custom_minimum_size = Vector2(250, 90)
 clip_contents = false
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_4vhag")
 bbcode_enabled = true
-text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 attack after each round. Have 65% chance to be destroyed on getting attacked"
+text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 attack after each round. Have 65% chance to be destroyed on getting attacked"
 fit_content = true
 scroll_active = false
 
-[node name="Mod-Desc-2" type="RichTextLabel" parent="Control/HBoxContainer/Item-Mod" unique_id=866653460]
+[node name="Mod-Desc-2" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Mod" unique_id=866653460]
 custom_minimum_size = Vector2(250, 90)
 clip_contents = false
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_4vhag")
 bbcode_enabled = true
-text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]This is the very long description for item mod"
+text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]This is the very long description for item mod"
 fit_content = true
 scroll_active = false
+
+[node name="Item-Name" type="Label" parent="Control/Control" unique_id=816860782]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.0
+offset_top = -59.0
+offset_right = 102.0
+offset_bottom = -11.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 60
+text = "Item Name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Enemy-Skill" type="Control" parent="Control" unique_id=1219037104 node_paths=PackedStringArray("skill_desc")]
-anchors_preset = 0
-offset_left = 1267.0
-offset_top = 533.0
-offset_right = 1307.0
-offset_bottom = 573.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -396.0
+offset_top = -262.0
+offset_right = -356.0
+offset_bottom = -222.0
+grow_horizontal = 0
+grow_vertical = 0
 script = ExtResource("53_p8an3")
 skill_desc = NodePath("Mod-Desc-1")
 
 [node name="Label" type="Label" parent="Control/Enemy-Skill" unique_id=1253936589]
-layout_mode = 0
-offset_left = -56.0
-offset_top = -52.0
-offset_right = 119.0
-offset_bottom = -7.0
-theme_override_font_sizes/font_size = 32
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_top = -109.0
+offset_right = 124.0
+offset_bottom = -61.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 60
 text = "Enemy Skill"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1446,14 +1660,23 @@ vertical_alignment = 1
 [node name="Mod-Desc-1" type="RichTextLabel" parent="Control/Enemy-Skill" unique_id=1396730309]
 custom_minimum_size = Vector2(250, 90)
 clip_contents = false
-layout_mode = 0
-offset_left = -93.0
-offset_top = 19.0
-offset_right = 157.0
-offset_bottom = 130.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -59.0
+offset_right = 125.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_4vhag")
 bbcode_enabled = true
-text = "[font_size=18][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 attack after each round. Have 65% chance to be destroyed on getting attacked"
+text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 attack after each round. Have 65% chance to be destroyed on getting attacked"
 fit_content = true
 scroll_active = false
 

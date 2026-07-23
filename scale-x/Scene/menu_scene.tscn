@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://uv0laklaohpp" path="res://Scripts/UI/menu_manager.gd" id="1_rtf3b"]
 [ext_resource type="PackedScene" uid="uid://d24ws1qci7x0w" path="res://Scene/buble_text.tscn" id="2_kfxb8"]
 [ext_resource type="Shader" uid="uid://bg758hm4j4t3p" path="res://Arts/text_fill.gdshader" id="2_kvwtk"]
+[ext_resource type="FontFile" uid="uid://cjnauydm3ntpv" path="res://Arts/m6x11plus.ttf" id="5_fp2sf"]
+[ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="6_8aiwg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1vivr"]
 shader = ExtResource("2_kvwtk")
@@ -44,7 +46,8 @@ offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("5_fp2sf")
+theme_override_font_sizes/font_size = 150
 text = "Mini AutoBattler"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -76,13 +79,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Play Button" type="Button" parent="." unique_id=1946368431]
-offset_left = 709.0
-offset_top = 513.0
-offset_right = 878.0
-offset_bottom = 631.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = 7.0
+offset_right = 85.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.9137255, 0.76862746, 1)
 theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
 theme_override_colors/font_hover_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
-theme_override_font_sizes/font_size = 80
+theme_override_fonts/font = ExtResource("6_8aiwg")
+theme_override_font_sizes/font_size = 100
 text = "Play"
 flat = true

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d24ws1qci7x0w"]
 
 [ext_resource type="Script" uid="uid://cpc5ix3ir6muk" path="res://Scripts/UI/buble_text.gd" id="1_4e8dy"]
+[ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="1_x0hyx"]
 
 [node name="Buble-Text" type="RichTextLabel" unique_id=214949486]
 custom_minimum_size = Vector2(120, 40)
@@ -9,7 +10,8 @@ offset_top = 571.0
 offset_right = 750.0
 offset_bottom = 611.0
 theme_override_colors/default_color = Color(0, 0.7137255, 0.0627451, 1)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_fonts/normal_font = ExtResource("1_x0hyx")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "+1 Atk"
 scroll_active = false
