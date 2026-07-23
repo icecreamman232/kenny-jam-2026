@@ -1226,7 +1226,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="Control" unique_id=1172466482]
+[node name="Item-Group" type="Control" parent="Control" unique_id=1172466482]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1237,7 +1237,7 @@ offset_right = 624.0
 offset_bottom = -89.0
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Control" unique_id=493400997]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Item-Group" unique_id=493400997]
 custom_minimum_size = Vector2(450, 268)
 layout_mode = 1
 anchors_preset = 8
@@ -1254,7 +1254,7 @@ grow_vertical = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Item-Info" type="VBoxContainer" parent="Control/Control/HBoxContainer" unique_id=2037926138 node_paths=PackedStringArray("item_name", "dur_label", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label", "price_label", "mod_parent", "mod_1_desc", "mod_2_desc")]
+[node name="Item-Info" type="VBoxContainer" parent="Control/Item-Group/HBoxContainer" unique_id=2037926138 node_paths=PackedStringArray("item_name", "dur_label", "atk_label", "acc_label", "speed_label", "life_label", "mana_label", "dodge_label", "armor_label", "price_label", "mod_parent", "mod_1_desc", "mod_2_desc")]
 layout_mode = 2
 alignment = 1
 script = ExtResource("36_8ryol")
@@ -1272,7 +1272,7 @@ mod_parent = NodePath("../Item-Mod")
 mod_1_desc = NodePath("../Item-Mod/Mod-Desc-1")
 mod_2_desc = NodePath("../Item-Mod/Mod-Desc-2")
 
-[node name="DUR-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=405420098]
+[node name="DUR-Label" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Info" unique_id=405420098]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1285,7 +1285,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DUR-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/DUR-Label" unique_id=1260665142]
+[node name="DUR-Number" type="Label" parent="Control/Item-Group/HBoxContainer/Item-Info/DUR-Label" unique_id=1260665142]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1306,7 +1306,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ATK-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1551320300]
+[node name="ATK-Label" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Info" unique_id=1551320300]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1319,7 +1319,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Atk-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/ATK-Label" unique_id=1296769562]
+[node name="Atk-Number" type="Label" parent="Control/Item-Group/HBoxContainer/Item-Info/ATK-Label" unique_id=1296769562]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1340,7 +1340,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ACC-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1530778581]
+[node name="ACC-Label" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Info" unique_id=1530778581]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1353,7 +1353,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Acc-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/ACC-Label" unique_id=1694028653]
+[node name="Acc-Number" type="Label" parent="Control/Item-Group/HBoxContainer/Item-Info/ACC-Label" unique_id=1694028653]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1374,7 +1374,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SPD-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1467437634]
+[node name="SPD-Label" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Info" unique_id=1467437634]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1387,7 +1387,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spd-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/SPD-Label" unique_id=895378916]
+[node name="Spd-Number" type="Label" parent="Control/Item-Group/HBoxContainer/Item-Info/SPD-Label" unique_id=895378916]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1408,7 +1408,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LIFE-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=311833770]
+[node name="LIFE-Label" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Info" unique_id=311833770]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1421,7 +1421,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Life-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/LIFE-Label" unique_id=1049827832]
+[node name="Life-Number" type="Label" parent="Control/Item-Group/HBoxContainer/Item-Info/LIFE-Label" unique_id=1049827832]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1442,7 +1442,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MANA-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1855496214]
+[node name="MANA-Label" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Info" unique_id=1855496214]
 visible = false
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
@@ -1456,7 +1456,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Mana-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/MANA-Label" unique_id=468536233]
+[node name="Mana-Number" type="Label" parent="Control/Item-Group/HBoxContainer/Item-Info/MANA-Label" unique_id=468536233]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1474,7 +1474,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DODGE-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1490422198]
+[node name="DODGE-Label" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Info" unique_id=1490422198]
 custom_minimum_size = Vector2(80, 30)
 clip_contents = false
 layout_mode = 2
@@ -1487,7 +1487,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dodge-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/DODGE-Label" unique_id=1075957596]
+[node name="Dodge-Number" type="Label" parent="Control/Item-Group/HBoxContainer/Item-Info/DODGE-Label" unique_id=1075957596]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1508,7 +1508,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Armor-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=1337323628]
+[node name="Armor-Label" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Info" unique_id=1337323628]
 custom_minimum_size = Vector2(100, 30)
 clip_contents = false
 layout_mode = 2
@@ -1521,7 +1521,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Armor-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/Armor-Label" unique_id=696655582]
+[node name="Armor-Number" type="Label" parent="Control/Item-Group/HBoxContainer/Item-Info/Armor-Label" unique_id=696655582]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1542,7 +1542,7 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Price-Label" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Info" unique_id=660069481]
+[node name="Price-Label" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Info" unique_id=660069481]
 custom_minimum_size = Vector2(100, 30)
 clip_contents = false
 layout_mode = 2
@@ -1555,7 +1555,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Price-Number" type="Label" parent="Control/Control/HBoxContainer/Item-Info/Price-Label" unique_id=573133218]
+[node name="Price-Number" type="Label" parent="Control/Item-Group/HBoxContainer/Item-Info/Price-Label" unique_id=573133218]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 6
@@ -1576,13 +1576,13 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item-Mod" type="VBoxContainer" parent="Control/Control/HBoxContainer" unique_id=1349806714]
+[node name="Item-Mod" type="VBoxContainer" parent="Control/Item-Group/HBoxContainer" unique_id=1349806714]
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 5)
 theme_override_constants/separation = 30
 
-[node name="Mod-Desc-1" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Mod" unique_id=767667079]
+[node name="Mod-Desc-1" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Mod" unique_id=767667079]
 custom_minimum_size = Vector2(250, 90)
 clip_contents = false
 layout_mode = 2
@@ -1594,7 +1594,7 @@ text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 a
 fit_content = true
 scroll_active = false
 
-[node name="Mod-Desc-2" type="RichTextLabel" parent="Control/Control/HBoxContainer/Item-Mod" unique_id=866653460]
+[node name="Mod-Desc-2" type="RichTextLabel" parent="Control/Item-Group/HBoxContainer/Item-Mod" unique_id=866653460]
 custom_minimum_size = Vector2(250, 90)
 clip_contents = false
 layout_mode = 2
@@ -1606,7 +1606,7 @@ text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]This
 fit_content = true
 scroll_active = false
 
-[node name="Item-Name" type="Label" parent="Control/Control" unique_id=816860782]
+[node name="Item-Name" type="Label" parent="Control/Item-Group" unique_id=816860782]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 1
 anchors_preset = 5
@@ -1732,12 +1732,13 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -287.0
-offset_top = -200.5
+offset_top = -214.0
 offset_right = 287.0
-offset_bottom = -63.5
+offset_bottom = -64.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 150
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1753,7 +1754,8 @@ offset_right = 116.0
 offset_bottom = -19.5
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 48
 text = "Best Round: 99"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1771,24 +1773,30 @@ offset_right = 97.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 40
 alignment = 1
 
 [node name="Menu-Button" type="Button" parent="Death-Screen/TextureRect/HBoxContainer" unique_id=1240474905]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("31_l5t21")
 theme_override_styles/pressed = ExtResource("32_ajygt")
 theme_override_styles/hover = ExtResource("33_6gil7")
 text = "Menu"
 
 [node name="Restart-Button" type="Button" parent="Death-Screen/TextureRect/HBoxContainer" unique_id=128428458]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("31_l5t21")
 theme_override_styles/pressed = ExtResource("32_ajygt")
 theme_override_styles/hover = ExtResource("33_6gil7")
@@ -1849,7 +1857,8 @@ offset_right = 207.0
 offset_bottom = -48.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 150
 text = "VICTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1867,24 +1876,30 @@ offset_right = 97.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 40
 alignment = 1
 
 [node name="Menu-Button" type="Button" parent="Victory-Screen/TextureRect/HBoxContainer" unique_id=2001416199]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("31_l5t21")
 theme_override_styles/pressed = ExtResource("32_ajygt")
 theme_override_styles/hover = ExtResource("33_6gil7")
 text = "Menu"
 
 [node name="Restart-Button" type="Button" parent="Victory-Screen/TextureRect/HBoxContainer" unique_id=1210668569]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
 theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("31_l5t21")
 theme_override_styles/pressed = ExtResource("32_ajygt")
 theme_override_styles/hover = ExtResource("33_6gil7")
