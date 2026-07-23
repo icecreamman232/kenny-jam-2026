@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://bqg4ipfhstmi0" path="res://Data/Audio/monster-bite-2.wav" id="8_kkca5"]
 [ext_resource type="AudioStream" uid="uid://5w3i41bsfi4v" path="res://Data/Audio/game-over-sfx.mp3" id="9_kkca5"]
 [ext_resource type="AudioStream" uid="uid://b6jx5c8kpkf2s" path="res://Data/Audio/victory.mp3" id="10_cadtm"]
+[ext_resource type="AudioStream" uid="uid://coibn6iyibexj" path="res://Data/Audio/heal.mp3" id="11_yvw5v"]
+[ext_resource type="AudioStream" uid="uid://hfvw2k1c4urc" path="res://Data/Audio/ting.mp3" id="12_kpj51"]
 
 [node name="SFX_Container" type="Node" unique_id=260151010]
 script = ExtResource("1_sjg4v")
@@ -22,5 +24,7 @@ sfx_list = Dictionary[int, AudioStream]({
 5: ExtResource("7_3dgjj"),
 6: ExtResource("8_kkca5"),
 7: ExtResource("9_kkca5"),
-8: ExtResource("10_cadtm")
+8: ExtResource("10_cadtm"),
+9: ExtResource("11_yvw5v"),
+10: ExtResource("12_kpj51")
 })

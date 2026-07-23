@@ -33,12 +33,16 @@ func _on_hit_title_button() -> void:
 	if _is_recovering: return
 	var rand_damage:int = randi_range(10, 30)
 	_current_life -= rand_damage
+	var random_sound_id:int = randi_range(0, 1)
+	AudioManager.play_sfx(SfxContainer.SfxID.SWORD_HIT_1 if random_sound_id == 0 else SfxContainer.SfxID.SWORD_HIT_2)
 	var ratio:float = _current_life / float(MAX_TITLE_LIFE)
 	_show_text(str(rand_damage), title_label.global_position, Color("ffe9c4"))
 	(title_label.material as ShaderMaterial).set_shader_parameter("fill_amount", ratio)
 	if _current_life <= 0:
 		_is_recovering = true
+		AudioManager.play_sfx(SfxContainer.SfxID.HEAL)
 		await _recover()
+		AudioManager.play_sfx(SfxContainer.SfxID.TING)
 		await _bounce()
 		
 		var reward_id:int = randi_range(0, 2)
