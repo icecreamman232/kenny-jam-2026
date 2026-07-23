@@ -20,7 +20,8 @@ func _exit_tree() -> void:
 	is_immortal_check_button.toggled.disconnect(_is_immortal_check_button_toggled)
 
 
-func _show_menu():
+func _show_menu() -> void:
+	if OS.has_feature("public"): return
 	show()
 	
 	
