@@ -15,6 +15,7 @@ const SLASH_ANIM_NAME:String = "slash"
 const MAX_ROUND:int = 25
 
 func _ready():
+	IngameDataManager.gameplay_manager = self
 	InputManager.set_enabled(false)
 	EventBus.on_fight_started.connect(_on_fight_started)
 	EventBus.on_player_dead.connect(_on_player_dead)

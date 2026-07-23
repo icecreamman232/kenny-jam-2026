@@ -1,6 +1,11 @@
 class_name PlayerHealth extends Health
 
 
+func take_damage(damage:int) -> void: 
+	if (IngameDataManager.cheat_manager as CheatManager).is_immortal: return
+	super.take_damage(damage)
+
+
 func update_life(life:int):
 	var ratio_current_life :float = float(current_life) / max_life
 	max_life = life

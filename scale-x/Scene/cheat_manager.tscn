@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://brkcw0jilrxkm"]
+
+[ext_resource type="Script" uid="uid://7i60bepcpsxb" path="res://Scripts/System/cheat_manager.gd" id="1_0q3or"]
+[ext_resource type="Texture2D" uid="uid://cmhyobwlwulub" path="res://Arts/Atlas_Texture/empty_square_bg.tres" id="1_5ikr2"]
+
+[node name="Cheat-Manager" type="Control" unique_id=1532975537 node_paths=PackedStringArray("is_immortal_check_button", "load_chicken_boss_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_0q3or")
+is_immortal_check_button = NodePath("TextureRect/VBoxContainer/Immortal-Button")
+load_chicken_boss_button = NodePath("TextureRect/VBoxContainer/Load Chicken Boss")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=528537409]
+layout_mode = 0
+offset_right = 263.0
+offset_bottom = 137.0
+texture = ExtResource("1_5ikr2")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect" unique_id=1073867509]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Immortal-Button" type="CheckButton" parent="TextureRect/VBoxContainer" unique_id=1854184012]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Is Immortal"
+
+[node name="Load Chicken Boss" type="Button" parent="TextureRect/VBoxContainer" unique_id=1398745408]
+layout_mode = 2
+text = "Load Chicken Boss"
