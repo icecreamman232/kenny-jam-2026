@@ -17,6 +17,8 @@ func _exit_tree() -> void:
 
 
 func show_lootbox_tutorial():
+	overlay.show()
+	tutorial_area_lootbox.show()
 	overlay.update_spotlight(tutorial_area_lootbox)
 	
 	
@@ -29,4 +31,5 @@ func _on_confirm_lootbox():
 func _on_finish_tutorial():
 	overlay.hide()
 	tutorial_final.hide()
+	SaveManager.save_tutorial()
 	

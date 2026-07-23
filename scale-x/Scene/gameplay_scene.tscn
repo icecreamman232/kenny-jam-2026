@@ -135,13 +135,14 @@ texture_margin_bottom = 4.0
 
 [node name="Input Manager" type="Node" parent="." unique_id=1212464894]
 
-[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "loot_box_ui", "enemy_manager", "anim_on_player", "anim_on_enemy")]
+[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "loot_box_ui", "enemy_manager", "tutorial_manager", "anim_on_player", "anim_on_enemy")]
 script = ExtResource("1_mxoqm")
 round_label = NodePath("../Control/Round-Label")
 player_controller = NodePath("../Player")
 enemy_controller = NodePath("../Enemy")
 loot_box_ui = NodePath("../Control/Loot-Box-Group/Loot-Box")
 enemy_manager = NodePath("../Enemy Manager")
+tutorial_manager = NodePath("../Tutorial-Manager")
 anim_on_player = NodePath("../Slash-Animation-On-Player")
 anim_on_enemy = NodePath("../Slash-Animation-On-Enemy")
 
@@ -1950,6 +1951,7 @@ flip_h = true
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=513207939]
+visible = false
 z_index = 200
 material = SubResource("ShaderMaterial_0b0bh")
 anchors_preset = 15
@@ -1961,6 +1963,7 @@ color = Color(0.10980392, 0.10980392, 0.10980392, 0.88235295)
 script = ExtResource("62_l8ssp")
 
 [node name="Loot-Box-Tutorial" type="ReferenceRect" parent="." unique_id=298448884]
+visible = false
 offset_left = 518.0
 offset_top = 337.0
 offset_right = 1082.0

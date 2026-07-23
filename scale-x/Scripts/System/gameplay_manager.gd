@@ -6,6 +6,7 @@ class_name GameplayManager extends Node
 @export var enemy_controller:EnemyController
 @export var loot_box_ui:LootBoxUI
 @export var enemy_manager:EnemyManager
+@export var tutorial_manager:TutorialManager
 @export_group("Animations")
 @export var anim_on_player:AnimatedSprite2D
 @export var anim_on_enemy:AnimatedSprite2D
@@ -15,6 +16,7 @@ const SLASH_ANIM_NAME:String = "slash"
 const MAX_ROUND:int = 25
 
 func _ready():
+	SaveManager.load_save_file()
 	IngameDataManager.gameplay_manager = self
 	InputManager.set_enabled(false)
 	EventBus.on_fight_started.connect(_on_fight_started)
@@ -26,7 +28,9 @@ func _ready():
 	AudioManager.play_music()
 	await Helper.wait_for_frames(3)
 	InputManager.set_enabled(true)
-
+	if not SaveManager.is_finished_tutorial:
+		tutorial_manager.show_lootbox_tutorial()
+		
 
 func _exit_tree() -> void:
 	EventBus.on_fight_started.disconnect(_on_fight_started)
