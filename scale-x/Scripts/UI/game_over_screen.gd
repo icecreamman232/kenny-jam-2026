@@ -38,6 +38,7 @@ func _on_mouse_enter_button():
 func _on_quit_button_pressed() -> void:
 	if not _is_showing: return
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)	
+	get_tree().change_scene_to_file("res://Scene/menu_scene.tscn")
 	
 	
 func _on_restart_button_pressed() -> void:
