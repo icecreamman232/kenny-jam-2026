@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://bji8nx82imruc" path="res://Data/Enemy/snake.tres" id="5_w7c21"]
 [ext_resource type="Resource" uid="uid://bnqiug3kne43n" path="res://Data/Enemy/lizard.tres" id="6_e412i"]
 [ext_resource type="Resource" uid="uid://c73dj2f3ipx1" path="res://Data/Armors/Head/swordman_helmet.tres" id="6_q0kv5"]
+[ext_resource type="Resource" uid="uid://booghwbj5cxa0" path="res://Data/Enemy/skeleton.tres" id="7_4trpq"]
 [ext_resource type="Resource" uid="uid://cai0k6sjuu0kd" path="res://Data/Enemy/boss_chicken.tres" id="7_pdq7b"]
 [ext_resource type="Script" uid="uid://dgt024sg2dygh" path="res://Scripts/Entity/player_controller.gd" id="7_q0kv5"]
 [ext_resource type="Script" uid="uid://il7cacyusvvr" path="res://Scripts/Entity/player_health.gd" id="8_1h042"]
@@ -149,7 +150,7 @@ anim_on_enemy = NodePath("../Slash-Animation-On-Enemy")
 [node name="Enemy Manager" type="Node" parent="." unique_id=1630896653 node_paths=PackedStringArray("player_controller")]
 script = ExtResource("2_bm225")
 player_controller = NodePath("../Player")
-enemy_data_list = Array[ExtResource("3_jkpb7")]([ExtResource("4_i5dkc"), ExtResource("5_w7c21"), ExtResource("6_e412i")])
+enemy_data_list = Array[ExtResource("3_jkpb7")]([ExtResource("4_i5dkc"), ExtResource("5_w7c21"), ExtResource("6_e412i"), ExtResource("7_4trpq")])
 boss_list = Array[ExtResource("3_jkpb7")]([ExtResource("7_pdq7b")])
 
 [node name="Loot Manager" type="Node" parent="." unique_id=165805778]

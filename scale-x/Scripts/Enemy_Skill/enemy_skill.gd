@@ -9,6 +9,7 @@ enum EnemySkillID
 	SUICIDE,
 	THIEF,
 	CHICKEN_ATTACK,
+	FEAR,
 }
 
 static func to_enemy_skill_id(skill_id: String) -> EnemySkillID:

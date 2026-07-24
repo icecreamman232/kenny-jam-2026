@@ -16,5 +16,5 @@ accuracy = 1
 speed = 3
 life = 2
 dodge = 2
-skill_pool = Array[String](["regeneration", "thief"])
+skill_pool = Array[String](["regeneration", "thief", "fear"])
 metadata/_custom_type_script = "uid://2cb2oac0p74i"
