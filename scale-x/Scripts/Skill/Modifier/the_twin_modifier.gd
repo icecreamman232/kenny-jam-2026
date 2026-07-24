@@ -26,7 +26,7 @@ func apply(cell:PlayerCellGridUi) -> void:
 		
 		if bonus_speed == 0: return	
 		_owner_cell.assigned_item.speed += bonus_speed
-		(IngameDataManager.text_manager as TextManager).show_text("+1 Spd", _owner_cell.global_position)
+		(IngameDataManager.text_manager as TextManager).show_text("+" + str(bonus_speed) + "Spd", _owner_cell.global_position)
 		AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
 		await _owner_cell.play_bounce_tween()
 	
