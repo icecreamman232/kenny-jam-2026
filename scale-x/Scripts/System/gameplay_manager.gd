@@ -7,6 +7,7 @@ class_name GameplayManager extends Node
 @export var loot_box_ui:LootBoxUI
 @export var enemy_manager:EnemyManager
 @export var tutorial_manager:TutorialManager
+@export var npc_manager:NpcManager
 @export_group("Animations")
 @export var anim_on_player:AnimatedSprite2D
 @export var anim_on_enemy:AnimatedSprite2D
@@ -82,10 +83,16 @@ func restart_game():
 
 	
 func _on_enemy_dead() -> void:
+
+	if npc_manager.can_spawn_npc(round_number):
+		player_controller.health.recover_full_life()
+		npc_manager.spawn_npc()
+		return
+
+
 	if enemy_controller.enemy_data.is_boss:
 		EventBus.on_victory.emit()
 		return
-
 
 	if round_number >= MAX_ROUND:
 		is_boss_fight = true
@@ -104,6 +111,25 @@ func _on_enemy_dead() -> void:
 		_create_enemy()
 	await Helper.wait_for_frames(3)		
 	
+	
+## Use this after player exit shop
+func force_spawn_enemy_or_boss():
+	if round_number >= MAX_ROUND:
+		is_boss_fight = true
+		EventBus.on_boss_appear.emit()
+	round_number += 1
+	loot_box_ui.set_round_number(round_number)
+	if is_boss_fight:
+		round_label.text = "Boss Fight"
+	else:
+		round_label.text = "Round " + str(round_number)
+	player_controller.health.recover_full_life()
+	await Helper.wait_for_frames(3)
+	if is_boss_fight:
+		_create_boss()
+	else:
+		_create_enemy()
+	await Helper.wait_for_frames(3)					
 		
 	
 func _on_fight_started() -> void:

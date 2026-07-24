@@ -1855,7 +1855,6 @@ lootbox_confirm_button = NodePath("../Loot-Box-Tutorial/Loot-Box-Tutorial-Text/L
 final_confirm_button = NodePath("../Final-Tutorial/Final-Tut-Text/Final-Tut-Confirm-Button")
 
 [node name="Stat_Seller_NPC_Screen" type="ColorRect" parent="." unique_id=898706996]
-visible = false
 z_index = 200
 anchors_preset = 15
 anchor_right = 1.0
@@ -1877,3 +1876,248 @@ offset_bottom = 296.0
 grow_horizontal = 2
 texture = ExtResource("67_pba8c")
 expand_mode = 1
+
+[node name="Loot-Box-Group" type="Control" parent="Stat_Seller_NPC_Screen" unique_id=1438315198]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -40.0
+offset_right = 150.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Loot-Box" type="HBoxContainer" parent="Stat_Seller_NPC_Screen/Loot-Box-Group" unique_id=496462188]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Item-1" type="TextureRect" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Loot-Box" unique_id=622491604]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_tntwh")
+expand_mode = 1
+
+[node name="Item-Icon" type="TextureRect" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Loot-Box/Item-1" unique_id=17547176]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Price" type="RichTextLabel" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Loot-Box/Item-1" unique_id=1648844405]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img]99"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item-2" type="TextureRect" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Loot-Box" unique_id=712967929]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_tntwh")
+expand_mode = 1
+
+[node name="Item-Icon" type="TextureRect" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Loot-Box/Item-2" unique_id=1312768835]
+material = SubResource("ShaderMaterial_ueyxm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Price" type="RichTextLabel" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Loot-Box/Item-2" unique_id=429163716]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img]99"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item-3" type="TextureRect" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Loot-Box" unique_id=913642031]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_tntwh")
+expand_mode = 1
+
+[node name="Item-Icon" type="TextureRect" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Loot-Box/Item-3" unique_id=1499811163]
+material = SubResource("ShaderMaterial_hy2kh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Price" type="RichTextLabel" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Loot-Box/Item-3" unique_id=1213570882]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img]99"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coin-Hud" type="RichTextLabel" parent="Stat_Seller_NPC_Screen/Loot-Box-Group" unique_id=1207723336]
+custom_minimum_size = Vector2(100, 0)
+clip_contents = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=32 align=center,center]uid://de3k1fl4j5llo[/img] 9999"
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="Reroll-Button" type="Button" parent="Stat_Seller_NPC_Screen/Loot-Box-Group" unique_id=625680039]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 29.0
+offset_top = -30.0
+offset_right = 109.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("31_l5t21")
+theme_override_styles/pressed = ExtResource("32_ajygt")
+theme_override_styles/hover = ExtResource("33_6gil7")
+text = "Reroll"
+
+[node name="Reroll-Price" type="RichTextLabel" parent="Stat_Seller_NPC_Screen/Loot-Box-Group/Reroll-Button" unique_id=1679186718]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -1.0
+offset_right = 60.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://de3k1fl4j5llo[/img]1"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Titlte-LootBox" type="Label" parent="Stat_Seller_NPC_Screen/Loot-Box-Group" unique_id=226188419]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = -66.0
+offset_right = 90.0
+offset_bottom = -18.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("35_g8irb")
+theme_override_font_sizes/font_size = 60
+text = "Stat Card"
+horizontal_alignment = 1
+vertical_alignment = 1
