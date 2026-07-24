@@ -47,17 +47,15 @@ func _input(event:InputEvent) -> void:
 						context_cursor.show()
 						get_viewport().set_input_as_handled()
 			else:
-				if _hovered_cell != null and _dragging_slot_index != -1:
+				if _dragging_slot_index != -1:
 					var _inspecting_cell := cell_grid[_dragging_slot_index]
-					var result := request_move_item(_inspecting_cell.grid_index, _hovered_cell.grid_index)
-					if result:
-						context_cursor.hide()
-						_inspecting_cell.handle_drag(_dragging)
-					else:
-						context_cursor.hide()
-						_inspecting_cell.handle_drag(_dragging)
-					_dragging_slot_index = -1	
-					get_viewport().set_input_as_handled()	
+					if _hovered_cell != null:
+						var result := request_move_item(_inspecting_cell.grid_index, _hovered_cell.grid_index)
+						print("MOVE SUCCESS" if result else "MOVE FAIL")
+					context_cursor.hide()
+					_inspecting_cell.handle_drag(_dragging)
+					_dragging_slot_index = -1
+					get_viewport().set_input_as_handled()
 					
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			_handle_right_click(event)
