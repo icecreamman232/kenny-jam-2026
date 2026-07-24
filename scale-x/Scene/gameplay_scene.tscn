@@ -140,7 +140,7 @@ texture_margin_bottom = 4.0
 
 [node name="Input Manager" type="Node" parent="." unique_id=1212464894]
 
-[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "loot_box_ui", "enemy_manager", "tutorial_manager", "anim_on_player", "anim_on_enemy")]
+[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "loot_box_ui", "enemy_manager", "tutorial_manager", "npc_manager", "anim_on_player", "anim_on_enemy")]
 script = ExtResource("1_mxoqm")
 round_label = NodePath("../Control/Round-Label")
 player_controller = NodePath("../Player")
@@ -148,6 +148,7 @@ enemy_controller = NodePath("../Enemy")
 loot_box_ui = NodePath("../Control/Loot-Box-Group/Loot-Box")
 enemy_manager = NodePath("../Enemy Manager")
 tutorial_manager = NodePath("../Tutorial-Manager")
+npc_manager = NodePath("../NPC Manager")
 anim_on_player = NodePath("../Slash-Animation-On-Player")
 anim_on_enemy = NodePath("../Slash-Animation-On-Enemy")
 
@@ -1855,6 +1856,7 @@ lootbox_confirm_button = NodePath("../Loot-Box-Tutorial/Loot-Box-Tutorial-Text/L
 final_confirm_button = NodePath("../Final-Tutorial/Final-Tut-Text/Final-Tut-Confirm-Button")
 
 [node name="Stat_Seller_NPC_Screen" type="ColorRect" parent="." unique_id=898706996]
+visible = false
 z_index = 200
 anchors_preset = 15
 anchor_right = 1.0
