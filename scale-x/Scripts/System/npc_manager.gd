@@ -5,6 +5,7 @@ const ROUND_THAT_HAS_NPC:Array[int] = [11, 16, 24]
 enum NpcID
 {
 	STAT_MASTER,
+	BLACKSMITH
 }
 
 

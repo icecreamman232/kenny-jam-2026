@@ -62,7 +62,7 @@ func _pick_item_for_early_game()->Array[ItemData]:
 	
 
 
-func _apply_random_stat_to_item(item:ItemData, round_number:int):
+func _apply_random_stat_to_item(item:ItemData, round_number:int) -> void:
 	var rand_rarity:Array
 	if round_number <= Constant.EARLY_GAME_1_ROUND_NUMBER:
 		rand_rarity = get_random_rarities(3, EARLY_GAME_1_RARITY_WEIGHTS)

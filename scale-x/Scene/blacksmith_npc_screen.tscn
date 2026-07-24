@@ -1,0 +1,712 @@
+[gd_scene format=3 uid="uid://bo8hwolvbtlhu"]
+
+[ext_resource type="Script" uid="uid://dc1j2ocd8ddhl" path="res://Scripts/UI/NPC_SHOP/blacksmith_shop.gd" id="1_qwi5d"]
+[ext_resource type="FontFile" uid="uid://cjnauydm3ntpv" path="res://Arts/m6x11plus.ttf" id="1_rs3hx"]
+[ext_resource type="Texture2D" uid="uid://rdjd6j43y7k0" path="res://Arts/Atlas_Texture/blacksmith_npc.tres" id="2_325kt"]
+[ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="3_pruka"]
+[ext_resource type="Texture2D" uid="uid://b8kargq0td8au" path="res://Arts/Atlas_Texture/UI/close_button_icon.tres" id="4_qwi5d"]
+[ext_resource type="Texture2D" uid="uid://dbebpejknoryy" path="res://Arts/Atlas_Texture/inventory_cell_bg.tres" id="5_pruka"]
+[ext_resource type="Shader" uid="uid://depag5wqx0nrh" path="res://Arts/outline_2d.gdshader" id="6_qwi5d"]
+[ext_resource type="Script" uid="uid://bu17403ox72x" path="res://Scripts/UI/NPC_SHOP/blacksmith_shop_slot.gd" id="7_pl8bp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vivr"]
+bg_color = Color(0.2784314, 0.1764706, 0.23529412, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vrlf"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.9137255, 0.76862746, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxghj"]
+texture = ExtResource("4_qwi5d")
+modulate_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_858hm"]
+texture = ExtResource("4_qwi5d")
+modulate_color = Color(0.35206538, 0, 0.011537134, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g6rhc"]
+texture = ExtResource("4_qwi5d")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+modulate_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibwac"]
+bg_color = Color(0.3469074, 0.28115433, 0.1773372, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyuvr"]
+bg_color = Color(0.2901961, 0.87058824, 0.5019608, 0.3529412)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2s0o"]
+shader = ExtResource("6_qwi5d")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0
+
+[node name="Blacksmith_NPC_Screen" type="ColorRect" unique_id=643939195 node_paths=PackedStringArray("close_button", "player_coin_label", "fix_price_label", "shop_slots")]
+z_index = 200
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10980392, 0.10980392, 0.10980392, 0.8156863)
+script = ExtResource("1_qwi5d")
+close_button = NodePath("Background/Close_Button")
+player_coin_label = NodePath("Background/Coin-Hud")
+fix_price_label = NodePath("Background/Fix-Price-Label")
+shop_slots = [NodePath("Background/Player-Grid/Inventory-Cell"), NodePath("Background/Player-Grid/Inventory-Cell2"), NodePath("Background/Player-Grid/Inventory-Cell3"), NodePath("Background/Player-Grid/Inventory-Cell4"), NodePath("Background/Player-Grid/Inventory-Cell5"), NodePath("Background/Player-Grid/Inventory-Cell6"), NodePath("Background/Player-Grid/Inventory-Cell7"), NodePath("Background/Player-Grid/Inventory-Cell8"), NodePath("Background/Player-Grid/Inventory-Cell9")]
+
+[node name="Background" type="Panel" parent="." unique_id=1576869189]
+z_index = 200
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -368.0
+offset_right = 400.0
+offset_bottom = 368.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vivr")
+
+[node name="Title" type="Label" parent="Background" unique_id=1732273684]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.0
+offset_top = 15.0
+offset_right = 214.0
+offset_bottom = 116.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("1_rs3hx")
+theme_override_font_sizes/font_size = 100
+text = "Blacksmith"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NPC_Avatar" type="TextureRect" parent="Background" unique_id=30976953]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 152.0
+offset_right = 100.0
+offset_bottom = 352.0
+grow_horizontal = 2
+texture = ExtResource("2_325kt")
+expand_mode = 1
+
+[node name="Flavor-Text-BG" type="RichTextLabel" parent="Background/NPC_Avatar" unique_id=677811672]
+visible = false
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 147.0
+offset_top = -23.0
+offset_right = 347.0
+offset_bottom = 57.0
+theme_override_fonts/normal_font = ExtResource("3_pruka")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_8vrlf")
+bbcode_enabled = true
+text = "Hello, what can I help you?"
+fit_content = true
+scroll_active = false
+
+[node name="Close_Button" type="Button" parent="Background" unique_id=451504699]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -74.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 74.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_nxghj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_858hm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g6rhc")
+
+[node name="Player-Grid" type="GridContainer" parent="Background" unique_id=1559464814]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -323.0
+offset_right = 124.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 3
+
+[node name="Inventory-Cell" type="TextureRect" parent="Background/Player-Grid" unique_id=978211420 node_paths=PackedStringArray("shop_ref", "item_icon", "background", "durability_progress", "button")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_pruka")
+expand_mode = 1
+script = ExtResource("7_pl8bp")
+shop_ref = NodePath("../../..")
+item_icon = NodePath("Item-Icon")
+background = NodePath(".")
+durability_progress = NodePath("ProgressBar")
+button = NodePath("Button")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/Player-Grid/Inventory-Cell" unique_id=843717420]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Item-Icon" type="TextureRect" parent="Background/Player-Grid/Inventory-Cell" unique_id=738241286]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Player-Grid/Inventory-Cell" unique_id=981471078]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Inventory-Cell2" type="TextureRect" parent="Background/Player-Grid" unique_id=486325878 node_paths=PackedStringArray("shop_ref", "item_icon", "background", "durability_progress", "button")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_pruka")
+expand_mode = 1
+script = ExtResource("7_pl8bp")
+shop_ref = NodePath("../../..")
+item_icon = NodePath("Item-Icon")
+background = NodePath(".")
+durability_progress = NodePath("ProgressBar")
+button = NodePath("Button")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/Player-Grid/Inventory-Cell2" unique_id=1754545030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Item-Icon" type="TextureRect" parent="Background/Player-Grid/Inventory-Cell2" unique_id=347620029]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Player-Grid/Inventory-Cell2" unique_id=1519130522]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Inventory-Cell3" type="TextureRect" parent="Background/Player-Grid" unique_id=1959612113 node_paths=PackedStringArray("shop_ref", "item_icon", "background", "durability_progress", "button")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_pruka")
+expand_mode = 1
+script = ExtResource("7_pl8bp")
+shop_ref = NodePath("../../..")
+item_icon = NodePath("Item-Icon")
+background = NodePath(".")
+durability_progress = NodePath("ProgressBar")
+button = NodePath("Button")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/Player-Grid/Inventory-Cell3" unique_id=1761461182]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Item-Icon" type="TextureRect" parent="Background/Player-Grid/Inventory-Cell3" unique_id=690675875]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Player-Grid/Inventory-Cell3" unique_id=1201117564]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Inventory-Cell4" type="TextureRect" parent="Background/Player-Grid" unique_id=1327757544 node_paths=PackedStringArray("shop_ref", "item_icon", "background", "durability_progress", "button")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_pruka")
+expand_mode = 1
+script = ExtResource("7_pl8bp")
+shop_ref = NodePath("../../..")
+item_icon = NodePath("Item-Icon")
+background = NodePath(".")
+durability_progress = NodePath("ProgressBar")
+button = NodePath("Button")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/Player-Grid/Inventory-Cell4" unique_id=1145031499]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Item-Icon" type="TextureRect" parent="Background/Player-Grid/Inventory-Cell4" unique_id=33989307]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Player-Grid/Inventory-Cell4" unique_id=504399082]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Inventory-Cell5" type="TextureRect" parent="Background/Player-Grid" unique_id=243788732 node_paths=PackedStringArray("shop_ref", "item_icon", "background", "durability_progress", "button")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_pruka")
+expand_mode = 1
+script = ExtResource("7_pl8bp")
+shop_ref = NodePath("../../..")
+item_icon = NodePath("Item-Icon")
+background = NodePath(".")
+durability_progress = NodePath("ProgressBar")
+button = NodePath("Button")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/Player-Grid/Inventory-Cell5" unique_id=1547844832]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Item-Icon" type="TextureRect" parent="Background/Player-Grid/Inventory-Cell5" unique_id=53125595]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Player-Grid/Inventory-Cell5" unique_id=893162230]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Inventory-Cell6" type="TextureRect" parent="Background/Player-Grid" unique_id=1691040122 node_paths=PackedStringArray("shop_ref", "item_icon", "background", "durability_progress", "button")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_pruka")
+expand_mode = 1
+script = ExtResource("7_pl8bp")
+shop_ref = NodePath("../../..")
+item_icon = NodePath("Item-Icon")
+background = NodePath(".")
+durability_progress = NodePath("ProgressBar")
+button = NodePath("Button")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/Player-Grid/Inventory-Cell6" unique_id=1089709001]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Item-Icon" type="TextureRect" parent="Background/Player-Grid/Inventory-Cell6" unique_id=1458402462]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Player-Grid/Inventory-Cell6" unique_id=1686882196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Inventory-Cell7" type="TextureRect" parent="Background/Player-Grid" unique_id=2010778972 node_paths=PackedStringArray("shop_ref", "item_icon", "background", "durability_progress", "button")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_pruka")
+expand_mode = 1
+script = ExtResource("7_pl8bp")
+shop_ref = NodePath("../../..")
+item_icon = NodePath("Item-Icon")
+background = NodePath(".")
+durability_progress = NodePath("ProgressBar")
+button = NodePath("Button")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/Player-Grid/Inventory-Cell7" unique_id=630700589]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Item-Icon" type="TextureRect" parent="Background/Player-Grid/Inventory-Cell7" unique_id=1079278383]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Player-Grid/Inventory-Cell7" unique_id=1448845069]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Inventory-Cell8" type="TextureRect" parent="Background/Player-Grid" unique_id=1770937576 node_paths=PackedStringArray("shop_ref", "item_icon", "background", "durability_progress", "button")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_pruka")
+expand_mode = 1
+script = ExtResource("7_pl8bp")
+shop_ref = NodePath("../../..")
+item_icon = NodePath("Item-Icon")
+background = NodePath(".")
+durability_progress = NodePath("ProgressBar")
+button = NodePath("Button")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/Player-Grid/Inventory-Cell8" unique_id=1836054200]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Item-Icon" type="TextureRect" parent="Background/Player-Grid/Inventory-Cell8" unique_id=595781704]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Player-Grid/Inventory-Cell8" unique_id=1482252039]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Inventory-Cell9" type="TextureRect" parent="Background/Player-Grid" unique_id=1010440160 node_paths=PackedStringArray("shop_ref", "item_icon", "background", "durability_progress", "button")]
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("5_pruka")
+expand_mode = 1
+script = ExtResource("7_pl8bp")
+shop_ref = NodePath("../../..")
+item_icon = NodePath("Item-Icon")
+background = NodePath(".")
+durability_progress = NodePath("ProgressBar")
+button = NodePath("Button")
+
+[node name="ProgressBar" type="ProgressBar" parent="Background/Player-Grid/Inventory-Cell9" unique_id=608519644]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ibwac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wyuvr")
+max_value = 3.0
+step = 1.0
+value = 3.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Item-Icon" type="TextureRect" parent="Background/Player-Grid/Inventory-Cell9" unique_id=1646472724]
+material = SubResource("ShaderMaterial_t2s0o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Background/Player-Grid/Inventory-Cell9" unique_id=2039421235]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Coin-Hud" type="RichTextLabel" parent="Background" unique_id=804934143]
+custom_minimum_size = Vector2(100, 0)
+clip_contents = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 563.0
+offset_top = 67.0
+offset_right = 663.0
+offset_bottom = 107.0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("3_pruka")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=32 align=center,center]uid://de3k1fl4j5llo[/img] 9999"
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Background/Coin-Hud" unique_id=1877188218]
+layout_mode = 1
+offset_top = -25.0
+offset_right = 108.0
+offset_bottom = 1.0
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("3_pruka")
+theme_override_font_sizes/font_size = 32
+text = "Your Coin"
+vertical_alignment = 1
+
+[node name="Fix-Price-Label" type="RichTextLabel" parent="Background" unique_id=1800762041]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = -1.0
+offset_right = 171.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_rs3hx")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Fix durability for only  12[img=32 align=center,center]uid://de3k1fl4j5llo[/img]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

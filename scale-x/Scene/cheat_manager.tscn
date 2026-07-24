@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://7i60bepcpsxb" path="res://Scripts/System/cheat_manager.gd" id="1_0q3or"]
 [ext_resource type="Texture2D" uid="uid://cmhyobwlwulub" path="res://Arts/Atlas_Texture/empty_square_bg.tres" id="1_5ikr2"]
 
-[node name="Cheat-Manager" type="Control" unique_id=1532975537 node_paths=PackedStringArray("is_immortal_check_button", "always_execute_check_button", "load_chicken_boss_button", "open_stat_master_shop_button")]
+[node name="Cheat-Manager" type="Control" unique_id=1532975537 node_paths=PackedStringArray("is_immortal_check_button", "always_execute_check_button", "load_chicken_boss_button", "open_stat_master_shop_button", "open_blacksmith_shop_button", "add_coin_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,11 +16,13 @@ is_immortal_check_button = NodePath("TextureRect/VBoxContainer/Immortal-Button")
 always_execute_check_button = NodePath("TextureRect/VBoxContainer/Always-Execute-Button")
 load_chicken_boss_button = NodePath("TextureRect/VBoxContainer/Load Chicken Boss")
 open_stat_master_shop_button = NodePath("TextureRect/VBoxContainer/Open Stat Master Shop")
+open_blacksmith_shop_button = NodePath("TextureRect/VBoxContainer/Open Blacksmith Shop")
+add_coin_button = NodePath("TextureRect/VBoxContainer/Add Coin")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=528537409]
 layout_mode = 0
 offset_right = 263.0
-offset_bottom = 165.0
+offset_bottom = 230.0
 texture = ExtResource("1_5ikr2")
 expand_mode = 1
 
@@ -49,3 +51,11 @@ text = "Load Chicken Boss"
 [node name="Open Stat Master Shop" type="Button" parent="TextureRect/VBoxContainer" unique_id=1840619384]
 layout_mode = 2
 text = "Open Stat Master Shop"
+
+[node name="Open Blacksmith Shop" type="Button" parent="TextureRect/VBoxContainer" unique_id=510246501]
+layout_mode = 2
+text = "Open Blacksmith Shop"
+
+[node name="Add Coin" type="Button" parent="TextureRect/VBoxContainer" unique_id=513674862]
+layout_mode = 2
+text = "Add 100 coin"

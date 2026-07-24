@@ -70,6 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://bwmbwn6hekefo" path="res://Arts/Atlas_Texture/UI/button_background.tres" id="63_gd321"]
 [ext_resource type="Script" uid="uid://bf18hdvygaqqq" path="res://Scripts/System/tutorial_manager.gd" id="64_2gdrn"]
 [ext_resource type="PackedScene" uid="uid://b3th5kgxqu7lh" path="res://stat_seller_npc_scene.tscn" id="68_l4kfh"]
+[ext_resource type="PackedScene" uid="uid://bo8hwolvbtlhu" path="res://Scene/blacksmith_npc_screen.tscn" id="71_xnm1y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -1901,4 +1902,7 @@ lootbox_confirm_button = NodePath("../Loot-Box-Tutorial/Loot-Box-Tutorial-Text/L
 final_confirm_button = NodePath("../Final-Tutorial/Final-Tut-Text/Final-Tut-Confirm-Button")
 
 [node name="Stat_Seller_NPC_Screen" parent="." unique_id=1297958733 instance=ExtResource("68_l4kfh")]
+visible = false
+
+[node name="Blacksmith_NPC_Screen" parent="." unique_id=643939195 instance=ExtResource("71_xnm1y")]
 visible = false

@@ -4,6 +4,8 @@ class_name CheatManager extends Control
 @export var always_execute_check_button:CheckButton
 @export var load_chicken_boss_button:Button
 @export var open_stat_master_shop_button:Button
+@export var open_blacksmith_shop_button:Button
+@export var add_coin_button:Button
 
 var is_immortal:bool = false
 var is_always_execute:bool = false
@@ -16,6 +18,8 @@ func _ready():
 	is_immortal_check_button.toggled.connect(_is_immortal_check_button_toggled)
 	always_execute_check_button.toggled.connect(_always_execute_check_button_toggled)
 	open_stat_master_shop_button.pressed.connect(_open_stat_master_shop)
+	open_blacksmith_shop_button.pressed.connect(_open_blacksmith_shop)
+	add_coin_button.pressed.connect(_on_add_coin_button_pressed)
 	
 	
 func _exit_tree() -> void:
@@ -25,6 +29,8 @@ func _exit_tree() -> void:
 	is_immortal_check_button.toggled.disconnect(_is_immortal_check_button_toggled)
 	always_execute_check_button.toggled.disconnect(_always_execute_check_button_toggled)
 	open_stat_master_shop_button.pressed.disconnect(_open_stat_master_shop)
+	open_blacksmith_shop_button.pressed.disconnect(_open_blacksmith_shop)
+	add_coin_button.pressed.disconnect(_on_add_coin_button_pressed)
 
 
 func _show_menu() -> void:
@@ -52,4 +58,11 @@ func _load_chicken_boss():
 	
 func _open_stat_master_shop():
 	EventBus.on_open_npc_shop.emit(NpcManager.NpcID.STAT_MASTER)
+	
+func _open_blacksmith_shop():
+	EventBus.on_open_npc_shop.emit(NpcManager.NpcID.BLACKSMITH)
+	
+	
+func _on_add_coin_button_pressed():
+	EventBus.on_coin_change.emit(100)
 	

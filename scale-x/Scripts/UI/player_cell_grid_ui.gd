@@ -74,6 +74,11 @@ func update_item_durability() -> void:
 		unassign_item()
 	
 
+func update_durability_visual():
+	progress_bar.value = assigned_item.durability
+	_set_color_for_current_durability()	
+
+
 func unassign_item() -> void:
 	if assigned_item == null: return
 	var mod_controller:ModifierController = IngameDataManager.modifier_controller

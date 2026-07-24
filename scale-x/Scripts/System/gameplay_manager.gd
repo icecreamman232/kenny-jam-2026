@@ -70,8 +70,6 @@ func _create_enemy():
 func _on_player_dead():
 	InputManager.set_enabled(false)
 	AudioManager.stop_music()
-	print("Player dead!!!")
-	print("====================================================================")
 
 	
 func restart_game():
