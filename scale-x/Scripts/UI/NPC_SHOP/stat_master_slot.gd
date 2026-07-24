@@ -62,4 +62,5 @@ func _on_mouse_exited():
 	
 	
 func _on_button_pressed():
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	shop_ref.request_to_buy_stat(_stat_type, _price, self)

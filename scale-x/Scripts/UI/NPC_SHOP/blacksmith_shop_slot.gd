@@ -50,6 +50,7 @@ func play_bounce_tween():
 		
 func _on_button_pressed() -> void:
 	if assigned_cell == null: return
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	shop_ref.request_to_fix_slot(assigned_cell, self)
 		
 		

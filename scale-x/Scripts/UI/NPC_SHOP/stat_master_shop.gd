@@ -62,7 +62,7 @@ func _on_close_button_pressed():
 
 func _on_reroll_button_pressed() -> void:
 	if IngameDataManager.coin_hud.current_coin < _current_reroll_price: return
-	
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	_reroll_count_time += 1
 	EventBus.on_coin_change.emit(-_current_reroll_price)
 	
@@ -142,6 +142,8 @@ func request_to_buy_stat(stat_type:StatController.StatType, price:int, slot:Stat
 	EventBus.update_player_info.emit(player.stat)
 	# Change visual that the slot is sold out
 	slot.sold_out()
+	await Helper.wait_for_frames(1)
+	player_coin_label.text = "[img=32 align=center,center]uid://de3k1fl4j5llo[/img]" + str(IngameDataManager.coin_hud.current_coin)
 	
 	
 func show_flavour_text() -> void:

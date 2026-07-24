@@ -20,6 +20,7 @@ func _exit_tree() -> void:
 	
 	
 func _on_close_button_pressed():
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	for slot in shop_slots:
 		slot.reset_slot()
 	await Helper.wait_for_frames(2)
