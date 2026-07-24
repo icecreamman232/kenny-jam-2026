@@ -17,5 +17,5 @@ speed = 1
 life = 1
 dodge = 1
 armor = 1
-skill_pool = Array[String](["fear", "thief", "suicide"])
+skill_pool = Array[String](["fear", "thief", "suicide", "fair_fight"])
 metadata/_custom_type_script = "uid://2cb2oac0p74i"
