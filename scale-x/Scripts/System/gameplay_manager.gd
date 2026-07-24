@@ -48,7 +48,7 @@ func initialize():
 	_create_enemy()
 	await Helper.wait_for_frames(3)
 	loot_box_ui.set_round_number(round_number)
-	round_label.text = "Round " + str(round_number)
+	round_label.text = "Round " + str(26 - round_number)
 	loot_box_ui.show_loot()	
 
 
@@ -73,7 +73,7 @@ func restart_game():
 	player_controller.reset_player()
 	round_number = 1
 	loot_box_ui.set_round_number(round_number)
-	round_label.text = "Round " + str(round_number)
+	round_label.text = "Round " + str(26 - round_number)
 	loot_box_ui.show_loot()
 	await Helper.wait_for_frames(3)
 	_create_enemy()
@@ -83,7 +83,7 @@ func restart_game():
 
 	
 func _on_enemy_dead() -> void:
-
+	round_number += 1
 	if npc_manager.can_spawn_npc(round_number):
 		player_controller.health.recover_full_life()
 		npc_manager.spawn_npc()
@@ -97,12 +97,12 @@ func _on_enemy_dead() -> void:
 	if round_number >= MAX_ROUND:
 		is_boss_fight = true
 		EventBus.on_boss_appear.emit()
-	round_number += 1
+	
 	loot_box_ui.set_round_number(round_number)
 	if is_boss_fight:
-		round_label.text = "Boss Fight"
+		round_label.text = "Final Round"
 	else:
-		round_label.text = "Round " + str(round_number)
+		round_label.text = "Round " + str(26 - round_number)
 	player_controller.health.recover_full_life()
 	await Helper.wait_for_frames(3)
 	if is_boss_fight:
@@ -117,12 +117,11 @@ func force_spawn_enemy_or_boss():
 	if round_number >= MAX_ROUND:
 		is_boss_fight = true
 		EventBus.on_boss_appear.emit()
-	round_number += 1
 	loot_box_ui.set_round_number(round_number)
 	if is_boss_fight:
 		round_label.text = "Boss Fight"
 	else:
-		round_label.text = "Round " + str(round_number)
+		round_label.text = "Round " + str(26 - round_number)
 	player_controller.health.recover_full_life()
 	await Helper.wait_for_frames(3)
 	if is_boss_fight:

@@ -1,6 +1,6 @@
 class_name NpcManager extends Node
 
-const ROUND_THAT_HAS_NPC:Array[int] = [10, 15, 25]
+const ROUND_THAT_HAS_NPC:Array[int] = [11, 16, 24]
 
 enum NpcID
 {
