@@ -16,6 +16,7 @@ signal on_enemy_dead
 
 
 # Gameplay Events
+signal on_show_help_screen
 signal on_player_check_enemy_skill
 signal on_apply_item(cindex:int, item:ItemData)
 signal on_coin_change(amount:int)

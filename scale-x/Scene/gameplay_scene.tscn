@@ -64,6 +64,7 @@
 [ext_resource type="PackedScene" uid="uid://cl54otpln4tec" path="res://Scene/death_screen.tscn" id="59_7skjk"]
 [ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="60_il64e"]
 [ext_resource type="PackedScene" uid="uid://rinfdrdpd00r" path="res://Scene/victory_screen.tscn" id="60_pba8c"]
+[ext_resource type="PackedScene" uid="uid://ciro12tbfp516" path="res://Scene/help_scene.tscn" id="61_1o3ap"]
 [ext_resource type="Shader" uid="uid://biyqed80o6t3k" path="res://Arts/spotlight.gdshader" id="61_nj7gt"]
 [ext_resource type="Script" uid="uid://dkcfn3yeht3hf" path="res://Scripts/UI/overlay.gd" id="62_l8ssp"]
 [ext_resource type="Texture2D" uid="uid://bwmbwn6hekefo" path="res://Arts/Atlas_Texture/UI/button_background.tres" id="63_gd321"]
@@ -159,10 +160,11 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
 [node name="Gameplay_Scene" type="CanvasLayer" unique_id=1881809148]
+metadata/_edit_vertical_guides_ = [554.0, 126.0]
 
 [node name="Input Manager" type="Node" parent="." unique_id=1212464894]
 
-[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "loot_box_ui", "enemy_manager", "tutorial_manager", "npc_manager", "anim_on_player", "anim_on_enemy")]
+[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "loot_box_ui", "enemy_manager", "tutorial_manager", "npc_manager", "help_button", "anim_on_player", "anim_on_enemy")]
 script = ExtResource("1_mxoqm")
 round_label = NodePath("../Control/Round-Label")
 player_controller = NodePath("../Player")
@@ -171,6 +173,7 @@ loot_box_ui = NodePath("../Control/Loot-Box-Group/Loot-Box")
 enemy_manager = NodePath("../Enemy Manager")
 tutorial_manager = NodePath("../Tutorial-Manager")
 npc_manager = NodePath("../NPC Manager")
+help_button = NodePath("../Control/Help-Button")
 anim_on_player = NodePath("../Slash-Animation-On-Player")
 anim_on_enemy = NodePath("../Slash-Animation-On-Enemy")
 
@@ -1750,6 +1753,10 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_8vrlf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1o3ap")
 theme_override_styles/hover = SubResource("StyleBoxTexture_il64e")
 
+[node name="Help-Scene" parent="Control" unique_id=1782866508 instance=ExtResource("61_1o3ap")]
+visible = false
+layout_mode = 1
+
 [node name="Death-Screen" parent="." unique_id=785239621 instance=ExtResource("59_7skjk")]
 
 [node name="Victory-Screen" parent="." unique_id=1625437312 instance=ExtResource("60_pba8c")]
@@ -1833,10 +1840,10 @@ text = "Okay"
 
 [node name="Final-Tutorial" type="ReferenceRect" parent="." unique_id=83705786]
 visible = false
-offset_left = 196.0
-offset_top = 13.0
-offset_right = 1410.0
-offset_bottom = 357.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 345.0
+grow_horizontal = 2
 mouse_filter = 2
 
 [node name="Final-Tut-Text" type="RichTextLabel" parent="Final-Tutorial" unique_id=1632145582]
@@ -1851,7 +1858,7 @@ anchor_bottom = 1.0
 offset_left = -205.0
 offset_top = 33.0
 offset_right = 213.0
-offset_bottom = 143.0
+offset_bottom = 215.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/default_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
@@ -1859,7 +1866,8 @@ theme_override_fonts/normal_font = ExtResource("35_g8irb")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_1vivr")
 text = "Here is your character stats and current enemy stat.
-Reach round 25 to fight the boss!"
+Reach round 25 to fight the boss!
+Click Help button on top right corner to find more information regarding stats"
 scroll_active = false
 
 [node name="Final-Tut-Confirm-Button" type="Button" parent="Final-Tutorial/Final-Tut-Text" unique_id=95265118]

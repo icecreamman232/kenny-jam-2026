@@ -1,0 +1,346 @@
+[gd_scene format=3 uid="uid://ciro12tbfp516"]
+
+[ext_resource type="Script" uid="uid://dbls71gmpuq7o" path="res://Scripts/UI/help_screen.gd" id="1_cc630"]
+[ext_resource type="FontFile" uid="uid://cjnauydm3ntpv" path="res://Arts/m6x11plus.ttf" id="1_gmvv1"]
+[ext_resource type="Texture2D" uid="uid://b8kargq0td8au" path="res://Arts/Atlas_Texture/UI/close_button_icon.tres" id="2_cc630"]
+[ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="3_y835c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnm1y"]
+bg_color = Color(0.2784314, 0.1764706, 0.23529412, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6c0te"]
+texture = ExtResource("2_cc630")
+modulate_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8frg"]
+texture = ExtResource("2_cc630")
+modulate_color = Color(0.35206538, 0, 0.011537134, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxghj"]
+texture = ExtResource("2_cc630")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+modulate_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+
+[node name="Help-Scene" type="ColorRect" unique_id=1782866508 node_paths=PackedStringArray("close_button")]
+z_index = 200
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10980392, 0.10980392, 0.10980392, 0.8156863)
+script = ExtResource("1_cc630")
+close_button = NodePath("Background/Close_Button")
+
+[node name="Background" type="Panel" parent="." unique_id=1485975379]
+z_index = 200
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -620.5
+offset_top = -376.5
+offset_right = 620.5
+offset_bottom = 376.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xnm1y")
+
+[node name="Title" type="Label" parent="Background" unique_id=1920014745]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.0
+offset_top = 15.0
+offset_right = 214.0
+offset_bottom = 116.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("1_gmvv1")
+theme_override_font_sizes/font_size = 100
+text = "Help"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Close_Button" type="Button" parent="Background" unique_id=1187261190]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -74.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 74.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_6c0te")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g8frg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nxghj")
+
+[node name="VBoxContainer" type="Control" parent="Background" unique_id=884585126]
+anchors_preset = 0
+offset_left = 46.0
+offset_top = 195.0
+offset_right = 146.0
+offset_bottom = 395.0
+
+[node name="ATK-Label" type="RichTextLabel" parent="Background/VBoxContainer" unique_id=1380237606]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 0
+offset_top = -26.0
+offset_right = 100.0
+offset_bottom = 4.0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("3_y835c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://qabkcc7vohy[/img] ATK"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Atk-Desc" type="Label" parent="Background/VBoxContainer/ATK-Label" unique_id=1044999442]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 108.0
+offset_top = -15.0
+offset_right = 528.0
+offset_bottom = 15.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("3_y835c")
+theme_override_font_sizes/font_size = 32
+text = "Each attack will grant you 1 damage"
+vertical_alignment = 1
+
+[node name="ACC-Label" type="RichTextLabel" parent="Background/VBoxContainer" unique_id=531096343]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 31.0
+offset_right = 102.0
+offset_bottom = 61.0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("3_y835c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://bo6l5im10b5j4[/img] ACC"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Acc-Desc" type="Label" parent="Background/VBoxContainer/ACC-Label" unique_id=115893686]
+custom_minimum_size = Vector2(600, 30)
+layout_mode = 1
+offset_left = 107.0
+offset_top = 1.0
+offset_right = 1152.5
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("3_y835c")
+theme_override_font_sizes/font_size = 32
+text = "In attack, your accuracy is a random number from 0 to this. You land a successful hit if this value beat enemy dodge
+Enemy dodge is random value from 0 to their dodge stat"
+autowrap_mode = 3
+
+[node name="SPD-Label" type="RichTextLabel" parent="Background/VBoxContainer" unique_id=1132833213]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 158.0
+offset_right = 102.0
+offset_bottom = 188.0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("3_y835c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://cydmfxnf4i274[/img] SPD"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Spd-Desc" type="Label" parent="Background/VBoxContainer/SPD-Label" unique_id=1002569300]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+offset_left = 107.0
+offset_top = 1.0
+offset_right = 1067.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("3_y835c")
+theme_override_font_sizes/font_size = 32
+text = "In attack, the number of attacks is a random value from 1 to one-third of Speed."
+
+[node name="LIFE-Label" type="RichTextLabel" parent="Background/VBoxContainer" unique_id=1150710670]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 217.0
+offset_right = 102.0
+offset_bottom = 247.0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("3_y835c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://d0lb80imevmiw[/img] LIFE"
+scroll_active = false
+
+[node name="Life-Desc" type="Label" parent="Background/VBoxContainer/LIFE-Label" unique_id=1465627143]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+offset_left = 106.0
+offset_right = 622.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("3_y835c")
+theme_override_font_sizes/font_size = 32
+text = "The maximum amount of damage you can endure"
+
+[node name="MANA-Label" type="RichTextLabel" parent="Background/VBoxContainer" unique_id=1250469541]
+visible = false
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 30.0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("3_y835c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://bkbq5m6d2rs5x[/img] MANA"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mana-Number" type="Label" parent="Background/VBoxContainer/MANA-Label" unique_id=1403690861]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("3_y835c")
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DODGE-Label" type="RichTextLabel" parent="Background/VBoxContainer" unique_id=296449139]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 280.0
+offset_right = 102.0
+offset_bottom = 310.0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("3_y835c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://nk5dqh6aietu[/img] DODGE"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Dodge-Number" type="Label" parent="Background/VBoxContainer/DODGE-Label" unique_id=1748676219]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 1
+offset_left = 115.0
+offset_top = 2.0
+offset_right = 1140.5
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("3_y835c")
+theme_override_font_sizes/font_size = 32
+text = "In attack, your dodge is a random number from 0 to this. You take a hit if enemy rolled accuracy beats this random value. In addition, every hit has 10% chance to hit and bypass dodge value"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Armor-Label" type="RichTextLabel" parent="Background/VBoxContainer" unique_id=326529273]
+custom_minimum_size = Vector2(100, 30)
+clip_contents = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 413.0
+offset_right = 102.0
+offset_bottom = 443.0
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("3_y835c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://dkdmy3xiqow1t[/img] ARMOR"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Armor-Number" type="Label" parent="Background/VBoxContainer/Armor-Label" unique_id=409462842]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = -15.0
+offset_right = 928.0
+offset_bottom = 15.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("3_y835c")
+theme_override_font_sizes/font_size = 32
+text = "In attack, damage will be reduced by armor first, before affect life"
+vertical_alignment = 1
+
+[node name="DUR-Label" type="RichTextLabel" parent="Background/VBoxContainer" unique_id=42804826]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 0
+offset_left = 0.5
+offset_top = 474.5
+offset_right = 80.5
+offset_bottom = 504.5
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("3_y835c")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://d4c440hsn7ytr[/img] DUR"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DUR-Number" type="Label" parent="Background/VBoxContainer/DUR-Label" unique_id=1529030579]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 112.0
+offset_top = -15.0
+offset_right = 856.0
+offset_bottom = 15.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("3_y835c")
+theme_override_font_sizes/font_size = 32
+text = "Durability represent how long before the item's getting broken"
+vertical_alignment = 1

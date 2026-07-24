@@ -8,6 +8,7 @@ class_name GameplayManager extends Node
 @export var enemy_manager:EnemyManager
 @export var tutorial_manager:TutorialManager
 @export var npc_manager:NpcManager
+@export var help_button:Button
 @export_group("Animations")
 @export var anim_on_player:AnimatedSprite2D
 @export var anim_on_enemy:AnimatedSprite2D
@@ -17,6 +18,7 @@ const SLASH_ANIM_NAME:String = "slash"
 const MAX_ROUND:int = 25
 
 func _ready():
+	help_button.pressed.connect(_on_help_button_pressed)
 	SaveManager.load_save_file()
 	IngameDataManager.gameplay_manager = self
 	InputManager.set_enabled(false)
@@ -34,6 +36,7 @@ func _ready():
 		
 
 func _exit_tree() -> void:
+	help_button.pressed.disconnect(_on_help_button_pressed)
 	EventBus.on_fight_started.disconnect(_on_fight_started)
 	EventBus.on_player_dead.disconnect(_on_player_dead)
 	EventBus.on_enemy_dead.disconnect(_on_enemy_dead)
@@ -173,6 +176,10 @@ func _on_fight_started() -> void:
 		loot_box_ui.show_loot()
 	await Helper.wait_for_frames(1)
 	InputManager.set_enabled(true)	
+	
+
+func _on_help_button_pressed():
+	EventBus.on_show_help_screen.emit()
 	
 	
 		
