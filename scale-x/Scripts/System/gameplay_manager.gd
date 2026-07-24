@@ -19,6 +19,7 @@ const MAX_ROUND:int = 25
 
 func _ready():
 	help_button.pressed.connect(_on_help_button_pressed)
+	help_button.mouse_entered.connect(_on_hover_help_button)
 	SaveManager.load_save_file()
 	IngameDataManager.gameplay_manager = self
 	InputManager.set_enabled(false)
@@ -37,6 +38,7 @@ func _ready():
 
 func _exit_tree() -> void:
 	help_button.pressed.disconnect(_on_help_button_pressed)
+	help_button.mouse_entered.disconnect(_on_hover_help_button)
 	EventBus.on_fight_started.disconnect(_on_fight_started)
 	EventBus.on_player_dead.disconnect(_on_player_dead)
 	EventBus.on_enemy_dead.disconnect(_on_enemy_dead)
@@ -178,8 +180,13 @@ func _on_fight_started() -> void:
 	InputManager.set_enabled(true)	
 	
 
+func _on_hover_help_button():
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
+
+
 func _on_help_button_pressed():
 	EventBus.on_show_help_screen.emit()
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	
 	
 		
