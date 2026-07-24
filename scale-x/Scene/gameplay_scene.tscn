@@ -46,6 +46,7 @@
 [ext_resource type="Script" uid="uid://it4oy57mtu58" path="res://Scripts/UI/enemy_avatar.gd" id="22_i5dkc"]
 [ext_resource type="Resource" uid="uid://c48fa8etqo8go" path="res://Data/Armors/Head/hood.tres" id="22_s8a72"]
 [ext_resource type="Resource" uid="uid://0eu680x2v5fm" path="res://Data/Armors/Head/wizard_hat.tres" id="23_4vhag"]
+[ext_resource type="Script" uid="uid://bcjsgud4j0xjo" path="res://Scripts/System/npc_manager.gd" id="27_l4kfh"]
 [ext_resource type="StyleBox" uid="uid://bllog2rtg84o3" path="res://Arts/Button_Style/button_normal_style.tres" id="31_l5t21"]
 [ext_resource type="StyleBox" uid="uid://wlf0x1gxya3r" path="res://Arts/Button_Style/button_pressed_style.tres" id="32_ajygt"]
 [ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="33_6gil7"]
@@ -58,14 +59,16 @@
 [ext_resource type="Shader" uid="uid://depag5wqx0nrh" path="res://Arts/outline_2d.gdshader" id="36_t2s0o"]
 [ext_resource type="Script" uid="uid://be138vgmprcoc" path="res://Scripts/UI/coin_hud.gd" id="38_lra8k"]
 [ext_resource type="PackedScene" uid="uid://d24ws1qci7x0w" path="res://Scene/buble_text.tscn" id="41_weo37"]
-[ext_resource type="Script" uid="uid://kwiamlij7gjw" path="res://Scripts/UI/game_over_screen.gd" id="53_4vhag"]
 [ext_resource type="Script" uid="uid://5g0nvl7x2a5p" path="res://Scripts/UI/enemy_skill_info.gd" id="53_p8an3"]
 [ext_resource type="SpriteFrames" uid="uid://cxmd5lntfegws" path="res://Arts/Animations/slash-effect-anim-frames.tres" id="54_oshq5"]
-[ext_resource type="Script" uid="uid://ctcp7m7pnr4mi" path="res://Scripts/UI/victory_screen.gd" id="56_ier0f"]
+[ext_resource type="PackedScene" uid="uid://cl54otpln4tec" path="res://Scene/death_screen.tscn" id="59_7skjk"]
+[ext_resource type="PackedScene" uid="uid://rinfdrdpd00r" path="res://Scene/victory_screen.tscn" id="60_pba8c"]
 [ext_resource type="Shader" uid="uid://biyqed80o6t3k" path="res://Arts/spotlight.gdshader" id="61_nj7gt"]
 [ext_resource type="Script" uid="uid://dkcfn3yeht3hf" path="res://Scripts/UI/overlay.gd" id="62_l8ssp"]
 [ext_resource type="Texture2D" uid="uid://bwmbwn6hekefo" path="res://Arts/Atlas_Texture/UI/button_background.tres" id="63_gd321"]
 [ext_resource type="Script" uid="uid://bf18hdvygaqqq" path="res://Scripts/System/tutorial_manager.gd" id="64_2gdrn"]
+[ext_resource type="Texture2D" uid="uid://cq8od1r7r2rcb" path="res://Arts/Atlas_Texture/stat_seller_npc.tres" id="67_pba8c"]
+[ext_resource type="Script" uid="uid://c26jqms4hgokp" path="res://Scripts/UI/NPC_SHOP/stat_master_shop.gd" id="68_il64e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -159,6 +162,9 @@ script = ExtResource("1_hl3nj")
 weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("10_mxdem"), ExtResource("4_5dnhx"), ExtResource("12_wdjjk"), ExtResource("13_51hvm"), ExtResource("14_5d0mh"), ExtResource("17_7skjk")])
 armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5"), ExtResource("13_yekpa"), ExtResource("18_51hvm"), ExtResource("19_5d0mh"), ExtResource("20_5c5ih"), ExtResource("21_3k04w"), ExtResource("22_s8a72"), ExtResource("23_4vhag")])
 
+[node name="NPC Manager" type="Node" parent="." unique_id=1173698040]
+script = ExtResource("27_l4kfh")
+
 [node name="Text Manager" type="Node" parent="." unique_id=543369598 node_paths=PackedStringArray("text_parent")]
 script = ExtResource("14_p01s1")
 text_parent = NodePath("../Control")
@@ -202,7 +208,7 @@ script = ExtResource("18_ecq28")
 enemy_controller = NodePath("..")
 
 [node name="Control" type="TextureRect" parent="." unique_id=1997924682]
-self_modulate = Color(0.2661908, 0.17087042, 0.22799861, 1)
+self_modulate = Color(0.26666668, 0.17254902, 0.22745098, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1706,230 +1712,9 @@ text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 a
 fit_content = true
 scroll_active = false
 
-[node name="Death-Screen" type="TextureRect" parent="." unique_id=1307319705 node_paths=PackedStringArray("gameplay_manager", "best_score_label", "restart_button", "quit_button")]
-visible = false
-self_modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.94509804)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_2wjsh")
-expand_mode = 1
-script = ExtResource("53_4vhag")
-gameplay_manager = NodePath("../Gameplay Manager")
-best_score_label = NodePath("TextureRect/Score")
-restart_button = NodePath("TextureRect/HBoxContainer/Restart-Button")
-quit_button = NodePath("TextureRect/HBoxContainer/Menu-Button")
+[node name="Death-Screen" parent="." unique_id=785239621 instance=ExtResource("59_7skjk")]
 
-[node name="TextureRect" type="NinePatchRect" parent="Death-Screen" unique_id=1030837287]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = 43.0
-offset_right = 150.0
-offset_bottom = 156.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_tntwh")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
-[node name="TextureRect" type="TextureRect" parent="Death-Screen/TextureRect" unique_id=226870722]
-self_modulate = Color(0.84367657, 0.27536273, 0.118914135, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_2wjsh")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Death-Screen/TextureRect" unique_id=1762034606]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -287.0
-offset_top = -214.0
-offset_right = 287.0
-offset_bottom = -64.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
-theme_override_fonts/font = ExtResource("35_0b0bh")
-theme_override_font_sizes/font_size = 150
-text = "GAME OVER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Score" type="Label" parent="Death-Screen/TextureRect" unique_id=557616707]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -115.0
-offset_top = -64.5
-offset_right = 116.0
-offset_bottom = -19.5
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
-theme_override_fonts/font = ExtResource("35_g8irb")
-theme_override_font_sizes/font_size = 48
-text = "Best Round: 99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Death-Screen/TextureRect" unique_id=1658359996]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = -20.0
-offset_right = 97.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 40
-alignment = 1
-
-[node name="Menu-Button" type="Button" parent="Death-Screen/TextureRect/HBoxContainer" unique_id=1240474905]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
-theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
-theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
-theme_override_fonts/font = ExtResource("35_0b0bh")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("31_l5t21")
-theme_override_styles/pressed = ExtResource("32_ajygt")
-theme_override_styles/hover = ExtResource("33_6gil7")
-text = "Menu"
-
-[node name="Restart-Button" type="Button" parent="Death-Screen/TextureRect/HBoxContainer" unique_id=128428458]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
-theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
-theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
-theme_override_fonts/font = ExtResource("35_0b0bh")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("31_l5t21")
-theme_override_styles/pressed = ExtResource("32_ajygt")
-theme_override_styles/hover = ExtResource("33_6gil7")
-text = "Restart"
-
-[node name="Victory-Screen" type="TextureRect" parent="." unique_id=346425751 node_paths=PackedStringArray("restart_button", "quit_button")]
-visible = false
-self_modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.94509804)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_2wjsh")
-expand_mode = 1
-script = ExtResource("56_ier0f")
-restart_button = NodePath("TextureRect/HBoxContainer/Restart-Button")
-quit_button = NodePath("TextureRect/HBoxContainer/Menu-Button")
-
-[node name="TextureRect" type="NinePatchRect" parent="Victory-Screen" unique_id=1599554831]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = 4.0
-offset_right = 150.0
-offset_bottom = 117.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_tntwh")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
-
-[node name="TextureRect" type="TextureRect" parent="Victory-Screen/TextureRect" unique_id=592806104]
-self_modulate = Color(0.95686275, 0.7058824, 0.105882354, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_2wjsh")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Victory-Screen/TextureRect" unique_id=1816165965]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -207.0
-offset_top = -185.0
-offset_right = 207.0
-offset_bottom = -48.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
-theme_override_fonts/font = ExtResource("35_0b0bh")
-theme_override_font_sizes/font_size = 150
-text = "VICTORY"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Victory-Screen/TextureRect" unique_id=760904220]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = -20.0
-offset_right = 97.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 40
-alignment = 1
-
-[node name="Menu-Button" type="Button" parent="Victory-Screen/TextureRect/HBoxContainer" unique_id=2001416199]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
-theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
-theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
-theme_override_fonts/font = ExtResource("35_0b0bh")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("31_l5t21")
-theme_override_styles/pressed = ExtResource("32_ajygt")
-theme_override_styles/hover = ExtResource("33_6gil7")
-text = "Menu"
-
-[node name="Restart-Button" type="Button" parent="Victory-Screen/TextureRect/HBoxContainer" unique_id=1210668569]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
-theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
-theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
-theme_override_fonts/font = ExtResource("35_0b0bh")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("31_l5t21")
-theme_override_styles/pressed = ExtResource("32_ajygt")
-theme_override_styles/hover = ExtResource("33_6gil7")
-text = "Restart"
+[node name="Victory-Screen" parent="." unique_id=1625437312 instance=ExtResource("60_pba8c")]
 
 [node name="Slash-Animation-On-Enemy" type="AnimatedSprite2D" parent="." unique_id=1703249185]
 position = Vector2(1103, 189)
@@ -2068,3 +1853,27 @@ tutorial_area_lootbox = NodePath("../Loot-Box-Tutorial")
 tutorial_final = NodePath("../Final-Tutorial")
 lootbox_confirm_button = NodePath("../Loot-Box-Tutorial/Loot-Box-Tutorial-Text/Loot-Box-Tut-Confirm-Button")
 final_confirm_button = NodePath("../Final-Tutorial/Final-Tut-Text/Final-Tut-Confirm-Button")
+
+[node name="Stat_Seller_NPC_Screen" type="ColorRect" parent="." unique_id=898706996]
+visible = false
+z_index = 200
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.26666668, 0.17254902, 0.22745098, 1)
+script = ExtResource("68_il64e")
+
+[node name="NPC_Avatar" type="TextureRect" parent="Stat_Seller_NPC_Screen" unique_id=919533742]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 96.0
+offset_right = 100.0
+offset_bottom = 296.0
+grow_horizontal = 2
+texture = ExtResource("67_pba8c")
+expand_mode = 1

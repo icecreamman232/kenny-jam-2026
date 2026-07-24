@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://cl54otpln4tec"]
+
+[ext_resource type="Texture2D" uid="uid://cmhyobwlwulub" path="res://Arts/Atlas_Texture/empty_square_bg.tres" id="1_s5vix"]
+[ext_resource type="Script" uid="uid://kwiamlij7gjw" path="res://Scripts/UI/game_over_screen.gd" id="2_ac5u1"]
+[ext_resource type="Texture2D" uid="uid://dbebpejknoryy" path="res://Arts/Atlas_Texture/inventory_cell_bg.tres" id="3_jfnaj"]
+[ext_resource type="FontFile" uid="uid://cjnauydm3ntpv" path="res://Arts/m6x11plus.ttf" id="4_gl4bv"]
+[ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="5_g5huu"]
+[ext_resource type="StyleBox" uid="uid://bllog2rtg84o3" path="res://Arts/Button_Style/button_normal_style.tres" id="6_c1r40"]
+[ext_resource type="StyleBox" uid="uid://wlf0x1gxya3r" path="res://Arts/Button_Style/button_pressed_style.tres" id="7_ffknh"]
+[ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="8_yvm14"]
+
+[node name="Death-Screen" type="TextureRect" unique_id=785239621 node_paths=PackedStringArray("gameplay_manager", "best_score_label", "restart_button", "quit_button")]
+visible = false
+self_modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.94509804)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s5vix")
+expand_mode = 1
+script = ExtResource("2_ac5u1")
+gameplay_manager = NodePath("")
+best_score_label = NodePath("TextureRect/Score")
+restart_button = NodePath("TextureRect/HBoxContainer/Restart-Button")
+quit_button = NodePath("TextureRect/HBoxContainer/Menu-Button")
+
+[node name="TextureRect" type="NinePatchRect" parent="." unique_id=269685504]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 43.0
+offset_right = 150.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_jfnaj")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=1677787150]
+self_modulate = Color(0.84367657, 0.27536273, 0.118914135, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s5vix")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=2108199152]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -287.0
+offset_top = -214.0
+offset_right = 287.0
+offset_bottom = -64.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
+theme_override_fonts/font = ExtResource("4_gl4bv")
+theme_override_font_sizes/font_size = 150
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="TextureRect" unique_id=825470983]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = -64.5
+offset_right = 116.0
+offset_bottom = -19.5
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("5_g5huu")
+theme_override_font_sizes/font_size = 48
+text = "Best Round: 99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=929742288]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -20.0
+offset_right = 97.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Menu-Button" type="Button" parent="TextureRect/HBoxContainer" unique_id=525749169]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("4_gl4bv")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("6_c1r40")
+theme_override_styles/pressed = ExtResource("7_ffknh")
+theme_override_styles/hover = ExtResource("8_yvm14")
+text = "Menu"
+
+[node name="Restart-Button" type="Button" parent="TextureRect/HBoxContainer" unique_id=143755562]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_pressed_color = Color(0.21568628, 0.21568628, 0.21568628, 1)
+theme_override_colors/font_hover_color = Color(0.9254902, 0.9254902, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("4_gl4bv")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("6_c1r40")
+theme_override_styles/pressed = ExtResource("7_ffknh")
+theme_override_styles/hover = ExtResource("8_yvm14")
+text = "Restart"

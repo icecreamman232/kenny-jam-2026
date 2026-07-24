@@ -148,6 +148,8 @@ func _on_fight_started() -> void:
 		loot_box_ui.show_loot()
 	await Helper.wait_for_frames(1)
 	InputManager.set_enabled(true)	
+	
+	
 		
 
 
