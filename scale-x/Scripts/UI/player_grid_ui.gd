@@ -51,7 +51,6 @@ func _input(event:InputEvent) -> void:
 					var _inspecting_cell := cell_grid[_dragging_slot_index]
 					if _hovered_cell != null:
 						var result := request_move_item(_inspecting_cell.grid_index, _hovered_cell.grid_index)
-						print("MOVE SUCCESS" if result else "MOVE FAIL")
 					context_cursor.hide()
 					_inspecting_cell.handle_drag(_dragging)
 					_dragging_slot_index = -1
