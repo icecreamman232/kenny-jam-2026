@@ -45,7 +45,7 @@ func play_menu_music() -> void:
 	if bgm_container == null: return
 	bgm_player.stream = bgm_container.menu_music		
 	bgm_player.play()
-	print("play menu music")	
+
 
 
 func play_music() -> void:

@@ -6,7 +6,6 @@ func get_skill_description() ->String: return "On appear, -2 player attack"
 
 func apply() -> void:
 	super.apply()
-	print("Apply THIS")
 	var player:PlayerController = IngameDataManager.gameplay_manager.player_controller
 	var current_atk := player.stat.get_final(StatController.StatType.ATTACK)
 	current_atk -= 2
