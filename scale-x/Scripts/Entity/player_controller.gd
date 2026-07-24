@@ -67,6 +67,7 @@ func deal_damage_to_enemy(enemy_controller: EnemyController) -> void:
 		var rolled_enemy_dodge:= randi_range(0, enemy_dodge)
 		if rolled_enemy_dodge > rolled_acc:
 			(IngameDataManager.text_manager as TextManager).show_text("Miss", player_pivot.global_position, Color(0.5294118, 0.5294118, 0.5294118))
+			EventBus.on_player_miss_attack.emit()
 			await Helper.wait_for_frames(1)
 			return
 	enemy_controller.health.take_damage(stat.get_final(StatController.StatType.ATTACK))

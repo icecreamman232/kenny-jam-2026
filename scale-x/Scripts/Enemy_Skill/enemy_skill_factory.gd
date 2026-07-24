@@ -14,7 +14,9 @@ func create_skill(enemy_skill_id:String, enemy_controller:EnemyController) ->Ene
 		EnemySkill.EnemySkillID.FEAR:
 			return FearAttackEnemySkill.new(enemy_controller)
 		EnemySkill.EnemySkillID.FAIR_FIGHT:
-			return FairFightEnemySkill.new(enemy_controller)			
+			return FairFightEnemySkill.new(enemy_controller)
+		EnemySkill.EnemySkillID.SHY:
+			return ShyEnemySkill.new(enemy_controller)						
 		EnemySkill.EnemySkillID.CHICKEN_ATTACK:
 			return ChickenAttackEnemySkill.new(enemy_controller)
 			

@@ -95,6 +95,7 @@ func _calculate_coin_drop() ->int:
 	
 	
 func _on_hover_enter():
+	EventBus.on_player_check_enemy_skill.emit()
 	EventBus.on_hover_on_enemy.emit(self)
 	avatar.show_highlight(true)
 	

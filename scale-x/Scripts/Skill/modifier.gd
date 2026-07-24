@@ -13,6 +13,7 @@ enum ModifierId
 	SharpenTool,
 	ThreeMusketeers,
 	TheTwin,
+	TryHard,
 }
 
 

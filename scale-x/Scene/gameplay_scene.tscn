@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://cxlrj42seind1" path="res://Scripts/UI/loot_box_ui.gd" id="14_r66ao"]
 [ext_resource type="Script" uid="uid://bcue5hmq4r4c6" path="res://Scripts/Skill/player_stat_controller.gd" id="15_f3rod"]
 [ext_resource type="Script" uid="uid://dc1fsfq7a5idj" path="res://Scripts/UI/loot_box_cell_ui.gd" id="16_x02nk"]
+[ext_resource type="Resource" uid="uid://ch14dy3oxmrgn" path="res://Data/Weapons/wooden_bow.tres" id="17_7skjk"]
 [ext_resource type="Script" uid="uid://3xm0uigc8waj" path="res://Scripts/Skill/modifier_controller.gd" id="17_yeb8m"]
 [ext_resource type="Resource" uid="uid://thivyfnips1i" path="res://Data/Armors/Body/robe.tres" id="18_51hvm"]
 [ext_resource type="Script" uid="uid://b5d1unfklia7s" path="res://Scripts/Skill/enemy_stat_controller.gd" id="18_ecq28"]
@@ -155,7 +156,7 @@ boss_list = Array[ExtResource("3_jkpb7")]([ExtResource("7_pdq7b")])
 
 [node name="Loot Manager" type="Node" parent="." unique_id=165805778]
 script = ExtResource("1_hl3nj")
-weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("10_mxdem"), ExtResource("4_5dnhx"), ExtResource("12_wdjjk"), ExtResource("13_51hvm"), ExtResource("14_5d0mh")])
+weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("10_mxdem"), ExtResource("4_5dnhx"), ExtResource("12_wdjjk"), ExtResource("13_51hvm"), ExtResource("14_5d0mh"), ExtResource("17_7skjk")])
 armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5"), ExtResource("13_yekpa"), ExtResource("18_51hvm"), ExtResource("19_5d0mh"), ExtResource("20_5c5ih"), ExtResource("21_3k04w"), ExtResource("22_s8a72"), ExtResource("23_4vhag")])
 
 [node name="Text Manager" type="Node" parent="." unique_id=543369598 node_paths=PackedStringArray("text_parent")]
