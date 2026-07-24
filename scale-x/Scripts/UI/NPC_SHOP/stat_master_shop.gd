@@ -5,6 +5,7 @@ class_name StatMasterShop extends Control
 @export var player_coin_label:RichTextLabel
 @export var close_button:Button
 @export var stat_slots:Array[StatMasterSlot]
+@export var flavour_text:RichTextLabel
 @export var icon_for_stat:Dictionary[StatController.StatType,Texture2D]
 
 var stat_to_buy:Array[StatController.StatType] = []
@@ -15,6 +16,13 @@ const STARTING_SLOT_PRICE:int = 10
 const SLOT_PRICE_INCREASE_PER_TIME:int = 10
 const STARTING_REROLL_PRICE:int = 15
 const REROLL_PRICE_INCREASE_PER_TIME:int = 10 
+
+const FLAVOUR_TEXT:Array[String] = [
+	"Hail Sun Lord, what can I help you?",
+	"You look pale, may my stuff be of help?",
+	"A hero started as a noob, everyone loves my stuff"
+]
+
 
 const STAT_TYPE_ARRAY:Array[StatController.StatType] = [
 	StatController.StatType.ATTACK,
@@ -88,6 +96,8 @@ func _on_open_npc_shop(npc_id:NpcManager.NpcID) -> void:
 		stat_slots[idx].show_slot(icon_for_stat[stat_to_buy[idx]], _get_price_for_stat(stat_to_buy[idx]), stat_to_buy[idx])
 
 	show()
+	
+	await show_flavour_text()
 
 
 func _get_price_for_stat(stat_type:StatController.StatType) -> int:
@@ -132,3 +142,13 @@ func request_to_buy_stat(stat_type:StatController.StatType, price:int, slot:Stat
 	# Change visual that the slot is sold out
 	slot.sold_out()
 	
+	
+func show_flavour_text() -> void:
+	await Helper.wait_for_seconds(1)
+	flavour_text.text = FLAVOUR_TEXT.pick_random()
+	flavour_text.show()
+	await Helper.wait_for_seconds(3.5)
+	var t:Tween = create_tween()
+	t.tween_property(flavour_text, "modulate", Color(1,1,1,0), 0.5)
+	await t.finished
+	flavour_text.hide()

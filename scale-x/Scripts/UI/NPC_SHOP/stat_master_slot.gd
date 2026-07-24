@@ -10,6 +10,8 @@ class_name StatMasterSlot extends Control
 var _stat_type:StatController.StatType = StatController.StatType.ATTACK
 var _price:int = 0
 
+
+
 const STAT_NAME_DICT:Dictionary[StatController.StatType,String] = {
 	StatController.StatType.ATTACK: "ATK",
 	StatController.StatType.ACCURACY: "ACC",

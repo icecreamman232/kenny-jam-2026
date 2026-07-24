@@ -26,6 +26,18 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vrlf"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.9137255, 0.76862746, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exbb6"]
 shader = ExtResource("11_rpkin")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
@@ -57,7 +69,7 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 modulate_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
 
-[node name="Stat_Seller_NPC_Screen" type="ColorRect" unique_id=1297958733 node_paths=PackedStringArray("reroll_price_label", "reroll_button", "player_coin_label", "close_button", "stat_slots")]
+[node name="Stat_Seller_NPC_Screen" type="ColorRect" unique_id=1297958733 node_paths=PackedStringArray("reroll_price_label", "reroll_button", "player_coin_label", "close_button", "stat_slots", "flavour_text")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -70,6 +82,7 @@ reroll_button = NodePath("Background/Loot-Box-Group/Reroll-Button")
 player_coin_label = NodePath("Background/Loot-Box-Group/Coin-Hud")
 close_button = NodePath("Background/Close_Button")
 stat_slots = [NodePath("Background/Loot-Box-Group/Loot-Box/Item-1"), NodePath("Background/Loot-Box-Group/Loot-Box/Item-2"), NodePath("Background/Loot-Box-Group/Loot-Box/Item-3")]
+flavour_text = NodePath("Background/NPC_Avatar/Flavor-Text-BG")
 icon_for_stat = Dictionary[int, Texture2D]({
 0: ExtResource("2_g6rhc"),
 1: ExtResource("3_858hm"),
@@ -124,6 +137,22 @@ offset_bottom = 374.0
 grow_horizontal = 2
 texture = ExtResource("9_pkfq7")
 expand_mode = 1
+
+[node name="Flavor-Text-BG" type="RichTextLabel" parent="Background/NPC_Avatar" unique_id=1258621739]
+visible = false
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 147.0
+offset_top = -23.0
+offset_right = 347.0
+offset_bottom = 57.0
+theme_override_fonts/normal_font = ExtResource("12_pl7jf")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_8vrlf")
+bbcode_enabled = true
+text = "Hello, what can I help you?"
+fit_content = true
+scroll_active = false
 
 [node name="Loot-Box-Group" type="Control" parent="Background" unique_id=1276386394]
 layout_mode = 1
