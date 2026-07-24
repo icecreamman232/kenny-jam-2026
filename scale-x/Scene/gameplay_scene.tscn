@@ -1631,21 +1631,20 @@ text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]This
 fit_content = true
 scroll_active = false
 
-[node name="Item-Name" type="Label" parent="Control/Item-Group" unique_id=816860782]
-custom_minimum_size = Vector2(200, 40)
+[node name="Item-Name" type="RichTextLabel" parent="Control/Item-Group" unique_id=47164798]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -101.0
+anchors_preset = 10
+anchor_right = 1.0
 offset_top = -59.0
-offset_right = 102.0
-offset_bottom = -11.0
+offset_bottom = 1.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
-theme_override_fonts/font = ExtResource("35_g8irb")
-theme_override_font_sizes/font_size = 60
+theme_override_colors/default_color = Color(1, 0.9137255, 0.76862746, 1)
+theme_override_fonts/normal_font = ExtResource("35_g8irb")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
 text = "Item Name"
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 

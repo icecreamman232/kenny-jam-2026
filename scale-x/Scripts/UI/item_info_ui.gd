@@ -1,6 +1,6 @@
 class_name ItemInfoUi extends Control
 
-@export var item_name:Label
+@export var item_name:RichTextLabel
 @export var dur_label:Label
 @export var atk_label:Label
 @export var acc_label:Label
@@ -42,7 +42,12 @@ func _update_item_stat(item_data:ItemData) -> void:
 	dodge_label.text = str(item_data.dodge)
 	armor_label.text = str(item_data.armor)
 	price_label.text = str(ItemData.get_price_for_item(item_data))
-	item_name.text = item_data.item_name
+	
+	var rarity_color:Color = Helper.get_color_by_rarity(item_data.rarity)
+	if item_data.rarity == ItemData.ItemRarity.COMMON:
+		rarity_color = Color(1.0, 0.914, 0.769)
+	var color_html := rarity_color.to_html(false)
+	item_name.text = "[color=#" + color_html + "]" + item_data.item_name + "[/color]"
 	
 	mod_parent.hide()
 	mod_1_desc.hide()
