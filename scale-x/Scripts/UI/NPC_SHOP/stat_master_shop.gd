@@ -57,6 +57,7 @@ func _exit_tree() -> void:
 	
 func _on_close_button_pressed():
 	hide()
+	IngameDataManager.gameplay_manager.force_spawn_enemy_or_boss()
 
 
 func _on_reroll_button_pressed() -> void:

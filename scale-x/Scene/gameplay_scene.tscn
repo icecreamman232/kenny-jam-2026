@@ -62,6 +62,7 @@
 [ext_resource type="Script" uid="uid://5g0nvl7x2a5p" path="res://Scripts/UI/enemy_skill_info.gd" id="53_p8an3"]
 [ext_resource type="SpriteFrames" uid="uid://cxmd5lntfegws" path="res://Arts/Animations/slash-effect-anim-frames.tres" id="54_oshq5"]
 [ext_resource type="PackedScene" uid="uid://cl54otpln4tec" path="res://Scene/death_screen.tscn" id="59_7skjk"]
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="60_il64e"]
 [ext_resource type="PackedScene" uid="uid://rinfdrdpd00r" path="res://Scene/victory_screen.tscn" id="60_pba8c"]
 [ext_resource type="Shader" uid="uid://biyqed80o6t3k" path="res://Arts/spotlight.gdshader" id="61_nj7gt"]
 [ext_resource type="Script" uid="uid://dkcfn3yeht3hf" path="res://Scripts/UI/overlay.gd" id="62_l8ssp"]
@@ -116,6 +117,28 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 0.9137255, 0.76862746, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5gy4"]
+atlas = ExtResource("60_il64e")
+region = Rect2(784, 96, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8vrlf"]
+texture = SubResource("AtlasTexture_v5gy4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnm1y"]
+atlas = ExtResource("60_il64e")
+region = Rect2(784, 112, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1o3ap"]
+texture = SubResource("AtlasTexture_xnm1y")
+modulate_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o3ap"]
+atlas = ExtResource("60_il64e")
+region = Rect2(784, 112, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_il64e"]
+texture = SubResource("AtlasTexture_1o3ap")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0b0bh"]
 shader = ExtResource("61_nj7gt")
@@ -1711,6 +1734,21 @@ bbcode_enabled = true
 text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 attack after each round. Have 65% chance to be destroyed on getting attacked"
 fit_content = true
 scroll_active = false
+
+[node name="Help-Button" type="Button" parent="Control" unique_id=1580257394]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -98.0
+offset_top = 15.0
+offset_right = -34.0
+offset_bottom = 79.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_8vrlf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1o3ap")
+theme_override_styles/hover = SubResource("StyleBoxTexture_il64e")
 
 [node name="Death-Screen" parent="." unique_id=785239621 instance=ExtResource("59_7skjk")]
 

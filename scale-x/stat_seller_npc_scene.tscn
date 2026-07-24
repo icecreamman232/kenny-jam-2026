@@ -70,6 +70,7 @@ expand_margin_bottom = 10.0
 modulate_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
 
 [node name="Stat_Seller_NPC_Screen" type="ColorRect" unique_id=1297958733 node_paths=PackedStringArray("reroll_price_label", "reroll_button", "player_coin_label", "close_button", "stat_slots", "flavour_text")]
+z_index = 200
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
