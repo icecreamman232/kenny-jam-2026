@@ -12,6 +12,7 @@ func create_modifier(modifier_id:Modifier.ModifierId) ->Modifier:
 		Modifier.ModifierId.DeathIsNotTheEnd: return DeathIsNotTheEndModifier.new()
 		Modifier.ModifierId.SharpenTool: return SharpenToolModifier.new()
 		Modifier.ModifierId.ThreeMusketeers: return ThreeMusketeersModifier.new()
+		Modifier.ModifierId.TheTwin: return TheTwinModifier.new()
 		
 		
 		_: return null

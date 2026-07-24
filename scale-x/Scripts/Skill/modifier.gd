@@ -12,6 +12,7 @@ enum ModifierId
 	DeathIsNotTheEnd,
 	SharpenTool,
 	ThreeMusketeers,
+	TheTwin,
 }
 
 

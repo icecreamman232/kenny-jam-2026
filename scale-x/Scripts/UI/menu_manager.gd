@@ -1,5 +1,7 @@
 class_name MenuManager extends CanvasLayer
 
+@export var gmtk_logo_parent:ColorRect
+@export var gmtk_logo:TextureRect
 @export var title_button:Button
 @export var title_label:Label
 @export var play_button:Button
@@ -12,26 +14,51 @@ var _is_recovering:bool = false
 var _block_input:bool = false
 
 func _set_window_size():
-	get_window().size = Vector2i(1366, 768)
+	get_window().size = Vector2i(1600, 900)
 
 
 func _ready():
+	InputManager.set_enabled(false)
+	IngameDataManager.menu_reward_id = -1
 	call_deferred("_set_window_size")
 	_current_life = MAX_TITLE_LIFE
 	title_button.pressed.connect(_on_hit_title_button)
 	var shader_material := title_label.material.duplicate() as ShaderMaterial
 	title_label.material = shader_material
 	play_button.pressed.connect(_load_gameplay_scene)
-	await Helper.wait_for_seconds(1.5)
+	play_button.mouse_entered.connect(_on_mouse_enter_button)
+	if not IngameDataManager.logo_has_shown:
+		await _show_logo()
+		await Helper.wait_for_seconds(1)
+		IngameDataManager.logo_has_shown = true
+		await _fade_logo_layout()
+	InputManager.set_enabled(true)
 	AudioManager.play_menu_music()
-	IngameDataManager.menu_reward_id = -1
-
 	
+
 func _exit_tree() -> void:
 	title_button.pressed.disconnect(_on_hit_title_button)
 	play_button.pressed.disconnect(_load_gameplay_scene)
+	play_button.mouse_entered.disconnect(_on_mouse_enter_button)
 	
+
+func _show_logo():
+	var t := create_tween()
+	var target_color := gmtk_logo.modulate
+	target_color.a = 1
+	t.tween_property(gmtk_logo, "modulate", target_color, 1.5)
+	await t.finished
 	
+
+func _fade_logo_layout():
+	var t := create_tween()
+	var target_color := gmtk_logo_parent.modulate
+	target_color.a = 0
+	t.tween_property(gmtk_logo_parent, "modulate", target_color, 0.5)
+	await t.finished
+	gmtk_logo_parent.hide()
+
+
 func _on_hit_title_button() -> void:
 	if _block_input: return
 	if _is_recovering: return
@@ -115,3 +142,7 @@ func _show_reward_text():
 	target_color.a = 0
 	t.tween_property(reward_label, "self_modulate", target_color, 0.5)
 	await t.finished
+	
+	
+func _on_mouse_enter_button():
+	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
