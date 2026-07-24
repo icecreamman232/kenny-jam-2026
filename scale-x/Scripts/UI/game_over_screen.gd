@@ -1,6 +1,5 @@
 class_name GameOverScreen extends Control
 
-@export var gameplay_manager:GameplayManager
 @export var best_score_label:Label
 @export var restart_button:Button
 @export var quit_button:Button
@@ -26,7 +25,7 @@ func _exit_tree() -> void:
 func _on_player_dead():
 	await Helper.wait_for_seconds(0.5)
 	AudioManager.play_sfx(SfxContainer.SfxID.GAME_OVER)
-	best_score_label.text = "Best Round: " + str(gameplay_manager.round_number)
+	best_score_label.text = "Best Round: " + str(IngameDataManager.gameplay_manager.round_number)
 	show()
 	_is_showing = true
 
@@ -47,5 +46,5 @@ func _on_restart_button_pressed() -> void:
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
 	hide()
 	_is_showing = false	
-	gameplay_manager.restart_game()
+	IngameDataManager.gameplay_manager.restart_game()
 	
