@@ -56,7 +56,7 @@ shader = ExtResource("6_qwi5d")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/outline_thickness = 0
 
-[node name="Blacksmith_NPC_Screen" type="ColorRect" unique_id=643939195 node_paths=PackedStringArray("close_button", "player_coin_label", "fix_price_label", "shop_slots")]
+[node name="Blacksmith_NPC_Screen" type="ColorRect" unique_id=643939195 node_paths=PackedStringArray("close_button", "player_coin_label", "fix_price_label", "flavour_text", "shop_slots")]
 z_index = 200
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,6 +68,7 @@ script = ExtResource("1_qwi5d")
 close_button = NodePath("Background/Close_Button")
 player_coin_label = NodePath("Background/Coin-Hud")
 fix_price_label = NodePath("Background/Fix-Price-Label")
+flavour_text = NodePath("Background/NPC_Avatar/Flavor-Text-BG")
 shop_slots = [NodePath("Background/Player-Grid/Inventory-Cell"), NodePath("Background/Player-Grid/Inventory-Cell2"), NodePath("Background/Player-Grid/Inventory-Cell3"), NodePath("Background/Player-Grid/Inventory-Cell4"), NodePath("Background/Player-Grid/Inventory-Cell5"), NodePath("Background/Player-Grid/Inventory-Cell6"), NodePath("Background/Player-Grid/Inventory-Cell7"), NodePath("Background/Player-Grid/Inventory-Cell8"), NodePath("Background/Player-Grid/Inventory-Cell9")]
 
 [node name="Background" type="Panel" parent="." unique_id=1576869189]

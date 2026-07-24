@@ -2,6 +2,7 @@ class_name EnemyManager extends Node
 
 @export var player_controller:PlayerController
 @export var enemy_data_list:Array[EnemyData]
+@export var easy_enemy_data_list:Array[EnemyData]
 @export var boss_list:Array[EnemyData]
 
 
@@ -15,7 +16,12 @@ func get_boss(round_number:int) -> EnemyData:
 
 
 func get_enemy(round_number:int) -> EnemyData:
-	var source_data = enemy_data_list.pick_random()
+	var source_data:EnemyData = null
+	if round_number <= 3:
+		source_data = easy_enemy_data_list.pick_random()
+	else:
+		source_data = enemy_data_list.pick_random()
+		
 	source_data = source_data.duplicate()
 	if round_number > 1:
 		_scale_up_enemy_stat(source_data,round_number)

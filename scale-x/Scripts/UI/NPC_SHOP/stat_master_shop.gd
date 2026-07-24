@@ -97,7 +97,6 @@ func _on_open_npc_shop(npc_id:NpcManager.NpcID) -> void:
 		stat_slots[idx].show_slot(icon_for_stat[stat_to_buy[idx]], _get_price_for_stat(stat_to_buy[idx]), stat_to_buy[idx])
 
 	show()
-	
 	await show_flavour_text()
 
 

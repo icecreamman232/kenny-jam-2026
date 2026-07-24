@@ -3,9 +3,14 @@ class_name BlacksmithShop extends Control
 @export var close_button:Button
 @export var player_coin_label:RichTextLabel
 @export var fix_price_label:RichTextLabel
+@export var flavour_text:RichTextLabel
 @export var shop_slots:Array[BlacksmithShopSlot]
 
 const FIX_PRICE:int = 12
+const FLAVOUR_TEXT:Array[String] = [
+	"Oy, fix your thingy before it is too late!",
+	"I can fix your item at fixed price!",
+]
 
 
 func _ready():
@@ -36,6 +41,7 @@ func _on_open_npc_shop(npc_id:NpcManager.NpcID) -> void:
 	for idx in range(player_grid.cell_grid.size()):
 		shop_slots[idx].assign_slot(player_grid.cell_grid[idx])
 	show()
+	await _show_flavour_text()
 	
 	
 func request_to_fix_slot(cell:PlayerCellGridUi, slot:BlacksmithShopSlot) -> void:
@@ -51,4 +57,14 @@ func request_to_fix_slot(cell:PlayerCellGridUi, slot:BlacksmithShopSlot) -> void
 	cell.update_durability_visual()
 	player_coin_label.text = "[img=32 align=center,center]uid://de3k1fl4j5llo[/img]" + str(IngameDataManager.coin_hud.current_coin)
 	
+	
+func _show_flavour_text() -> void:
+	await Helper.wait_for_seconds(1)
+	flavour_text.text = FLAVOUR_TEXT.pick_random()
+	flavour_text.show()
+	await Helper.wait_for_seconds(3.5)
+	var t:Tween = create_tween()
+	t.tween_property(flavour_text, "modulate", Color(1,1,1,0), 0.5)
+	await t.finished
+	flavour_text.hide()
 	

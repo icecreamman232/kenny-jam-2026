@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://cai0k6sjuu0kd" path="res://Data/Enemy/boss_chicken.tres" id="7_pdq7b"]
 [ext_resource type="Script" uid="uid://dgt024sg2dygh" path="res://Scripts/Entity/player_controller.gd" id="7_q0kv5"]
 [ext_resource type="Script" uid="uid://il7cacyusvvr" path="res://Scripts/Entity/player_health.gd" id="8_1h042"]
+[ext_resource type="Resource" uid="uid://sqvbmtscjae0" path="res://Data/Enemy/spider.tres" id="8_6c0te"]
 [ext_resource type="Resource" uid="uid://bxk3hi8qptvrf" path="res://Data/Weapons/iron_shield.tres" id="10_mxdem"]
 [ext_resource type="Script" uid="uid://b4dhy5wdoy0oj" path="res://Scripts/Entity/enemy_controller.gd" id="11_0fvd6"]
 [ext_resource type="Script" uid="uid://bhom8k7ua87t5" path="res://Scripts/UI/player_grid_ui.gd" id="11_sj3gg"]
@@ -182,6 +183,7 @@ anim_on_enemy = NodePath("../Slash-Animation-On-Enemy")
 script = ExtResource("2_bm225")
 player_controller = NodePath("../Player")
 enemy_data_list = Array[ExtResource("3_jkpb7")]([ExtResource("4_i5dkc"), ExtResource("5_w7c21"), ExtResource("6_e412i"), ExtResource("7_4trpq")])
+easy_enemy_data_list = Array[ExtResource("3_jkpb7")]([ExtResource("4_i5dkc"), ExtResource("5_w7c21"), ExtResource("8_6c0te")])
 boss_list = Array[ExtResource("3_jkpb7")]([ExtResource("7_pdq7b")])
 
 [node name="Loot Manager" type="Node" parent="." unique_id=165805778]
