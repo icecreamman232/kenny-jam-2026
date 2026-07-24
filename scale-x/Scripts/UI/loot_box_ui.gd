@@ -98,7 +98,7 @@ func _on_reroll_button_pressed() -> void:
 	elif round_number > Constant.LATE_GAME_ROUND_NUMBER:
 		reroll_price = 10	
 	
-	if coin_hud.current_coin < reroll_price: return
+	if coin_hud.current_coin <= reroll_price: return
 		
 	show_loot()
 	reroll_price_label.text = "[img=24]uid://de3k1fl4j5llo[/img] " + str(reroll_price).pad_decimals(0)	
