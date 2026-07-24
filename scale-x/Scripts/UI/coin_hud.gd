@@ -3,6 +3,7 @@ class_name CoinHud extends RichTextLabel
 var current_coin:int = 0
 
 func _ready():
+	IngameDataManager.coin_hud = self
 	EventBus.on_coin_change.connect(_update_coin)
 	EventBus.on_player_dead.connect(_reset_coin)
 	var bonus_coin := 3 if IngameDataManager.menu_reward_id == 0 else 0
