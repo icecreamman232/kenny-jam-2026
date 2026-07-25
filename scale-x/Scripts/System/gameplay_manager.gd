@@ -110,12 +110,12 @@ func _on_enemy_dead() -> void:
 	else:
 		round_label.text = "Round " + str(26 - round_number)
 	player_controller.health.recover_full_life()
-	await Helper.wait_for_frames(3)
+	await Helper.wait_for_seconds(0.3)
 	if is_boss_fight:
 		_create_boss()
 	else:
 		_create_enemy()
-	await Helper.wait_for_frames(3)
+	await Helper.wait_for_seconds(0.3)
 	EventBus.on_new_round.emit()		
 	
 	
