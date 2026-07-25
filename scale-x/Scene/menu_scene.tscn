@@ -83,6 +83,29 @@ text = "Reward: Gain 3 additional coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Play-button" type="Button" parent="." unique_id=1953421123]
+custom_minimum_size = Vector2(200, 60)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -416.0
+offset_right = 100.0
+offset_bottom = -343.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_hover_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_fonts/font = ExtResource("5_fp2sf")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("8_w5u0e")
+theme_override_styles/pressed = ExtResource("9_5t4vo")
+theme_override_styles/hover = ExtResource("10_6wowx")
+text = "START"
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1884896778]
 z_index = 200
 anchors_preset = 15
@@ -106,26 +129,3 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_w7gvl")
 expand_mode = 1
-
-[node name="Play-button" type="Button" parent="." unique_id=1953421123]
-custom_minimum_size = Vector2(200, 60)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -416.0
-offset_right = 100.0
-offset_bottom = -343.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
-theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
-theme_override_colors/font_hover_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
-theme_override_fonts/font = ExtResource("5_fp2sf")
-theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = ExtResource("8_w5u0e")
-theme_override_styles/pressed = ExtResource("9_5t4vo")
-theme_override_styles/hover = ExtResource("10_6wowx")
-text = "START"
