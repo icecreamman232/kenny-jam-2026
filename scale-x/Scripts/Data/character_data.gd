@@ -5,7 +5,13 @@ enum CharacterID
 	Knight,
 	King,
 	Rogue,
-	Executioner
+	Executioner,
+	
+	# Need to unlock
+	Farmer, 
+	Devil,
+	Ghost,
+	Psycho_Kid,
 }
 
 @export var character_id:CharacterID

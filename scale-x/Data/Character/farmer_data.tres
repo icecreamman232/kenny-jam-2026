@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://cvmn0vpis3p0o"]
+
+[ext_resource type="Script" uid="uid://cyoi4byyprgwl" path="res://Scripts/Data/character_data.gd" id="1_bm1hs"]
+
+[resource]
+script = ExtResource("1_bm1hs")
+character_id = 4
+character_name = "Farmer"
+metadata/_custom_type_script = "uid://cyoi4byyprgwl"

@@ -34,6 +34,7 @@ func _exit_tree() -> void:
 
 func on_pressed_on_character_node(node:CharacterSelectionNode) -> void:
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
+	if not node.is_unlock: return
 	await node.update_select()
 	if node.is_selected:
 		if _last_selected_node != null and node != _last_selected_node:
@@ -50,6 +51,8 @@ func on_pressed_on_character_node(node:CharacterSelectionNode) -> void:
 			skill_panel.hide()
 	await Helper.wait_for_frames(3)
 	is_enable_input = true
+
+		
 
 
 func _show_skill_desc(character_data:CharacterData):

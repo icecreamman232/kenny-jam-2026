@@ -27,6 +27,7 @@ func _ready():
 	title_label.material = shader_material
 	play_button.pressed.connect(_load_gameplay_scene)
 	play_button.mouse_entered.connect(_on_mouse_enter_button)
+	SaveManager.load_save_file()
 	if not IngameDataManager.logo_has_shown:
 		await _show_logo()
 		await Helper.wait_for_seconds(1)

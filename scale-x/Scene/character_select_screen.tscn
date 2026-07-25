@@ -13,8 +13,12 @@
 [ext_resource type="Resource" uid="uid://b4sdxgtx3fbi7" path="res://Data/Character/rogue_data.tres" id="9_k0nmi"]
 [ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="10_r4b3w"]
 [ext_resource type="Resource" uid="uid://c34kufp4or10j" path="res://Data/Character/executioner_data.tres" id="11_let1h"]
+[ext_resource type="Resource" uid="uid://cvmn0vpis3p0o" path="res://Data/Character/farmer_data.tres" id="13_wtkhp"]
 [ext_resource type="StyleBox" uid="uid://bllog2rtg84o3" path="res://Arts/Button_Style/button_normal_style.tres" id="14_4v84x"]
+[ext_resource type="Resource" uid="uid://c6nmjydnq12sj" path="res://Data/Character/devil_data.tres" id="14_kt811"]
+[ext_resource type="Resource" uid="uid://cpn2hbs25t1rh" path="res://Data/Character/ghost_data.tres" id="15_48h8i"]
 [ext_resource type="StyleBox" uid="uid://wlf0x1gxya3r" path="res://Arts/Button_Style/button_pressed_style.tres" id="15_57y4t"]
+[ext_resource type="Resource" uid="uid://uank516oy6ub" path="res://Data/Character/psycho_kid_data.tres" id="16_cw8sg"]
 [ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="16_wtkhp"]
 [ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="17_57y4t"]
 
@@ -56,8 +60,9 @@ speed_label = NodePath("ColorRect/Charactar Stat/Player-Info/SPD-Label/Spd-Numbe
 life_label = NodePath("ColorRect/Charactar Stat/Player-Info/LIFE-Label/Life-Number")
 dodge_label = NodePath("ColorRect/Charactar Stat/Player-Info/DODGE-Label/Dodge-Number")
 armor_label = NodePath("ColorRect/Charactar Stat/Player-Info/Armor-Label/Armor-Number")
-character_node_list = [NodePath("ColorRect/Character-Node"), NodePath("ColorRect/Character-Node2"), NodePath("ColorRect/Character-Node3"), NodePath("ColorRect/Character-Node4")]
-metadata/_edit_horizontal_guides_ = [537.0]
+character_node_list = [NodePath("ColorRect/Character-Node"), NodePath("ColorRect/Character-Node2"), NodePath("ColorRect/Character-Node3"), NodePath("ColorRect/Character-Node4"), NodePath("ColorRect/Character-Node5"), NodePath("ColorRect/Character-Node6"), NodePath("ColorRect/Character-Node7"), NodePath("ColorRect/Character-Node8")]
+metadata/_edit_horizontal_guides_ = [537.0, -349.0]
+metadata/_edit_vertical_guides_ = [801.0]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2133148554]
 anchors_preset = 15
@@ -84,13 +89,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Character-Node" type="Control" parent="ColorRect" unique_id=962005741 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 404.0
-offset_top = 357.0
-offset_right = 504.0
-offset_bottom = 457.0
+offset_left = 471.0
+offset_top = 391.0
+offset_right = 543.0
+offset_bottom = 463.0
 script = ExtResource("2_vmnbh")
+is_unlock = true
 character_data = ExtResource("3_dyf21")
 character_name = NodePath("Name")
 character_avatar = NodePath("Character-Avatar")
@@ -158,13 +164,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Character-Node2" type="Control" parent="ColorRect" unique_id=1492889841 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 551.0
-offset_top = 193.0
-offset_right = 651.0
-offset_bottom = 293.0
+offset_left = 517.0
+offset_top = 279.0
+offset_right = 589.0
+offset_bottom = 351.0
 script = ExtResource("2_vmnbh")
+is_unlock = true
 character_data = ExtResource("6_1dpfi")
 character_name = NodePath("Name")
 character_avatar = NodePath("Character-Avatar")
@@ -232,13 +239,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Character-Node3" type="Control" parent="ColorRect" unique_id=337804078 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 980.0
-offset_top = 186.0
-offset_right = 1080.0
-offset_bottom = 286.0
+offset_left = 601.0
+offset_top = 191.0
+offset_right = 673.0
+offset_bottom = 263.0
 script = ExtResource("2_vmnbh")
+is_unlock = true
 character_data = ExtResource("9_k0nmi")
 character_name = NodePath("Name")
 character_avatar = NodePath("Character-Avatar")
@@ -306,13 +314,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Character-Node4" type="Control" parent="ColorRect" unique_id=1823458599 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 1144.0
-offset_top = 356.0
-offset_right = 1244.0
-offset_bottom = 456.0
+offset_left = 704.0
+offset_top = 140.0
+offset_right = 776.0
+offset_bottom = 212.0
 script = ExtResource("2_vmnbh")
+is_unlock = true
 character_data = ExtResource("11_let1h")
 character_name = NodePath("Name")
 character_avatar = NodePath("Character-Avatar")
@@ -373,6 +382,301 @@ theme_override_fonts/normal_font = ExtResource("1_uayxl")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Executioner"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character-Node5" type="Control" parent="ColorRect" unique_id=674156853 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+custom_minimum_size = Vector2(72, 72)
+anchors_preset = 0
+offset_left = 829.0
+offset_top = 140.0
+offset_right = 901.0
+offset_bottom = 212.0
+script = ExtResource("2_vmnbh")
+character_data = ExtResource("13_wtkhp")
+character_name = NodePath("Name")
+character_avatar = NodePath("Character-Avatar")
+unknown_bg = NodePath("Unknown-BG")
+border = NodePath("Border")
+button = NodePath("Button")
+
+[node name="Border" type="Panel" parent="ColorRect/Character-Node5" unique_id=649291477]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
+
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node5" unique_id=1686333176]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_g07b3")
+expand_mode = 1
+
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node5" unique_id=1032259660]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7bmne")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="ColorRect/Character-Node5" unique_id=439004658]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node5" unique_id=791528242]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -42.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_uayxl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Locked"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character-Node6" type="Control" parent="ColorRect" unique_id=340876612 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+custom_minimum_size = Vector2(72, 72)
+anchors_preset = 0
+offset_left = 909.0
+offset_top = 195.0
+offset_right = 981.0
+offset_bottom = 267.0
+script = ExtResource("2_vmnbh")
+character_data = ExtResource("14_kt811")
+character_name = NodePath("Name")
+character_avatar = NodePath("Character-Avatar")
+unknown_bg = NodePath("Unknown-BG")
+border = NodePath("Border")
+button = NodePath("Button")
+
+[node name="Border" type="Panel" parent="ColorRect/Character-Node6" unique_id=1213056689]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
+
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node6" unique_id=574850968]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_g07b3")
+expand_mode = 1
+
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node6" unique_id=1325734319]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7bmne")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="ColorRect/Character-Node6" unique_id=305589363]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node6" unique_id=108121325]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -42.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_uayxl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Locked"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character-Node7" type="Control" parent="ColorRect" unique_id=685321662 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+custom_minimum_size = Vector2(72, 72)
+anchors_preset = 0
+offset_left = 999.0
+offset_top = 274.0
+offset_right = 1071.0
+offset_bottom = 346.0
+script = ExtResource("2_vmnbh")
+character_data = ExtResource("15_48h8i")
+character_name = NodePath("Name")
+character_avatar = NodePath("Character-Avatar")
+unknown_bg = NodePath("Unknown-BG")
+border = NodePath("Border")
+button = NodePath("Button")
+
+[node name="Border" type="Panel" parent="ColorRect/Character-Node7" unique_id=184935302]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
+
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node7" unique_id=717213268]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_g07b3")
+expand_mode = 1
+
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node7" unique_id=362736010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7bmne")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="ColorRect/Character-Node7" unique_id=412167512]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node7" unique_id=1213792638]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -42.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_uayxl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Locked"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character-Node8" type="Control" parent="ColorRect" unique_id=1097229786 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+custom_minimum_size = Vector2(72, 72)
+anchors_preset = 0
+offset_left = 1059.0
+offset_top = 369.0
+offset_right = 1131.0
+offset_bottom = 441.0
+script = ExtResource("2_vmnbh")
+character_data = ExtResource("16_cw8sg")
+character_name = NodePath("Name")
+character_avatar = NodePath("Character-Avatar")
+unknown_bg = NodePath("Unknown-BG")
+border = NodePath("Border")
+button = NodePath("Button")
+
+[node name="Border" type="Panel" parent="ColorRect/Character-Node8" unique_id=1490929260]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
+
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node8" unique_id=2044743589]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_g07b3")
+expand_mode = 1
+
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node8" unique_id=2102302111]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7bmne")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="ColorRect/Character-Node8" unique_id=1347020873]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node8" unique_id=1392219764]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -42.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_uayxl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Locked"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
