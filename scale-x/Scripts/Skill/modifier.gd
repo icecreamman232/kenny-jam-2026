@@ -17,6 +17,7 @@ enum ModifierId
 	OverPower,
 	Healer,
 	GoreCleave,
+	SelfImprove,
 }
 
 

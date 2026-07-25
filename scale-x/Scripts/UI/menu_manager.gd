@@ -33,6 +33,8 @@ func _ready():
 		await Helper.wait_for_seconds(1)
 		IngameDataManager.logo_has_shown = true
 		await _fade_logo_layout()
+	else:
+		gmtk_logo_parent.hide()
 	InputManager.set_enabled(true)
 	AudioManager.play_menu_music()
 	

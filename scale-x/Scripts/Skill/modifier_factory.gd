@@ -19,6 +19,9 @@ func create_modifier(modifier_id:Modifier.ModifierId) ->Modifier:
 		Modifier.ModifierId.Healer: return HealerModifier.new()
 		Modifier.ModifierId.GoreCleave: return GoreCleaveModifier.new()
 		
+		# v0.0.6
+		Modifier.ModifierId.SelfImprove: return SelfImproveModifier.new()
+		
 		
 		_: return null
 	

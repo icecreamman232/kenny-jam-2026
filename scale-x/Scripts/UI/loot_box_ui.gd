@@ -13,9 +13,12 @@ var _last_round_number:int = 0
 var _inspecting_cell:LootBoxCellUi
 var _dragging:bool = false
 var _drag_offset:Vector2 = Vector2.ZERO
+var _last_reroll_price:int = 0
 const CELL_SIZE:float = 80
 
+
 func _ready():
+	_last_reroll_price = 1
 	reroll_button.pressed.connect(_on_reroll_button_pressed)
 	for cell in loot_box_cell_ui:
 		cell.mouse_entered.connect(_on_mouse_entered_cell.bind(cell))
@@ -98,11 +101,11 @@ func _on_reroll_button_pressed() -> void:
 	elif round_number > Constant.LATE_GAME_ROUND_NUMBER:
 		reroll_price = 10	
 	
-	if coin_hud.current_coin <= reroll_price: return
-		
+	if coin_hud.current_coin <= _last_reroll_price: return
+	EventBus.on_coin_change.emit(-_last_reroll_price)
+	_last_reroll_price = reroll_price	
 	show_loot()
 	reroll_price_label.text = "[img=24]uid://de3k1fl4j5llo[/img] " + str(reroll_price).pad_decimals(0)	
-	EventBus.on_coin_change.emit(-reroll_price)
 	await Helper.wait_for_frames(3)	
 
 		

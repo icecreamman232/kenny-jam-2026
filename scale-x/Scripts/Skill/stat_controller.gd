@@ -24,3 +24,14 @@ func get_final(stat:StatType) -> int: return final_stats[stat]
 func set_base(stat:StatType, value:int): base_stats[stat] = value
 
 func set_final(stat:StatType, value:int): final_stats[stat] = value
+
+
+static func get_stat_name(stat:StatType) -> String:
+	match stat:
+		StatType.ATTACK: return "Atk"
+		StatType.ACCURACY: return "Acc"
+		StatType.SPEED: return "Spd"
+		StatType.LIFE: return "Life"
+		StatType.DODGE: return "Dodge"
+		StatType.ARMOR: return "Armor"
+		_: return ""
