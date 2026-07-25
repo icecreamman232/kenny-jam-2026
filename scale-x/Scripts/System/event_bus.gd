@@ -32,6 +32,7 @@ signal on_victory
 signal update_player_info(player_stat_controller: PlayerStatController)
 signal on_add_item_to_cell(index:int, item:ItemData)
 signal on_remove_item_from_cell(index:int, item:ItemData)
+signal on_pause_game(is_paused:bool)
 
 # NPC/Shop Events
 signal on_open_npc_shop(npc_id:NpcManager.NpcID)

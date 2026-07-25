@@ -72,6 +72,7 @@
 [ext_resource type="Script" uid="uid://bf18hdvygaqqq" path="res://Scripts/System/tutorial_manager.gd" id="64_2gdrn"]
 [ext_resource type="PackedScene" uid="uid://b3th5kgxqu7lh" path="res://stat_seller_npc_scene.tscn" id="68_l4kfh"]
 [ext_resource type="PackedScene" uid="uid://bo8hwolvbtlhu" path="res://Scene/blacksmith_npc_screen.tscn" id="71_xnm1y"]
+[ext_resource type="Script" uid="uid://ccd0f2ckfxvwi" path="res://Scripts/UI/pause_screen.gd" id="73_g8frg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmtd"]
 bg_color = Color(0.35206538, 0, 0.011537134, 1)
@@ -160,6 +161,9 @@ texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vivr"]
+bg_color = Color(0.2784314, 0.1764706, 0.23529412, 1)
 
 [node name="Gameplay_Scene" type="CanvasLayer" unique_id=1881809148]
 
@@ -1908,3 +1912,84 @@ visible = false
 
 [node name="Blacksmith_NPC_Screen" parent="." unique_id=643939195 instance=ExtResource("71_xnm1y")]
 visible = false
+
+[node name="Pause Screen" type="ColorRect" parent="." unique_id=547483285 node_paths=PackedStringArray("resume_button", "quit_button")]
+process_mode = 3
+visible = false
+z_index = 800
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10980392, 0.10980392, 0.10980392, 0.8156863)
+script = ExtResource("73_g8frg")
+resume_button = NodePath("TextureRect/VBoxContainer/Resume-Button")
+quit_button = NodePath("TextureRect/VBoxContainer/Menu-Button")
+
+[node name="TextureRect" type="Panel" parent="Pause Screen" unique_id=2015715338]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -108.0
+offset_right = 150.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vivr")
+
+[node name="Label" type="Label" parent="Pause Screen/TextureRect" unique_id=1806824955]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -101.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 100
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Screen/TextureRect" unique_id=541300619]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -56.0
+offset_right = 101.5
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Resume-Button" type="Button" parent="Pause Screen/TextureRect/VBoxContainer" unique_id=491679862]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_hover_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("31_l5t21")
+theme_override_styles/pressed = ExtResource("32_ajygt")
+theme_override_styles/hover = ExtResource("33_6gil7")
+text = "Resume"
+
+[node name="Menu-Button" type="Button" parent="Pause Screen/TextureRect/VBoxContainer" unique_id=840230797]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_hover_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_fonts/font = ExtResource("35_0b0bh")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("31_l5t21")
+theme_override_styles/pressed = ExtResource("32_ajygt")
+theme_override_styles/hover = ExtResource("33_6gil7")
+text = "Quit to main menu"

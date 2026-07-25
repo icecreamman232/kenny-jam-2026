@@ -18,6 +18,7 @@ func _set_window_size():
 
 
 func _ready():
+	get_tree().paused = false
 	InputManager.set_enabled(false)
 	IngameDataManager.menu_reward_id = -1
 	call_deferred("_set_window_size")

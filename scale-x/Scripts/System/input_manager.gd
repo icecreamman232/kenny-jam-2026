@@ -19,3 +19,7 @@ func _process(_delta: float) -> void:
 		else:
 			on_show_cheat_menu.emit()
 			_is_showing_cheat_menu = true
+			
+	if Input.is_action_just_pressed("pause_game"):
+		get_tree().paused = !get_tree().paused
+		EventBus.on_pause_game.emit(get_tree().paused)
