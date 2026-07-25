@@ -28,6 +28,6 @@ func apply(cell:PlayerCellGridUi) -> void:
 	var lowest_stat_value:= player.stat.get_final(lowest_stat)
 	lowest_stat_value += 1
 	player.stat.set_final(lowest_stat, lowest_stat_value)
-	IngameDataManager.text_manager.show_text("+1"  + StatController.get_stat_name(lowest_stat), player.player_pivot.global_position)
+	IngameDataManager.text_manager.show_text("+1 "  + StatController.get_stat_name(lowest_stat), player.player_pivot.global_position)
 	AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
 	EventBus.update_player_info.emit(player.stat)
