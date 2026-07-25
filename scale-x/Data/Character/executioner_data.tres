@@ -11,5 +11,7 @@ character_avatar = ExtResource("1_i02n8")
 attack = 4
 life = 3
 armor = 1
+skill_display_name = "Brutal"
+skill_desc = "Sacrifice 2 life and add random 1-3 attack to a random item for every 5 rounds"
 skill_name = "brutal"
 metadata/_custom_type_script = "uid://cyoi4byyprgwl"

@@ -20,4 +20,6 @@ func _on_new_round():
 	if _round_counter % 5 == 0:
 		var player:PlayerController = IngameDataManager.gameplay_manager.player_controller
 		player.health.add_max_health(2)
+		(IngameDataManager.text_manager as TextManager).show_text("+2 Max life", player.player_pivot.global_position)
+		AudioManager.play_sfx(SfxContainer.SfxID.POSITIVE_MODIFIER)
 		_round_counter = 0
