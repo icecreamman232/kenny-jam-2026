@@ -37,6 +37,17 @@ func update_select():
 	
 
 func _tween_to_fire_place():
+	var jump_tween := create_tween()
+	var original_pos:= self.global_position
+	original_pos.y -= 32
+	jump_tween.set_trans(Tween.TRANS_CIRC)
+	jump_tween.tween_property(self, "global_position", original_pos, 0.15)
+	original_pos.y += 32
+	jump_tween.set_trans(Tween.TRANS_CIRC)
+	jump_tween.tween_property(self, "global_position", original_pos, 0.1)
+	await jump_tween.finished
+
+
 	var fire_place_pos:= _screen_ref.fire_place.global_position
 	var distance := (fire_place_pos - self.global_position).length()
 	var direction:= (fire_place_pos - self.global_position).normalized()
