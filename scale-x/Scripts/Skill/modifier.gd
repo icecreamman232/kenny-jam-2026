@@ -14,6 +14,9 @@ enum ModifierId
 	ThreeMusketeers,
 	TheTwin,
 	TryHard,
+	OverPower,
+	Healer,
+	GoreCleave,
 }
 
 

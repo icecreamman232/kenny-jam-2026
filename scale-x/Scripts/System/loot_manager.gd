@@ -115,12 +115,15 @@ func _apply_random_stat_to_item(item:ItemData, round_number:int) -> void:
 				
 	# Add modifier if item is not common
 	#if item.rarity == ItemData.ItemRarity.COMMON: return
-	if item.modifier_pool.size() == 0: return
+	if item.modifier_pool.size() == 0:
+		print("NO MOD POOL?") 
+		return
 	item.modifier_list.clear()
 	var rand_ix := randi_range(0, item.modifier_pool.size() - 1)
 	var rand_mod_id:Modifier.ModifierId = item.modifier_pool[rand_ix]
 	var modifier:Modifier = ModifierFactory.create_modifier(rand_mod_id)
 	if modifier != null:
+		print("Created mod ", modifier.get_modifier_name())
 		item.modifier_list.append(modifier)			
 
 

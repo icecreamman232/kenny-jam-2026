@@ -13,5 +13,5 @@ category = 7
 item_name = "Wood Protector"
 item_icon = SubResource("AtlasTexture_v0cuw")
 stats = Array[int]([0, 1])
-modifier_pool = Array[int]([0, 1, 2, 4, 5, 10])
+modifier_pool = Array[int]([0, 1, 2, 4, 5, 10, 13])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

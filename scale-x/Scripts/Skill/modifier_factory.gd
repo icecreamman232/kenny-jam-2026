@@ -14,6 +14,11 @@ func create_modifier(modifier_id:Modifier.ModifierId) ->Modifier:
 		Modifier.ModifierId.ThreeMusketeers: return ThreeMusketeersModifier.new()
 		Modifier.ModifierId.TheTwin: return TheTwinModifier.new()
 		
+		# v0.0.5
+		Modifier.ModifierId.OverPower: return OverPowerModifier.new()
+		Modifier.ModifierId.Healer: return HealerModifier.new()
+		Modifier.ModifierId.GoreCleave: return GoreCleaveModifier.new()
+		
 		
 		_: return null
 	

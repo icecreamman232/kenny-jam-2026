@@ -10,7 +10,6 @@ func get_modifier_description() -> String:
 	
 func apply(cell:PlayerCellGridUi) -> void:
 	super.apply(cell)
-	_owner_cell.assigned_item.durability = 0
 	_owner_cell.assigned_item.attack = 0
 	_owner_cell.assigned_item.accuracy = 0
 	_owner_cell.assigned_item.speed = 0
@@ -18,8 +17,10 @@ func apply(cell:PlayerCellGridUi) -> void:
 	#_owner_cell.assigned_item.mana = 0
 	_owner_cell.assigned_item.dodge = 0
 	_owner_cell.assigned_item.armor = 0
+	EventBus.on_recalculate_player_stat.emit()
 	EventBus.on_remove_item_from_cell.connect(_on_remove_item_from_cell)
-
+	
+	
 
 func remove():
 	super.remove()
