@@ -22,9 +22,9 @@ func load_save_file() -> void:
 			return
 	
 	is_finished_tutorial = _current_save_file.get_value("Settings", "is_finished_tutorial", false)
-	character_unlock_progress[CharacterData.CharacterID.King] = _current_save_file.get_value("Unlock", "unlock_king", false)
-	character_unlock_progress[CharacterData.CharacterID.Rogue] = _current_save_file.get_value("Unlock", "unlock_rogue", false)
-	character_unlock_progress[CharacterData.CharacterID.Executioner] = _current_save_file.get_value("Unlock", "unlock_executioner", false)
+	character_unlock_progress[CharacterData.CharacterID.King] = _current_save_file.get_value("Unlock", "unlock_king", true)
+	character_unlock_progress[CharacterData.CharacterID.Rogue] = _current_save_file.get_value("Unlock", "unlock_rogue", true)
+	character_unlock_progress[CharacterData.CharacterID.Executioner] = _current_save_file.get_value("Unlock", "unlock_executioner", true)
 	character_unlock_progress[CharacterData.CharacterID.Farmer] = _current_save_file.get_value("Unlock", "unlock_farmer", false)
 	character_unlock_progress[CharacterData.CharacterID.Devil] = _current_save_file.get_value("Unlock", "unlock_devil", false)
 	character_unlock_progress[CharacterData.CharacterID.Ghost] = _current_save_file.get_value("Unlock", "unlock_ghost", false)
