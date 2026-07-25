@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Mini AutoBattler"
-config/version="0.0.3"
+config/version="0.0.4"
 run/main_scene="uid://xu7dlu3tuv0a"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://by3qfugl2wme3"
 
 [autoload]
 
