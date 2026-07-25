@@ -25,6 +25,7 @@ signal on_hover_on_enemy(enemy_controller:EnemyController)
 signal on_mouse_exit_enemy()
 signal on_fight_started
 signal on_fight_end
+signal on_new_round
 signal on_player_dead
 signal on_boss_appear
 signal on_victory

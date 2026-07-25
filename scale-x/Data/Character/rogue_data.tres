@@ -12,4 +12,7 @@ attack = 1
 accuracy = 2
 speed = 3
 life = 2
+skill_display_name = "Quick Step"
+skill_desc = "+1 Speed every 6 rounds"
+skill_name = "quick-step"
 metadata/_custom_type_script = "uid://cyoi4byyprgwl"

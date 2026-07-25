@@ -42,12 +42,14 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(1, 0.9137255, 0.76862746, 1)
 
-[node name="Character-Select-Screen" type="CanvasLayer" unique_id=327611890 node_paths=PackedStringArray("fire_place", "play_button", "stat_panel", "attack_label", "accuracy_label", "speed_label", "life_label", "dodge_label", "armor_label", "character_node_list")]
+[node name="Character-Select-Screen" type="CanvasLayer" unique_id=327611890 node_paths=PackedStringArray("fire_place", "play_button", "skill_panel", "skill_des", "stat_panel", "attack_label", "accuracy_label", "speed_label", "life_label", "dodge_label", "armor_label", "character_node_list")]
 script = ExtResource("1_7qjht")
 default_character_data = ExtResource("3_dyf21")
 fire_place = NodePath("ColorRect/Fireplace")
 play_button = NodePath("ColorRect/Play-button")
-stat_panel = NodePath("ColorRect/Charactar Stat/Player-Info")
+skill_panel = NodePath("ColorRect/Panel")
+skill_des = NodePath("ColorRect/Panel/Skill-Desc")
+stat_panel = NodePath("ColorRect/Charactar Stat")
 attack_label = NodePath("ColorRect/Charactar Stat/Player-Info/ATK-Label/Atk-Number")
 accuracy_label = NodePath("ColorRect/Charactar Stat/Player-Info/ACC-Label/Acc-Number")
 speed_label = NodePath("ColorRect/Charactar Stat/Player-Info/SPD-Label/Spd-Number")
@@ -700,22 +702,35 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Skill-Desc" type="RichTextLabel" parent="ColorRect" unique_id=164540042]
-visible = false
-custom_minimum_size = Vector2(250, 90)
-clip_contents = false
+[node name="Panel" type="Panel" parent="ColorRect" unique_id=1079564216]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -461.0
+offset_left = -512.0
 offset_top = -312.0
-offset_right = -211.0
+offset_right = -267.0
 offset_bottom = -194.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="Skill-Desc" type="RichTextLabel" parent="ColorRect/Panel" unique_id=164540042]
+custom_minimum_size = Vector2(250, 90)
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -59.0
+offset_right = 125.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("17_57y4t")
 theme_override_font_sizes/normal_font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_57y4t")
@@ -724,7 +739,7 @@ text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 a
 fit_content = true
 scroll_active = false
 
-[node name="Label2" type="Label" parent="ColorRect/Skill-Desc" unique_id=556717892]
+[node name="Label2" type="Label" parent="ColorRect/Panel/Skill-Desc" unique_id=556717892]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

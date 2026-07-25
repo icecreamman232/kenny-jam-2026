@@ -165,11 +165,12 @@ texture_margin_bottom = 4.0
 
 [node name="Input Manager" type="Node" parent="." unique_id=1212464894]
 
-[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "loot_box_ui", "enemy_manager", "tutorial_manager", "npc_manager", "help_button", "anim_on_player", "anim_on_enemy")]
+[node name="Gameplay Manager" type="Node" parent="." unique_id=1095351748 node_paths=PackedStringArray("round_label", "player_controller", "enemy_controller", "coin_hud", "loot_box_ui", "enemy_manager", "tutorial_manager", "npc_manager", "help_button", "anim_on_player", "anim_on_enemy")]
 script = ExtResource("1_mxoqm")
 round_label = NodePath("../Control/Round-Label")
 player_controller = NodePath("../Player")
 enemy_controller = NodePath("../Enemy")
+coin_hud = NodePath("../Control/Loot-Box-Group/Coin-Hud")
 loot_box_ui = NodePath("../Control/Loot-Box-Group/Loot-Box")
 enemy_manager = NodePath("../Enemy Manager")
 tutorial_manager = NodePath("../Tutorial-Manager")

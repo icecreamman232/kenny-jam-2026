@@ -19,4 +19,6 @@ enum CharacterID
 @export var dodge:int
 @export var armor:int
 @export_group("Mod")
+@export var skill_display_name:String
+@export_multiline var skill_desc:String
 @export var skill_name:String

@@ -15,11 +15,16 @@ class_name PlayerController extends EntityController
 @export var health:PlayerHealth
 @export var item_list:Array[ItemData]
 
+var _player_skill:PlayerSkill
+
 func initialize():
 	EventBus.on_add_item.connect(_add_item)
 	EventBus.on_remove_item.connect(_remove_item)
 	_initialize_stat_from_character_data(IngameDataManager.selected_character_data)
 	avatar.set_avatar(IngameDataManager.selected_character_data.character_avatar)
+	_player_skill = PlayerSkillFactory.create_skill(IngameDataManager.selected_character_data.skill_name)
+	if _player_skill != null:
+		_player_skill.apply()
 	stat.initialize()
 	health.initialize_health(self)
 	EventBus.update_player_info.emit(stat)
@@ -28,6 +33,7 @@ func initialize():
 
 
 func reset_player():
+	_player_skill.reset()
 	stat.initialize()
 	health.initialize_health(self)
 	EventBus.update_player_info.emit(stat)
@@ -36,6 +42,8 @@ func reset_player():
 
 
 func _exit_tree() -> void:
+	if _player_skill != null:
+		_player_skill.remove()
 	EventBus.on_add_item.disconnect(_add_item)
 
 

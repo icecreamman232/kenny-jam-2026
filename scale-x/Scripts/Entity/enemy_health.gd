@@ -4,8 +4,9 @@ class_name EnemyHealth extends Health
 
 
 func add_max_health(amount:int) -> void:
+	var ratio := float(current_life) / max_life
 	max_life += amount
-	current_life = max_life
+	current_life = roundi(max_life * ratio)
 	(_controller.stat as StatController).set_final(StatController.StatType.LIFE, max_life)
 	update_life_bar()
 

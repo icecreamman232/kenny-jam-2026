@@ -13,4 +13,7 @@ accuracy = 2
 speed = 1
 life = 3
 armor = 3
+skill_display_name = "Wealthy"
+skill_desc = "Starts game with 10 coins"
+skill_name = "wealthy"
 metadata/_custom_type_script = "uid://cyoi4byyprgwl"

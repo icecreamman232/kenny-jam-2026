@@ -27,6 +27,7 @@ SaveManager="*uid://05ajfgs1ilhm"
 ModifierFactory="*uid://c8gniyrl76mum"
 AudioManager="*uid://cokovhdvowhpf"
 EnemySkillFactory="*uid://bsmod63m5ruvu"
+PlayerSkillFactory="*uid://03ino2sa51pp"
 
 [debug]
 

@@ -4,6 +4,7 @@ class_name GameplayManager extends Node
 @export var round_label:RichTextLabel
 @export var player_controller:PlayerController
 @export var enemy_controller:EnemyController
+@export var coin_hud:CoinHud
 @export var loot_box_ui:LootBoxUI
 @export var enemy_manager:EnemyManager
 @export var tutorial_manager:TutorialManager
@@ -20,6 +21,8 @@ const MAX_ROUND:int = 25
 func _ready():
 	help_button.pressed.connect(_on_help_button_pressed)
 	help_button.mouse_entered.connect(_on_hover_help_button)
+	IngameDataManager.coin_hud = coin_hud
+	coin_hud.initialize()
 	SaveManager.load_save_file()
 	IngameDataManager.gameplay_manager = self
 	InputManager.set_enabled(false)
@@ -112,7 +115,8 @@ func _on_enemy_dead() -> void:
 		_create_boss()
 	else:
 		_create_enemy()
-	await Helper.wait_for_frames(3)		
+	await Helper.wait_for_frames(3)
+	EventBus.on_new_round.emit()		
 	
 	
 ## Use this after player exit shop
@@ -131,7 +135,8 @@ func force_spawn_enemy_or_boss():
 		_create_boss()
 	else:
 		_create_enemy()
-	await Helper.wait_for_frames(3)					
+	await Helper.wait_for_frames(3)
+	EventBus.on_new_round.emit()					
 		
 	
 func _on_fight_started() -> void:

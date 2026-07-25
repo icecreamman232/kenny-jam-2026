@@ -3,6 +3,9 @@ class_name CharacterSelectionScreen extends CanvasLayer
 @export var default_character_data:CharacterData
 @export var fire_place:Control
 @export var play_button:Button
+@export_group("Skill")
+@export var skill_panel:Control
+@export var skill_des:RichTextLabel
 @export_group("Stat")
 @export var stat_panel:Control
 @export var attack_label:Label
@@ -11,10 +14,12 @@ class_name CharacterSelectionScreen extends CanvasLayer
 @export var life_label:Label
 @export var dodge_label:Label
 @export var armor_label:Label
+@export_group("Character Node")
 @export var character_node_list:Array[CharacterSelectionNode]
 var _last_selected_node:CharacterSelectionNode
 
 func _ready() -> void:
+	skill_panel.hide()
 	stat_panel.hide()
 	play_button.pressed.connect(_on_go_to_gameplay)
 	for node in character_node_list:
@@ -32,12 +37,20 @@ func on_pressed_on_character_node(node:CharacterSelectionNode):
 		if _last_selected_node != null and node != _last_selected_node:
 			_last_selected_node.update_select()
 		_last_selected_node = node
+		_show_skill_desc( _last_selected_node.character_data)
 		_show_stat( _last_selected_node.character_data)
 		stat_panel.show()
+		skill_panel.show()
 	else:
 		if node == _last_selected_node:
 			_last_selected_node = null
 			stat_panel.hide()
+			skill_panel.hide()
+
+
+func _show_skill_desc(character_data:CharacterData):
+	var whole_desc:String = "[font_size=32][color=yellow]" + character_data.skill_display_name + "[/color][/font_size][br]" + character_data.skill_desc
+	skill_des.text = whole_desc
 
 
 func _show_stat(character_data:CharacterData):

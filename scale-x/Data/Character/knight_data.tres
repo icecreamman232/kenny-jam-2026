@@ -11,4 +11,7 @@ attack = 2
 accuracy = 2
 speed = 1
 life = 3
+skill_display_name = "Loyalty"
+skill_desc = "+1 life every 5 rounds"
+skill_name = "loyalty"
 metadata/_custom_type_script = "uid://cyoi4byyprgwl"
