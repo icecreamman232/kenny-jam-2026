@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://n8aao21wwq5j"]
+
+[ext_resource type="Texture2D" uid="uid://cq0eoubiloj6u" path="res://Arts/Atlas_Texture/character_king.tres" id="1_6o8e1"]
+[ext_resource type="Script" uid="uid://cyoi4byyprgwl" path="res://Scripts/Data/character_data.gd" id="1_o2vfu"]
+
+[resource]
+script = ExtResource("1_o2vfu")
+character_id = 1
+character_name = "King"
+character_avatar = ExtResource("1_6o8e1")
+attack = 1
+accuracy = 2
+speed = 1
+life = 3
+armor = 3
+metadata/_custom_type_script = "uid://cyoi4byyprgwl"

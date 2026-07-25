@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://b4sdxgtx3fbi7"]
+
+[ext_resource type="Script" uid="uid://cyoi4byyprgwl" path="res://Scripts/Data/character_data.gd" id="1_6boyk"]
+[ext_resource type="Texture2D" uid="uid://drxjmbrlnkai5" path="res://Arts/Atlas_Texture/character_rogue.tres" id="1_kg5ao"]
+
+[resource]
+script = ExtResource("1_6boyk")
+character_id = 2
+character_name = "Rogue"
+character_avatar = ExtResource("1_kg5ao")
+attack = 1
+accuracy = 2
+speed = 3
+life = 2
+metadata/_custom_type_script = "uid://cyoi4byyprgwl"

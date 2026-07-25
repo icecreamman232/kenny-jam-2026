@@ -2,6 +2,9 @@ class_name PlayerAvatar extends Control
 
 @export var player_icon:TextureRect
 
+func set_avatar(icon:Texture2D):
+	player_icon.texture = icon
+
 
 func attack_tween() ->Tween:
 	var tween:= create_tween()

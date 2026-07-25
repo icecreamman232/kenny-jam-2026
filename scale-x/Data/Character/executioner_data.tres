@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://c34kufp4or10j"]
+
+[ext_resource type="Script" uid="uid://cyoi4byyprgwl" path="res://Scripts/Data/character_data.gd" id="1_3we8l"]
+[ext_resource type="Texture2D" uid="uid://b04dn6mlcoekb" path="res://Arts/Atlas_Texture/character_executioner.tres" id="1_i02n8"]
+
+[resource]
+script = ExtResource("1_3we8l")
+character_id = 3
+character_name = "Executioner"
+character_avatar = ExtResource("1_i02n8")
+attack = 4
+life = 3
+armor = 1
+metadata/_custom_type_script = "uid://cyoi4byyprgwl"

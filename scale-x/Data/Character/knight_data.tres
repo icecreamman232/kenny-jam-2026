@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://cres7813fyp1j"]
+
+[ext_resource type="Texture2D" uid="uid://5uti6nw6h8ic" path="res://Arts/Atlas_Texture/character_knight.tres" id="1_rfdm2"]
+[ext_resource type="Script" uid="uid://cyoi4byyprgwl" path="res://Scripts/Data/character_data.gd" id="1_wxvrg"]
+
+[resource]
+script = ExtResource("1_wxvrg")
+character_name = "Knight"
+character_avatar = ExtResource("1_rfdm2")
+attack = 2
+accuracy = 2
+speed = 1
+life = 3
+metadata/_custom_type_script = "uid://cyoi4byyprgwl"

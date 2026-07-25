@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://d24ws1qci7x0w" path="res://Scene/buble_text.tscn" id="2_kfxb8"]
 [ext_resource type="Shader" uid="uid://bg758hm4j4t3p" path="res://Arts/text_fill.gdshader" id="2_kvwtk"]
 [ext_resource type="FontFile" uid="uid://cjnauydm3ntpv" path="res://Arts/m6x11plus.ttf" id="5_fp2sf"]
-[ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="6_8aiwg"]
 [ext_resource type="Texture2D" uid="uid://bjvedowuyqucj" path="res://Arts/GMTK Game Jam 2026 Full Logo.png" id="7_w7gvl"]
+[ext_resource type="StyleBox" uid="uid://bllog2rtg84o3" path="res://Arts/Button_Style/button_normal_style.tres" id="8_w5u0e"]
+[ext_resource type="StyleBox" uid="uid://wlf0x1gxya3r" path="res://Arts/Button_Style/button_pressed_style.tres" id="9_5t4vo"]
+[ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="10_6wowx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1vivr"]
 shader = ExtResource("2_kvwtk")
@@ -21,7 +23,7 @@ gmtk_logo_parent = NodePath("ColorRect")
 gmtk_logo = NodePath("ColorRect/Logo")
 title_button = NodePath("Label/Button")
 title_label = NodePath("Label")
-play_button = NodePath("Play Button")
+play_button = NodePath("Play-button")
 reward_label = NodePath("Label/Reward-Label")
 bubble_text = ExtResource("2_kfxb8")
 
@@ -81,27 +83,8 @@ text = "Reward: Gain 3 additional coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play Button" type="Button" parent="." unique_id=1946368431]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -84.0
-offset_top = 7.0
-offset_right = 85.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.9137255, 0.76862746, 1)
-theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
-theme_override_colors/font_hover_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
-theme_override_fonts/font = ExtResource("6_8aiwg")
-theme_override_font_sizes/font_size = 100
-text = "Play"
-flat = true
-
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1884896778]
+z_index = 200
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -123,3 +106,26 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_w7gvl")
 expand_mode = 1
+
+[node name="Play-button" type="Button" parent="." unique_id=1953421123]
+custom_minimum_size = Vector2(200, 60)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -416.0
+offset_right = 100.0
+offset_bottom = -343.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_hover_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_fonts/font = ExtResource("5_fp2sf")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("8_w5u0e")
+theme_override_styles/pressed = ExtResource("9_5t4vo")
+theme_override_styles/hover = ExtResource("10_6wowx")
+text = "START"

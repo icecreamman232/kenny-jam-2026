@@ -18,6 +18,8 @@ class_name PlayerController extends EntityController
 func initialize():
 	EventBus.on_add_item.connect(_add_item)
 	EventBus.on_remove_item.connect(_remove_item)
+	_initialize_stat_from_character_data(IngameDataManager.selected_character_data)
+	avatar.set_avatar(IngameDataManager.selected_character_data.character_avatar)
 	stat.initialize()
 	health.initialize_health(self)
 	EventBus.update_player_info.emit(stat)
@@ -75,6 +77,15 @@ func deal_damage_to_enemy(enemy_controller: EnemyController) -> void:
 
 func on_before_dead():
 	pass
+
+
+func _initialize_stat_from_character_data(character_data:CharacterData):
+	attack = character_data.attack
+	accuracy = character_data.accuracy
+	speed = character_data.speed
+	life = character_data.life
+	dodge = character_data.dodge
+	armor = character_data.armor
 
 
 func _add_item(index:int, item:ItemData):

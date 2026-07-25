@@ -1,0 +1,742 @@
+[gd_scene format=3 uid="uid://px0mv4q5o57p"]
+
+[ext_resource type="Texture2D" uid="uid://5uti6nw6h8ic" path="res://Arts/Atlas_Texture/character_knight.tres" id="1_2yru8"]
+[ext_resource type="Script" uid="uid://bhu2p7hahfjo8" path="res://Scripts/UI/CHARACTER_SELECTION/character_selection_screen.gd" id="1_7qjht"]
+[ext_resource type="FontFile" uid="uid://cjnauydm3ntpv" path="res://Arts/m6x11plus.ttf" id="1_uayxl"]
+[ext_resource type="Script" uid="uid://c1jpujgbiy8s3" path="res://Scripts/UI/CHARACTER_SELECTION/character_selection_node.gd" id="2_vmnbh"]
+[ext_resource type="Texture2D" uid="uid://qsvxym3mbd2l" path="res://Arts/Atlas_Texture/unknown_character_icon.tres" id="3_7bmne"]
+[ext_resource type="Resource" uid="uid://cres7813fyp1j" path="res://Data/Character/knight_data.tres" id="3_dyf21"]
+[ext_resource type="Texture2D" uid="uid://drxjmbrlnkai5" path="res://Arts/Atlas_Texture/character_rogue.tres" id="4_vmnbh"]
+[ext_resource type="Resource" uid="uid://n8aao21wwq5j" path="res://Data/Character/king_data.tres" id="6_1dpfi"]
+[ext_resource type="Texture2D" uid="uid://cq0eoubiloj6u" path="res://Arts/Atlas_Texture/character_king.tres" id="7_evlju"]
+[ext_resource type="Texture2D" uid="uid://b04dn6mlcoekb" path="res://Arts/Atlas_Texture/character_executioner.tres" id="9_g07b3"]
+[ext_resource type="Resource" uid="uid://b4sdxgtx3fbi7" path="res://Data/Character/rogue_data.tres" id="9_k0nmi"]
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="10_r4b3w"]
+[ext_resource type="Resource" uid="uid://c34kufp4or10j" path="res://Data/Character/executioner_data.tres" id="11_let1h"]
+[ext_resource type="StyleBox" uid="uid://bllog2rtg84o3" path="res://Arts/Button_Style/button_normal_style.tres" id="14_4v84x"]
+[ext_resource type="StyleBox" uid="uid://wlf0x1gxya3r" path="res://Arts/Button_Style/button_pressed_style.tres" id="15_57y4t"]
+[ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="16_wtkhp"]
+[ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="17_57y4t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yru8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vivr"]
+atlas = ExtResource("10_r4b3w")
+region = Rect2(224, 160, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57y4t"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.7176471, 0.53333336, 0.38039216)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.9137255, 0.76862746, 1)
+
+[node name="Character-Select-Screen" type="CanvasLayer" unique_id=327611890 node_paths=PackedStringArray("fire_place", "play_button", "stat_panel", "attack_label", "accuracy_label", "speed_label", "life_label", "dodge_label", "armor_label", "character_node_list")]
+script = ExtResource("1_7qjht")
+default_character_data = ExtResource("3_dyf21")
+fire_place = NodePath("ColorRect/Fireplace")
+play_button = NodePath("ColorRect/Play-button")
+stat_panel = NodePath("ColorRect/Charactar Stat/Player-Info")
+attack_label = NodePath("ColorRect/Charactar Stat/Player-Info/ATK-Label/Atk-Number")
+accuracy_label = NodePath("ColorRect/Charactar Stat/Player-Info/ACC-Label/Acc-Number")
+speed_label = NodePath("ColorRect/Charactar Stat/Player-Info/SPD-Label/Spd-Number")
+life_label = NodePath("ColorRect/Charactar Stat/Player-Info/LIFE-Label/Life-Number")
+dodge_label = NodePath("ColorRect/Charactar Stat/Player-Info/DODGE-Label/Dodge-Number")
+armor_label = NodePath("ColorRect/Charactar Stat/Player-Info/Armor-Label/Armor-Number")
+character_node_list = [NodePath("ColorRect/Character-Node"), NodePath("ColorRect/Character-Node2"), NodePath("ColorRect/Character-Node3"), NodePath("ColorRect/Character-Node4")]
+metadata/_edit_horizontal_guides_ = [537.0]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2133148554]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.2784314, 0.1764706, 0.23529412, 1)
+
+[node name="Title" type="RichTextLabel" parent="ColorRect" unique_id=2015275202]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_uayxl")
+theme_override_font_sizes/normal_font_size = 100
+text = "Character Select"
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character-Node" type="Control" parent="ColorRect" unique_id=962005741 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 0
+offset_left = 404.0
+offset_top = 357.0
+offset_right = 504.0
+offset_bottom = 457.0
+script = ExtResource("2_vmnbh")
+character_data = ExtResource("3_dyf21")
+character_name = NodePath("Name")
+character_avatar = NodePath("Character-Avatar")
+unknown_bg = NodePath("Unknown-BG")
+border = NodePath("Border")
+button = NodePath("Button")
+
+[node name="Border" type="Panel" parent="ColorRect/Character-Node" unique_id=2087597539]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
+
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node" unique_id=1150762214]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2yru8")
+expand_mode = 1
+
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node" unique_id=1462318792]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7bmne")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="ColorRect/Character-Node" unique_id=891758645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node" unique_id=974698657]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -42.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_uayxl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Knight"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character-Node2" type="Control" parent="ColorRect" unique_id=1492889841 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 0
+offset_left = 551.0
+offset_top = 193.0
+offset_right = 651.0
+offset_bottom = 293.0
+script = ExtResource("2_vmnbh")
+character_data = ExtResource("6_1dpfi")
+character_name = NodePath("Name")
+character_avatar = NodePath("Character-Avatar")
+unknown_bg = NodePath("Unknown-BG")
+border = NodePath("Border")
+button = NodePath("Button")
+
+[node name="Border" type="Panel" parent="ColorRect/Character-Node2" unique_id=352489669]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
+
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node2" unique_id=1549479712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_evlju")
+expand_mode = 1
+
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node2" unique_id=767638820]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7bmne")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="ColorRect/Character-Node2" unique_id=1278723213]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node2" unique_id=304603381]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -42.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_uayxl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "King"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character-Node3" type="Control" parent="ColorRect" unique_id=337804078 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 0
+offset_left = 980.0
+offset_top = 186.0
+offset_right = 1080.0
+offset_bottom = 286.0
+script = ExtResource("2_vmnbh")
+character_data = ExtResource("9_k0nmi")
+character_name = NodePath("Name")
+character_avatar = NodePath("Character-Avatar")
+unknown_bg = NodePath("Unknown-BG")
+border = NodePath("Border")
+button = NodePath("Button")
+
+[node name="Border" type="Panel" parent="ColorRect/Character-Node3" unique_id=78375009]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
+
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node3" unique_id=1987619281]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vmnbh")
+expand_mode = 1
+
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node3" unique_id=347766763]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7bmne")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="ColorRect/Character-Node3" unique_id=1551406114]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node3" unique_id=1421161907]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -42.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_uayxl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Rogue"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Character-Node4" type="Control" parent="ColorRect" unique_id=1823458599 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 0
+offset_left = 1144.0
+offset_top = 356.0
+offset_right = 1244.0
+offset_bottom = 456.0
+script = ExtResource("2_vmnbh")
+character_data = ExtResource("11_let1h")
+character_name = NodePath("Name")
+character_avatar = NodePath("Character-Avatar")
+unknown_bg = NodePath("Unknown-BG")
+border = NodePath("Border")
+button = NodePath("Button")
+
+[node name="Border" type="Panel" parent="ColorRect/Character-Node4" unique_id=1496149785]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
+
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node4" unique_id=1957284400]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_g07b3")
+expand_mode = 1
+
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node4" unique_id=129141662]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7bmne")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="ColorRect/Character-Node4" unique_id=778922542]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node4" unique_id=956976150]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -42.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/normal_font = ExtResource("1_uayxl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Executioner"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fireplace" type="TextureRect" parent="ColorRect" unique_id=883947365]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -89.0
+offset_right = 50.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_1vivr")
+expand_mode = 1
+
+[node name="Play-button" type="Button" parent="ColorRect" unique_id=757677295]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -163.0
+offset_right = 100.0
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_pressed_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_colors/font_hover_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
+theme_override_fonts/font = ExtResource("1_uayxl")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("14_4v84x")
+theme_override_styles/pressed = ExtResource("15_57y4t")
+theme_override_styles/hover = ExtResource("16_wtkhp")
+text = "PLAY"
+
+[node name="Charactar Stat" type="Control" parent="ColorRect" unique_id=1001443316]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 229.0
+offset_top = -363.0
+offset_right = 485.0
+offset_bottom = -111.0
+grow_vertical = 0
+offset_transform_enabled = true
+
+[node name="Label" type="Label" parent="ColorRect/Charactar Stat" unique_id=327784044]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_right = 128.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("1_uayxl")
+theme_override_font_sizes/font_size = 48
+text = "Character Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player-Info" type="VBoxContainer" parent="ColorRect/Charactar Stat" unique_id=1039168001]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -66.0
+offset_right = 25.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ATK-Label" type="RichTextLabel" parent="ColorRect/Charactar Stat/Player-Info" unique_id=1818809191]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("17_57y4t")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://qabkcc7vohy[/img] ATK"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Atk-Number" type="Label" parent="ColorRect/Charactar Stat/Player-Info/ATK-Label" unique_id=438210848]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("17_57y4t")
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ACC-Label" type="RichTextLabel" parent="ColorRect/Charactar Stat/Player-Info" unique_id=266216186]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("17_57y4t")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://bo6l5im10b5j4[/img] ACC"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Acc-Number" type="Label" parent="ColorRect/Charactar Stat/Player-Info/ACC-Label" unique_id=1352987597]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("17_57y4t")
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SPD-Label" type="RichTextLabel" parent="ColorRect/Charactar Stat/Player-Info" unique_id=1968900777]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("17_57y4t")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://cydmfxnf4i274[/img] SPD"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spd-Number" type="Label" parent="ColorRect/Charactar Stat/Player-Info/SPD-Label" unique_id=1113854127]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("17_57y4t")
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LIFE-Label" type="RichTextLabel" parent="ColorRect/Charactar Stat/Player-Info" unique_id=1276425053]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("17_57y4t")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://d0lb80imevmiw[/img] LIFE"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Life-Number" type="Label" parent="ColorRect/Charactar Stat/Player-Info/LIFE-Label" unique_id=1386311969]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("17_57y4t")
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MANA-Label" type="RichTextLabel" parent="ColorRect/Charactar Stat/Player-Info" unique_id=1396600320]
+visible = false
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("17_57y4t")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://bkbq5m6d2rs5x[/img] MANA"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mana-Number" type="Label" parent="ColorRect/Charactar Stat/Player-Info/MANA-Label" unique_id=1804679426]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("17_57y4t")
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DODGE-Label" type="RichTextLabel" parent="ColorRect/Charactar Stat/Player-Info" unique_id=1473112779]
+custom_minimum_size = Vector2(80, 30)
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("17_57y4t")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://nk5dqh6aietu[/img] DODGE"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dodge-Number" type="Label" parent="ColorRect/Charactar Stat/Player-Info/DODGE-Label" unique_id=1330045309]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("17_57y4t")
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armor-Label" type="RichTextLabel" parent="ColorRect/Charactar Stat/Player-Info" unique_id=1206048549]
+custom_minimum_size = Vector2(100, 30)
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/normal_font = ExtResource("17_57y4t")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[img=24]uid://dkdmy3xiqow1t[/img] ARMOR"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armor-Number" type="Label" parent="ColorRect/Charactar Stat/Player-Info/Armor-Label" unique_id=1957155290]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 44.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+theme_override_fonts/font = ExtResource("17_57y4t")
+theme_override_font_sizes/font_size = 32
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skill-Desc" type="RichTextLabel" parent="ColorRect" unique_id=164540042]
+visible = false
+custom_minimum_size = Vector2(250, 90)
+clip_contents = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -461.0
+offset_top = -312.0
+offset_right = -211.0
+offset_bottom = -194.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("17_57y4t")
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_57y4t")
+bbcode_enabled = true
+text = "[font_size=32][color=yellow]Mod Name Is Here[/color][/font_size][br]+1 attack after each round. Have 65% chance to be destroyed on getting attacked"
+fit_content = true
+scroll_active = false
+
+[node name="Label2" type="Label" parent="ColorRect/Skill-Desc" unique_id=556717892]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = -61.0
+offset_right = 128.0
+offset_bottom = -13.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
+theme_override_fonts/font = ExtResource("1_uayxl")
+theme_override_font_sizes/font_size = 48
+text = "Character Skill"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -123,8 +123,7 @@ func _set_fill(progress: float):
 func _load_gameplay_scene() -> void:
 	if _block_input: return
 	_block_input = true
-	AudioManager.stop_music()
-	get_tree().change_scene_to_file("res://Scene/gameplay_scene.tscn")
+	get_tree().change_scene_to_file("res://Scene/character_select_screen.tscn")
 	
 	
 func _set_reward_text(reward_id:int):
