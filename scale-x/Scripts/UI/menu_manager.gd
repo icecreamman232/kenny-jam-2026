@@ -3,7 +3,7 @@ class_name MenuManager extends CanvasLayer
 @export var gmtk_logo_parent:ColorRect
 @export var gmtk_logo:TextureRect
 @export var title_button:Button
-@export var title_label:Label
+@export var title_label:Control
 @export var play_button:Button
 @export var reward_label:Label
 @export var bubble_text:PackedScene

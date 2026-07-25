@@ -9,22 +9,28 @@
 [ext_resource type="StyleBox" uid="uid://bllog2rtg84o3" path="res://Arts/Button_Style/button_normal_style.tres" id="8_w5u0e"]
 [ext_resource type="StyleBox" uid="uid://wlf0x1gxya3r" path="res://Arts/Button_Style/button_pressed_style.tres" id="9_5t4vo"]
 [ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="10_6wowx"]
+[ext_resource type="Texture2D" uid="uid://ycof3d56kdm8" path="res://Arts/title-logo.png" id="10_w5u0e"]
+[ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="11_5t4vo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1vivr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5u0e"]
 shader = ExtResource("2_kvwtk")
 shader_parameter/fill_amount = 1.0
-shader_parameter/total_width = 799.0
-shader_parameter/fill_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
-shader_parameter/empty_color = Color(0.4883635, 0.351835, 0.015895277, 1)
+shader_parameter/total_width = 1335.0
+shader_parameter/fill_tint = Color(0.99970585, 0.9170129, 0.8074623, 1)
+shader_parameter/empty_tint = Color(0.4317355, 0.22304624, 0.008687938, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wowx"]
+atlas = ExtResource("10_w5u0e")
+region = Rect2(0, 0, 456, 144)
 
 [node name="Menu-CanvasLayer" type="CanvasLayer" unique_id=1714532181 node_paths=PackedStringArray("gmtk_logo_parent", "gmtk_logo", "title_button", "title_label", "play_button", "reward_label")]
 script = ExtResource("1_rtf3b")
 gmtk_logo_parent = NodePath("ColorRect")
 gmtk_logo = NodePath("ColorRect/Logo")
-title_button = NodePath("Label/Button")
-title_label = NodePath("Label")
+title_button = NodePath("TextureRect4/Button")
+title_label = NodePath("TextureRect4")
 play_button = NodePath("Play-button")
-reward_label = NodePath("Label/Reward-Label")
+reward_label = NodePath("TextureRect4/Reward-Label")
 bubble_text = ExtResource("2_kfxb8")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=667179039]
@@ -37,52 +43,6 @@ grow_vertical = 2
 texture = ExtResource("1_5yq60")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=486096252]
-material = SubResource("ShaderMaterial_1vivr")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -399.0
-offset_top = -207.0
-offset_right = 400.0
-offset_bottom = -70.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("5_fp2sf")
-theme_override_font_sizes/font_size = 150
-text = "Mini AutoBattler"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Label" unique_id=310507279]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="Reward-Label" type="Label" parent="Label" unique_id=407086305]
-visible = false
-self_modulate = Color(1, 0.9137255, 0.76862746, 1)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -242.5
-offset_top = -25.0
-offset_right = 243.5
-offset_bottom = 20.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Reward: Gain 3 additional coins"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Play-button" type="Button" parent="." unique_id=1953421123]
 custom_minimum_size = Vector2(200, 60)
 anchors_preset = 7
@@ -91,9 +51,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = -416.0
+offset_top = -286.0
 offset_right = 100.0
-offset_bottom = -343.0
+offset_bottom = -213.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.21590135, 0.21590191, 0.21590155, 1)
@@ -107,6 +67,7 @@ theme_override_styles/hover = ExtResource("10_6wowx")
 text = "START"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1884896778]
+visible = false
 z_index = 200
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,3 +90,50 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_w7gvl")
 expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=1017364552]
+material = SubResource("ShaderMaterial_w5u0e")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -667.0
+offset_top = -372.0
+offset_right = 668.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_6wowx")
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="TextureRect4" unique_id=39548822]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Reward-Label" type="Label" parent="TextureRect4" unique_id=407086305]
+visible = false
+self_modulate = Color(1, 0.9137255, 0.76862746, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -242.5
+offset_top = -26.0
+offset_right = 243.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_5t4vo")
+theme_override_font_sizes/font_size = 48
+text = "Reward: Gain 3 additional coins"
+horizontal_alignment = 1
+vertical_alignment = 1
