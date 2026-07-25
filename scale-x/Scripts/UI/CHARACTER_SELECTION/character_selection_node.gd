@@ -66,7 +66,9 @@ func _tween_from_fire_place():
 		
 
 	
-func _on_button_pressed():
+func _on_button_pressed() -> void:
+	if not _screen_ref.is_enable_input: return
+	_screen_ref.is_enable_input = false
 	_screen_ref.on_pressed_on_character_node(self)
 
 	

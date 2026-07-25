@@ -18,6 +18,8 @@ class_name CharacterSelectionScreen extends CanvasLayer
 @export var character_node_list:Array[CharacterSelectionNode]
 var _last_selected_node:CharacterSelectionNode
 
+var is_enable_input:bool = true
+
 func _ready() -> void:
 	skill_panel.hide()
 	stat_panel.hide()
@@ -30,12 +32,12 @@ func _exit_tree() -> void:
 	play_button.pressed.disconnect(_on_go_to_gameplay)
 
 
-func on_pressed_on_character_node(node:CharacterSelectionNode):
+func on_pressed_on_character_node(node:CharacterSelectionNode) -> void:
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)
-	node.update_select()
+	await node.update_select()
 	if node.is_selected:
 		if _last_selected_node != null and node != _last_selected_node:
-			_last_selected_node.update_select()
+			await _last_selected_node.update_select()
 		_last_selected_node = node
 		_show_skill_desc( _last_selected_node.character_data)
 		_show_stat( _last_selected_node.character_data)
@@ -46,6 +48,8 @@ func on_pressed_on_character_node(node:CharacterSelectionNode):
 			_last_selected_node = null
 			stat_panel.hide()
 			skill_panel.hide()
+	await Helper.wait_for_frames(3)
+	is_enable_input = true
 
 
 func _show_skill_desc(character_data:CharacterData):
