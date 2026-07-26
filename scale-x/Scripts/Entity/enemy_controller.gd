@@ -26,6 +26,7 @@ func assign_gameplay_manager(gameplay_manager:GameplayManager):
 func initialize(data: EnemyData):
 	enemy_data = data
 	stat.initialize()
+	health.initialize_health(self)
 	
 	if enemy_data.skill_pool.size() > 0:
 		var rand_skil_id:String = enemy_data.skill_pool.pick_random()
@@ -34,7 +35,6 @@ func initialize(data: EnemyData):
 			skill_list.append(skill)
 			skill.apply()
 	
-	health.initialize_health(self)
 	avatar.assign(data)
 	avatar.show_icon()
 	EventBus.update_enemy_info.emit(stat)

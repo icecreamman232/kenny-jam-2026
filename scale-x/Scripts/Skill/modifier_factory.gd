@@ -25,6 +25,7 @@ func create_modifier(modifier_id:Modifier.ModifierId) ->Modifier:
 		# v0.0.8
 		Modifier.ModifierId.Explode: return ExplodeModifier.new()
 		Modifier.ModifierId.ChopDown: return ChopdownModifier.new()
+		Modifier.ModifierId.CopyPaste: return CopyPasteModifier.new()
 		
 		
 		_: return null

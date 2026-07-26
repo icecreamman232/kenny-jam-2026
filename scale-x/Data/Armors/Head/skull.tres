@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b43e5q8m1afdl"]
+
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="1_camfo"]
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="1_xsa6y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_camfo"]
+atlas = ExtResource("1_camfo")
+region = Rect2(608, 176, 16, 16)
+
+[resource]
+script = ExtResource("1_xsa6y")
+item_name = "Skull"
+item_icon = SubResource("AtlasTexture_camfo")
+modifier_pool = Array[int]([18])
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

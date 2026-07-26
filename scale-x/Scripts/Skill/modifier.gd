@@ -20,6 +20,7 @@ enum ModifierId
 	SelfImprove,
 	Explode,
 	ChopDown,
+	CopyPaste,
 }
 
 
