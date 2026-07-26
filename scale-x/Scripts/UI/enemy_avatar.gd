@@ -1,15 +1,25 @@
 class_name EnemyAvatar extends Control
 
 @export var enemy_icon:TextureRect
-
+@export var hex_icon:Texture2D
+var _normal_icon:Texture2D
 
 func _ready():	
 	var shader_material := enemy_icon.material.duplicate() as ShaderMaterial
 	enemy_icon.material = shader_material
 
 func assign(enemy_data: EnemyData):
+	_normal_icon = enemy_data.enemy_icon
 	enemy_icon.texture = enemy_data.enemy_icon
 
+
+func change_visual_to_be_hex():
+	enemy_icon.texture = hex_icon
+	
+	
+func change_visual_to_be_normal():
+	enemy_icon.texture = _normal_icon
+	
 
 func attack_tween() ->Tween:
 	var tween:= create_tween()

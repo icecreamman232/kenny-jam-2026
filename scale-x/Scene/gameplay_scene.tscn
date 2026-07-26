@@ -46,6 +46,7 @@
 [ext_resource type="Script" uid="uid://mpnq8domexet" path="res://Scripts/UI/player_avatar.gd" id="20_e412i"]
 [ext_resource type="Resource" uid="uid://bipfs50j5otqx" path="res://Data/Weapons/axe.tres" id="20_ed47b"]
 [ext_resource type="Resource" uid="uid://dicphv21x4e6p" path="res://Data/Armors/Legs/leather_boots.tres" id="21_3k04w"]
+[ext_resource type="Resource" uid="uid://djqckgiek281i" path="res://Data/Weapons/staff.tres" id="21_gfqn7"]
 [ext_resource type="Script" uid="uid://it4oy57mtu58" path="res://Scripts/UI/enemy_avatar.gd" id="22_i5dkc"]
 [ext_resource type="Resource" uid="uid://c48fa8etqo8go" path="res://Data/Armors/Head/hood.tres" id="22_s8a72"]
 [ext_resource type="Resource" uid="uid://0eu680x2v5fm" path="res://Data/Armors/Head/wizard_hat.tres" id="23_4vhag"]
@@ -92,6 +93,10 @@ expand_margin_bottom = 3.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjua8"]
 bg_color = Color(0.9019608, 0.28235295, 0.18039216, 1)
 border_color = Color(0.99932355, 0.9151727, 0.7666986, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfqn7"]
+atlas = ExtResource("60_il64e")
+region = Rect2(416, 112, 16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p8an3"]
 shader = ExtResource("36_t2s0o")
@@ -195,7 +200,7 @@ boss_list = Array[ExtResource("3_jkpb7")]([ExtResource("7_pdq7b")])
 
 [node name="Loot Manager" type="Node" parent="." unique_id=165805778]
 script = ExtResource("1_hl3nj")
-weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("10_mxdem"), ExtResource("4_5dnhx"), ExtResource("12_wdjjk"), ExtResource("13_51hvm"), ExtResource("14_5d0mh"), ExtResource("17_7skjk"), ExtResource("19_nxghj"), ExtResource("20_ed47b")])
+weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("10_mxdem"), ExtResource("4_5dnhx"), ExtResource("12_wdjjk"), ExtResource("13_51hvm"), ExtResource("14_5d0mh"), ExtResource("17_7skjk"), ExtResource("19_nxghj"), ExtResource("20_ed47b"), ExtResource("21_gfqn7")])
 armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5"), ExtResource("13_yekpa"), ExtResource("18_51hvm"), ExtResource("19_5d0mh"), ExtResource("20_5c5ih"), ExtResource("21_3k04w"), ExtResource("22_s8a72"), ExtResource("23_4vhag"), ExtResource("30_fnye3")])
 
 [node name="NPC Manager" type="Node" parent="." unique_id=1173698040]
@@ -434,6 +439,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("22_i5dkc")
 enemy_icon = NodePath("Enemy-Portrait")
+hex_icon = SubResource("AtlasTexture_gfqn7")
 
 [node name="Enemy-Portrait" type="TextureRect" parent="Control/Enemy-Character-Avatar" unique_id=1442310484]
 material = SubResource("ShaderMaterial_p8an3")

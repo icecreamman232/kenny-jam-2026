@@ -9,6 +9,9 @@ class_name EnemyController extends EntityController
 var skill_list:Array[EnemySkill]
 var _gameplay_manager:GameplayManager
 
+var is_hex:bool = false
+var _attack_before_hex:int
+var _armor_before_hex:int
 
 func _ready():
 	hover_area.mouse_entered.connect(_on_hover_enter)
@@ -38,6 +41,27 @@ func initialize(data: EnemyData):
 	avatar.assign(data)
 	avatar.show_icon()
 	EventBus.update_enemy_info.emit(stat)
+
+
+func set_hex(should_hex:bool):
+	if should_hex:
+		avatar.change_visual_to_be_hex()
+		_attack_before_hex =  stat.get_final(StatController.StatType.ATTACK)
+		_armor_before_hex =  stat.get_final(StatController.StatType.ARMOR)
+		stat.set_final(StatController.StatType.ATTACK, 0)
+		stat.set_final(StatController.StatType.ARMOR, 0)
+		is_hex = true
+	else:
+		avatar.change_visual_to_be_normal()
+		stat.set_final(StatController.StatType.ATTACK, _attack_before_hex)
+		stat.set_final(StatController.StatType.ARMOR, _armor_before_hex)
+		is_hex = false
+		_attack_before_hex = 0
+		_armor_before_hex= 0 
+		
+	EventBus.update_enemy_info.emit(stat)	
+		
+	
 
 
 func _can_apply_skill(skill:EnemySkill) -> bool:

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://djqckgiek281i"]
+
+[ext_resource type="Script" uid="uid://cssoh5tiw73ig" path="res://Scripts/Data/item_data.gd" id="1_deken"]
+[ext_resource type="Texture2D" uid="uid://cbky5y05uok8h" path="res://Arts/colored-transparent_packed.png" id="1_wo8cm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo8cm"]
+atlas = ExtResource("1_wo8cm")
+region = Rect2(512, 64, 16, 16)
+
+[resource]
+script = ExtResource("1_deken")
+category = 5
+item_name = "Staff"
+item_icon = SubResource("AtlasTexture_wo8cm")
+stats = Array[int]([3, 5])
+modifier_pool = Array[int]([19])
+metadata/_custom_type_script = "uid://cssoh5tiw73ig"

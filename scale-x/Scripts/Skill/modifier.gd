@@ -2,25 +2,11 @@ class_name Modifier extends RefCounted
 
 enum ModifierId
 {
-	MultiHand,
-	LeftSwing,
-	RightSwing,
-	LoneWolf,
-	ContinuesAttack,
-	SpearHead,
-	Eater,
-	DeathIsNotTheEnd,
-	SharpenTool,
-	ThreeMusketeers,
-	TheTwin,
-	TryHard,
-	OverPower,
-	Healer,
-	GoreCleave,
-	SelfImprove,
-	Explode,
-	ChopDown,
-	CopyPaste,
+	MultiHand, LeftSwing, RightSwing, LoneWolf,
+	ContinuesAttack, SpearHead, Eater, DeathIsNotTheEnd,
+	SharpenTool, ThreeMusketeers, TheTwin, TryHard,
+	OverPower, Healer, GoreCleave, SelfImprove,
+	Explode, ChopDown, CopyPaste, Hex,
 }
 
 
