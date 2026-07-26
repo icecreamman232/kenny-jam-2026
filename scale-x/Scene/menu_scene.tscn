@@ -67,7 +67,6 @@ theme_override_styles/hover = ExtResource("10_6wowx")
 text = "START"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1884896778]
-visible = false
 z_index = 200
 anchors_preset = 15
 anchor_right = 1.0

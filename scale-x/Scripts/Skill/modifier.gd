@@ -18,6 +18,8 @@ enum ModifierId
 	Healer,
 	GoreCleave,
 	SelfImprove,
+	Explode,
+	ChopDown,
 }
 
 

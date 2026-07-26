@@ -123,7 +123,6 @@ func _apply_random_stat_to_item(item:ItemData, round_number:int) -> void:
 	var rand_mod_id:Modifier.ModifierId = item.modifier_pool[rand_ix]
 	var modifier:Modifier = ModifierFactory.create_modifier(rand_mod_id)
 	if modifier != null:
-		print("Created mod ", modifier.get_modifier_name())
 		item.modifier_list.append(modifier)			
 
 

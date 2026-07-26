@@ -40,9 +40,11 @@
 [ext_resource type="Resource" uid="uid://thivyfnips1i" path="res://Data/Armors/Body/robe.tres" id="18_51hvm"]
 [ext_resource type="Script" uid="uid://b5d1unfklia7s" path="res://Scripts/Skill/enemy_stat_controller.gd" id="18_ecq28"]
 [ext_resource type="Resource" uid="uid://svwll10tuypg" path="res://Data/Armors/Body/swordman_body.tres" id="19_5d0mh"]
+[ext_resource type="Resource" uid="uid://bd0gtgxbyg7fy" path="res://Data/Weapons/bomb.tres" id="19_nxghj"]
 [ext_resource type="Script" uid="uid://csamhu1nqu42h" path="res://Scripts/UI/enemy_life_bar.gd" id="19_ss4hu"]
 [ext_resource type="Resource" uid="uid://dx04wf4qafnxv" path="res://Data/Armors/Legs/iron_steps.tres" id="20_5c5ih"]
 [ext_resource type="Script" uid="uid://mpnq8domexet" path="res://Scripts/UI/player_avatar.gd" id="20_e412i"]
+[ext_resource type="Resource" uid="uid://bipfs50j5otqx" path="res://Data/Weapons/axe.tres" id="20_ed47b"]
 [ext_resource type="Resource" uid="uid://dicphv21x4e6p" path="res://Data/Armors/Legs/leather_boots.tres" id="21_3k04w"]
 [ext_resource type="Script" uid="uid://it4oy57mtu58" path="res://Scripts/UI/enemy_avatar.gd" id="22_i5dkc"]
 [ext_resource type="Resource" uid="uid://c48fa8etqo8go" path="res://Data/Armors/Head/hood.tres" id="22_s8a72"]
@@ -192,7 +194,7 @@ boss_list = Array[ExtResource("3_jkpb7")]([ExtResource("7_pdq7b")])
 
 [node name="Loot Manager" type="Node" parent="." unique_id=165805778]
 script = ExtResource("1_hl3nj")
-weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("10_mxdem"), ExtResource("4_5dnhx"), ExtResource("12_wdjjk"), ExtResource("13_51hvm"), ExtResource("14_5d0mh"), ExtResource("17_7skjk")])
+weapon_items = Array[ExtResource("2_1lj16")]([ExtResource("3_f16u0"), ExtResource("10_mxdem"), ExtResource("4_5dnhx"), ExtResource("12_wdjjk"), ExtResource("13_51hvm"), ExtResource("14_5d0mh"), ExtResource("17_7skjk"), ExtResource("19_nxghj"), ExtResource("20_ed47b")])
 armor_items = Array[ExtResource("2_1lj16")]([ExtResource("5_5dnhx"), ExtResource("6_q0kv5"), ExtResource("13_yekpa"), ExtResource("18_51hvm"), ExtResource("19_5d0mh"), ExtResource("20_5c5ih"), ExtResource("21_3k04w"), ExtResource("22_s8a72"), ExtResource("23_4vhag")])
 
 [node name="NPC Manager" type="Node" parent="." unique_id=1173698040]
@@ -1947,6 +1949,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = -101.0
+offset_bottom = 23.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.95686275, 0.7058824, 0.105882354, 1)
 theme_override_fonts/font = ExtResource("35_0b0bh")

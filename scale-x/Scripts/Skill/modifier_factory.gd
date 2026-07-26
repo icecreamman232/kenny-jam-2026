@@ -22,6 +22,10 @@ func create_modifier(modifier_id:Modifier.ModifierId) ->Modifier:
 		# v0.0.6
 		Modifier.ModifierId.SelfImprove: return SelfImproveModifier.new()
 		
+		# v0.0.8
+		Modifier.ModifierId.Explode: return ExplodeModifier.new()
+		Modifier.ModifierId.ChopDown: return ChopdownModifier.new()
+		
 		
 		_: return null
 	
