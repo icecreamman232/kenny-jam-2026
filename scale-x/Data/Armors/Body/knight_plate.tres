@@ -9,5 +9,5 @@ category = 1
 item_name = "Knight Plate"
 item_icon = ExtResource("1_wjr3u")
 stats = Array[int]([3, 6])
-modifier_pool = Array[int]([3, 6, 7])
+modifier_pool = Array[int]([3])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

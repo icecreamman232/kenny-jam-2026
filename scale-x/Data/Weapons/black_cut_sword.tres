@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("2_w6giq")
 category = 5
-item_name = "Iron Sword"
+item_name = "Black Cut"
 item_icon = ExtResource("1_xbm01")
 stats = Array[int]([0, 3])
-modifier_pool = Array[int]([0, 1, 2, 4, 5, 9, 10, 12, 14])
+modifier_pool = Array[int]([14])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

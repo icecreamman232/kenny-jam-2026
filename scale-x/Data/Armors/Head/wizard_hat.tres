@@ -12,5 +12,5 @@ script = ExtResource("2_oosvx")
 item_name = "Wizard Hat"
 item_icon = SubResource("AtlasTexture_txwoc")
 stats = Array[int]([3, 5])
-modifier_pool = Array[int]([3, 6, 15])
+modifier_pool = Array[int]([10])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

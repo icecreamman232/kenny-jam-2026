@@ -21,6 +21,7 @@ func create_modifier(modifier_id:Modifier.ModifierId) ->Modifier:
 		
 		# v0.0.6
 		Modifier.ModifierId.SelfImprove: return SelfImproveModifier.new()
+		Modifier.ModifierId.TryHard: return TryHardModifier.new()
 		
 		# v0.0.8
 		Modifier.ModifierId.Explode: return ExplodeModifier.new()

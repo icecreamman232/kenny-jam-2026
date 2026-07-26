@@ -13,5 +13,5 @@ category = 3
 item_name = "Wooden Bow"
 item_icon = SubResource("AtlasTexture_lrewq")
 stats = Array[int]([0, 2])
-modifier_pool = Array[int]([1, 2, 4, 11, 10, 9, 12])
+modifier_pool = Array[int]([7])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

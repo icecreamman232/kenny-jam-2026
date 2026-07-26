@@ -61,8 +61,6 @@ func set_hex(should_hex:bool):
 		
 	EventBus.update_enemy_info.emit(stat)	
 		
-	
-
 
 func _can_apply_skill(skill:EnemySkill) -> bool:
 	# Prevent player being stolen coin in early game

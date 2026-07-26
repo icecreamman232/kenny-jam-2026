@@ -13,5 +13,5 @@ category = 7
 item_name = "Iron Shield"
 item_icon = SubResource("AtlasTexture_xf83s")
 stats = Array[int]([0, 6])
-modifier_pool = Array[int]([0, 1, 2, 4, 5, 10, 13])
+modifier_pool = Array[int]([15])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"

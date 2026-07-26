@@ -13,5 +13,5 @@ category = 1
 item_name = "Robe"
 item_icon = SubResource("AtlasTexture_s8a72")
 stats = Array[int]([3, 5])
-modifier_pool = Array[int]([3, 6, 7])
+modifier_pool = Array[int]([13])
 metadata/_custom_type_script = "uid://cssoh5tiw73ig"
