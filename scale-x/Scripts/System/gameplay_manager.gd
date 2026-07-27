@@ -126,7 +126,7 @@ func force_spawn_enemy_or_boss():
 		EventBus.on_boss_appear.emit()
 	loot_box_ui.set_round_number(round_number)
 	if is_boss_fight:
-		round_label.text = "Boss Fight"
+		round_label.text = "Final Round"
 	else:
 		round_label.text = "Round " + str(26 - round_number)
 	player_controller.health.recover_full_life()

@@ -1,4 +1,4 @@
-﻿class_name TryHardModifier extends Modifier
+class_name TryHardModifier extends Modifier
 
 func _init():
 	_mod_id = ModifierId.TryHard
@@ -11,7 +11,7 @@ func get_modifier_description() -> String:
 	
 func apply(cell:PlayerCellGridUi) -> void:
 	super.apply(cell)
-	EventBus.on_player_hit_miss.connect(_on_player_hit_miss)
+	EventBus.on_player_miss_attack.connect(_on_player_hit_miss)
 	
 	
 func remove():
