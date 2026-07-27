@@ -34,6 +34,8 @@ func initialize():
 
 func reset_player():
 	_player_skill.reset()
+	if _player_skill != null:
+		_player_skill.apply()
 	stat.initialize()
 	health.initialize_health(self)
 	EventBus.update_player_info.emit(stat)
