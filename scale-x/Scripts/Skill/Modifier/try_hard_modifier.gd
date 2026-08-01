@@ -16,7 +16,7 @@ func apply(cell:PlayerCellGridUi) -> void:
 	
 func remove():
 	super.remove()
-	EventBus.on_player_hit_miss.disconnect(_on_player_hit_miss)	
+	EventBus.on_player_miss_attack.disconnect(_on_player_hit_miss)	
 		
 
 func _on_player_hit_miss() -> void:

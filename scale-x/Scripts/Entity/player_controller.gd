@@ -86,7 +86,8 @@ func deal_damage_to_enemy(enemy_controller: EnemyController) -> void:
 
 
 func on_before_dead():
-	pass
+	if _player_skill != null:
+		_player_skill.remove()
 
 
 func _initialize_stat_from_character_data(character_data:CharacterData):

@@ -8,11 +8,13 @@ func get_skill_description() -> String: return "+2 life every 5 rounds"
 
 func apply() -> void: 
 	super.apply()
-	EventBus.on_new_round.connect(_on_new_round)
+	if not EventBus.on_new_round.is_connected(_on_new_round): 
+		EventBus.on_new_round.connect(_on_new_round)
 	
 	
 func remove() -> void:
-	EventBus.on_new_round.disconnect(_on_new_round)
+	if EventBus.on_new_round.is_connected(_on_new_round):
+		EventBus.on_new_round.disconnect(_on_new_round)
 
 
 func _on_new_round():

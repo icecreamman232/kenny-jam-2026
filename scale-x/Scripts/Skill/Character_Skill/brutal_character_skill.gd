@@ -8,11 +8,13 @@ func get_skill_description() -> String: return "Sacrifice 2 life and add random 
 
 func apply() -> void: 
 	super.apply()
-	EventBus.on_new_round.connect(_on_new_round)
+	if not EventBus.on_new_round.is_connected(_on_new_round):
+		EventBus.on_new_round.connect(_on_new_round)
 	
 	
 func remove() -> void:
-	EventBus.on_new_round.disconnect(_on_new_round)
+	if EventBus.on_new_round.is_connected(_on_new_round):
+		EventBus.on_new_round.disconnect(_on_new_round)
 
 
 func _on_new_round():
