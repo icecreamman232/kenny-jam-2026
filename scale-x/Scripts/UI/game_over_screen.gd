@@ -25,7 +25,7 @@ func _exit_tree() -> void:
 func _on_player_dead():
 	await Helper.wait_for_seconds(0.5)
 	AudioManager.play_sfx(SfxContainer.SfxID.GAME_OVER)
-	best_score_label.text = "Best Round: " + str(IngameDataManager.gameplay_manager.round_number)
+	best_score_label.text = "Best Round: " + str(26 - IngameDataManager.gameplay_manager.round_number)
 	show()
 	_is_showing = true
 

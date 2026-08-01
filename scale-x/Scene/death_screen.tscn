@@ -9,7 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://wlf0x1gxya3r" path="res://Arts/Button_Style/button_pressed_style.tres" id="7_ffknh"]
 [ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="8_yvm14"]
 
-[node name="Death-Screen" type="TextureRect" unique_id=785239621 node_paths=PackedStringArray("gameplay_manager", "best_score_label", "restart_button", "quit_button")]
+[node name="Death-Screen" type="TextureRect" unique_id=785239621 node_paths=PackedStringArray("best_score_label", "restart_button", "quit_button")]
 visible = false
 self_modulate = Color(0.10980392, 0.10980392, 0.10980392, 0.94509804)
 anchors_preset = 15
@@ -20,7 +20,6 @@ grow_vertical = 2
 texture = ExtResource("1_s5vix")
 expand_mode = 1
 script = ExtResource("2_ac5u1")
-gameplay_manager = NodePath("")
 best_score_label = NodePath("TextureRect/Score")
 restart_button = NodePath("TextureRect/HBoxContainer/Restart-Button")
 quit_button = NodePath("TextureRect/HBoxContainer/Menu-Button")
