@@ -49,7 +49,7 @@ border_color = Color(1, 0.9137255, 0.76862746, 1)
 [node name="Character-Select-Screen" type="CanvasLayer" unique_id=327611890 node_paths=PackedStringArray("fire_place", "play_button", "skill_panel", "skill_des", "stat_panel", "attack_label", "accuracy_label", "speed_label", "life_label", "dodge_label", "armor_label", "character_node_list")]
 script = ExtResource("1_7qjht")
 default_character_data = ExtResource("3_dyf21")
-fire_place = NodePath("ColorRect/Fireplace")
+fire_place = NodePath("ColorRect/Control/Fireplace")
 play_button = NodePath("ColorRect/Play-button")
 skill_panel = NodePath("ColorRect/Panel")
 skill_des = NodePath("ColorRect/Panel/Skill-Desc")
@@ -60,7 +60,7 @@ speed_label = NodePath("ColorRect/Charactar Stat/Player-Info/SPD-Label/Spd-Numbe
 life_label = NodePath("ColorRect/Charactar Stat/Player-Info/LIFE-Label/Life-Number")
 dodge_label = NodePath("ColorRect/Charactar Stat/Player-Info/DODGE-Label/Dodge-Number")
 armor_label = NodePath("ColorRect/Charactar Stat/Player-Info/Armor-Label/Armor-Number")
-character_node_list = [NodePath("ColorRect/Character-Node"), NodePath("ColorRect/Character-Node2"), NodePath("ColorRect/Character-Node3"), NodePath("ColorRect/Character-Node4"), NodePath("ColorRect/Character-Node5"), NodePath("ColorRect/Character-Node6"), NodePath("ColorRect/Character-Node7"), NodePath("ColorRect/Character-Node8")]
+character_node_list = [NodePath("ColorRect/Control/Character-Node"), NodePath("ColorRect/Control/Character-Node2"), NodePath("ColorRect/Control/Character-Node3"), NodePath("ColorRect/Control/Character-Node4"), NodePath("ColorRect/Control/Character-Node5"), NodePath("ColorRect/Control/Character-Node6"), NodePath("ColorRect/Control/Character-Node7"), NodePath("ColorRect/Control/Character-Node8")]
 metadata/_edit_horizontal_guides_ = [537.0, -349.0]
 metadata/_edit_vertical_guides_ = [801.0]
 
@@ -88,13 +88,27 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character-Node" type="Control" parent="ColorRect" unique_id=962005741 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+[node name="Control" type="ReferenceRect" parent="ColorRect" unique_id=267552967]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -390.0
+offset_right = 390.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Character-Node" type="Control" parent="ColorRect/Control" unique_id=962005741 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
 custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 471.0
-offset_top = 391.0
-offset_right = 543.0
-offset_bottom = 463.0
+offset_left = 54.0
+offset_top = 365.0
+offset_right = 126.0
+offset_bottom = 437.0
 script = ExtResource("2_vmnbh")
 is_unlock = true
 character_data = ExtResource("3_dyf21")
@@ -104,7 +118,7 @@ unknown_bg = NodePath("Unknown-BG")
 border = NodePath("Border")
 button = NodePath("Button")
 
-[node name="Border" type="Panel" parent="ColorRect/Character-Node" unique_id=2087597539]
+[node name="Border" type="Panel" parent="ColorRect/Control/Character-Node" unique_id=2087597539]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -114,7 +128,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
 
-[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node" unique_id=1150762214]
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Control/Character-Node" unique_id=1150762214]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,7 +138,7 @@ grow_vertical = 2
 texture = ExtResource("1_2yru8")
 expand_mode = 1
 
-[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node" unique_id=1462318792]
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Control/Character-Node" unique_id=1462318792]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -135,7 +149,7 @@ grow_vertical = 2
 texture = ExtResource("3_7bmne")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="ColorRect/Character-Node" unique_id=891758645]
+[node name="Button" type="Button" parent="ColorRect/Control/Character-Node" unique_id=891758645]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -144,7 +158,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node" unique_id=974698657]
+[node name="Name" type="RichTextLabel" parent="ColorRect/Control/Character-Node" unique_id=974698657]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
@@ -163,13 +177,13 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character-Node2" type="Control" parent="ColorRect" unique_id=1492889841 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+[node name="Character-Node2" type="Control" parent="ColorRect/Control" unique_id=1492889841 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
 custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 517.0
-offset_top = 279.0
-offset_right = 589.0
-offset_bottom = 351.0
+offset_left = 100.0
+offset_top = 253.0
+offset_right = 172.0
+offset_bottom = 325.0
 script = ExtResource("2_vmnbh")
 is_unlock = true
 character_data = ExtResource("6_1dpfi")
@@ -179,7 +193,7 @@ unknown_bg = NodePath("Unknown-BG")
 border = NodePath("Border")
 button = NodePath("Button")
 
-[node name="Border" type="Panel" parent="ColorRect/Character-Node2" unique_id=352489669]
+[node name="Border" type="Panel" parent="ColorRect/Control/Character-Node2" unique_id=352489669]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -189,7 +203,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
 
-[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node2" unique_id=1549479712]
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Control/Character-Node2" unique_id=1549479712]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -199,7 +213,7 @@ grow_vertical = 2
 texture = ExtResource("7_evlju")
 expand_mode = 1
 
-[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node2" unique_id=767638820]
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Control/Character-Node2" unique_id=767638820]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -210,7 +224,7 @@ grow_vertical = 2
 texture = ExtResource("3_7bmne")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="ColorRect/Character-Node2" unique_id=1278723213]
+[node name="Button" type="Button" parent="ColorRect/Control/Character-Node2" unique_id=1278723213]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,7 +233,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node2" unique_id=304603381]
+[node name="Name" type="RichTextLabel" parent="ColorRect/Control/Character-Node2" unique_id=304603381]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
@@ -238,13 +252,13 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character-Node3" type="Control" parent="ColorRect" unique_id=337804078 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+[node name="Character-Node3" type="Control" parent="ColorRect/Control" unique_id=337804078 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
 custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 601.0
-offset_top = 191.0
-offset_right = 673.0
-offset_bottom = 263.0
+offset_left = 184.0
+offset_top = 165.0
+offset_right = 256.0
+offset_bottom = 237.0
 script = ExtResource("2_vmnbh")
 is_unlock = true
 character_data = ExtResource("9_k0nmi")
@@ -254,7 +268,7 @@ unknown_bg = NodePath("Unknown-BG")
 border = NodePath("Border")
 button = NodePath("Button")
 
-[node name="Border" type="Panel" parent="ColorRect/Character-Node3" unique_id=78375009]
+[node name="Border" type="Panel" parent="ColorRect/Control/Character-Node3" unique_id=78375009]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -264,7 +278,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
 
-[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node3" unique_id=1987619281]
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Control/Character-Node3" unique_id=1987619281]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -274,7 +288,7 @@ grow_vertical = 2
 texture = ExtResource("4_vmnbh")
 expand_mode = 1
 
-[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node3" unique_id=347766763]
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Control/Character-Node3" unique_id=347766763]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -285,7 +299,7 @@ grow_vertical = 2
 texture = ExtResource("3_7bmne")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="ColorRect/Character-Node3" unique_id=1551406114]
+[node name="Button" type="Button" parent="ColorRect/Control/Character-Node3" unique_id=1551406114]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -294,7 +308,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node3" unique_id=1421161907]
+[node name="Name" type="RichTextLabel" parent="ColorRect/Control/Character-Node3" unique_id=1421161907]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
@@ -313,13 +327,13 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character-Node4" type="Control" parent="ColorRect" unique_id=1823458599 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+[node name="Character-Node4" type="Control" parent="ColorRect/Control" unique_id=1823458599 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
 custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 704.0
-offset_top = 140.0
-offset_right = 776.0
-offset_bottom = 212.0
+offset_left = 287.0
+offset_top = 114.0
+offset_right = 359.0
+offset_bottom = 186.0
 script = ExtResource("2_vmnbh")
 is_unlock = true
 character_data = ExtResource("11_let1h")
@@ -329,7 +343,7 @@ unknown_bg = NodePath("Unknown-BG")
 border = NodePath("Border")
 button = NodePath("Button")
 
-[node name="Border" type="Panel" parent="ColorRect/Character-Node4" unique_id=1496149785]
+[node name="Border" type="Panel" parent="ColorRect/Control/Character-Node4" unique_id=1496149785]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -339,7 +353,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
 
-[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node4" unique_id=1957284400]
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Control/Character-Node4" unique_id=1957284400]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -349,7 +363,7 @@ grow_vertical = 2
 texture = ExtResource("9_g07b3")
 expand_mode = 1
 
-[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node4" unique_id=129141662]
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Control/Character-Node4" unique_id=129141662]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -360,7 +374,7 @@ grow_vertical = 2
 texture = ExtResource("3_7bmne")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="ColorRect/Character-Node4" unique_id=778922542]
+[node name="Button" type="Button" parent="ColorRect/Control/Character-Node4" unique_id=778922542]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -369,7 +383,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node4" unique_id=956976150]
+[node name="Name" type="RichTextLabel" parent="ColorRect/Control/Character-Node4" unique_id=956976150]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
@@ -388,13 +402,13 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character-Node5" type="Control" parent="ColorRect" unique_id=674156853 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+[node name="Character-Node5" type="Control" parent="ColorRect/Control" unique_id=674156853 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
 custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 829.0
-offset_top = 140.0
-offset_right = 901.0
-offset_bottom = 212.0
+offset_left = 412.0
+offset_top = 114.0
+offset_right = 484.0
+offset_bottom = 186.0
 script = ExtResource("2_vmnbh")
 character_data = ExtResource("13_wtkhp")
 character_name = NodePath("Name")
@@ -403,7 +417,7 @@ unknown_bg = NodePath("Unknown-BG")
 border = NodePath("Border")
 button = NodePath("Button")
 
-[node name="Border" type="Panel" parent="ColorRect/Character-Node5" unique_id=649291477]
+[node name="Border" type="Panel" parent="ColorRect/Control/Character-Node5" unique_id=649291477]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -413,7 +427,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
 
-[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node5" unique_id=1686333176]
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Control/Character-Node5" unique_id=1686333176]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -424,7 +438,7 @@ grow_vertical = 2
 texture = ExtResource("9_g07b3")
 expand_mode = 1
 
-[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node5" unique_id=1032259660]
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Control/Character-Node5" unique_id=1032259660]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -434,7 +448,7 @@ grow_vertical = 2
 texture = ExtResource("3_7bmne")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="ColorRect/Character-Node5" unique_id=439004658]
+[node name="Button" type="Button" parent="ColorRect/Control/Character-Node5" unique_id=439004658]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -443,7 +457,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node5" unique_id=791528242]
+[node name="Name" type="RichTextLabel" parent="ColorRect/Control/Character-Node5" unique_id=791528242]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
@@ -462,13 +476,13 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character-Node6" type="Control" parent="ColorRect" unique_id=340876612 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+[node name="Character-Node6" type="Control" parent="ColorRect/Control" unique_id=340876612 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
 custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 909.0
-offset_top = 195.0
-offset_right = 981.0
-offset_bottom = 267.0
+offset_left = 492.0
+offset_top = 169.0
+offset_right = 564.0
+offset_bottom = 241.0
 script = ExtResource("2_vmnbh")
 character_data = ExtResource("14_kt811")
 character_name = NodePath("Name")
@@ -477,7 +491,7 @@ unknown_bg = NodePath("Unknown-BG")
 border = NodePath("Border")
 button = NodePath("Button")
 
-[node name="Border" type="Panel" parent="ColorRect/Character-Node6" unique_id=1213056689]
+[node name="Border" type="Panel" parent="ColorRect/Control/Character-Node6" unique_id=1213056689]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -487,7 +501,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
 
-[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node6" unique_id=574850968]
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Control/Character-Node6" unique_id=574850968]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -497,7 +511,7 @@ grow_vertical = 2
 texture = ExtResource("9_g07b3")
 expand_mode = 1
 
-[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node6" unique_id=1325734319]
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Control/Character-Node6" unique_id=1325734319]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -507,7 +521,7 @@ grow_vertical = 2
 texture = ExtResource("3_7bmne")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="ColorRect/Character-Node6" unique_id=305589363]
+[node name="Button" type="Button" parent="ColorRect/Control/Character-Node6" unique_id=305589363]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -516,7 +530,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node6" unique_id=108121325]
+[node name="Name" type="RichTextLabel" parent="ColorRect/Control/Character-Node6" unique_id=108121325]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
@@ -535,13 +549,13 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character-Node7" type="Control" parent="ColorRect" unique_id=685321662 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+[node name="Character-Node7" type="Control" parent="ColorRect/Control" unique_id=685321662 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
 custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 999.0
-offset_top = 274.0
-offset_right = 1071.0
-offset_bottom = 346.0
+offset_left = 582.0
+offset_top = 248.0
+offset_right = 654.0
+offset_bottom = 320.0
 script = ExtResource("2_vmnbh")
 character_data = ExtResource("15_48h8i")
 character_name = NodePath("Name")
@@ -550,7 +564,7 @@ unknown_bg = NodePath("Unknown-BG")
 border = NodePath("Border")
 button = NodePath("Button")
 
-[node name="Border" type="Panel" parent="ColorRect/Character-Node7" unique_id=184935302]
+[node name="Border" type="Panel" parent="ColorRect/Control/Character-Node7" unique_id=184935302]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -560,7 +574,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
 
-[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node7" unique_id=717213268]
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Control/Character-Node7" unique_id=717213268]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -571,7 +585,7 @@ grow_vertical = 2
 texture = ExtResource("9_g07b3")
 expand_mode = 1
 
-[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node7" unique_id=362736010]
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Control/Character-Node7" unique_id=362736010]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -581,7 +595,7 @@ grow_vertical = 2
 texture = ExtResource("3_7bmne")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="ColorRect/Character-Node7" unique_id=412167512]
+[node name="Button" type="Button" parent="ColorRect/Control/Character-Node7" unique_id=412167512]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -590,7 +604,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node7" unique_id=1213792638]
+[node name="Name" type="RichTextLabel" parent="ColorRect/Control/Character-Node7" unique_id=1213792638]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
@@ -609,13 +623,13 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character-Node8" type="Control" parent="ColorRect" unique_id=1097229786 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
+[node name="Character-Node8" type="Control" parent="ColorRect/Control" unique_id=1097229786 node_paths=PackedStringArray("character_name", "character_avatar", "unknown_bg", "border", "button")]
 custom_minimum_size = Vector2(72, 72)
 anchors_preset = 0
-offset_left = 1059.0
-offset_top = 369.0
-offset_right = 1131.0
-offset_bottom = 441.0
+offset_left = 642.0
+offset_top = 343.0
+offset_right = 714.0
+offset_bottom = 415.0
 script = ExtResource("2_vmnbh")
 character_data = ExtResource("16_cw8sg")
 character_name = NodePath("Name")
@@ -624,7 +638,7 @@ unknown_bg = NodePath("Unknown-BG")
 border = NodePath("Border")
 button = NodePath("Button")
 
-[node name="Border" type="Panel" parent="ColorRect/Character-Node8" unique_id=1490929260]
+[node name="Border" type="Panel" parent="ColorRect/Control/Character-Node8" unique_id=1490929260]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -634,7 +648,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2yru8")
 
-[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Character-Node8" unique_id=2044743589]
+[node name="Character-Avatar" type="TextureRect" parent="ColorRect/Control/Character-Node8" unique_id=2044743589]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -645,7 +659,7 @@ grow_vertical = 2
 texture = ExtResource("9_g07b3")
 expand_mode = 1
 
-[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Character-Node8" unique_id=2102302111]
+[node name="Unknown-BG" type="TextureRect" parent="ColorRect/Control/Character-Node8" unique_id=2102302111]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -655,7 +669,7 @@ grow_vertical = 2
 texture = ExtResource("3_7bmne")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="ColorRect/Character-Node8" unique_id=1347020873]
+[node name="Button" type="Button" parent="ColorRect/Control/Character-Node8" unique_id=1347020873]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -664,7 +678,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Name" type="RichTextLabel" parent="ColorRect/Character-Node8" unique_id=1392219764]
+[node name="Name" type="RichTextLabel" parent="ColorRect/Control/Character-Node8" unique_id=1392219764]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
@@ -683,20 +697,20 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Fireplace" type="TextureRect" parent="ColorRect" unique_id=883947365]
+[node name="Fireplace" type="TextureRect" parent="ColorRect/Control" unique_id=883947365]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -50.0
-offset_top = -89.0
+offset_top = -172.0
 offset_right = 50.0
-offset_bottom = 11.0
+offset_bottom = -72.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 texture = SubResource("AtlasTexture_1vivr")
 expand_mode = 1
 

@@ -13,15 +13,15 @@ var _current_life:int = 0
 var _is_recovering:bool = false
 var _block_input:bool = false
 
-func _set_window_size():
-	get_window().size = Vector2i(1600, 900)
+#func _set_window_size():
+#	get_window().size = Vector2i(800, 600)
 
 
 func _ready():
 	get_tree().paused = false
 	InputManager.set_enabled(false)
 	IngameDataManager.menu_reward_id = -1
-	call_deferred("_set_window_size")
+	#call_deferred("_set_window_size")
 	_current_life = MAX_TITLE_LIFE
 	title_button.pressed.connect(_on_hit_title_button)
 	var shader_material := title_label.material.duplicate() as ShaderMaterial
