@@ -35,7 +35,7 @@ func _on_new_round():
 		
 		
 func _get_random_available_cell() -> PlayerCellGridUi:
-	var player_grid:PlayerGridUi = IngameDataManager.gameplay_manager.player_grid
+	var player_grid:PlayerGridUi = IngameDataManager.player_grid
 	var available_cells:Array[PlayerCellGridUi] = []
 	for cell in player_grid.cell_grid:
 		if cell != null and cell.assigned_item != null:
