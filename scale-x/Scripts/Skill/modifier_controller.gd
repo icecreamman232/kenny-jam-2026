@@ -25,5 +25,5 @@ func trigger_modifiers():
 	for i in range(9):
 		for mod in modifier_by_cell[i]:
 			await (mod as Modifier).trigger()
-			await Helper.wait_for_seconds(0.05)
+			await Helper.wait_for_seconds(0.1)
 			

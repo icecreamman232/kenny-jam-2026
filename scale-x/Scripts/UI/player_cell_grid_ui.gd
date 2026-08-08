@@ -56,7 +56,7 @@ func assign_item(item:ItemData) -> void:
 	for mod in item.modifier_list:
 		mod.apply(self)
 		mod_controller.add_modifier(mod)
-		await Helper.wait_for_seconds(0.05)
+		await Helper.wait_for_seconds(0.2)
 	
 	progress_bar.max_value = assigned_item.max_durability
 	progress_bar.value = assigned_item.durability

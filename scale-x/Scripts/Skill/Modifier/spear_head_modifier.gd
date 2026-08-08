@@ -19,6 +19,10 @@ func apply(cell:PlayerCellGridUi):
 	if self_index == 1 or self_index == 4 or self_index == 7:
 		left_index = self_index - 1
 		right_index = self_index + 1
+	elif self_index == 0 or self_index == 3 or self_index == 6:
+		right_index = self_index + 1
+	elif self_index == 2 or self_index == 5 or self_index == 8:
+		left_index = self_index - 1
 	var player_grid:PlayerGridUi = IngameDataManager.player_grid
 	if left_index!= -1 and  player_grid.cell_grid[left_index].assigned_item != null:
 		player_grid.cell_grid[left_index].assigned_item.attack += 3
