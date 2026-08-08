@@ -13,8 +13,8 @@ var _current_life:int = 0
 var _is_recovering:bool = false
 var _block_input:bool = false
 
-#func _set_window_size():
-#	get_window().size = Vector2i(800, 600)
+func _set_window_size():
+	get_window().size = Vector2i(1920, 1080)
 
 
 func _ready():
