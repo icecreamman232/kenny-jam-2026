@@ -114,12 +114,12 @@ func _on_mouse_entered_cell(cell:LootBoxCellUi) -> void:
 	AudioManager.play_sfx(SfxContainer.SfxID.UI_BUTTON_CLICK)	
 	_inspecting_cell = cell
 	_inspecting_cell.self_modulate = Color(0.957, 0.706, 0.106)
-	EventBus.on_hover_on_item.emit(_inspecting_cell.assigned_item)
+	EventBus.on_hover_on_item.emit(_inspecting_cell.assigned_item, -1)
 	
 	
 func _on_mouse_exited_cell(cell:LootBoxCellUi) -> void:
 	if _inspecting_cell != cell: return
 	if _dragging: return
 	_inspecting_cell.self_modulate = Color(1.0, 0.914, 0.769)
-	EventBus.on_hover_on_item.emit(null)
+	EventBus.on_hover_on_item.emit(null, -1)
 	_inspecting_cell = null

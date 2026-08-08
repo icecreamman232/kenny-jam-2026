@@ -143,7 +143,7 @@ func _on_mouse_entered_cell(cell:PlayerCellGridUi) -> void:
 	_hovered_cell = cell
 	if not _hovered_cell.is_blocked:	
 		_hovered_cell.self_modulate = Color(0.957, 0.706, 0.106)
-	EventBus.on_hover_on_item.emit(_hovered_cell.assigned_item)
+	EventBus.on_hover_on_item.emit(_hovered_cell.assigned_item, _hovered_cell.grid_index)
 
 	
 func _on_mouse_exited_cell(cell:PlayerCellGridUi) -> void:
@@ -151,5 +151,5 @@ func _on_mouse_exited_cell(cell:PlayerCellGridUi) -> void:
 	if not _hovered_cell.is_blocked:	
 		_hovered_cell.self_modulate = Color(1.0, 0.914, 0.769)
 	_hovered_cell = null
-	EventBus.on_hover_on_item.emit(null)	
+	EventBus.on_hover_on_item.emit(null, -1)	
 		
