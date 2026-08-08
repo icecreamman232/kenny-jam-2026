@@ -15,13 +15,9 @@ func apply(cell:PlayerCellGridUi):
 	var left_index:int = -1
 	var right_index:int = -1
 	
-	if self_index == 0 or self_index == 3 or self_index == 6:
-		right_index = self_index + 1
-	elif self_index == 1 or self_index == 4 or self_index == 7:
+	if self_index == 1 or self_index == 4 or self_index == 7:
 		left_index = self_index - 1
 		right_index = self_index + 1
-	elif self_index == 2 or self_index == 5 or self_index == 8:
-		left_index = self_index - 1
 	if left_index != -1:
 		var left_cell:PlayerCellGridUi = player_grid.cell_grid[left_index]
 		if left_cell.assigned_item != null and ItemData.is_weapon(left_cell.assigned_item):

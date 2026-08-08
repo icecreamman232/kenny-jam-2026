@@ -17,9 +17,8 @@ func apply(cell:PlayerCellGridUi):
 	var self_index := _owner_cell.grid_index
 	var left_index:= -1
 	var right_index:=-1
-	if self_index != 0:
+	if self_index == 1 or self_index == 4 or self_index == 7:
 		left_index = self_index - 1
-	if self_index != 8:
 		right_index = self_index + 1
 	var player_grid:= IngameDataManager.player_grid	as PlayerGridUi
 	
