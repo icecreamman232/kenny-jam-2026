@@ -101,7 +101,7 @@ func _on_reroll_button_pressed() -> void:
 	elif round_number > Constant.LATE_GAME_ROUND_NUMBER:
 		reroll_price = 10	
 	
-	if coin_hud.current_coin <= _last_reroll_price: return
+	if coin_hud.current_coin < _last_reroll_price: return
 	EventBus.on_coin_change.emit(-_last_reroll_price)
 	_last_reroll_price = reroll_price	
 	show_loot()
