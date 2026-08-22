@@ -44,6 +44,11 @@ func _recalculate_player_stat():
 		new_mana += item.mana
 		new_dodge += item.dodge
 		new_armor += item.armor
+	
+	if player_controller._player_skill is MistCharacterSkill:
+		new_dodge += new_armor
+		new_armor = 0
+	
 
 	set_final(StatController.StatType.ATTACK, new_attack)
 	set_final(StatController.StatType.ACCURACY, new_attack)
@@ -54,7 +59,14 @@ func _recalculate_player_stat():
 	set_final(StatController.StatType.ARMOR, new_armor)
 	
 	player_controller.health.update_life(final_stats[StatType.LIFE])
-	EventBus.update_player_info.emit(self)				
+	EventBus.update_player_info.emit(self)	
+	
+	
+func set_final(stat_type:StatType, value:int):
+	super.set_final(stat_type, value)
+	if player_controller._player_skill is MistCharacterSkill and stat_type == StatType.ARMOR:
+		final_stats[StatType.DODGE] += value
+		final_stats[stat_type] = 0			
 	
 	
 

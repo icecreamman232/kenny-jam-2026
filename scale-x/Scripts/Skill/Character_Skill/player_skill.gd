@@ -7,6 +7,7 @@ enum SkillID
 	WEALTHY,
 	QUICK_STEP,
 	BRUTAL,
+	MIST
 }
 
 	

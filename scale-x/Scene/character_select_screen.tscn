@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://cpn2hbs25t1rh" path="res://Data/Character/ghost_data.tres" id="15_48h8i"]
 [ext_resource type="StyleBox" uid="uid://wlf0x1gxya3r" path="res://Arts/Button_Style/button_pressed_style.tres" id="15_57y4t"]
 [ext_resource type="Resource" uid="uid://uank516oy6ub" path="res://Data/Character/psycho_kid_data.tres" id="16_cw8sg"]
+[ext_resource type="Texture2D" uid="uid://chv564n8c4qb1" path="res://Arts/Atlas_Texture/character_ghost.tres" id="16_g51yr"]
 [ext_resource type="StyleBox" uid="uid://cw5j4deichdqi" path="res://Arts/Button_Style/button_hover_style.tres" id="16_wtkhp"]
 [ext_resource type="FontFile" uid="uid://cjpdlsvkkooca" path="res://Arts/monogram-extended.ttf" id="17_57y4t"]
 
@@ -582,7 +583,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_g07b3")
+texture = ExtResource("16_g51yr")
 expand_mode = 1
 
 [node name="Unknown-BG" type="TextureRect" parent="ColorRect/Control/Character-Node7" unique_id=362736010]

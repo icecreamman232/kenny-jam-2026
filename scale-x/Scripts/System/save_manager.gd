@@ -9,9 +9,16 @@ var character_unlock_progress:Dictionary[CharacterData.CharacterID, bool] ={
 	CharacterData.CharacterID.King: false,
 	CharacterData.CharacterID.Rogue: false,
 	CharacterData.CharacterID.Executioner: false,
+	CharacterData.CharacterID.Farmer: false,
+	CharacterData.CharacterID.Devil: false,
+	CharacterData.CharacterID.Ghost: false,
 }
 
 var _current_save_file:ConfigFile
+
+func is_character_unlocked(character_id:CharacterData.CharacterID) -> bool:
+	return character_unlock_progress[character_id]
+
 
 func load_save_file() -> void:
 	if _current_save_file == null:
@@ -47,7 +54,8 @@ func unlock_character(character_id:CharacterData.CharacterID):
 	if _current_save_file == null:
 		_current_save_file = ConfigFile.new()
 	var unlock_key:= _get_character_unlock_keyname(character_id)	
-	_current_save_file.set_value("Unlock", unlock_key, character_unlock_progress[character_id])
+	character_unlock_progress[character_id] = true
+	_current_save_file.set_value("Unlock", unlock_key, true)
 	var error:= _current_save_file.save(PLAYER_SAVE_FILE_PATH)
 	if error != OK:
 		push_error("Failed to save save file:", error)	

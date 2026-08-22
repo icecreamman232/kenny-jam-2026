@@ -14,15 +14,21 @@ var is_selected:bool = false
 var _screen_ref:CharacterSelectionScreen
 
 func _ready() -> void:
-	if is_unlock:
+	button.pressed.connect(_on_button_pressed)
+
+
+func set_unlock(is_unlock_value:bool):
+	if is_unlock_value:
 		character_name.text = character_data.character_name
 		character_avatar.texture = character_data.character_avatar
+		character_avatar.visible = true
 		unknown_bg.visible = false
 	else:
 		character_name.text = "Locked"
 		character_avatar.visible = false
 		unknown_bg.visible = true
-	button.pressed.connect(_on_button_pressed)
+		
+	is_unlock = is_unlock_value	
 
 
 func assign_screen_ref(scene_ref:CharacterSelectionScreen):

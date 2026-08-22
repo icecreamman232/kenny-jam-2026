@@ -74,7 +74,7 @@
 [ext_resource type="Script" uid="uid://dkcfn3yeht3hf" path="res://Scripts/UI/overlay.gd" id="62_l8ssp"]
 [ext_resource type="Texture2D" uid="uid://bwmbwn6hekefo" path="res://Arts/Atlas_Texture/UI/button_background.tres" id="63_gd321"]
 [ext_resource type="Script" uid="uid://bf18hdvygaqqq" path="res://Scripts/System/tutorial_manager.gd" id="64_2gdrn"]
-[ext_resource type="PackedScene" uid="uid://b3th5kgxqu7lh" path="res://stat_seller_npc_scene.tscn" id="68_l4kfh"]
+[ext_resource type="PackedScene" uid="uid://b3th5kgxqu7lh" path="res://Scene/stat_seller_npc_scene.tscn" id="68_l4kfh"]
 [ext_resource type="PackedScene" uid="uid://bo8hwolvbtlhu" path="res://Scene/blacksmith_npc_screen.tscn" id="71_xnm1y"]
 [ext_resource type="Script" uid="uid://ccd0f2ckfxvwi" path="res://Scripts/UI/pause_screen.gd" id="73_g8frg"]
 

@@ -26,6 +26,8 @@ func _ready() -> void:
 	play_button.pressed.connect(_on_go_to_gameplay)
 	for node in character_node_list:
 		node.assign_screen_ref(self)
+		node.set_unlock(SaveManager.is_character_unlocked(node.character_data.character_id))
+		
 
 
 func _exit_tree() -> void:

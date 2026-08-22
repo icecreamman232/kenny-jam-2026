@@ -7,5 +7,6 @@ func create_skill(string_id:String) ->PlayerSkill:
 		PlayerSkill.SkillID.WEALTHY: return WealthyCharacterSkill.new()
 		PlayerSkill.SkillID.QUICK_STEP: return QuickStepCharacterSkill.new()
 		PlayerSkill.SkillID.BRUTAL: return BrutalCharacterSkill.new()
+		PlayerSkill.SkillID.MIST: return MistCharacterSkill.new()
 		PlayerSkill.SkillID.NONE: return null
 		_: return null
